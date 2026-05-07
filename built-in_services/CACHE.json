@@ -1,0 +1,1102 @@
+{
+  "folder": "CACHE",
+  "total_services": 30,
+  "services": [
+    {
+      "name": "pub.cache:containsKey",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache that contains the key. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "Object",
+          "description": "Key of the element for whose existence you are checking.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "found",
+          "type": "String",
+          "description": "Indicates whether the key exists in the cache. true indicates that the key exists in the cache. false indicates that the key does not exist in the cache.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id9b673851-0900-4485-9390-53796a7df769.html"
+    },
+    {
+      "name": "pub.cache:get",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache from which to retrieve the element. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "Object",
+          "description": "Key associated with the cached value.",
+          "optional": false
+        },
+        {
+          "name": "useLoader",
+          "type": "String",
+          "description": "Optional. Indicates whether to use a cache loader to retrieve the element from the cache. Set to: true to use a cache loader to retrieve the element if it is not already in the cache. Note: If useLoader is true and no loaders are configured for the cache, Integration Server issues a ServiceException. false to retrieve the element from the cache without a cache loader. This is the default setting.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "Value of the element retrieved from the cache.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_bpel_invokeProcess.html"
+    },
+    {
+      "name": "pub.cache:getAll",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache from which to retrieve the elements. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "keys",
+          "type": "Object\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Keys associated with the cached elements for which you want to retrieve values.",
+          "optional": false
+        },
+        {
+          "name": "useLoader",
+          "type": "String",
+          "description": "Optional. Indicates whether to use a cache loader to retrieve the elements from the cache. Set to: true to use a cache loader to retrieve an element if the element is not already in the cache. Note: If useLoader is true and no loaders are configured for the cache, Integration Server issues a ServiceException. false to retrieve an element from the cache without a cache loader. This is the default setting.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "elements",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "An IData[] containing the values for the requested cached elements.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id46b1f34a-8dd3-4f37-9176-d429279ab9d3.html"
+    },
+    {
+      "name": "pub.cache:getKeys",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache from which to retrieve the keys. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "excludeExpiredKeys",
+          "type": "String",
+          "description": "Optional. Indicates whether the service results exclude keys for expired elements. Set to: true to exclude the keys of expired elements. This is the default. false to include the keys of all elements.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "keys",
+          "type": "Object\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "List of keys of elements in the cache.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idaccf1852-06fc-4e96-b879-29836037e433.html"
+    },
+    {
+      "name": "pub.cache:put",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache in which to put the element. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "Object",
+          "description": "Key of the cached element.",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "Value of the cached element.",
+          "optional": false
+        },
+        {
+          "name": "useWriter",
+          "type": "String",
+          "description": "Optional. Indicates whether to use a cache writer to populate the value of the cached element in the system-of-record (SOR). Set to: true to use a cache writer to add the value to the cached element and the SOR. false to add the value to the cached element without writing to the SOR. This is the default setting. Note: If the value already exists in the cache, pub.cache:put replaces the value.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id9e44d26e-f8dc-4102-9948-6354a0406e65.html"
+    },
+    {
+      "name": "pub.cache:putAll",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache in which to put the elements. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "elements",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "An IData[] containing the key-value pairs to put in the cache.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id4e22a88a-85c4-4412-8768-12aec355e054.html"
+    },
+    {
+      "name": "pub.cache:remove",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache from which to remove the element. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "Object",
+          "description": "Key of the element to remove.",
+          "optional": false
+        },
+        {
+          "name": "useWriter",
+          "type": "String",
+          "description": "Optional. Indicates whether to use a cache writer to remove the value of the cached element from the system-of-record (SOR). Set to: true to use a cache writer to remove the value from the cached element and the SOR. false to remove the value to the cached element without using a cache writer. This is the default setting.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "removed",
+          "type": "String",
+          "description": "Indicates whether the element was removed. true indicates that the element was removed from the cache. false indicates that the element was not removed from the cache.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idf7393630-573b-44cc-9511-158533892691.html"
+    },
+    {
+      "name": "pub.cache:removeAll",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache in which to put the elements. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "keys",
+          "type": "Object\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. Keys of the elements to remove from the cache. If you do not specify any keys, the service removes all of the elements from the specified cache.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/ide4ccd868-3533-4d9c-afc4-8d2c649f9321.html"
+    },
+    {
+      "name": "pub.cache:search",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache from which the search results are to be returned. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "includeAttributes",
+          "type": "String",
+          "description": "Optional. List of attributes that should be included in the search results.",
+          "optional": true
+        },
+        {
+          "name": "includeKey",
+          "type": "String",
+          "description": "Optional. Indicates whether or not the keys should be returned as part of the search results. true indicates that the keys should be returned as part of the search results. false indicates that the keys should not be returned as part of the search results. This is the default. Note: You should set this parameter to true only if the value is required for your programming logic.",
+          "optional": true
+        },
+        {
+          "name": "includeValue",
+          "type": "String",
+          "description": "Optional. Indicates whether or not the values should be returned as part of the search results. true indicates that the values should be returned as part of the search results. false indicates that the values should not be returned as part of the search results. This is the default. Note: You should set this parameter to true only if the value is required for your programming logic.",
+          "optional": true
+        },
+        {
+          "name": "criteria",
+          "type": "Document",
+          "description": "A document (IData) that specifies the conditions based on which the data in the cache is to be queried.",
+          "optional": false
+        },
+        {
+          "name": "maxResults",
+          "type": "String",
+          "description": "Optional. The maximum number of results to return. If maxResults is not specified, Integration Server returns all the results.",
+          "optional": true
+        },
+        {
+          "name": "groupBy",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. The unique values of specified attributes based on which the search results are to be grouped. The attributes that you specify for grouping the results must be included in the list of attributes specified for the includeAttributes parameter.",
+          "optional": true
+        },
+        {
+          "name": "orderBy",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tTable",
+          "description": "Optional. Whether the service results are to be returned in ascending or descending order. Values for this parameter must be specified as a two-dimensional string array comprising the field name and whether DESCENDING or ASCENDING (case sensitive) in the following format: {{\"fieldName\",\"order\"},{\"fieldName\",\"order\"}} Where order is ASCENDING or DESCENDING . For example, if you have configured name and age as the search attributes for the personCache cache that stores name, age, and address, the orderBy parameter can be specified as shown below: {{\"name\",\"ASCENDING\"}} -or- {{\"name\",\"ASCENDING\"},{\"age\",\"DESCENDING\"}}",
+          "optional": true
+        },
+        {
+          "name": "aggregator",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tTable",
+          "description": "Aggregator function such as average, count, max, min, or sum that you want to be applied on the search results. Values for this parameter should be specified as a two-dimensional string array in the following format: {{\"fieldName\",\"aggregator\"}, {\"fieldName\",\"aggregator\"}} Where aggregator can be average , count , max , min , or sum (case-insensitive). For example, {{\"age\",\"Max\"}} or {{\"income\",\"Average\"}} . If you want to use the aggregator function, you must: Specify a value for the groupBy parameter. Set the includeKey and includeValue parameters to false .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "Object\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "The returned results of the search. Each object in the result parameter is of type com.wm.app.b2b.client.cache.config.SearchResult. For more information about com.wm.app.b2b.client.cache.config.SearchResult type, see IBM webMethods Integration Server Java API Reference . Each object contains information about the cache element, key, value, search attribute values, and aggregator results, if any.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id58cea799-a2de-412d-94a3-8519022752bd.html"
+    },
+    {
+      "name": "pub.cache.admin:clearAllCaches",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cachePrefix",
+          "type": "String",
+          "description": "Optional. Prefix of the name of the caches from which to delete elements. If you do not specify a prefix, the service deletes elements from all caches in the cache manager. Note: If pub.cache.admin:clearAllCaches does not find any caches with the specified prefix, the service does not clear any caches.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "String",
+          "description": "The status indicating either Error or Success .",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "The status message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idc5b201d3-cc5e-410a-9d4b-2c1a2761ee46.html"
+    },
+    {
+      "name": "pub.cache.admin:clearCache",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache from which to delete the elements. This parameter is case sensitive.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "String",
+          "description": "The status indicating either Error or Success .",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "The status message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idba6222fd-0588-4c42-94b9-bdefee781902.html"
+    },
+    {
+      "name": "pub.cache.admin:disableCache",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache to disable. This parameter is case sensitive.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "String",
+          "description": "The status indicating either Error or Success .",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "The status message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id911f331e-d5ba-4881-a632-e03a275786eb.html"
+    },
+    {
+      "name": "pub.cache.admin:enableCache",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache to enable. This parameter is case sensitive.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "String",
+          "description": "The status indicating either Error or Success .",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "The status message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idc57fb7ec-4cd9-45f0-8acb-7ac98d6e2f5f.html"
+    },
+    {
+      "name": "pub.cache.admin:evictExpiredElements",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache from which you want to delete the expired elements. This parameter is case sensitive.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "String",
+          "description": "The status indicating either Error or Success .",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "The status message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idfe62af9b-a15c-4565-85dd-1178f0ce12dc.html"
+    },
+    {
+      "name": "pub.cache.admin:isCacheDisabled",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache for which you want to check the status (whether it is disabled or enabled). This parameter is case sensitive.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "isDisabled",
+          "type": "String",
+          "description": "Indicates whether the cache is disabled. A value of: true indicates that the cache is disabled. false indicates that the cache is enabled.",
+          "optional": false
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Conditional. The status indicating Error . The service returns Error for status only if the service fails when checking whether the cache is disabled.",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Conditional. The status message of the error. The service returns message with status only if an error occurs when checking whether the cache is disabled.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id85b649d5-6c4b-4f1f-aa6d-9bd35436d5e3.html"
+    },
+    {
+      "name": "pub.cache.atomic:putIfAbsent",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache to which to add the element. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "Object",
+          "description": "Key of the element.",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "Value to add to the element.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "keyExists",
+          "type": "String",
+          "description": "Indicates whether an element with the specified key exists in the cache. true indicates that an element with the key already exists in the cache. false indicates that an element with the key does not exist in the cache.",
+          "optional": false
+        },
+        {
+          "name": "oldValue",
+          "type": "Object",
+          "description": "Conditional. Value of the element that already exists in the cache. Returned only if keyExists is true .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id823b64c1-2794-4d19-b4d0-82ef29854aa9.html"
+    },
+    {
+      "name": "pub.cache.atomic:remove",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache from which to remove the element. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "Object",
+          "description": "Key of the element to remove.",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "Value of the element to remove.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "removed",
+          "type": "String",
+          "description": "Indicates whether the service removed the element. true indicates that the element was removed from the cache. false indicates that the element was not removed from the cache. The service returns false if the specified key and value do not exist in the cache.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idff892c85-5ca7-4c26-a30b-edb5f87bd793.html"
+    },
+    {
+      "name": "pub.cache.atomic:replace",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache that contains the value you want to replace. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "Object",
+          "description": "Key of the cache element whose value you want to replace.",
+          "optional": false
+        },
+        {
+          "name": "oldValue",
+          "type": "Object",
+          "description": "Value of the cached element.",
+          "optional": false
+        },
+        {
+          "name": "newValue",
+          "type": "Object",
+          "description": "Value with which to replace the value of the cached element.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "replaced",
+          "type": "String",
+          "description": "Indicates whether the service replaced oldValue with newValue in the cache. true indicates that the value was replaced in the cache. false indicates that the value was not replaced in the cache.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/ida4b0f284-8aee-4056-bd69-48b9e2acf651.html"
+    },
+    {
+      "name": "pub.cache.atomic:replaceIfKeyExists",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache that contains the key. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "Object",
+          "description": "Key of the element whose value you want to replace.",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "Value with which to replace the value of the cached element.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "keyExists",
+          "type": "String",
+          "description": "Indicates whether the element with the passed key exists in the cache. true indicates that the element with the key already exists in the cache. false indicates that the element with the key does not exist in the cache.",
+          "optional": false
+        },
+        {
+          "name": "oldValue",
+          "type": "Object",
+          "description": "Conditional. Value of the element the service replaced with value . Returned only if keyExists is true .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id2a630062-3441-4925-bc7e-eeb4305a27bb.html"
+    },
+    {
+      "name": "pub.cache.bulk:isClusterBulkLoadEnabled",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache to check for bulk loading. This parameter is case sensitive.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "enabled",
+          "type": "String",
+          "description": "Indicates whether the cache on at least one Integration Server node of the Terracotta Server Array cluster is in bulk-load mode. true indicates that at least one node is in bulk-load mode. false indicates that the node is not in bulk-load mode.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id2fca80e0-ced0-455f-9fd5-c088225c481b.html"
+    },
+    {
+      "name": "pub.cache.bulk:isNodeBulkLoadEnabled",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the distributed cache to check for bulk loading. This parameter is case sensitive.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "enabled",
+          "type": "String",
+          "description": "Indicates whether the cache is enabled for bulk loading. true indicates that the Integration Server node calling the service is the same one that enabled bulk-loading. false indicates one of the following: The Integration Server node calling the service was not the same node that enabled bulk loading. The specified cache is a local cache.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id77a61866-82c5-43ec-b2d5-c8a9664941c9.html"
+    },
+    {
+      "name": "pub.cache.bulk:setNodeBulkLoadEnabled",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache on which to enable or disable bulk loading. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "bulkMode",
+          "type": "String",
+          "description": "Indicates whether to enable the bulk-load mode for the cache. Set to: true to enable the bulk-load mode. This is the default. false to disable the bulk-load mode.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idbfab45e7-c223-4926-8a1d-b80e57b8b381.html"
+    },
+    {
+      "name": "pub.cache.bulk:waitUntilClusterBulkLoadComplete",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache on which to hold processing. This parameter is case sensitive.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id6918a1e7-4c35-4b54-912d-1a34515a4b04.html"
+    },
+    {
+      "name": "pub.cache.lock:acquireLock",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache that contains the element to lock. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "Object",
+          "description": "Key of the cached element to lock.",
+          "optional": false
+        },
+        {
+          "name": "lockType",
+          "type": "String",
+          "description": "Optional. Type of lock you want to place on the cached element.",
+          "optional": true
+        },
+        {
+          "name": "read",
+          "type": null,
+          "description": "Places a read lock on the key. This is the default.",
+          "optional": false
+        },
+        {
+          "name": "write",
+          "type": null,
+          "description": "Places a write lock on the key.",
+          "optional": false
+        },
+        {
+          "name": "lockWaitTime",
+          "type": "String",
+          "description": "Optional. Amount of time in milliseconds to wait to acquire a lock before timing out.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id2f8ee7e3-27c6-4dcb-8303-c3103056ae24.html"
+    },
+    {
+      "name": "pub.cache.lock:isLockedByCurrentThread",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache that contains the key. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "Object",
+          "description": "Key for which you want to check locks.",
+          "optional": false
+        },
+        {
+          "name": "lockType",
+          "type": "String",
+          "description": "Optional. Type of lock for which to check the cached element.",
+          "optional": true
+        },
+        {
+          "name": "read",
+          "type": null,
+          "description": "The service checks whether the read lock is held for the current thread. This is the default.",
+          "optional": false
+        },
+        {
+          "name": "write",
+          "type": null,
+          "description": "The service checks whether the write lock is held for the current thread.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "locked",
+          "type": "String",
+          "description": "Indicates whether the cached element is locked by the current thread. true indicates that the element is locked. false indicates that the element is not locked. Note: If the specified cache is a local cache and the specified lockType is read , the service always returns false .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id777556f5-ff12-4b65-bf5b-3eb143f1537a.html"
+    },
+    {
+      "name": "pub.cache.lock:releaseLock",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "cacheManagerName",
+          "type": "String",
+          "description": "Name of the cache manager that manages the cache. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "cacheName",
+          "type": "String",
+          "description": "Name of the cache that contains the key. This parameter is case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "Object",
+          "description": "Key of the cached element to unlock.",
+          "optional": false
+        },
+        {
+          "name": "lockType",
+          "type": "String",
+          "description": "Optional. Type of lock you want to release from the cached element.",
+          "optional": true
+        },
+        {
+          "name": "read",
+          "type": null,
+          "description": "Releases a read lock. This is the default.",
+          "optional": false
+        },
+        {
+          "name": "write",
+          "type": null,
+          "description": "Releases a write lock.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id2ca4ee8d-ada2-4a18-b202-2695568fd81e.html"
+    },
+    {
+      "name": "pub.cache.serviceResults:addCacheEntry",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "serviceName",
+          "type": "String",
+          "description": "Name of the service for which to add the cache entry into cached service results.",
+          "optional": false
+        },
+        {
+          "name": "input",
+          "type": "Document",
+          "description": "An IData containing the key/value pairs for the cached service input.",
+          "optional": false
+        },
+        {
+          "name": "output",
+          "type": "Document",
+          "description": "An IData containing the key/value pairs for the cached service output.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id9cc730c1-9405-4aa8-b7c8-8b139815688b.html"
+    },
+    {
+      "name": "pub.cache.serviceResults:listServiceCache",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "serviceName",
+          "type": "String",
+          "description": "Name of the service for which you want to view the cached service results.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "elements",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Conditional. A document list (IData []) containing the cached service results for the specified service. The pub.cache.serviceResults:listServiceCache service returns the elements output only if the service results cache contains cached results for the specified service. For each set of cached service results, the pub.cache.serviceResults:listServiceCache returns the following information:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/ide6dd11a4-5ed1-4a83-977c-d76604354b73.html"
+    },
+    {
+      "name": "pub.cache.serviceResults:resetServerCache",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Message indicating whether Integration Server cleared the entire service results cache successfully. If it did not, review the server and error logs to determine the reason.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Message indicating whether Integration Server cleared the entire service results cache successfully. If it did not, review the server and error logs to determine the reason.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id6d6f6fea-f3ea-4436-808a-eb794e403e72.html"
+    },
+    {
+      "name": "pub.cache.serviceResults:resetServiceCache",
+      "folder": "CACHE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "serviceName",
+          "type": "String",
+          "description": "Fully qualified name of the service in the format folder.subfolder:serviceName for which you want to remove cached service results.",
+          "optional": false
+        },
+        {
+          "name": "input",
+          "type": "Document",
+          "description": "Optional. An IData containing key/value pairs that indicate the cached elements to remove.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Message indicating whether or Integration Server cleared the service results cache for the specified service successfully. If it did not, review the server and error logs to determine the reason. Note: If serviceName specifies a service that does not exist, or no cached entry with the specified input exists, the message output parameter returns the message “Cache reset successfully,” to avoid revealing whether a service exists.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id866798e9-1db6-4bfb-b2ff-23869d2d4e46.html"
+    }
+  ]
+}

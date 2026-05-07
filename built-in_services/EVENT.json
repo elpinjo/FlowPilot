@@ -1,0 +1,1272 @@
+{
+  "folder": "EVENT",
+  "total_services": 44,
+  "services": [
+    {
+      "name": "pub.event:addSubscriber",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "EventType",
+          "type": "String",
+          "description": "Type of event to which the event handler is subscribing. Must be one of the following: Alarm Event Audit Event Audit Error Event Error Event Exception Event GD End Event AGD Start Event JMS Delivery Failure Event JMS Retrieval Failure Event Journal Event Port Status Event Replication Event Security Event Session End Event Session Expire Event Session Start Event Stat Event Tx End Event Tx Start Event Tip: To view the current list of event types, you can execute the pub.event:getEventTypes service.",
+          "optional": false
+        },
+        {
+          "name": "Filter",
+          "type": "String",
+          "description": "Selects (filters) the set of events within EventType to which the event handler is subscribing. addSubscriber uses Filter as a pattern string to filter a particular attribute of an event. The pattern string can be composed of literal characters, which match a character exactly, and/or the \" * \" character, which matches any sequence of characters. For example:",
+          "optional": false
+        },
+        {
+          "name": "Service",
+          "type": "String",
+          "description": "Fully qualified name of the event-handler service (the service that will execute when the event specified by EventType and Filter occurs).",
+          "optional": false
+        },
+        {
+          "name": "Comment",
+          "type": "String",
+          "description": "Descriptive comment for this subscription. This comment is displayed when subscriptions are viewed with Designer .",
+          "optional": false
+        },
+        {
+          "name": "Enabled",
+          "type": "String",
+          "description": "Flag specifying the status of the subscription. Must be one of the following values. Set to: true to make the subscription active. false to make the subscription inactive. This is the default. Note: Although the default value is false, you will generally want to set Enabled to true to activate the subscription immediately when it is added.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "type": "String",
+          "description": "Flag indicating whether the subscriber was successfully added. A value of: true indicates that the subscriber was added successfully. false indicates that the subscriber was not added.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_addSubscriber.html"
+    },
+    {
+      "name": "pub.event:alarm",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Date and time that the event occurred, in the format yyyy/MM/dd HH:mm:ss.SS .",
+          "optional": false
+        },
+        {
+          "name": "service",
+          "type": "String",
+          "description": "Fully qualified name of the service that generated the event. A service can generate an alarm event when a client invokes a service that accesses information or a service on a remote server. If the client is not a member of an allowed group for the port on the remote server, the service will generate an alarm event.",
+          "optional": false
+        },
+        {
+          "name": "sessionID",
+          "type": "String",
+          "description": "Identification number for the session during which the alarm event was generated. Some alarm events are not generated during sessions. In these cases, the sessionID variable will not contain a value.",
+          "optional": false
+        },
+        {
+          "name": "msg",
+          "type": "String",
+          "description": "Text describing the alarm.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_alarm.html"
+    },
+    {
+      "name": "pub.event:alarmInfo",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_alarmInfo.html"
+    },
+    {
+      "name": "pub.event:audit",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Date and time that the event occurred, in the format yyyy-MM-dd HH:mm:ss z (for example, \"2004-10-28 14:46:39 EDT\"). Note: You can set the format for the time parameter in the watt.server.dateStampFmt property.",
+          "optional": false
+        },
+        {
+          "name": "TID",
+          "type": "String",
+          "description": "Server thread that generated the audit event.",
+          "optional": false
+        },
+        {
+          "name": "service",
+          "type": "String",
+          "description": "Fully qualified name of the service that generated the event.",
+          "optional": false
+        },
+        {
+          "name": "sessionID",
+          "type": "String",
+          "description": "Session ID of the service that generated the event.",
+          "optional": false
+        },
+        {
+          "name": "result",
+          "type": "String",
+          "description": "Description of the audit point. A value of: Started indicates that this event marks the beginning of a service. Ended indicates that this event marks the end of a service that executed successfully. Failed indicates that this event marks the end of a service that executed unsuccessfully (that is, threw an exception) and is not configured to retry. A failed event also marks the end of a service that executed unsuccessfully after exhausting all of its retries. Retried indicates that this event is created each time a service is retried.",
+          "optional": false
+        },
+        {
+          "name": "pipeline",
+          "type": "Document",
+          "description": "Optional. The pipeline that was passed to the service. This parameter is required only if the service is configured to include the pipeline when auditing.",
+          "optional": true
+        },
+        {
+          "name": "userName",
+          "type": "String",
+          "description": "User ID that invoked the service that generated the event.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_audit.html"
+    },
+    {
+      "name": "pub.event:auditError",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Date and time at which the audit error occurred. This parameter is in the format yyyy-MM-dd HH:mm:ss.SSS (for example, \"2004-10-28 14:46:39.505\").",
+          "optional": false
+        },
+        {
+          "name": "destination",
+          "type": "String",
+          "description": "Specifies the audit log destination to which the audit logging system attempted to write when the error occurred.",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Error message of the exception.",
+          "optional": false
+        },
+        {
+          "name": "stackTrace",
+          "type": "String",
+          "description": "Stack trace for the exception.",
+          "optional": false
+        },
+        {
+          "name": "errorCode",
+          "type": "String",
+          "description": "Optional. The SQL error code returned with the exception.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "YourSearchTerm",
+          "type": null,
+          "description": "Events that contain only YourSearchTerm .",
+          "optional": false
+        },
+        {
+          "name": "*YourSearchTerm",
+          "type": null,
+          "description": "Events that contain YourSearchTerm at the end of the audit error event value.",
+          "optional": false
+        },
+        {
+          "name": "YourSearchTerm*",
+          "type": null,
+          "description": "Events that contain YourSearchTerm at the beginning of the audit error event value.",
+          "optional": false
+        },
+        {
+          "name": "*YourSearchTerm*",
+          "type": null,
+          "description": "Events that contain YourSearchTerm anywhere within the audit error event value.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_auditError.html"
+    },
+    {
+      "name": "pub.event:auditErrorInfo",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Date and time at which the audit error occurred. This parameter is in the format yyyy-MM-dd HH:mm:ss.SSS (for example, \"2004-10-28 14:46:39.505\").",
+          "optional": false
+        },
+        {
+          "name": "destination",
+          "type": "String",
+          "description": "Specifies the audit log destination to which the audit logging system attempted to write when the error occurred.",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Error message of the exception.",
+          "optional": false
+        },
+        {
+          "name": "stackTrace",
+          "type": "String",
+          "description": "Stack trace for the exception.",
+          "optional": false
+        },
+        {
+          "name": "errorCode",
+          "type": "String",
+          "description": "Optional. The SQL error code returned with the exception.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_auditErrorInfo.html"
+    },
+    {
+      "name": "pub.event:auditInfo",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_auditInfo.html"
+    },
+    {
+      "name": "pub.event:callstackItem",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_callStackItem.html"
+    },
+    {
+      "name": "pub.event:deleteSubscriber",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "EventType",
+          "type": "String",
+          "description": "Type of event from which the event handler is unsubscribing. Must be one of the following values: Alarm Event Audit Event Exception Event GD End Event GD Start Event JMS Delivery Failure Event JMS Retrieval Failure Event Port Status Event Replication Event Security Event Session End Event Session Expire Event Session Start Event Stat Event Tx End Event Tx Start Event Tip: To view the current list of event types, you can execute the pub.event:getEventTypes service.",
+          "optional": false
+        },
+        {
+          "name": "gID",
+          "type": "String",
+          "description": "ID of the subscriber that you want to delete. To get a list of subscriber IDs, execute the pub.event:getSubscribers service.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "type": "String",
+          "description": "Flag indicating whether the subscriber was successfully deleted. A value of: true indicates that the subscriber was deleted successfully. false indicates that the subscriber was not deleted (typically an invalid subscriber ID was provided in gID ).",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_deleteSubscriber.html"
+    },
+    {
+      "name": "pub.event:error",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "stackTrace",
+          "type": "String",
+          "description": "Stack trace for the error.",
+          "optional": false
+        },
+        {
+          "name": "errorMessage",
+          "type": "String",
+          "description": "The error message, if any, generated by the error that causes the error event.",
+          "optional": false
+        },
+        {
+          "name": "serviceName",
+          "type": "String",
+          "description": "Fully qualified name of the service in which the error occurred.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id58938465-1dcf-4b62-a88f-0c1e1d5c96ef.html"
+    },
+    {
+      "name": "pub.event:errorInfo",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idc8776a94-d1bf-430f-becf-e7e8c7ac37a5.html"
+    },
+    {
+      "name": "pub.event:exception",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Date and time that the event occurred, in the format yyyy/MM/dd HH:mm:ss.SS . Note: You can set the format by specifying the watt.server.dateStampFmt property.",
+          "optional": false
+        },
+        {
+          "name": "error",
+          "type": "String",
+          "description": "Optional. Error message of the exception.",
+          "optional": true
+        },
+        {
+          "name": "localizedError",
+          "type": "String",
+          "description": "Optional. Error message in the language that corresponds to the locale of your webMethods installation.",
+          "optional": true
+        },
+        {
+          "name": "errorType",
+          "type": "String",
+          "description": "Exception type that was thrown.",
+          "optional": false
+        },
+        {
+          "name": "errorDump",
+          "type": "String",
+          "description": "More detailed information about the exception.",
+          "optional": false
+        },
+        {
+          "name": "service",
+          "type": "String",
+          "description": "Optional. Fully qualified name of the service that generated the event.",
+          "optional": true
+        },
+        {
+          "name": "user",
+          "type": "String",
+          "description": "User that requested the service that generated the event.",
+          "optional": false
+        },
+        {
+          "name": "callStack",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. The call stack information describing where the exception occurred, including the fully qualified name of a service on the stack and an index that identifies the last executed flow step in that service. Each document represents a service on the call stack. The first document in the list represents the service that threw the exception and the last document in the list represents the top-level service. The structure of this document is defined by pub.event:callstackItem .",
+          "optional": true
+        },
+        {
+          "name": "pipeline",
+          "type": "Document",
+          "description": "Optional. State of the pipeline at the time the exception occurred.",
+          "optional": true
+        },
+        {
+          "name": "threadID",
+          "type": "String",
+          "description": "Thread ID identifying the thread that invoked the service.",
+          "optional": false
+        },
+        {
+          "name": "ssnid",
+          "type": "String",
+          "description": "Session ID during which the exception occurred.",
+          "optional": false
+        },
+        {
+          "name": "errorMsgID",
+          "type": "String",
+          "description": "Optional. The identification number for the error message.",
+          "optional": true
+        },
+        {
+          "name": "errorDetails",
+          "type": "Document",
+          "description": "Optional. Additional exception information provided by the author of the Java service. For more information about constructing exceptions to return additional information, see the IBM webMethods Integration Server Java API Reference for the com.wm.util.LocalizedException class.",
+          "optional": true
+        },
+        {
+          "name": "nestedErrorInfo",
+          "type": "Document",
+          "description": "Optional. Nested errors and exceptions, if any. The structure of this document is defined by pub.event:exceptionInfo .",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc489417438.html"
+    },
+    {
+      "name": "pub.event:exceptionInfo",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_exceptionInfo.html"
+    },
+    {
+      "name": "pub.event:gdEnd",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Date and time that the event occurred, in the format yyyy/MM/dd HH:mm:ss.SS .",
+          "optional": false
+        },
+        {
+          "name": "TID",
+          "type": "String",
+          "description": "Transaction ID of the service that generated the event.",
+          "optional": false
+        },
+        {
+          "name": "result",
+          "type": "String",
+          "description": "Status of the transaction.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_gdEnd.html"
+    },
+    {
+      "name": "pub.event:gdEndInfo",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_gdEndInfo.html"
+    },
+    {
+      "name": "pub.event:gdStart",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Date and time that the event occurred, in the format yyyy/MM/dd HH:mm:ss.SS.",
+          "optional": false
+        },
+        {
+          "name": "TID",
+          "type": "String",
+          "description": "Transaction ID of the service that generated the event.",
+          "optional": false
+        },
+        {
+          "name": "svcname",
+          "type": "String",
+          "description": "Fully qualified name of the service that generated the event.",
+          "optional": false
+        },
+        {
+          "name": "result",
+          "type": "String",
+          "description": "Status of the transaction.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_gdStart.html"
+    },
+    {
+      "name": "pub.event:gdStartInfo",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_gdStartInfo.html"
+    },
+    {
+      "name": "pub.event:getEventTypes",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "EventTypes",
+          "type": "Document",
+          "description": "The types of events that the server supports: Alarm Event Audit Event Audit Error Event Exception Event GD End Event GD Start Event JMS Delivery Failure Event JMS Retrieval Failure Event Port Status Event Replication Event Security Event Session End Event Session Expire Event Session Start Event Stat Event Tx End Event Tx Start Event",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "EventTypes",
+          "type": "Document",
+          "description": "The types of events that the server supports: Alarm Event Audit Event Audit Error Event Exception Event GD End Event GD Start Event JMS Delivery Failure Event JMS Retrieval Failure Event Port Status Event Replication Event Security Event Session End Event Session Expire Event Session Start Event Stat Event Tx End Event Tx Start Event",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_getEventTypes.html"
+    },
+    {
+      "name": "pub.event:getSubscribers",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "EventType",
+          "type": "String",
+          "description": "Type of event for which you want the list of subscribers. Must be one of the following values: Alarm Event Audit Event Audit Error Event Exception Event GD End Event GD Start Event JMS Delivery Failure Event JMS Retrieval Failure Event Port Status Event Replication Event Security Event Session End Event Session Expire Event Session Start Event Stat Event Tx End Event Tx Start Event Tip: To view the current list of event types, you can execute the pub.event:getEventTypes service.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Subscribers",
+          "type": "Document",
+          "description": "The list of subscribers. For each subscriber, Subscribers will contain a key that is the subscriber ID. The value of that key is a document containing the following information about the subscriber:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_getSubscribers.html"
+    },
+    {
+      "name": "pub.event:jmsReceiveErrorEvent",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "triggerName",
+          "type": "String",
+          "description": "Specifies the name of the JMS trigger that executed the trigger service for which the JMS retrieval failure event occurred.",
+          "optional": false
+        },
+        {
+          "name": "triggerDestinationIndex",
+          "type": "java.lang.Integer",
+          "description": "Specifies the index for the destination from which the JMS trigger receives messages. A JMS trigger that specifies a join type can listen for messages from multiple destinations. The first destination listed has an index of 0, the second destination listed has an indices of 1, etc.",
+          "optional": false
+        },
+        {
+          "name": "deliveryCount",
+          "type": "java.lang.Integer",
+          "description": "Number of times the JMS provider delivered the message to the JMS trigger at the time the event occurred.",
+          "optional": false
+        },
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Date and time that the event occurred, in the format yyyy/MM/dd HH:mm:ss.SS",
+          "optional": false
+        },
+        {
+          "name": "exceptionClass",
+          "type": "String",
+          "description": "Name of the class that caused the failure. This may be useful to determine programmatically why the error occurred.",
+          "optional": false
+        },
+        {
+          "name": "exceptionMessage",
+          "type": "String",
+          "description": "Message contained in the exception.",
+          "optional": false
+        },
+        {
+          "name": "data",
+          "type": "Document",
+          "description": "A document (IData) containing the JMS message being processed when the error occurred.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_jmsReceiveErrorEvent.html"
+    },
+    {
+      "name": "pub.event:jmsSendErrorEvent",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "aliasName",
+          "type": "String",
+          "description": "Name of the JMS connection alias used to send the message to the JMS provider.",
+          "optional": false
+        },
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Date and time that the event occurred, in the format yyyy/MM/dd HH:mm:ss.SS.",
+          "optional": false
+        },
+        {
+          "name": "data",
+          "type": "Document",
+          "description": "Contents of the JMS message that could not be sent to the JMS provider.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_jmsSendErrorEvent.html"
+    },
+    {
+      "name": "pub.event:journal",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Date and time that the event occurred, in the format yyyy/mm/dd hh:mm:ss.ss.",
+          "optional": false
+        },
+        {
+          "name": "productID",
+          "type": "String",
+          "description": "Name of the product that generated the journal log message and the event.",
+          "optional": false
+        },
+        {
+          "name": "majorCode",
+          "type": "String",
+          "description": "Major code of the message.",
+          "optional": false
+        },
+        {
+          "name": "minorCode",
+          "type": "String",
+          "description": "Minor code of the message.",
+          "optional": false
+        },
+        {
+          "name": "severity",
+          "type": "String",
+          "description": "Number indicating the severity of the message. 1 Fatal 2 Error 3 Warning 4 Info 5, 6 Debut 7 - 10 Trace",
+          "optional": false
+        },
+        {
+          "name": "defaultMessage",
+          "type": "String",
+          "description": "Default message associated with the major code and minor code. The actual message may differ from the default message. For example the default message might be “Package WmART is stopping due to {0}”, where {0} is a placeholder for a run-time parameter. The actual message generated at run time might be “Package WmART is stopping due to ServiceException”.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_journal.html"
+    },
+    {
+      "name": "pub.event:journalInfo",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idfbd4d45d-0c00-4d2f-86a1-cd36c930597e.html"
+    },
+    {
+      "name": "pub.event:modifySubscriber",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "EventType",
+          "type": "String",
+          "description": "Event type that you want the subscription to have: Alarm Event Audit Event Error Event Exception Event GD End Event GD Start Event JMS Delivery Failure Event JMS Retrieval Failure Event Journal Event Port Status Event Replication Event Security Event Session End Event Session Expire Event Session Start Event Stat Event Tx End Event Tx Start Event Tip: To view the current list of event types, you can execute the pub.event:getEventTypes service.",
+          "optional": false
+        },
+        {
+          "name": "gID",
+          "type": "String",
+          "description": "ID of the subscriber that you want to modify. To get the current list of subscriber IDs, execute the pub.event:getSubscribers service.",
+          "optional": false
+        },
+        {
+          "name": "Filter",
+          "type": "String",
+          "description": "Filter that you want subscription to have. Filter is a pattern-matching string composed of literal characters, which match a character exactly, and/or the \" * \" character, which matches any sequence of characters. For example:",
+          "optional": false
+        },
+        {
+          "name": "Service",
+          "type": "String",
+          "description": "Fully qualified name of the event-handler service that you want the subscription to specify.",
+          "optional": false
+        },
+        {
+          "name": "Comment",
+          "type": "String",
+          "description": "Descriptive comment that you want to assign to the subscription.",
+          "optional": false
+        },
+        {
+          "name": "Enabled",
+          "type": "String",
+          "description": "Flag specifying the status of the subscription. Must be one of the following values. Set to: true to make the subscription active. false to make the subscription inactive. This is the default. Note: Although the default value is false, you will generally want to set Enabled to true to activate the subscription immediately after it is modified.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "type": "String",
+          "description": "Flag indicating whether the subscriber was successfully modified. A value of: true indicates that the subscriber was updated successfully. false indicates that the subscriber was not updated (typically because an invalid subscriber ID was provided in gID ).",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A32687.html"
+    },
+    {
+      "name": "pub.event:portStatus",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "portStatusInfo",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "of documents (Data[] objects) containing the following information for each port.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_listenerStatus.html"
+    },
+    {
+      "name": "pub.event:portStatusInfo",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_portStatusInfo.html"
+    },
+    {
+      "name": "pub.event:reloadEventManagerSettings",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_reloadEventManagerSettings.html"
+    },
+    {
+      "name": "pub.event:replication",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Date and time that the event occurred, in the format yyyy/MM/dd HH:mm:ss.SS .",
+          "optional": false
+        },
+        {
+          "name": "action",
+          "type": "String",
+          "description": "Description of the event (such as create or push). The value of action can be used to maintain separate logs for each action type.",
+          "optional": false
+        },
+        {
+          "name": "package",
+          "type": "String",
+          "description": "Name of package being replicated.",
+          "optional": false
+        },
+        {
+          "name": "service",
+          "type": "String",
+          "description": "Fully qualified name of the service that generated the event.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_replication.html"
+    },
+    {
+      "name": "pub.event:replicationInfo",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_replicationInfo.html"
+    },
+    {
+      "name": "pub.event:saveEventManagerSettings",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_saveEventManagerSettings.html"
+    },
+    {
+      "name": "pub.event:security",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Date and time that the event occurred, in the format yyyy/MM/dd HH:mm:ss.SS .",
+          "optional": false
+        },
+        {
+          "name": "clientID",
+          "type": "String",
+          "description": "IP address of the host from which the request originated.",
+          "optional": false
+        },
+        {
+          "name": "serverID",
+          "type": "String",
+          "description": "IP address of the host on which Integration Server is running.",
+          "optional": false
+        },
+        {
+          "name": "userName",
+          "type": "String",
+          "description": "User ID that initiated or performed the security event. If a value is specified for the clientApplication field, then userName identifies the OAuth resource owner that permitted the OAuth client application to initiate or perform the security event.",
+          "optional": false
+        },
+        {
+          "name": "securityEventType",
+          "type": "String",
+          "description": "Type of security event. Some examples are: Authentication Authorization Certificates Configuration JDBC Pools Packages Passwords Ports Remote Servers Services SSL Web Services",
+          "optional": false
+        },
+        {
+          "name": "clientApplication",
+          "type": null,
+          "description": "User ID of the OAuth client application that initiated or performed the security event. If this field has a value, the userName field identifies the OAuth resource owner that permitted the OAuth client application to initiate or perform the security event.",
+          "optional": false
+        },
+        {
+          "name": "result",
+          "type": "String",
+          "description": "Flag indicating whether the security action completed successfully. Set to: True to indicate that the security event completed successfully. False to indicate that the security event ended because of failure.",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Indicates what the security action was, irrespective of whether it was successful or unsuccessful. For example, if a user was successfully added to Integration Server , the message would say so. If the event was unsuccessful, this string would provide a reason or information about the failure, wherever possible.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_security.html"
+    },
+    {
+      "name": "pub.event:securityInfo",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Date and time that the event occurred, in the format yyyy/MM/dd HH:mm:ss.SS .",
+          "optional": false
+        },
+        {
+          "name": "clientID",
+          "type": "String",
+          "description": "IP address of the host from which the request originated.",
+          "optional": false
+        },
+        {
+          "name": "serverID",
+          "type": "String",
+          "description": "IP address of the host on which Integration Server is running.",
+          "optional": false
+        },
+        {
+          "name": "userName",
+          "type": "String",
+          "description": "User ID that initiated or performed the security event. If a value is specified for the clientApplication field, then userName identifies the OAuth resource owner that permitted the OAuth client application to initiate or perform the security event.",
+          "optional": false
+        },
+        {
+          "name": "securityEventType",
+          "type": "String",
+          "description": "Type of security event. Some examples are: Authentication Authorization Certificates Configuration JDBC Pools Packages Passwords Ports Remote Servers Services SSL Web Services",
+          "optional": false
+        },
+        {
+          "name": "clientApplication",
+          "type": "String",
+          "description": "User ID of the OAuth client application that initiated or performed the security event. If this field has a value, the userName field identifies the OAuth resource owner that permitted the OAuth client application to initiate or perform the security event.",
+          "optional": false
+        },
+        {
+          "name": "result",
+          "type": "String",
+          "description": "Flag indicating whether the security action completed successfully. True indicates that the security event completed successfully. False indicates that the security event ended because of failure.",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Indicates what the security action was, irrespective of whether it was successful or unsuccessful. For example, if a user was successfully added to Integration Server , the message would say so. If the event was unsuccessful, this string would provide a meaningful reason or information about the failure, wherever possible.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_securityInfo.html"
+    },
+    {
+      "name": "pub.event:sessionEnd",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Date and time that the event occurred, in the format yyyy/MM/dd HH:mm:ss.SS .",
+          "optional": false
+        },
+        {
+          "name": "sessionID",
+          "type": "String",
+          "description": "Session ID of the service firing the alarm.",
+          "optional": false
+        },
+        {
+          "name": "rpcs",
+          "type": "String",
+          "description": "Number of service calls the session has performed.",
+          "optional": false
+        },
+        {
+          "name": "age",
+          "type": "String",
+          "description": "Number of milliseconds the session existed before it ended.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_sessionEnd.html"
+    },
+    {
+      "name": "pub.event:sessionEndInfo",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_SessionEndInfo.html"
+    },
+    {
+      "name": "pub.event:sessionExpire",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Date and time that the event occurred. Given in the format yyyy/MM/dd HH:mm:ss.SS .",
+          "optional": false
+        },
+        {
+          "name": "sessionID",
+          "type": "String",
+          "description": "Session ID of the service firing the alarm.",
+          "optional": false
+        },
+        {
+          "name": "rpcs",
+          "type": "String",
+          "description": "Number of service calls the session has performed.",
+          "optional": false
+        },
+        {
+          "name": "age",
+          "type": "String",
+          "description": "Number of milliseconds the session existed before it expired.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_sessionExpire.html"
+    },
+    {
+      "name": "pub.event:sessionExpireInfo",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_SessionExpireInfo.html"
+    },
+    {
+      "name": "pub.event:sessionStart",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Date and time that the event occurred. Given in the format yyyy/MM/dd HH:mm:ss.SS .",
+          "optional": false
+        },
+        {
+          "name": "sessionID",
+          "type": "String",
+          "description": "ID of the new session.",
+          "optional": false
+        },
+        {
+          "name": "userid",
+          "type": "String",
+          "description": "User ID that the IS client or developer used to log on to the IBM webMethods Integration Server .",
+          "optional": false
+        },
+        {
+          "name": "sessionName",
+          "type": "String",
+          "description": "Name of the new session.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_sessionStart.html"
+    },
+    {
+      "name": "pub.event:sessionStartInfo",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_SessionStartInfo.html"
+    },
+    {
+      "name": "pub.event:stat",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "startTime",
+          "type": "String",
+          "description": "Date and time that the event occurred. Given in the format yyyy/MM/dd HH:mm:ss.SS .",
+          "optional": false
+        },
+        {
+          "name": "uptime",
+          "type": "String",
+          "description": "Amount of time the server has been up. Given in the format yyyy/MM/dd HH:mm:ss.SS .",
+          "optional": false
+        },
+        {
+          "name": "totalMem",
+          "type": "String",
+          "description": "Total amount of used and unused storage available to the JVM, in kilobytes. For example, a value of 65535 represents 64 megabytes of storage.",
+          "optional": false
+        },
+        {
+          "name": "freeMem",
+          "type": "String",
+          "description": "Amount of unused storage available to the Integration Server , in kilobytes. For example, a value of 65535 represents 64 megabytes of storage.",
+          "optional": false
+        },
+        {
+          "name": "usedMem",
+          "type": "String",
+          "description": "Amount of storage used by the Integration Server , in kilobytes. For example, a value of 65535 represents 64 megabytes of storage.",
+          "optional": false
+        },
+        {
+          "name": "freeMemPer",
+          "type": "String",
+          "description": "Percent of total memory unused.",
+          "optional": false
+        },
+        {
+          "name": "usedMemPer",
+          "type": "String",
+          "description": "Percent of total memory used.",
+          "optional": false
+        },
+        {
+          "name": "svrT",
+          "type": "String",
+          "description": "Number of services currently running.",
+          "optional": false
+        },
+        {
+          "name": "svrTMax",
+          "type": "String",
+          "description": "Peak number of servers ever running concurrently.",
+          "optional": false
+        },
+        {
+          "name": "sysT",
+          "type": "String",
+          "description": "Number of JVM threads running.",
+          "optional": false
+        },
+        {
+          "name": "sysTMax",
+          "type": "String",
+          "description": "Peak number of threads ever running.",
+          "optional": false
+        },
+        {
+          "name": "conn",
+          "type": "String",
+          "description": "Number of current sessions.",
+          "optional": false
+        },
+        {
+          "name": "connMax",
+          "type": "String",
+          "description": "Peak number of concurrent sessions.",
+          "optional": false
+        },
+        {
+          "name": "reqTotal",
+          "type": "String",
+          "description": "Cumulative total number of services processed.",
+          "optional": false
+        },
+        {
+          "name": "reqAvg",
+          "type": "String",
+          "description": "Average duration of service.",
+          "optional": false
+        },
+        {
+          "name": "newReqPM",
+          "type": "String",
+          "description": "New requests per minute.",
+          "optional": false
+        },
+        {
+          "name": "endReqPM",
+          "type": "String",
+          "description": "End requests per minute.",
+          "optional": false
+        },
+        {
+          "name": "errSvc",
+          "type": "String",
+          "description": "Number of services completed in error state.",
+          "optional": false
+        },
+        {
+          "name": "svcRate",
+          "type": "String",
+          "description": "Number of end/start(s) per second.",
+          "optional": false
+        },
+        {
+          "name": "ssnUsed",
+          "type": "String",
+          "description": "Number of licensed sessions currently active.",
+          "optional": false
+        },
+        {
+          "name": "ssnPeak",
+          "type": "String",
+          "description": "Number of licensed sessions that have ever run concurrently on the server.",
+          "optional": false
+        },
+        {
+          "name": "ssnMax",
+          "type": "String",
+          "description": "Maximum number of sessions for which the server is licensed.",
+          "optional": false
+        },
+        {
+          "name": "errSys",
+          "type": "String",
+          "description": "Number of unknown errors.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_stat.html"
+    },
+    {
+      "name": "pub.event:statInfo",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_statInfo.html"
+    },
+    {
+      "name": "pub.event:txEnd",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Date and time that the event occurred. Given in the format yyyy/MM/dd HH:mm:ss.SS .",
+          "optional": false
+        },
+        {
+          "name": "TID",
+          "type": "String",
+          "description": "Transaction ID of the service that generated the event.",
+          "optional": false
+        },
+        {
+          "name": "result",
+          "type": "String",
+          "description": "Status of the transaction.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_txEnd.html"
+    },
+    {
+      "name": "pub.event:txEndInfo",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_txEndInfo.html"
+    },
+    {
+      "name": "pub.event:txStart",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Date and time that the event occurred. Given in the format yyyy/MM/dd HH:mm:ss.SS .",
+          "optional": false
+        },
+        {
+          "name": "TID",
+          "type": "String",
+          "description": "Transaction ID of the service that generated the event.",
+          "optional": false
+        },
+        {
+          "name": "result",
+          "type": "String",
+          "description": "Status of the transaction.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_txStart.html"
+    },
+    {
+      "name": "pub.event:txStartInfo",
+      "folder": "EVENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_event_rxStartInfo.html"
+    }
+  ]
+}

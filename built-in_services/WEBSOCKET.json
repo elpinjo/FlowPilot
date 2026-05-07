@@ -1,0 +1,509 @@
+{
+  "folder": "WEBSOCKET",
+  "total_services": 19,
+  "services": [
+    {
+      "name": "pub.websocket:close",
+      "folder": "WEBSOCKET",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionId",
+          "type": "String",
+          "description": "Session ID to identify the WebSocket session.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "closed",
+          "type": "Boolean",
+          "description": "Flags whether the WebSocket session is closed. A value of : true indicates that the WebSocket session was closed successfully. false indicates that the WebSocket session was not closed successfully.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_36CD2117630540A8BFBBFA0A328640CA.html"
+    },
+    {
+      "name": "pub.websocket:disconnect",
+      "folder": "WEBSOCKET",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionId",
+          "type": "String",
+          "description": "Session ID to identify the WebSocket session.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "disconnected",
+          "type": "Boolean",
+          "description": "Flags whether the WebSocket connection is disconnected. A value of : true indicates that the WebSocket session was disconnected successfully. false indicates that the WebSocket session was not disconnected successfully.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_4A349F5225D94B14B9FAC121075B59B3.html"
+    },
+    {
+      "name": "pub.websocket:getCookies",
+      "folder": "WEBSOCKET",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionId",
+          "type": "String",
+          "description": "Session ID for the WebSocket session for which you want to retrieve the cookies information.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "cookies",
+          "type": "Document List-",
+          "description": "Conditional. List of the cookies that are part of the HTTP request to establish a WebSocket connection. This parameter returns value only if cookies were part of the request.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_B3EDCB9F12F34AEAB7C786BDCCA756D5.html"
+    },
+    {
+      "name": "pub.websocket:getExtensions",
+      "folder": "WEBSOCKET",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionId",
+          "type": "String",
+          "description": "Session ID for the WebSocket session for which you want to retrieve the extension information.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "extensions",
+          "type": "Document List",
+          "description": "Conditional. The list of extensions for a WebSocket connection.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_8AD007A130674A3C93D55F25168099FD.html"
+    },
+    {
+      "name": "pub.websocket:getHeaders",
+      "folder": "WEBSOCKET",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionId",
+          "type": "String",
+          "description": "Session ID for the WebSocket session for which you want to retrieve the header information.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "headers",
+          "type": "String",
+          "description": "Conditional. The list of the headers included in with the request to establish a WebSocket connection. This parameter returns a value only if headers were part of the request.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_B5E2E7570C0B47AB9C03AACAFAFC31B4.html"
+    },
+    {
+      "name": "pub.websocket:getPathParameters",
+      "folder": "WEBSOCKET",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionId",
+          "type": "String",
+          "description": "Session ID for the WebSocket session for which you want to retrieve the path parameters information.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "queryParameters",
+          "type": "Document List",
+          "description": "Conditional. The path parameters included in with the request for establishing a WebSocket connection.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_2665D52B0AAD4E4F8F98A7DF0CFB499C.html"
+    },
+    {
+      "name": "pub.websocket:getPathParameter",
+      "folder": "WEBSOCKET",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionId",
+          "type": "String",
+          "description": "Session ID for the WebSocket session for which you want to retrieve the path parameter information.",
+          "optional": false
+        },
+        {
+          "name": "pathParameterName",
+          "type": "String",
+          "description": "The path parameter name of the query parameter for which you want to obtain a value.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "pathParameterValue",
+          "type": "String",
+          "description": "Conditional. The value for the provided parameter name. This parameter is returned only if a path parameter of the specified value was part of the request.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_3C5BE0DCC1C74A33B20495A41FBDF275.html"
+    },
+    {
+      "name": "pub.websocket:getRequest",
+      "folder": "WEBSOCKET",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionId",
+          "type": "String",
+          "description": "Session ID for the WebSocket session for which you want to retrieve HTTP request information.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "requestURI",
+          "type": "String",
+          "description": "The Uniform Resource Identifier used by the client to identify the request.",
+          "optional": false
+        },
+        {
+          "name": "queryString",
+          "type": "String",
+          "description": "One or more name/value pairs included as part of the query strings in request uniform resource locator(URL) which assigns values to specified parameters. For example, ?name=ferret&color=purple .",
+          "optional": false
+        },
+        {
+          "name": "host",
+          "type": "String",
+          "description": "Name or IP address of the WebSocket server that received the upgrade request.",
+          "optional": false
+        },
+        {
+          "name": "httpVersion",
+          "type": "String",
+          "description": "The HTTP version used in the request.",
+          "optional": false
+        },
+        {
+          "name": "method",
+          "type": "String",
+          "description": "The HTTP method used for establishing WebSocket connection.",
+          "optional": false
+        },
+        {
+          "name": "origin",
+          "type": "String",
+          "description": "The value of the origin request header.",
+          "optional": false
+        },
+        {
+          "name": "userPrincipal",
+          "type": "String",
+          "description": "The name of the authenticated user used in the request.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_43A2AFA2946D4A879DD887D1D23C9690.html"
+    },
+    {
+      "name": "pub.websocket:getQueryParameters",
+      "folder": "WEBSOCKET",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionId",
+          "type": "String",
+          "description": "Session ID for the WebSocket session for which you want to obtain query parameters.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "queryParameters",
+          "type": "Document List",
+          "description": "Conditional. The list of query parameters used on the URL that established a WebSocket connection.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_B7E88B41E4B34331A37F77768AC3B9D6.html"
+    },
+    {
+      "name": "pub.websocket:getQueryParameter",
+      "folder": "WEBSOCKET",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionId",
+          "type": "String",
+          "description": "Session ID for the WebSocket session for which you want to obtain query parameters.",
+          "optional": false
+        },
+        {
+          "name": "queryParameterName",
+          "type": "String",
+          "description": "The name of the query parameter for which you want to obtain a value.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "queryParameterValue",
+          "type": "String",
+          "description": "Conditional. The value for the provided parameter name. The parameter is only returned if there is a query parameter of that name in the URL.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_5D002A89F2674F8CA6E4892CBE0F8EC4.html"
+    },
+    {
+      "name": "pub.websocket:getSubProtocols",
+      "folder": "WEBSOCKET",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionId",
+          "type": "String",
+          "description": "Session ID for the WebSocket session for which you want to retrieve the subprotocols of the connection.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "subProtocols",
+          "type": "String List",
+          "description": "The WebSocket protocols used as part of establishing a WebSocket connection.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_50CE8576C0E946B39555BDC33A5B5909.html"
+    },
+    {
+      "name": "pub.websocket:onBinary",
+      "folder": "WEBSOCKET",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionId",
+          "type": "String",
+          "description": "Session ID to identify the WebSocket session.",
+          "optional": false
+        },
+        {
+          "name": "payload",
+          "type": "byte[ ]",
+          "description": "Byte array that contains the payload.",
+          "optional": false
+        },
+        {
+          "name": "offset",
+          "type": "Integer",
+          "description": "The offset from the byte array till which the data is to be read.",
+          "optional": false
+        },
+        {
+          "name": "length",
+          "type": "Integer",
+          "description": "The maximum number of byte array to read from the payload.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_7D027047B46D427DAC8252DA62EF17A2.html"
+    },
+    {
+      "name": "pub.websocket:onClose",
+      "folder": "WEBSOCKET",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionId",
+          "type": "String",
+          "description": "Session ID to identify the WebSocket session.",
+          "optional": false
+        },
+        {
+          "name": "statusCode",
+          "type": "Integer",
+          "description": "Indicates the reason why the underlying WebSocket connection was closed. The pre-defined status codes when closing an established connection are defined in Section https://tools.ietf.org/html/rfc6455#section-7.4 .",
+          "optional": false
+        },
+        {
+          "name": "reason",
+          "type": "String",
+          "description": "Text explaining the reason for closure.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_5D21DC0866734533BAEC67948D7E3E91.html"
+    },
+    {
+      "name": "pub.websocket:onConnect",
+      "folder": "WEBSOCKET",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionId",
+          "type": "String",
+          "description": "Session ID to identify the WebSocket session.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_62153B758E1B4563ABF066A15C4970AC.html"
+    },
+    {
+      "name": "pub.websocket:onError",
+      "folder": "WEBSOCKET",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionId",
+          "type": "String",
+          "description": "Session ID to identify the WebSocket session.",
+          "optional": false
+        },
+        {
+          "name": "cause",
+          "type": "String",
+          "description": "Text explaining the cause of the error.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_A296EA49E241460A8D5E2CF82592739C.html"
+    },
+    {
+      "name": "pub.websocket:onText",
+      "folder": "WEBSOCKET",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionId",
+          "type": "String",
+          "description": "Session ID to identify the WebSocket session.",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "The content of the message.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_78D4458AE4E94D53880B309C44F9DF13.html"
+    },
+    {
+      "name": "pub.websocket:ping",
+      "folder": "WEBSOCKET",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionId",
+          "type": "String",
+          "description": "Required. Session ID for the WebSocket session for which you want to send the ping message.",
+          "optional": false
+        },
+        {
+          "name": "applicationData",
+          "type": "String",
+          "description": "Optional. The application data to be sent as part of the ping message. If the parameter value is null an empty buffer will be sent.",
+          "optional": true
+        },
+        {
+          "name": "charset",
+          "type": "String",
+          "description": "Optional. The character encoding. If the parameter value is null, the default character set is used.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "pinged",
+          "type": "String",
+          "description": "Indicates the success or failure of the ping message. This parameter returns a value of true if the ping message is received successfully. Else the parameter returns the value false.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_597A06A0AAB94A4CAF7B85C17AB14CEE.html"
+    },
+    {
+      "name": "pub.websocket:pong",
+      "folder": "WEBSOCKET",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionId",
+          "type": "String",
+          "description": "Session ID for the WebSocket session for which you want to send the pong message.",
+          "optional": false
+        },
+        {
+          "name": "applicationData",
+          "type": "String",
+          "description": "Optional. The application data to be sent as part of the pong message. If the parameter value is null an empty buffer will be sent.",
+          "optional": true
+        },
+        {
+          "name": "charset",
+          "type": "String",
+          "description": "Optional. The character encoding. If the parameter value is null, the default character set is used.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "ponged",
+          "type": "String",
+          "description": "Conditional. Indicates the success or failure of the pong message. This parameter returns a value of true if the pong message is received successfully. Else the parameter returns the value of false.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_21715B0F1AD34CA8888B907616B72CA2.html"
+    },
+    {
+      "name": "pub.websocket:send",
+      "folder": "WEBSOCKET",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionId",
+          "type": "String",
+          "description": "Session ID to identify the WebSocket session.",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "Object",
+          "description": "Sends messages containing the payload to the destination. The message could be a byte array or a text message.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "sent",
+          "type": "Boolean",
+          "description": "Flags indicating the result of the send operation. A value of : true indicates that the WebSocket session was sent successfully. false indicates that the WebSocket session was not sent successfully.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_8BFC4F4C69D84665BF2B9AA66DA71A97.html"
+    }
+  ]
+}

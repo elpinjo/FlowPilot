@@ -1,0 +1,332 @@
+{
+  "folder": "DOCUMENT",
+  "total_services": 11,
+  "services": [
+    {
+      "name": "pub.document:bytesToDocument",
+      "folder": "DOCUMENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "documentBytes",
+          "type": "Object",
+          "description": "An array of bytes (byte[]) to convert to a document. If documentBytes is null, the service does not return a document or an error message. If documentBytes is not a byte array, the service throws a service exception. If documentBytes is zero-length, the service produces an empty document.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "document",
+          "type": null,
+          "description": "Document A document.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_document_documentbytesToDocument.html"
+    },
+    {
+      "name": "pub.document:deleteDocuments",
+      "folder": "DOCUMENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "documents",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Set of documents that contain the documents you want to delete.",
+          "optional": false
+        },
+        {
+          "name": "indices",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Index values of documents to be deleted from the documents parameter document list.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "documents",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "List of documents whose indices do not match the values in indices parameter.",
+          "optional": false
+        },
+        {
+          "name": "deletedDocuments",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "List of deleted documents.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A57290.html"
+    },
+    {
+      "name": "pub.document:documentListToDocument",
+      "folder": "DOCUMENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "documentList",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Set of documents (IData[ ]) that you want to transform into a single document (IData object). Note: If the documentList parameter contains a single document instead of a Document List, the documentListToDocument service does nothing.",
+          "optional": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "description": "Name of the element in the documentList parameter whose value provides the name of each key in the resulting document. Important: The data type of the element that you specify in the name parameter must be String.",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "description": "Name of the element in the documentList parameter whose values will be assigned to the keys specified in name . This element can be of any data type.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "document",
+          "type": "Document",
+          "description": "Document (IData object) containing the key/value pairs generated from the documentList parameter.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_document_documentListToDocument.html"
+    },
+    {
+      "name": "pub.document:documentToBytes",
+      "folder": "DOCUMENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "document",
+          "type": null,
+          "description": "Document Document (IData object) to convert to bytes. If document is null, the service does not return an output or an error message. If document is not a document (IData), the service throws a service exception. If document contains no elements, the service produces a zero-length byte array.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "documentBytes",
+          "type": null,
+          "description": "Object A serialized representation of the document as an array of bytes (byte[]).",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_document_documentToBytes.html"
+    },
+    {
+      "name": "pub.document:documentToDocumentList",
+      "folder": "DOCUMENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "document",
+          "type": "Document",
+          "description": "Document (IData object) to transform.",
+          "optional": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "description": "Name to assign to the key that will receive the key name from the original key/value pair. (In the example above, this parameter was set to pName .)",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "description": "Name to assign to the key that will receive the value from the original key/value pair. (In the example above, this parameter was set to pValue .)",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "documentList",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "List containing a document for each key/value pair in the document parameter. Each document in the list will contain two keys, whose names were specified by the name and value parameters. The values of these two keys will be the name and value (respectively) of the original pair.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_document_documentToDocumentList.html"
+    },
+    {
+      "name": "pub.document:documentToXMLValues",
+      "folder": "DOCUMENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "document",
+          "type": "Document",
+          "description": "Document (IData object) to convert. This document can contain any number of other fields, lists, and other documents.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "xmlvalues",
+          "type": "String",
+          "description": "String representation of the document parameter, encoded in the webMethods XMLValues format.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_document_documentToXMLValues.html"
+    },
+    {
+      "name": "pub.document:groupDocuments",
+      "folder": "DOCUMENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "documents",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Set of documents to be grouped based on the specified criteria.",
+          "optional": false
+        },
+        {
+          "name": "groupCriteria",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "The criteria on which the input documents are to be grouped. Valid values for the groupCriteria parameter are: key . Key in the pipeline. The value for key can be a path expression. For example, \" Family/Chidren[0]/BirthDate \" retrieves the birthday of the first child from the input Family document list. compareStringsAs . Optional. Valid values for compareStringsAs are string , numeric , and datetime . The default value is string . pattern . Optional. pattern will be considered only if the compareStringsAs parameter is of type datetime . For information about using patterns, see Time Zones . Note: If key is not found in all the input documents, the documents that do not match the groupCriteria are grouped together as a single group.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "documentGroups",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "List of documents where each element represents a set of documents grouped based on the criteria specified.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A33773.html"
+    },
+    {
+      "name": "pub.document:insertDocument",
+      "folder": "DOCUMENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "documents",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Set of documents in which a new document is to be inserted.",
+          "optional": false
+        },
+        {
+          "name": "insertDocument",
+          "type": "Document",
+          "description": "The new document to be inserted to the set of documents specified in the documents parameter.",
+          "optional": false
+        },
+        {
+          "name": "index",
+          "type": "String",
+          "description": "Optional. The position in the seat which the document is to be inserted. The index parameter is zero-based. if the value for the index parameter is not specified, the document will be inserted at the end of the document list specified in the documents parameter.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "documents",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Document list after inserting the new document.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A74183.html"
+    },
+    {
+      "name": "pub.document:searchDocuments",
+      "folder": "DOCUMENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "documents",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Set of documents from which the documents meeting the search criteria are to be returned.",
+          "optional": false
+        },
+        {
+          "name": "searchCriteria",
+          "type": "Document",
+          "description": "Criteria on which the documents in the documents parameter are to be searched. Valid values for searchCriteria parameters are: key . Name of the element in documentList whose value provides the value for the search text. The value for key can be a path expression. For example, \" Family/Chidren[0]/BirthDate \" retrieves the birthday of the first child from the input Family document list. value . Optional. Any search text. If no value is specified, the service searches for null in the document list. compareStringsAs . Optional. Allowed values are string , numeric , and datetime . The default value is string . pattern . Optional. pattern will be considered only if the compareStringsAs value is of type datetime. For information about using patterns, see Time Zones .",
+          "optional": true
+        },
+        {
+          "name": "sorted",
+          "type": "String",
+          "description": "Optional. The value of the sorted parameter is true if the document list is already sorted based on the search criteria and same search key; otherwise false . If the value for the sorted parameter is set to true , the required documents are searched faster.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "resultdocuments",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "List of documents which are matching the search criteria.",
+          "optional": false
+        },
+        {
+          "name": "documentListIndices",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Positions of search documents in the document list.",
+          "optional": false
+        },
+        {
+          "name": "documents",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "List of documents that were input.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A71466.html"
+    },
+    {
+      "name": "pub.document:sortDocuments",
+      "folder": "DOCUMENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "documents",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Set of documents that are to be sorted.",
+          "optional": false
+        },
+        {
+          "name": "sortCriteria",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Criteria based on which the documents in the documents parameter are to be sorted. Valid values for sortCriteria parameters are: key . Name of the element in documentList whose value provides the value based on which the documents are to be sorted. The value for key can be a path expression. For example, \" Family/Chidren[0]/BirthDate \" retrieves the birthday of the first child from the input Family document list. order . Optional. Allowed values are ascending and descending . The default value is ascending . compareStringsAs . Optional. Allowed values are string , numeric , and datetime . Default value is string . pattern . Optional. The value for pattern will be considered only if the compareStringsAs value is of type datetime. For information about using patterns, see Time Zones . Note: If key is not found in all the input documents, the sorted list of documents appears at the end or start of the list based on the order specified. If the order is ascending, then all the documents that do not match the sort criteria appears at the top of the list, followed by the sorted list. If the order is descending, the sorted list will appear at the top, followed by the documents that do not match the sort criteria.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "documents",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "The documents sorted based on the sort criteria specified in the sortCriteria parameter.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A37368.html"
+    },
+    {
+      "name": "pub.document:XMLValuesToDocument",
+      "folder": "DOCUMENT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "xmlvalues",
+          "type": "String",
+          "description": "An XMLValues encoding of a document. Important: This String must contain a webMethods XMLValues encoding of a document. No other encoding format is accepted.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "document",
+          "type": "Document",
+          "description": "Document (IData object) result of the decoding of xmlvalues .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_document_length.html"
+    }
+  ]
+}

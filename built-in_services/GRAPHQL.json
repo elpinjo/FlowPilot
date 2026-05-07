@@ -1,0 +1,74 @@
+{
+  "folder": "GRAPHQL",
+  "total_services": 2,
+  "services": [
+    {
+      "name": "pub.graphql:load",
+      "folder": "GRAPHQL",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "$internal",
+          "type": "Document",
+          "description": "Contains the fields that are populated and used internally while loading the data. Important: This parameter is reserved for internal use by Integration Server . Do not modify or delete the value of this parameter.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "Document",
+          "description": "Contains the field(s) for which you want to fetch the data from the data source. The field(s) in this document must be same as the field(s) in the key document of Dataloader service input signature. For more information on Dataloader service, see IBM webMethods Service Development Help .",
+          "optional": false
+        },
+        {
+          "name": "loaderName",
+          "type": "String",
+          "description": "Specifies the name of the Dataloader .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$internal",
+          "type": "Document",
+          "description": "Document containing the fields, which are used internally by Dataloader .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Chunk74335532.html"
+    },
+    {
+      "name": "pub.graphql:loadMany",
+      "folder": "GRAPHQL",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "$internal",
+          "type": "Document",
+          "description": "Contains the fields that are populated and used internally while loading the data. Important: This parameter is reserved for internal use by Integration Server . Do not modify or delete the value of this parameter.",
+          "optional": false
+        },
+        {
+          "name": "keys",
+          "type": "Document List",
+          "description": "Contains the field(s) for which you want to fetch the data from the data source. The field(s) in this document must be same as the field(s) in the key document of Dataloader service input signature. For more information on Dataloader service, see IBM webMethods Service Development Help",
+          "optional": false
+        },
+        {
+          "name": "loaderName",
+          "type": "String",
+          "description": "Specifies the name of the Dataloader .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$internal",
+          "type": "Document",
+          "description": "Document containing the fields, which are used internally by Dataloader .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_38D4D1CEE8D24D34A11D58CF808104C4.html"
+    }
+  ]
+}

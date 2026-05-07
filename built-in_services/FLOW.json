@@ -1,0 +1,771 @@
+{
+  "folder": "FLOW",
+  "total_services": 29,
+  "services": [
+    {
+      "name": "pub.flow:clearPipeline",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "preserve",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. Field names that should not be cleared from the pipeline.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_flow_clearPipeline.html"
+    },
+    {
+      "name": "pub.flow:debugLog",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Optional. Text of the message to write to the log.",
+          "optional": true
+        },
+        {
+          "name": "function",
+          "type": "String",
+          "description": "Optional. Function name, typically an abbreviation used to identify the source of the message.",
+          "optional": true
+        },
+        {
+          "name": "level",
+          "type": "String",
+          "description": "Optional. Debug level at which to display this message. Whether or not Integration Server displays this message depends on the logging level setting for the 0090 pub Flow services facility. For example, if you specify Error for this message, but 0090 pub Flow services facility is configured to display only Fatal errors, this message will not be displayed. However, if the 0090 pub Flow services logging facility logging level is set to Warn, this message will be displayed (the Warn setting displays warning, error, and fatal messages). Specify one of the following values:",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_flow_debugLog.html"
+    },
+    {
+      "name": "pub.flow:getCallingService",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "svcName",
+          "type": "String",
+          "description": "Fully qualified namespace name of the parent service.",
+          "optional": false
+        },
+        {
+          "name": "pkgName",
+          "type": "String",
+          "description": "Package name of the parent service.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "svcName",
+          "type": "String",
+          "description": "Fully qualified namespace name of the parent service.",
+          "optional": false
+        },
+        {
+          "name": "pkgName",
+          "type": "String",
+          "description": "Package name of the parent service.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id883aa36e-8e61-417b-b5b4-a00d270094b9.html"
+    },
+    {
+      "name": "pub.flow:getLastError",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "lastError",
+          "type": "Document",
+          "description": "Information about the last error, translated into the language used by the Integration Server . The structure of this document is defined by pub.event:exceptionInfo .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "lastError",
+          "type": "Document",
+          "description": "Information about the last error, translated into the language used by the Integration Server . The structure of this document is defined by pub.event:exceptionInfo .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_flow_getLastError.html"
+    },
+    {
+      "name": "pub.flow:getLastFailureCaught",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "failure",
+          "type": "Object",
+          "description": "The last failure caught by a CATCH step. The failure parameter is null if no failure have been caught.",
+          "optional": false
+        },
+        {
+          "name": "failureMessage",
+          "type": "String",
+          "description": "Conditional. The message associated with the failure. The service returns a failureName output parameter only if a failure has been caught.",
+          "optional": false
+        },
+        {
+          "name": "failureName",
+          "type": "String",
+          "description": "Conditional. The class name of the exception. The service returns a failureMessage output parameter only if a failure has been caught.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "failure",
+          "type": "Object",
+          "description": "The last failure caught by a CATCH step. The failure parameter is null if no failure have been caught.",
+          "optional": false
+        },
+        {
+          "name": "failureMessage",
+          "type": "String",
+          "description": "Conditional. The message associated with the failure. The service returns a failureName output parameter only if a failure has been caught.",
+          "optional": false
+        },
+        {
+          "name": "failureName",
+          "type": "String",
+          "description": "Conditional. The class name of the exception. The service returns a failureMessage output parameter only if a failure has been caught.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/iddbfe4aad-7bc7-4b79-afd9-0e6988f30a9a.html"
+    },
+    {
+      "name": "pub.flow:getRetryCount",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "retryCount",
+          "type": "String",
+          "description": "The number of times the Integration Server has re-executed the service.",
+          "optional": false
+        },
+        {
+          "name": "maxRetryCount",
+          "type": "String",
+          "description": "The maximum number of times the Integration Server can re-execute the service. A value of -1 indicates that the service is being invoked by a trigger configured to retry until success.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "retryCount",
+          "type": "String",
+          "description": "The number of times the Integration Server has re-executed the service.",
+          "optional": false
+        },
+        {
+          "name": "maxRetryCount",
+          "type": "String",
+          "description": "The maximum number of times the Integration Server can re-execute the service. A value of -1 indicates that the service is being invoked by a trigger configured to retry until success.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A32754.html"
+    },
+    {
+      "name": "pub.flow:getSession",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$session",
+          "type": "Document",
+          "description": "Information for the current user session. Setting, copying, or dropping fields within $session is effectively manipulating the Session object on the server.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$session",
+          "type": "Document",
+          "description": "Information for the current user session. Setting, copying, or dropping fields within $session is effectively manipulating the Session object on the server.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_flow_getSession.html"
+    },
+    {
+      "name": "pub.flow:getTransportInfo",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "transport",
+          "type": "Document",
+          "description": "Information about the protocol that invoked the service. The structure of this document is defined by pub.flow:transportInfo .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "transport",
+          "type": "Document",
+          "description": "Information about the protocol that invoked the service. The structure of this document is defined by pub.flow:transportInfo .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_flow_getTransportInfo.html"
+    },
+    {
+      "name": "pub.flow:HTTPRequest",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_EAA26ACDF44A46CD99F8399D3946D6F9.html"
+    },
+    {
+      "name": "pub.flow:HTTPResponse",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_D829A14C508E4CF5BD4B6A4D25F38DFA.html"
+    },
+    {
+      "name": "pub.flow:invokeService",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "ifcname",
+          "type": "String",
+          "description": "The flow interface name of the service to be invoked. For example, pub.math.",
+          "optional": false
+        },
+        {
+          "name": "svcname",
+          "type": "String",
+          "description": "The name of the service to invoke. For example, addInts.",
+          "optional": false
+        },
+        {
+          "name": "pipeline",
+          "type": "Document",
+          "description": "Optional. The name of the pipeline for the pub.flow:invokeService service. Note: If pipeline is not specified, the invoked service returns the output parameters in its own pipeline.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/ided8c927b-c207-4beb-b41e-c59cc50be728.html"
+    },
+    {
+      "name": "pub.flow:iterator",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$internal",
+          "type": "IData",
+          "description": "A document that specifies the information required to batch output.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$internal",
+          "type": "IData",
+          "description": "A document that specifies the results of the batch request.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idb05ee3f5-e081-4260-aebb-607ecdd0cbf5.html"
+    },
+    {
+      "name": "pub.flow:restorePipeline",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$name",
+          "type": "String",
+          "description": "Name of the saved pipeline. Because multiple pipelines can be saved, this parameter is necessary to identify the pipeline in memory. If this value is left null or the name is unknown, an exception will be thrown.",
+          "optional": false
+        },
+        {
+          "name": "$merge",
+          "type": "String",
+          "description": "Optional. Flag that indicates whether or not to merge the values in the existing pipeline with the values in the saved pipeline. Set to: false to clear the existing pipeline before restoring the saved pipeline. This is the default. true to merge the existing pipeline with the saved pipeline. If a field exists in the saved pipeline and the existing pipeline, the saved field takes precedence.",
+          "optional": true
+        },
+        {
+          "name": "$remove",
+          "type": "String",
+          "description": "Optional. Flag that indicates whether or not the saved pipeline will remain in memory after this service is executed. Set to: false to retain the saved pipeline in memory so that future calls to restorePipeline with the same $name will still return the saved pipeline. This is the default. true to remove the saved pipeline from memory after the service executes.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_flow_restorePipeline.html"
+    },
+    {
+      "name": "pub.flow:restorePipelineFromFile",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "fileName",
+          "type": "String",
+          "description": "Relative or absolute path and file name of a file containing a saved pipeline on the Integration Server . If the file is not found at run time, an exception is thrown. For a filename that does not include an absolute path, Integration Server calculates the relative path from the default pipeline directory which is located here: Integration Server_directory /instances/ instance_name /pipeline When you specify a path for the fileName input parameter and the path is outside of the default pipeline directory, Integration Server verifies whether it is specified in the allowedReadPaths parameter of the file access control configuration file (fileAccessControl.cnf). If the file path is not specified in the allowedReadPaths parameter, Integration Server issues an exception.",
+          "optional": false
+        },
+        {
+          "name": "merge",
+          "type": "String",
+          "description": "Optional. Flag that determines whether or not to merge the saved values into the existing pipeline. Set to: false to replace the existing pipeline with the saved values. This is the default. true to merge the saved values into the existing pipeline.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_flow_restorePipelineFromFile.html"
+    },
+    {
+      "name": "pub.flow:savePipeline",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$name",
+          "type": "String",
+          "description": "Name that will identify the pipeline in memory. An exception will be thrown if this value is not specified.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_flow_savePipeline.html"
+    },
+    {
+      "name": "pub.flow:savePipelineToFile",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "fileName",
+          "type": "String",
+          "description": "Relative or absolute path to a file on the server file system in which Integration Server saves the contents of the pipeline. If the file or directory is not found at run time, the service creates it. For a filename that does not include an absolute path, Integration Server calculates the relative path from the default pipeline directory which is located here: Integration Server_directory /instances/ instance_name /pipeline When you specify a path for the fileName input parameter and the path is outside of the pipeline directory, Integration Server verifies whether it is specified in the allowedWritePaths parameter of the file access control configuration file (fileAccessControl.cnf). If the file path is not specified in the allowedWritePaths parameter, Integration Server issues an exception. Otherwise, Integration Server either creates the file if it does not yet exist or overwrites the existing file if one already exists.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_flow_savePipelineToFile.html"
+    },
+    {
+      "name": "pub.flow:setActivityLog",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "fullMessage",
+          "type": "String",
+          "description": "Optional. Complete message to record in the WMSERVICEACTIVITYLOG table or the WMSERVICEACTIVITYLOG_ yyyymmdd_hhmmss.log file. The message can be up to 1024 bytes.",
+          "optional": true
+        },
+        {
+          "name": "briefMessage",
+          "type": "String",
+          "description": "Optional. Shortened version of the full message. The message can be up to 240 bytes.",
+          "optional": true
+        },
+        {
+          "name": "entryType",
+          "type": "String",
+          "description": "Flag indicating the type of message. Set to: MESSAGE to indicate that the message is informational and no action is needed. WARNING to indicate that the message is a warning message. The parent service can complete successfully even if the circumstance causing the warning is not addressed. ERROR to indicate that the message is an error message. The parent service cannot complete successfully until the circumstance causing the error is resolved. This is the default.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_49992FC40DF64D6EB6DE4EF509F6185E.html"
+    },
+    {
+      "name": "pub.flow:setAuditLogFields",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "serviceList",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "One or more custom services for which you want to set the service auditing properties. Set the following fields for each custom service.",
+          "optional": false
+        },
+        {
+          "name": "nsName",
+          "type": "String",
+          "description": "Specify the fully qualified name of the service for which you want to set the service auditing properties. Note: You can use pub.flow:setAuditLogFields to set service auditing properties for a custom service only.",
+          "optional": false
+        },
+        {
+          "name": "enableAuditing",
+          "type": "String",
+          "description": "Determines when service auditing is performed for the service specified in nsName . Set to: topLevelService to generate audit data only when a client request or a trigger invokes the service. The service does not generate audit data when it is invoked by another service (that is, when it is a nested service). always to generate audit data every time the service executes. Select this option if the service is a critical service that you want to audit every time it executes. never to never generate audit data. Select this option if you do not want to audit this service. This is the default.",
+          "optional": false
+        },
+        {
+          "name": "logOn",
+          "type": "String",
+          "description": "Specifies when the service logs the audit data. Set to: onError to log audit data only when the service execution fails. errorAndSuccess to log audit data when the service execution ends because of success or failure. always to log audit data when the service execution starts and ends because of success or failure.",
+          "optional": false
+        },
+        {
+          "name": "includePipeline",
+          "type": "String",
+          "description": "Specifies when Integration Server should include a copy of the input pipeline in the service log. onError to log pipeline data only when the service execution fails. always to log pipeline data when the service execution starts and ends because of success or failure. Note: To log pipeline data in the service log always, set logOn to always . never to never log pipeline data. This is the default. Note: Configure the service to save a copy of the input pipeline only if you intend to re-invoke the service using the re-submission capabilities of IBM webMethods Monitor .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "serviceList",
+          "type": "Document List",
+          "description": "The following parameters are displayed for each custom service specified in the input.",
+          "optional": false
+        },
+        {
+          "name": "nsName",
+          "type": "String",
+          "description": "The custom service for which you set the audit properties.",
+          "optional": false
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Indicates whether the service auditing properties for the service are successfully updated or not.",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "If the pub.flow:setAuditLogFields service execution is successful, the message indicates that the audit properties for the custom service are successfully updated. Otherwise, the message provides the reason for failure.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_9E45562098E042DE873708617A9DD53A.html"
+    },
+    {
+      "name": "pub.flow:setCustomContextID",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "id",
+          "type": "String",
+          "description": "Optional. The custom value for the current auditing context. Specify a value that you want to associate with the auditing context.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id29be98cc-8293-426b-ac3f-028855f1df8a.html"
+    },
+    {
+      "name": "pub.flow:setCustomLoggedFields",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "serviceList",
+          "type": "Document List",
+          "description": "One or more custom services for which you want to select the input and output fields for logging. Set the following parameters for each custom service.",
+          "optional": false
+        },
+        {
+          "name": "inputFields",
+          "type": "Document List",
+          "description": "Optional. One or more input fields that you want to log for the custom service.",
+          "optional": true
+        },
+        {
+          "name": "outputFields",
+          "type": "Document List",
+          "description": "Optional. One or more output fields that you want to log for the custom service.",
+          "optional": true
+        },
+        {
+          "name": "path",
+          "type": "String",
+          "description": "Path of the output field that you want to log for the custom service. For example, if the output field is a string (myString) under a document (myDocument), path is myDocument/myString, where myString is the leaf node.",
+          "optional": false
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "description": "The data type of the output field.",
+          "optional": false
+        },
+        {
+          "name": "objectWrapperType",
+          "type": "String",
+          "description": "Optional. The Java wrapper type for a field of type Object or Object List . The default is UNKNOWN.",
+          "optional": true
+        },
+        {
+          "name": "alias",
+          "type": "String",
+          "description": "Optional. A name to easily locate the output field in IBM webMethods Monitor . The default is the leaf node name specified in path .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "serviceList",
+          "type": "Document List",
+          "description": "The following parameters are displayed for each custom service in the input.",
+          "optional": false
+        },
+        {
+          "name": "nsName",
+          "type": "String",
+          "description": "The fully qualified name of the custom service for which you have specified the fields for logging.",
+          "optional": false
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Indicates whether the specified fields of a custom service are selected for logging or not.",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "If the pub.flow:setCustomLoggedFields service execution is successful, the message indicates that the specified fields of a custom service are selected for logging. Otherwise, the message provides the reason for failure.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_72997662E9BC460E9EEDAFC87A1CE278.html"
+    },
+    {
+      "name": "pub.flow:setHTTPResponse",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "httpResponse",
+          "type": "String",
+          "description": "Optional. Character set in which the response is encoded.",
+          "optional": true
+        },
+        {
+          "name": "httpResponse",
+          "type": "Document",
+          "description": "Optional. Contains the HTTP response to be returned by Integration Server to the client.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/setHTTPResponse.html"
+    },
+    {
+      "name": "pub.flow:setResponse",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "responseString",
+          "type": "String",
+          "description": "Optional. Response to be returned to the caller, specified as a string.",
+          "optional": true
+        },
+        {
+          "name": "responseBytes",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Optional. Response to be returned to the caller, specified as a byte array.",
+          "optional": true
+        },
+        {
+          "name": "string",
+          "type": "String",
+          "description": "Deprecated - Replaced by responseString . String . Optional. Response to be returned to the caller, specified as a string.",
+          "optional": true
+        },
+        {
+          "name": "bytes",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Deprecated - Replaced by responseBytes . byte[ ] . Optional. Response to be returned to the caller, specified as a byte array.",
+          "optional": true
+        },
+        {
+          "name": "response",
+          "type": "String",
+          "description": "Deprecated - Replaced by responseString . String . Optional. Response to be returned to the caller, specified as a string.",
+          "optional": true
+        },
+        {
+          "name": "contentType",
+          "type": "String",
+          "description": "Optional. MIME type of the response data. By default, the server's response will match the MIME type of the request. This field allows this behavior to be overridden. Note: If you explicitly set this value with Designer , you will see two choices: text/XML and text/HTML . You are not limited to these two values. You may either select one of these or type a new value.",
+          "optional": true
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Character set in which the response is encoded.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_flow_setResponse.html"
+    },
+    {
+      "name": "pub.flow:setResponse2",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "responseString",
+          "type": "String",
+          "description": "Optional. Response to be returned to the caller, specified as a string.",
+          "optional": true
+        },
+        {
+          "name": "responseBytes",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Optional. Response to be returned to the caller, specified as a byte array.",
+          "optional": true
+        },
+        {
+          "name": "responseStream",
+          "type": "java.io.InputStream",
+          "description": "Optional. Response to be returned to the caller, specified as an InputStream.",
+          "optional": true
+        },
+        {
+          "name": "responseStream​TransferEncoding",
+          "type": "String",
+          "description": "Optional. When set to chunked , causes Integration Server to use chunked transfer encoding for the response and include the Transfer-Encoding: chunked response header. Using this variable lets you avoid OutOfMemoryExceptions when using large responseStreams. This variable is used by Integration Server only if responseStream is not null. This variable has no default value; to use it, set it to chunked . If responseStream is not null, and this variable is not set or is set to a value other than chunked , Integration Server reads the entire responseStream to calculate the content length.",
+          "optional": true
+        },
+        {
+          "name": "contentType",
+          "type": "String",
+          "description": "Optional. MIME type of the response data. By default, the server's response will match the MIME type of the request. This field allows this behavior to be overridden. Note: If you explicitly set this value with Designer , you will see two choices: text/XML and text/HTML . You are not limited to these two values. You may either select one of these or type a new value.",
+          "optional": true
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Character set in which the response is encoded.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id20bd0329-51bc-43d0-8fef-f99dcfd0c37a.html"
+    },
+    {
+      "name": "pub.flow:setResponseCode",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "responseCode",
+          "type": "String",
+          "description": "HTTP status code to be returned to the caller. The response codes and phrases are defined in RFC 2616, Section 10 . If you provide a value for responseCode that is not listed in RFC 2616, Section 10, you must also provide a value for reasonPhrase .",
+          "optional": false
+        },
+        {
+          "name": "reasonPhrase",
+          "type": "String",
+          "description": "Optional. HTTP reason phrase to be returned to the caller. If no reason is provided, the default reason phrase associated with responseCode will be used. You must provide a reasonPhrase for any responseCode that is not listed in RFC 2616, Section 10",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A36823.html"
+    },
+    {
+      "name": "pub.flow:setResponseHeader",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "fieldName",
+          "type": "String",
+          "description": "Name of the header field to set.",
+          "optional": false
+        },
+        {
+          "name": "fieldValue",
+          "type": "String",
+          "description": "Value of the header field to set.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idd8709f2d-9e45-41ee-90e0-5d88424284ba.html"
+    },
+    {
+      "name": "pub.flow:setResponseHeaders",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "headers",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Contains the header fields to set. Specify the following for each header that you want to set.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id12AGC08M05Z.html"
+    },
+    {
+      "name": "pub.flow:throwExceptionForRetry",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "wrappedException",
+          "type": "Object",
+          "description": "Optional. Any exception that you want to include as part of this ISRuntimeException. This might be the exception that causes the pub.flow:throwExceptionForRetry service to execute. For example, if the service attempts to connect to a database and the connection attempt fails, you might map the exception generated by the database connection failure to the wrappedException parameter.",
+          "optional": true
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Optional. A message to be logged as part of this exception.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A74127.html"
+    },
+    {
+      "name": "pub.flow:tracePipeline",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "level",
+          "type": "String",
+          "description": "Optional. Debug level at which to write the pipeline. Defaults to Fatal . If the debug level on the IBM webMethods Integration Server is set to a value less than this parameter, the pipeline will not be written to the server log.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_flow_tracePipeline.html"
+    },
+    {
+      "name": "pub.flow:transportInfo",
+      "folder": "FLOW",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_flow_transportInfo.html"
+    }
+  ]
+}

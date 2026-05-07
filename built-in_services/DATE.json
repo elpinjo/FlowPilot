@@ -1,0 +1,592 @@
+{
+  "folder": "DATE",
+  "total_services": 13,
+  "services": [
+    {
+      "name": "pub.date:calculateDateDifference",
+      "folder": "DATE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "startDate",
+          "type": "String",
+          "description": "Starting date and time.",
+          "optional": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "description": "Ending date and time.",
+          "optional": false
+        },
+        {
+          "name": "startDatePattern",
+          "type": "String",
+          "description": "Format in which the startDate parameter is to be specified (for example, yyyyMMdd HH:mm:ss.SSS). For pattern-string notation, see Pattern String Symbols .",
+          "optional": false
+        },
+        {
+          "name": "endDatePattern",
+          "type": "String",
+          "description": "Format in which the endDate parameter is to be specified (for example, yyyyMMdd HH:mm:ss.SSS). For pattern-string notation, see Pattern String Symbols .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "dateDifferenceSeconds",
+          "type": "String",
+          "description": "The difference between the startingDateTime and endingDateTime , truncated to the nearest whole number of seconds.",
+          "optional": false
+        },
+        {
+          "name": "dateDifferenceMinutes",
+          "type": "String",
+          "description": "The difference between the startingDateTime and endingDateTime , truncated to the nearest whole number of minutes.",
+          "optional": false
+        },
+        {
+          "name": "dateDifferenceHours",
+          "type": "String",
+          "description": "The difference between the startingDateTime and endingDateTime , truncated to the nearest whole number of hours.",
+          "optional": false
+        },
+        {
+          "name": "dateDifferenceDays",
+          "type": "String",
+          "description": "The difference between the startingDateTime and endingDateTime , truncated to the nearest whole number of days.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A23488.html"
+    },
+    {
+      "name": "pub.date:compareDates",
+      "folder": "DATE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "startDate",
+          "type": "String",
+          "description": "Starting date to compare against endDate .",
+          "optional": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "description": "Ending date to compare against startDate .",
+          "optional": false
+        },
+        {
+          "name": "startDatePattern",
+          "type": "String",
+          "description": "Format in which the startDate parameter is specified (for example, yyyyMMdd HH:mm:ss.SSS). For pattern-string notation, see Pattern String Symbols .",
+          "optional": false
+        },
+        {
+          "name": "endDatePattern",
+          "type": "String",
+          "description": "Format in which the endDate parameter is specified (for example, yyyyMMdd HH:mm:ss.SSS). For pattern-string notation, see Pattern String Symbols .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "String",
+          "description": "Checks whether startDate is before, the same, or after endDate .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_CF32164054094AF0AD20D474818B9F63.html"
+    },
+    {
+      "name": "pub.date:currentNanoTime",
+      "folder": "DATE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "nanoTime",
+          "type": "java.lang.Long",
+          "description": "Current time returned by the most precise system timer, in nanoseconds.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "nanoTime",
+          "type": "java.lang.Long",
+          "description": "Current time returned by the most precise system timer, in nanoseconds.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A81481.html"
+    },
+    {
+      "name": "pub.date:dateBuild",
+      "folder": "DATE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "pattern",
+          "type": "String",
+          "description": "Pattern representing the format in which you want the date returned. For pattern-string notation, see Pattern String Symbols . If you do not specify pattern , dateBuild returns null. If pattern contains a time zone and timezone is not specified, the default time zone of IBM webMethods Integration Server is used.",
+          "optional": false
+        },
+        {
+          "name": "year",
+          "type": "String",
+          "description": "Optional. The year expressed in yyyy or yy format (for example, 01 or 2001 ). If you do not specify year or you specify an invalid value, dateBuild uses the current year.",
+          "optional": true
+        },
+        {
+          "name": "month",
+          "type": "String",
+          "description": "Optional. The month expressed as a number (for example, 1 for January, 2 for February). If you do not specify month or you specify an invalid value, dateBuild uses the current month.",
+          "optional": true
+        },
+        {
+          "name": "dayofmonth",
+          "type": "String",
+          "description": "Optional. The day of the month expressed as a number (for example, 1 for the first day of the month, 2 for the second day of the month). If you do not specify dayofmonth or you specify an invalid value, dateBuild uses the current day.",
+          "optional": true
+        },
+        {
+          "name": "timezone",
+          "type": "String",
+          "description": "Optional. Time zone in which you want the output date and time expressed. Specify a time zone code as shown in Time Zones (for example, EST for Eastern Standard Time). If you do not specify timezone , the value of the server's \"user timezone\" property is used. If this property has not been set, GMT is used.",
+          "optional": true
+        },
+        {
+          "name": "locale",
+          "type": "String",
+          "description": "Optional. Locale in which the date is to be expressed. For example, if locale is en (for English), the pattern EEE d MMM yyyy will produce Friday 23 August 2002 , and the locale of fr (for French) will produce vendredi 23 août 2002 . If locale is not specified, Integration Server uses the value of the watt.server.session.locale.ignore server configuration parameter to determine whether the locale is obtained from the session used by the client that invoked the service or if the locale is the locale of Integration Server .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "String",
+          "description": "The date specified by year , month , and dayofmonth , in the format of pattern .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A007.html"
+    },
+    {
+      "name": "pub.date:dateTimeBuild",
+      "folder": "DATE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "pattern",
+          "type": "String",
+          "description": "Pattern representing the format in which you want the time returned. For pattern-string notation, see Pattern String Symbols . If you do not specify pattern , dateTimeBuild returns null. If pattern contains a time zone and the timezone parameter is not set, the time zone of Integration Server is used.",
+          "optional": false
+        },
+        {
+          "name": "year",
+          "type": "String",
+          "description": "Optional. The year expressed in yyyy or yy format (for example, 01 or 2001 ). If you do not specify year or you specify an invalid value, dateTimeBuild uses the current year.",
+          "optional": true
+        },
+        {
+          "name": "month",
+          "type": "String",
+          "description": "Optional. The month expressed as a number (for example, 1 for January, 2 for February). If you do not specify month or you specify an invalid value, dateTimeBuild uses the current month.",
+          "optional": true
+        },
+        {
+          "name": "dayofmonth",
+          "type": "String",
+          "description": "Optional. The day of the month expressed as a number (for example, 1 for the first day of the month, 2 for the second day of the month). If you do not specify dayofmonth or you specify an invalid value, dateTimeBuild uses the current day.",
+          "optional": true
+        },
+        {
+          "name": "hour",
+          "type": "String",
+          "description": "Optional. The hour expressed as a number based on a 24-hour clock. For example, specify 0 for midnight, 2 for 2:00 A.M., and 14 for 2:00 P.M. If you do not specify hour or you specify an invalid value, dateTimeBuild uses 0 as the hour value.",
+          "optional": true
+        },
+        {
+          "name": "minute",
+          "type": "String",
+          "description": "Optional. Minutes expressed as a number. If you do not specify minute or you specify an invalid value, dateTimeBuild uses 0 as the minute value.",
+          "optional": true
+        },
+        {
+          "name": "second",
+          "type": "String",
+          "description": "Optional. Seconds expressed as a number. If you do not specify second or you specify an invalid value, dateTimeBuild uses 0 as the second value.",
+          "optional": true
+        },
+        {
+          "name": "millis",
+          "type": "String",
+          "description": "Optional. Milliseconds expressed as a number. If you do not specify millis or you specify an invalid value, dateTimeBuild uses 0 as the millis value.",
+          "optional": true
+        },
+        {
+          "name": "timezone",
+          "type": "String",
+          "description": "Optional. Time zone in which you want the output date and time expressed. Specify a time zone code as shown in Time Zones (for example, EST for Eastern Standard Time). If you do not specify timezone , the value of the server's \"user timezone\" property is used. If this property has not been set, GMT is used.",
+          "optional": true
+        },
+        {
+          "name": "locale",
+          "type": "String",
+          "description": "Optional. Locale in which the date is to be expressed. For example, if locale is en (for English), the pattern EEE d MMM yyyy will produce Friday 23 August 2002 , and the locale of fr (for French) will produce vendredi 23 août 2002 . If locale is not specified, Integration Server uses the value of the watt.server.session.locale.ignore server configuration parameter to determine whether the locale is obtained from the session used by the client that invoked the service or if the locale is the locale of Integration Server .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "String",
+          "description": "Date and time in format of pattern .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/APub_date_dateTimeBuild.html"
+    },
+    {
+      "name": "pub.date:dateTimeFormat",
+      "folder": "DATE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "inString",
+          "type": "String",
+          "description": "Date/time that you want to convert. Important: If inString contains a character in the last position, that character is interpreted as 0. This can result in an inaccurate date. For information about invalid dates, see Notes on Invalid Dates .",
+          "optional": false
+        },
+        {
+          "name": "currentPattern",
+          "type": "String",
+          "description": "Pattern string that describes the format of inString . For pattern-string notation, see Pattern String Symbols .",
+          "optional": false
+        },
+        {
+          "name": "newPattern",
+          "type": "String",
+          "description": "Pattern string that describes the format in which you want inString returned. For pattern-string syntax, see Pattern String Symbols .",
+          "optional": false
+        },
+        {
+          "name": "locale",
+          "type": "String",
+          "description": "Optional. Specifies the language and regional format of the input date string. For example, if the locale is en (for English), and the pattern is EEE d MMM yyyy , the input string should be Friday 23 August 2002 . If the locale is fr (for French), the input string should be vendredi 23 août 2002 . If the selected locale does not match the language of the input string, the service fails with a Failed to parse error. If locale is not specified, Integration Server uses the value of the watt.server.session.locale.ignore server configuration parameter to determine whether the locale is obtained from the session used by the client that invoked the service or if the locale is the locale of Integration Server .",
+          "optional": true
+        },
+        {
+          "name": "lenient",
+          "type": "String",
+          "description": "Optional. A flag indicating whether Integration Server throws an exception if the inString value does not adhere to the format specified in currentPattern parameter. Set to: true to perform a lenient check. This is the default. In a lenient check, if the format of the date specified in the inString parameter does not match the format specified in the currentPattern parameter, Integration Server interprets and returns the date in the format specified in the currentPattern parameter. If the interpretation is incorrect, the service will return an invalid date. false to perform a strict check. In a strict check, the Integration Server throws an exception if the format of the date specified in the inString parameter does not match the format specified in the currentPattern parameter.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "String",
+          "description": "The date/time given by inString , in the format of newPattern .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_date_dateTimeFormat.html"
+    },
+    {
+      "name": "pub.date:elapsedNanoTime",
+      "folder": "DATE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "nanoTime",
+          "type": "java.lang.Long",
+          "description": "Time in nanoseconds. If nanoTime is less than zero, then the service treats it as zero.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "elapsedNanoTime",
+          "type": "java.lang.Long",
+          "description": "The difference between the current time in nanoseconds and nanoTime . If nanoTime is greater than the current nano time, the service returns zero.",
+          "optional": false
+        },
+        {
+          "name": "elapsedNanoTimeStr",
+          "type": "String",
+          "description": "The difference between the current time in nanoseconds and nanoTime . The difference is expressed as a String, in this format: [years] [days] [hours] [minutes] [seconds] [millisec] [microsec] <nanosec> If nanoTime is greater than the current nano time, the service returns zero.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A46729.html"
+    },
+    {
+      "name": "pub.date:formatDate",
+      "folder": "DATE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "date",
+          "type": "java.util.Date",
+          "description": "Optional. Date/time that you want to convert.",
+          "optional": true
+        },
+        {
+          "name": "pattern",
+          "type": "String",
+          "description": "Pattern string that describes the format in which you want the date returned. For pattern-string notation, see Pattern String Symbols .",
+          "optional": false
+        },
+        {
+          "name": "timezone",
+          "type": "String",
+          "description": "Optional. Time zone in which you want the output date and time expressed. Specify a time zone code as shown in Time Zones (for example, EST for Eastern Standard Time). If you do not specify timezone , the value of the server's \"user timezone\" property is used. If this property has not been set, GMT is used.",
+          "optional": true
+        },
+        {
+          "name": "locale",
+          "type": "String",
+          "description": "Optional. Locale in which the date is to be expressed. For example, if locale is en (for English), the pattern EEE d MMM yyyy will produce Friday 23 August 2002 , and the locale of fr (for French) will produce vendredi 23 août 2002 . If locale is not specified, Integration Server uses the value of the watt.server.session.locale.ignore server configuration parameter to determine whether the locale is obtained from the session used by the client that invoked the service or if the locale is the locale of Integration Server .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "String",
+          "description": "The date/time given by date in the format specified by pattern.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_date_formatDate.html"
+    },
+    {
+      "name": "pub.date:getCurrentDate",
+      "folder": "DATE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "date",
+          "type": "java.util.Date",
+          "description": "Current date.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "date",
+          "type": "java.util.Date",
+          "description": "Current date.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A63550.html"
+    },
+    {
+      "name": "pub.date:getCurrentDateString",
+      "folder": "DATE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "pattern",
+          "type": "String",
+          "description": "Pattern representing the format in which you want the date returned. For pattern-string notation, see Pattern String Symbols .",
+          "optional": false
+        },
+        {
+          "name": "timezone",
+          "type": "String",
+          "description": "Optional. Time zone in which you want the output date and time expressed. Specify a time zone code as shown in Time Zones (for example, EST for Eastern Standard Time). If you do not specify timezone , the value of the server's \"user timezone\" property is used. If this property has not been set, GMT is used. Alternatively, you can also specify the timezone as a full name. For more information, see Time Zones . For regions where Daylight Saving Time (DST) is observed, use the full name of the timezone for accurate time representation. For example, specifying the EST timezone code yields the current time as Eastern Standard Time without applying DST. To obtain Eastern Standard Time with DST adjustment, use America/New_York .",
+          "optional": true
+        },
+        {
+          "name": "locale",
+          "type": "String",
+          "description": "Optional. Locale in which the date is to be expressed. For example, if locale is en (for English), the pattern EEE d MMM yyyy will produce Friday 23 August 2002 , and the locale of fr (for French) will produce vendredi 23 août 2002 . If locale is not specified, Integration Server uses the value of the watt.server.session.locale.ignore server configuration parameter to determine whether the locale is obtained from the session used by the client that invoked the service or if the locale is the locale of Integration Server .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "String",
+          "description": "Current date in the format specified by pattern .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_date_getCurrentDateString.html"
+    },
+    {
+      "name": "pub.date:getWorkingDays",
+      "folder": "DATE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "startDate",
+          "type": "String",
+          "description": "Starting date and time.",
+          "optional": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "description": "Ending date and time.",
+          "optional": false
+        },
+        {
+          "name": "startDatePattern",
+          "type": "String",
+          "description": "Format in which the startDate parameter is to be specified (for example, yyyyMMdd HH:mm:ss.SSS). For pattern-string notation, see Pattern String Symbols .",
+          "optional": false
+        },
+        {
+          "name": "endDatePattern",
+          "type": "String",
+          "description": "Format in which the endDate parameter is to be specified (for example, yyyyMMdd HH:mm:ss.SSS). For pattern-string notation, see Pattern String Symbols .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "workingDays",
+          "type": "String",
+          "description": "Number of days between startDate and endDate excluding weekends and holidays.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A12925.html"
+    },
+    {
+      "name": "pub.date:incrementDate",
+      "folder": "DATE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "startDate",
+          "type": "String",
+          "description": "Starting date and time.",
+          "optional": false
+        },
+        {
+          "name": "startDatePattern",
+          "type": "String",
+          "description": "Format in which the startDate parameter is specified (for example, yyyyMMdd HH:mm:ss.SSS). For pattern-string notation, see Pattern String Symbols .",
+          "optional": false
+        },
+        {
+          "name": "endDatePattern",
+          "type": "String",
+          "description": "Optional. Pattern representing the format in which you want the endDate to be returned. For pattern-string notation, see Pattern String Symbols . If no endDatePattern is specified, the endDate will be returned in the format specified in the startDatePattern parameter.",
+          "optional": true
+        },
+        {
+          "name": "addYears",
+          "type": "String",
+          "description": "Optional. Number of years to add to startDate . The value must be an integer between -2147483648 and 2147483647.",
+          "optional": true
+        },
+        {
+          "name": "addMonths",
+          "type": "String",
+          "description": "Optional. Number of months to add to startDate . The value must be an integer between -2147483648 and 2147483647.",
+          "optional": true
+        },
+        {
+          "name": "addDays",
+          "type": "String",
+          "description": "Optional. Number of days to add to startDate . The value must be an integer between -2147483648 and 2147483647.",
+          "optional": true
+        },
+        {
+          "name": "addHours",
+          "type": "String",
+          "description": "Optional. Number of hours to add to startDate . The value must be an integer between -2147483648 and 2147483647.",
+          "optional": true
+        },
+        {
+          "name": "addMinutes",
+          "type": "String",
+          "description": "Optional. Number of minutes to add to startDate . The value must be an integer between -2147483648 and 2147483647.",
+          "optional": true
+        },
+        {
+          "name": "addSeconds",
+          "type": "String",
+          "description": "Optional. Number of seconds to add to startDate . The value must be an integer between -2147483648 and 2147483647.",
+          "optional": true
+        },
+        {
+          "name": "addMilliSeconds",
+          "type": "String",
+          "description": "Optional. Number of milliseconds to add to startDate . The value must be an integer between -2147483648 and 2147483647.",
+          "optional": true
+        },
+        {
+          "name": "timezone",
+          "type": "String",
+          "description": "Optional. Time zone in which you want the endDate to be expressed. Specify a time zone code as shown in Time Zones (for example, EST for Eastern Standard Time). If you do not specify timezone , the value of the server's \"user timezone\" property is used. If this property has not been set, GMT is used.",
+          "optional": true
+        },
+        {
+          "name": "locale",
+          "type": "String",
+          "description": "Optional. Locale in which the endDate is to be expressed. For example, if locale is en (for English), the pattern EEE d MMM yyyy will produce Friday 23 August 2002 , and the locale of fr (for French) will produce vendredi 23 août 2002 . If locale is not specified, Integration Server uses the value of the watt.server.session.locale.ignore server configuration parameter to determine whether the locale is obtained from the session used by the client that invoked the service or if the locale is the locale of Integration Server .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "endDate",
+          "type": "String",
+          "description": "The end date and time, calculated by incrementing the startDate with the specified years, months, days, hours, minutes, seconds, and/or milliseconds. The endDate will be in the endDatePattern format, if specified. If no endDatePattern is specified or if blank spaces are specified as the value, the endDate will be returned in the format specified in the startDatePattern parameter.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_096E40673E70497190B2DCF00453ED46.html"
+    },
+    {
+      "name": "pub.date:stringToDate",
+      "folder": "DATE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "inString",
+          "type": null,
+          "description": "String Date or time in the string format that you want to convert to a Date object.",
+          "optional": false
+        },
+        {
+          "name": "pattern",
+          "type": "String",
+          "description": "Pattern string that describes the format of inString . For pattern-string notation, see Pattern String Symbols .",
+          "optional": false
+        },
+        {
+          "name": "timezone",
+          "type": "String",
+          "description": "Optional. Time zone in which you want the input date and time expressed. Specify a time zone code as shown in Time Zones (for example, EST for Eastern Standard Time). If you do not specify timezone , the value of the server's \"user timezone\" property is used. If this property is not set, GMT is used.",
+          "optional": true
+        },
+        {
+          "name": "locale",
+          "type": "String",
+          "description": "Optional. Specifies the language and regional format of the input date string. For example, if the locale is en (for English), and the pattern is EEE d MMM yyyy , the input string should be Friday 23 August 2002 . If the locale is fr (for French), the input string should be vendredi 23 août 2002 . If the selected locale does not match the language of the input string, the service fails with a Failed to parse error. If locale is not specified, Integration Server uses the value of the watt.server.session.locale.ignore server configuration parameter to determine whether the locale is obtained from the session used by the client that invoked the service or if the locale is the locale of Integration Server .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "date",
+          "type": "Object",
+          "description": "The output date, which is of the java.util.Date wrapper type. This is dependent on the timezone specified. If nothing is specified, then the Integration Server timezone is used.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_qlc_11v_4bc.html"
+    }
+  ]
+}

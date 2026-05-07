@@ -1,0 +1,106 @@
+{
+  "folder": "UNIVERSALNAME",
+  "total_services": 4,
+  "services": [
+    {
+      "name": "pub.universalName:find",
+      "folder": "UNIVERSALNAME",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "namespaceName",
+          "type": "String",
+          "description": "Namespace portion of the universal name.",
+          "optional": false
+        },
+        {
+          "name": "localName",
+          "type": "String",
+          "description": "Local portion of the universal name.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "svcName",
+          "type": "String",
+          "description": "Conditional. Fully qualified name of the service associated with the universal name in namespaceName and localName . If the specified universal name is not in the registry, svcName will be null.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_universName_find.html"
+    },
+    {
+      "name": "pub.universalName:findDocumentType",
+      "folder": "UNIVERSALNAME",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "namespaceName",
+          "type": "String",
+          "description": "Namespace portion of the universal name.",
+          "optional": false
+        },
+        {
+          "name": "localName",
+          "type": "String",
+          "description": "Local name portion of the universal name.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "svcName",
+          "type": "String",
+          "description": "Conditional. Fully qualified name of the document type associated with the universal name in namespaceName and localName . If the specified universal name is not in the registry, svcName will be null.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A46768.html"
+    },
+    {
+      "name": "pub.universalName:list",
+      "folder": "UNIVERSALNAME",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "names",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Service entries in the universal name registry. Each document (IData object) in the list represents a service entry in the universal-name registry. (There is one entry for every explicit universal name that has been defined on the server. Implicit universal names are not maintained in the registry.) Each document in the list contains the following information:",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "names",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Service entries in the universal name registry. Each document (IData object) in the list represents a service entry in the universal-name registry. (There is one entry for every explicit universal name that has been defined on the server. Implicit universal names are not maintained in the registry.) Each document in the list contains the following information:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_universName_list.html"
+    },
+    {
+      "name": "pub.universalName:listAll",
+      "folder": "UNIVERSALNAME",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "names",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Entries in the universal name registry. Each document (IData object) in the list represents an entry in the universal-name registry. There is one entry for every explicit universal name that has been defined on the server. Implicit universal names are not maintained in the registry. Each document in the list contains the following information:",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "names",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Entries in the universal name registry. Each document (IData object) in the list represents an entry in the universal-name registry. There is one entry for every explicit universal name that has been defined on the server. Implicit universal names are not maintained in the registry. Each document in the list contains the following information:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A42750.html"
+    }
+  ]
+}

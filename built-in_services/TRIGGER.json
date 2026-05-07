@@ -1,0 +1,358 @@
+{
+  "folder": "TRIGGER",
+  "total_services": 15,
+  "services": [
+    {
+      "name": "pub.trigger:createJMSTrigger",
+      "folder": "TRIGGER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "triggerName",
+          "type": "String",
+          "description": "Fully qualified name for the JMS new trigger. Names use any combination of letters, and/or the underscore character. Make sure to specify the name of the folder and subfolder in which you want to save the JMS trigger. Note: For a list of reserved words and symbols for element names, see IBM webMethods Service Development Help .",
+          "optional": false
+        },
+        {
+          "name": "package",
+          "type": "String",
+          "description": "Name of the package in which you want to save the trigger.",
+          "optional": false
+        },
+        {
+          "name": "aliasName",
+          "type": "String",
+          "description": "Name of the JMS connection alias that you want this JMS trigger to use to receive messages from the JMS provider. The JMS connection alias must already exist at the time this service executes. Although a JMS connection alias does not need to be enabled at the time you create the JMS trigger, the JMS connection alias must be enabled for the JMS trigger to execute at run time. A transacted JMS connection alias cannot be assigned to a JMS trigger if a cluster policy is applied to the connection factory used by the JMS connection alias.",
+          "optional": false
+        },
+        {
+          "name": "jmsTriggerType",
+          "type": "String",
+          "description": "Type of JMS trigger. Specify: Standard to create a standard JMS trigger. This is the default. SOAPJMS to create a SOAP-JMS trigger.",
+          "optional": false
+        },
+        {
+          "name": "properties",
+          "type": "Document",
+          "description": "Optional. Properties that you want to assign to the JMS trigger.",
+          "optional": true
+        },
+        {
+          "name": "destinations",
+          "type": "Document List",
+          "description": "Destinations from which the JMS trigger receives messages. Note: For a SOAP-JMS trigger, you can specify one destination only.",
+          "optional": false
+        },
+        {
+          "name": "routingRules",
+          "type": "Document List",
+          "description": "Optional. Routing rules for messages received by this standard JMS trigger. Note: You only need to specify routing rules for standard JMS triggers. SOAP-JMS triggers do not use routing rules.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_trigger_createJMSTrigger.html"
+    },
+    {
+      "name": "pub.trigger:createTrigger",
+      "folder": "TRIGGER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "triggerName",
+          "type": "String",
+          "description": "Fully qualified name for the new trigger that uses any combination of letters, and/or the underscore character. Make sure to specify the name of the folder and subfolder in which you want to save the trigger. Note: For a list of reserved words and symbols for element names, see IBM webMethods Service Development Help .",
+          "optional": false
+        },
+        {
+          "name": "package",
+          "type": "String",
+          "description": "Name of the package in which you want to save the trigger.",
+          "optional": false
+        },
+        {
+          "name": "properties",
+          "type": "Document",
+          "description": "Optional. Properties that you want to assign to the trigger.",
+          "optional": true
+        },
+        {
+          "name": "conditions",
+          "type": "Document List",
+          "description": "Optional. Specifies the conditions for the trigger. A condition associates one or more publishable document types with a single service. The publishable document type acts as the subscription piece of the trigger. The service is the processing piece. When the trigger receives documents to which it subscribes, the Integration Server processes the document by invoking the service specified in the condition. Triggers can contain multiple conditions; however, a trigger can contain only one join condition. Note: The order in which you list conditions in the conditions list is important because it indicates the order in which Integration Server evaluates the conditions at run time. When Integration Server receives a document, it invokes the service specified in the first condition that is satisfied by the document. The remaining conditions are ignored. For more information about the order in which conditions are evaluated, see the Publish-Subscribe Developer’s Guide .",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A58263.html"
+    },
+    {
+      "name": "pub.trigger:deleteJMSTrigger",
+      "folder": "TRIGGER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "triggerName",
+          "type": "String",
+          "description": "Fully qualified name of the JMS trigger to delete.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_trigger_deleteJMSTrigger.html"
+    },
+    {
+      "name": "pub.trigger:deleteTrigger",
+      "folder": "TRIGGER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "triggerName",
+          "type": "String",
+          "description": "Fully qualified name of the IBM webMethods messaging trigger that you want to delete.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A18151.html"
+    },
+    {
+      "name": "pub.trigger:disableEventTriggers",
+      "folder": "TRIGGER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "triggerNameList",
+          "type": "String List",
+          "description": "Specifies the event triggers that you want to disable.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_adl_2cn_gcc.html"
+    },
+    {
+      "name": "pub.trigger:disableJMSTriggers",
+      "folder": "TRIGGER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "triggerNameList",
+          "type": "String List",
+          "description": "Specifies the JMS triggers that you want to disable.",
+          "optional": false
+        },
+        {
+          "name": "applyChangeAcross Cluster",
+          "type": "String",
+          "description": "Optional. Flag indicating whether the specified JMS triggers should be disabled across all the servers in the cluster. Set to: true to disable the specified JMS triggers on all the nodes in the cluster. Note: To make the state change on all the servers in a cluster, Integration Server must be configured to synchronize trigger changes across the cluster. For more information about configuring an Integration Server to synchronize trigger management changes across a cluster, see IBM webMethods Integration Server Administrator’s Guide . false to disable the JMS triggers on the local Integration Server only. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_trigger_disableJMSTriggers.html"
+    },
+    {
+      "name": "pub.trigger:enableEventTriggers",
+      "folder": "TRIGGER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "triggerNameList",
+          "type": "String List",
+          "description": "Specifies the event triggers that you want to enable.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_smr_mtw_gcc.html"
+    },
+    {
+      "name": "pub.trigger:enableJMSTriggers",
+      "folder": "TRIGGER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "triggerNameList",
+          "type": "String List",
+          "description": "Specifies the JMS triggers that you want to enable.",
+          "optional": false
+        },
+        {
+          "name": "applyChangeAcross Cluster",
+          "type": "String",
+          "description": "Optional. Flag indicating whether the specified JMS triggers should be enabled across all the servers in the cluster. Set to: true to enable the specified JMS triggers on all the nodes in the cluster. Note: To make the state change on all the servers in a cluster, the Integration Server must be configured to synchronize trigger changes across the cluster. For more information about configuring an Integration Server to synchronize trigger management changes across a cluster, see IBM webMethods Integration Server Administrator’s Guide . false to enable the JMS triggers on the local Integration Server only. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_trigger_enableJMSTriggers.html"
+    },
+    {
+      "name": "pub.trigger:resourceMonitoringSpec",
+      "folder": "TRIGGER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "isAvailable",
+          "type": "String",
+          "description": "Indicates whether the resources needed by the trigger to perform exactly-once processing or to execute the trigger service are available. The value of this field determines whether Integration Server resumes the trigger or re-executes the resource monitoring service. Integration Server continues to execute a resource monitoring service until the value of isAvailable is \"true\" or the maximum retry attempts have been made. The isAvailable field must have one of the following values: true to indicate that the resources associated with the trigger are available. For IBM webMethods messaging trigger , Integration Server resumes document retrieval and document processing for the trigger. For a JMS trigger, MQTT trigger, or event trigger, Integration Server enables the trigger. false to indicate that the resources associated with the trigger are not available. Integration Server will not resume the trigger.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "isAvailable",
+          "type": "String",
+          "description": "Indicates whether the resources needed by the trigger to perform exactly-once processing or to execute the trigger service are available. The value of this field determines whether Integration Server resumes the trigger or re-executes the resource monitoring service. Integration Server continues to execute a resource monitoring service until the value of isAvailable is \"true\" or the maximum retry attempts have been made. The isAvailable field must have one of the following values: true to indicate that the resources associated with the trigger are available. For IBM webMethods messaging trigger , Integration Server resumes document retrieval and document processing for the trigger. For a JMS trigger, MQTT trigger, or event trigger, Integration Server enables the trigger. false to indicate that the resources associated with the trigger are not available. Integration Server will not resume the trigger.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_trigger_resourceMonitoringSpec.html"
+    },
+    {
+      "name": "pub.trigger:resumeProcessing",
+      "folder": "TRIGGER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "triggerName",
+          "type": "String",
+          "description": "Fully qualified name of the IBM webMethods messaging trigger for which you want to resume document processing.",
+          "optional": false
+        },
+        {
+          "name": "persistChange",
+          "type": "String",
+          "description": "Optional. Flag indicating whether the document processing change should be permanent or temporary. Set to: true to save the change to file. Integration Server persists the change across server restarts, package reloads, and changes to trigger properties. The trigger will continue to process documents until it is actively suspended via the Integration Server Administrator or by execution of the pub.trigger:suspendProcessing service. false to indicate that the change is temporary and will not be maintained when the server restarts, the trigger is enabled or disabled, or the package containing the trigger reloads. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "applyChangeAcross Cluster",
+          "type": "String",
+          "description": "Optional. Flag indicating whether document processing should be resumed for this trigger across all the servers in the cluster. Set to: true to resume document processing for the specified trigger on all the nodes in the cluster. Note: To make the document processing change on all the servers in a cluster, the Integration Server must be configured to synchronize trigger changes across the cluster. For more information about configuring an Integration Server to synchronize trigger management changes across a cluster, see IBM webMethods Integration Server Administrator’s Guide . false to indicate that document processing for this trigger should be resumed on the local Integration Server only. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_trigger_resumerProcessing.html"
+    },
+    {
+      "name": "pub.trigger:resumeRetrieval",
+      "folder": "TRIGGER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "triggerName",
+          "type": "String",
+          "description": "Fully qualified name of the IBM webMethods messaging trigger for which you want to resume document retrieval.",
+          "optional": false
+        },
+        {
+          "name": "persistChange",
+          "type": "String",
+          "description": "Optional. Flag indicating whether the document retrieval change should be permanent or temporary. Set to: true to save the change to file. Integration Server persists the change across server restarts, package reloads, and changes to trigger properties. The trigger will continue to retrieve documents until it is actively suspended via the Integration Server Administrator or by execution of the pub.trigger:suspendRetrieval service. false to indicate that the change is temporary and will not be maintained when the server restarts, the trigger is enabled or disabled, or the package containing the trigger reloads. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "applyChangeAcross Cluster",
+          "type": "String.",
+          "description": "Optional. Flag indicating whether document retrieval should be resumed for this trigger across all the servers in the cluster. Set to: true to resume document retrieval for the specified trigger on all the servers in the cluster. Note: To make the document retrieval change on all the servers in a cluster, the Integration Server must be configured to synchronize trigger changes across the cluster. For more information about configuring an Integration Server to synchronize trigger management changes across a cluster, see IBM webMethods Integration Server Administrator’s Guide . false to indicate that document retrieval for this trigger should be resumed on the local Integration Server only. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_trigger_resumeRetrieval.html"
+    },
+    {
+      "name": "pub.trigger:suspendEventTriggers",
+      "folder": "TRIGGER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "triggerNameList",
+          "type": "String List",
+          "description": "Specifies the event triggers that you want to suspend.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_jtz_q5w_gcc.html"
+    },
+    {
+      "name": "pub.trigger:suspendJMSTriggers",
+      "folder": "TRIGGER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "triggerNameList",
+          "type": "String List",
+          "description": "Specifies the JMS triggers that you want to suspend.",
+          "optional": false
+        },
+        {
+          "name": "applyChangeAcross Cluster",
+          "type": "String",
+          "description": "Optional. Flag indicating whether the specified JMS triggers should be suspended across all the servers in the cluster. Set to: true to suspend the specified JMS triggers on all the nodes in the cluster. Note: To make the status change on all the servers in a cluster, the Integration Server must be configured to synchronize trigger changes across the cluster. For more information about configuring an Integration Server to synchronize trigger management changes across a cluster, see IBM webMethods Integration Server Administrator’s Guide . false to suspend the JMS triggers on the local Integration Server only. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_trigger_suspendJMSTriggers.html"
+    },
+    {
+      "name": "pub.trigger:suspendProcessing",
+      "folder": "TRIGGER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "triggerName",
+          "type": "String",
+          "description": "Fully qualified name of the IBM webMethods messaging trigger for which you want to suspend document processing.",
+          "optional": false
+        },
+        {
+          "name": "persistChange",
+          "type": "String",
+          "description": "Optional. Flag indicating whether the document processing change should be permanent or temporary. Set to: true to save the change to file. Integration Server persists the change across server restarts, package reloads, and changes to trigger properties. The trigger will not process documents until processing is actively resumed via the Integration Server Administrator or by execution of the pub.trigger:resumeProcessing service. false to indicate that the change is temporary and will not be maintained when the server restarts, the trigger is enabled or disabled, or the package containing the trigger reloads. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "applyChangeAcross Cluster",
+          "type": "String",
+          "description": "Optional. Flag indicating whether document processing should be suspended for this trigger across all the servers in the cluster. Set to: true to suspend document processing for the specified trigger on all the servers in the cluster. Note: To make the document processing change on all the servers in a cluster, the Integration Server must belong to a properly configured cluster and it must be configured to synchronize trigger changes across the cluster. For more information about configuring an Integration Server to synchronize trigger management changes across a cluster, see IBM webMethods Integration Server Administrator’s Guide . false to indicate that document processing for this trigger should be suspended on the local Integration Server only. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A69499.html"
+    },
+    {
+      "name": "pub.trigger:suspendRetrieval",
+      "folder": "TRIGGER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "triggerName",
+          "type": "String",
+          "description": "Fully qualified name of the IBM webMethods messaging trigger for which you want to suspend document retrieval.",
+          "optional": false
+        },
+        {
+          "name": "persistChange",
+          "type": "String",
+          "description": "Optional. Flag indicating whether the document retrieval change should be permanent or temporary. Set to: true to save the change to file. Integration Server persists the change across server restarts, package reloads, and changes to trigger properties. The trigger will not retrieve documents until retrieval is actively resumed via the Integration Server Administrator or by execution of the pub.trigger:resumeProcessing service. false to indicate that the change is temporary and will not be maintained when the server restarts, the trigger is enabled or disabled, or the package containing the trigger reloads. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "applyChangeAcross Cluster",
+          "type": "String",
+          "description": "Optional. Flag indicating whether document retrieval should be suspended for this trigger across all the servers in the cluster. Set to: true to suspend document retrieval for the specified trigger on all the servers in the cluster. Note: To make the document retrieval change on all the servers in a cluster, the Integration Server be configured to synchronize trigger changes across the cluster. For more information about configuring an Integration Server to synchronize trigger management changes across a cluster, see IBM webMethods Integration Server Administrator’s Guide . false to indicate that document retrieval for this trigger should be suspended on the local Integration Server only. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A47913.html"
+    }
+  ]
+}

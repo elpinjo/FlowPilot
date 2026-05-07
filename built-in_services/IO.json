@@ -1,0 +1,491 @@
+{
+  "folder": "IO",
+  "total_services": 15,
+  "services": [
+    {
+      "name": "pub.io:bytesToStream",
+      "folder": "IO",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "bytes",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "The byte array to convert.",
+          "optional": false
+        },
+        {
+          "name": "length",
+          "type": "String",
+          "description": "Optional. The maximum number of bytes to read and convert. If length is not specified, the default value for this parameter is the length of the input byte array.",
+          "optional": true
+        },
+        {
+          "name": "offset",
+          "type": "String",
+          "description": "Optional. The offset into the input byte array from which to start converting. If no value specified, the default value is zero.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "stream",
+          "type": "java.io.ByteArrayInputStream",
+          "description": "An open InputStream created from the contents of the input bytes parameter.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_io_bytesToInputStream.html"
+    },
+    {
+      "name": "pub.io:close",
+      "folder": "IO",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "inputStream",
+          "type": "java.io.InputStream",
+          "description": "Optional. An open InputStream. Note: You can use either inputStream or reader to specify the input object. If both the input parameters are provided, then both the objects will be closed.",
+          "optional": true
+        },
+        {
+          "name": "reader",
+          "type": "java.io.Reader",
+          "description": "Optional. An open reader object.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A53444.html"
+    },
+    {
+      "name": "pub.io:createByteArray",
+      "folder": "IO",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "length",
+          "type": "String",
+          "description": "The length of the byte array to be created.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "bytes",
+          "type": "Object",
+          "description": "The new byte array.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A39724.html"
+    },
+    {
+      "name": "pub.io:mark",
+      "folder": "IO",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "stream",
+          "type": "java.io.InputStream",
+          "description": "Optional. The InputStream. Note: You can use either stream or reader to specify the input object. If both stream and reader input parameters are provided, then both the objects will be marked.",
+          "optional": true
+        },
+        {
+          "name": "reader",
+          "type": "java.io.Reader",
+          "description": "Optional. The reader object.",
+          "optional": true
+        },
+        {
+          "name": "limit",
+          "type": "String",
+          "description": "The maximum number of bytes that can be read before the mark position becomes invalid. If more than this number of bytes are read from the stream after the pub.io:mark service is invoked, the pub.io:reset service will have no effect.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "stream",
+          "type": "java.io.InputStream",
+          "description": "Conditional. The InputStream. Returned only if the input parameter is stream .",
+          "optional": false
+        },
+        {
+          "name": "reader",
+          "type": "java.io.Reader",
+          "description": "Conditional. The reader object. Returned only if the input parameter is reader .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A28258.html"
+    },
+    {
+      "name": "pub.io:markSupported",
+      "folder": "IO",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "stream",
+          "type": "java.io.InputStream",
+          "description": "Optional. The InputStream. Note: You can use either stream or reader to specify the input object. If both stream and reader input parameters are provided, then the stream input parameter is ignored.",
+          "optional": true
+        },
+        {
+          "name": "reader",
+          "type": "java.io.Reader",
+          "description": "Optional. The reader object.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "stream",
+          "type": "java.io.InputStream",
+          "description": "Conditional. The InputStream. Returned only if the input parameter is stream .",
+          "optional": false
+        },
+        {
+          "name": "supported",
+          "type": "String",
+          "description": "Indicates whether the stream supports the mark and reset operations. A value of: true indicates that the InputStream supports the mark and reset operations. false indicates that the InputStream does not support the mark and reset operations.",
+          "optional": false
+        },
+        {
+          "name": "reader",
+          "type": "java.io.Reader",
+          "description": "Conditional. The reader object. Returned only if the input parameter is reader .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A79879.html"
+    },
+    {
+      "name": "pub.io:read",
+      "folder": "IO",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "stream",
+          "type": "Object",
+          "description": "The InputStream. Object from which the service is to read bytes.",
+          "optional": false
+        },
+        {
+          "name": "offset",
+          "type": "String",
+          "description": "Optional The offset into the byte array in the buffer to which the data is written. If no value is supplied, this defaults to 0.",
+          "optional": true
+        },
+        {
+          "name": "length",
+          "type": "String",
+          "description": "Optional. The maximum number of bytes to read from the InputStream. If no value is supplied, the default is the length of buffer . If the value supplied for length is greater than the length of buffer , an exception will be thrown.",
+          "optional": true
+        },
+        {
+          "name": "buffer",
+          "type": "Object",
+          "description": "The buffer into which data is written. This is a byte array, which can be created from a Flow service by invoking pub.io:createByteArray .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "stream",
+          "type": "Object",
+          "description": "The InputStream. If any bytes were read from the stream, the stream is repositioned after the last byte read.",
+          "optional": false
+        },
+        {
+          "name": "buffer",
+          "type": "Object",
+          "description": "The buffer into which data was written.",
+          "optional": false
+        },
+        {
+          "name": "bytesRead",
+          "type": "String",
+          "description": "The number of bytes read from the InputStream and copied to buffer . If there is no more data because the end of the stream has been reached, bytesRead will be -1.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A31265.html"
+    },
+    {
+      "name": "pub.io:readAsString",
+      "folder": "IO",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "reader",
+          "type": "java.io.Reader",
+          "description": "The reader object.",
+          "optional": false
+        },
+        {
+          "name": "length",
+          "type": "String",
+          "description": "The maximum number of characters to read from the input reader object.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "reader",
+          "type": "java.io.Reader",
+          "description": "The reader object.",
+          "optional": false
+        },
+        {
+          "name": "lengthRead",
+          "type": "String",
+          "description": "The number of characters read from the input reader object. If there is no more data because the end of the stream has been reached, lengthRead will be -1.",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "description": "The data read from the reader object, or null if end of stream has been reached.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A70511.html"
+    },
+    {
+      "name": "pub.io:readerToString",
+      "folder": "IO",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "reader",
+          "type": "java.io.Reader",
+          "description": "The reader object.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "string",
+          "type": "String",
+          "description": "Data read from the reader object.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A90332.html"
+    },
+    {
+      "name": "pub.io:reset",
+      "folder": "IO",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "stream",
+          "type": "java.io.InputStream",
+          "description": "Optional. The InputStream. Note: You can use either stream or reader to specify the input object. If both stream and reader input parameters are provided, then both the objects will be reset.",
+          "optional": true
+        },
+        {
+          "name": "reader",
+          "type": "java.io.Reader",
+          "description": "Optional. The reader object.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "stream",
+          "type": "java.io.InputStream",
+          "description": "Conditional. The InputStream. Returned only if the input parameter is stream .",
+          "optional": false
+        },
+        {
+          "name": "reader",
+          "type": "java.io.Reader",
+          "description": "Conditional. The reader object. Returned only if the input parameter is reader .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A99501.html"
+    },
+    {
+      "name": "pub.io:skip",
+      "folder": "IO",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "stream",
+          "type": "java.io.InputStream",
+          "description": "Optional. The InputStream. Note: You can use either stream or reader to specify the input object. If both stream and reader input parameters are provided, then the stream and reader object data will be skipped.",
+          "optional": true
+        },
+        {
+          "name": "reader",
+          "type": "java.io.Reader",
+          "description": "Optional. The reader object.",
+          "optional": true
+        },
+        {
+          "name": "length",
+          "type": "String",
+          "description": "The number of bytes or characters to skip.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "stream",
+          "type": "java.io.InputStream",
+          "description": "Conditional. The InputStream. Returned only if the input parameter is stream .",
+          "optional": false
+        },
+        {
+          "name": "reader",
+          "type": "java.io.Reader",
+          "description": "Conditional. The reader object. Returned only if the input parameter is reader .",
+          "optional": false
+        },
+        {
+          "name": "bytesSkipped",
+          "type": "String",
+          "description": "Conditional. The actual number of bytes that were skipped. Returned only if the input parameter is stream .",
+          "optional": false
+        },
+        {
+          "name": "charactersSkipped",
+          "type": "String",
+          "description": "Conditional. The number of characters that were skipped. Returned only if the input parameter is reader .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A89013.html"
+    },
+    {
+      "name": "pub.io:streamToBytes",
+      "folder": "IO",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "stream",
+          "type": "java.io.InputStream",
+          "description": "The InputStream that you want to convert.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "bytes",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "The bytes read from stream .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_io_streamToBytes.html"
+    },
+    {
+      "name": "pub.io:streamToReader",
+      "folder": "IO",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "inputStream",
+          "type": "java.io.InputStream",
+          "description": "The InputStream to convert to a reader object.",
+          "optional": false
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Name of a registered, IANA character set (for example, ISO-8859-1). If you specify an unsupported encoding, the system throws an exception. If no value is specified or if the encoding is set to autoDetect , the default operating system encoding is used.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "reader",
+          "type": "java.io.Reader",
+          "description": "The reader object read from inputStream .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A57030.html"
+    },
+    {
+      "name": "pub.io:streamToString",
+      "folder": "IO",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "inputStream",
+          "type": "java.io.InputStream",
+          "description": "The InputStream to convert to a string.",
+          "optional": false
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Name of a registered, IANA character set (for example, ISO-8859-1). If you specify an unsupported encoding, the system throws an exception. If no value is specified or if the encoding is set to autoDetect , the default operating system encoding is used.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "string",
+          "type": "String",
+          "description": "Data read from inputStream and converted to a string.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A47949.html"
+    },
+    {
+      "name": "pub.io:stringToReader",
+      "folder": "IO",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "string",
+          "type": "String",
+          "description": "The string to convert to a StringReader object.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "reader",
+          "type": "java.io.StringReader",
+          "description": "The StringReader object.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A16343.html"
+    },
+    {
+      "name": "pub.io:stringToStream",
+      "folder": "IO",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "string",
+          "type": "String",
+          "description": "The string object to be converted.",
+          "optional": false
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Name of a registered, IANA character set (for example, ISO-8859-1). If you specify an unsupported encoding, the system throws an exception. If no value is specified or if the encoding is set to autoDetect , the default operating system encoding is used.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "inputStream",
+          "type": "java.io.ByteArrayInputStream",
+          "description": "An open InputStream created from the contents of string .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A77117.html"
+    }
+  ]
+}

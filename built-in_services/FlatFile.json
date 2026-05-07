@@ -1,0 +1,277 @@
+{
+  "folder": "FLATFILE",
+  "total_services": 8,
+  "services": [
+    {
+      "name": "pub.flatFile:convertToValues",
+      "folder": "FLATFILE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "ffData",
+          "type": "Object",
+          "description": "Flat file data to be converted. The data can be a String, byte array, InputStream, or java.io.Reader object.",
+          "optional": false
+        },
+        {
+          "name": "ffSchema",
+          "type": "String",
+          "description": "Fully qualified name of the flat file schema that describes the structure of the flat file data in ffData.",
+          "optional": false
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Character encoding to use when reading the flat file data. If not specified, the encoding specified in the flat file schema is used. If no encoding is specified in the schema, the default system encoding is used.",
+          "optional": true
+        },
+        {
+          "name": "keepResults",
+          "type": "String",
+          "description": "Optional. Flag indicating whether to return all parsed records or only the last record. Set to: true to return all parsed records in an IData array. false to return only the last parsed record. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "validate",
+          "type": "String",
+          "description": "Optional. Flag indicating whether to validate the flat file data against the flat file schema. Set to: true to validate the data. false to skip validation. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "ffValues",
+          "type": "Document",
+          "description": "IData object containing the parsed flat file data. The structure of this document corresponds to the structure defined in the flat file schema.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_flatFile_convertToValues.html"
+    },
+    {
+      "name": "pub.flatFile:convertToString",
+      "folder": "FLATFILE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "ffValues",
+          "type": "Document",
+          "description": "IData object containing the data to be converted to flat file format. The structure must match the structure defined in the flat file schema.",
+          "optional": false
+        },
+        {
+          "name": "ffSchema",
+          "type": "String",
+          "description": "Fully qualified name of the flat file schema that describes the structure of the output flat file.",
+          "optional": false
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Character encoding to use when writing the flat file data. If not specified, the encoding specified in the flat file schema is used. If no encoding is specified in the schema, the default system encoding is used.",
+          "optional": true
+        },
+        {
+          "name": "validate",
+          "type": "String",
+          "description": "Optional. Flag indicating whether to validate the data against the flat file schema before conversion. Set to: true to validate the data. false to skip validation. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "string",
+          "type": "String",
+          "description": "String representation of the flat file data formatted according to the flat file schema.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_flatFile_convertToString.html"
+    },
+    {
+      "name": "pub.flatFile:convertToBytes",
+      "folder": "FLATFILE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "ffValues",
+          "type": "Document",
+          "description": "IData object containing the data to be converted to flat file format. The structure must match the structure defined in the flat file schema.",
+          "optional": false
+        },
+        {
+          "name": "ffSchema",
+          "type": "String",
+          "description": "Fully qualified name of the flat file schema that describes the structure of the output flat file.",
+          "optional": false
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Character encoding to use when writing the flat file data. If not specified, the encoding specified in the flat file schema is used. If no encoding is specified in the schema, the default system encoding is used.",
+          "optional": true
+        },
+        {
+          "name": "validate",
+          "type": "String",
+          "description": "Optional. Flag indicating whether to validate the data against the flat file schema before conversion. Set to: true to validate the data. false to skip validation. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "bytes",
+          "type": "byte[]",
+          "description": "Byte array representation of the flat file data formatted according to the flat file schema.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_flatFile_convertToBytes.html"
+    },
+    {
+      "name": "pub.flatFile:convertToStream",
+      "folder": "FLATFILE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "ffValues",
+          "type": "Document",
+          "description": "IData object containing the data to be converted to flat file format. The structure must match the structure defined in the flat file schema.",
+          "optional": false
+        },
+        {
+          "name": "ffSchema",
+          "type": "String",
+          "description": "Fully qualified name of the flat file schema that describes the structure of the output flat file.",
+          "optional": false
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Character encoding to use when writing the flat file data. If not specified, the encoding specified in the flat file schema is used. If no encoding is specified in the schema, the default system encoding is used.",
+          "optional": true
+        },
+        {
+          "name": "validate",
+          "type": "String",
+          "description": "Optional. Flag indicating whether to validate the data against the flat file schema before conversion. Set to: true to validate the data. false to skip validation. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "stream",
+          "type": "java.io.InputStream",
+          "description": "InputStream containing the flat file data formatted according to the flat file schema.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_flatFile_convertToStream.html"
+    },
+    {
+      "name": "pub.flatFile:getSchemaProperties",
+      "folder": "FLATFILE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "ffSchema",
+          "type": "String",
+          "description": "Fully qualified name of the flat file schema whose properties you want to retrieve.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "schemaProperties",
+          "type": "Document",
+          "description": "IData object containing the properties of the flat file schema, including format type (DELIMITED, FIXED_LENGTH, etc.), delimiters, record definitions, and field specifications.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_flatFile_getSchemaProperties.html"
+    },
+    {
+      "name": "pub.flatFile:createFFIterator",
+      "folder": "FLATFILE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "ffData",
+          "type": "Object",
+          "description": "Flat file data to be parsed. The data can be a String, byte array, InputStream, or java.io.Reader object.",
+          "optional": false
+        },
+        {
+          "name": "ffSchema",
+          "type": "String",
+          "description": "Fully qualified name of the flat file schema that describes the structure of the flat file data.",
+          "optional": false
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Character encoding to use when reading the flat file data. If not specified, the encoding specified in the flat file schema is used.",
+          "optional": true
+        },
+        {
+          "name": "validate",
+          "type": "String",
+          "description": "Optional. Flag indicating whether to validate each record against the flat file schema. Set to: true to validate records. false to skip validation. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "ffIterator",
+          "type": "com.wm.ff.parse.FFIterator",
+          "description": "Iterator object that can be used to process flat file records one at a time. Use pub.flatFile:getNextRecord to retrieve records from the iterator.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_flatFile_createFFIterator.html"
+    },
+    {
+      "name": "pub.flatFile:getNextRecord",
+      "folder": "FLATFILE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "ffIterator",
+          "type": "com.wm.ff.parse.FFIterator",
+          "description": "Iterator object created by pub.flatFile:createFFIterator.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "ffValues",
+          "type": "Document",
+          "description": "IData object containing the next parsed record from the flat file. Returns null when no more records are available.",
+          "optional": false
+        },
+        {
+          "name": "hasMoreRecords",
+          "type": "String",
+          "description": "Flag indicating whether more records are available in the iterator. Set to: true if more records are available. false if no more records are available.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_flatFile_getNextRecord.html"
+    },
+    {
+      "name": "pub.flatFile:closeFFIterator",
+      "folder": "FLATFILE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "ffIterator",
+          "type": "com.wm.ff.parse.FFIterator",
+          "description": "Iterator object to be closed. This releases any resources associated with the iterator.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_flatFile_closeFFIterator.html"
+    }
+  ]
+}

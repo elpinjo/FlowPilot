@@ -1,0 +1,627 @@
+{
+  "folder": "ART",
+  "total_services": 33,
+  "services": [
+    {
+      "name": "pub.art:listRegisteredAdapters",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "registeredAdapterList",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Information for each adapter registered with the WmART package.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "registeredAdapterList",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Information for each adapter registered with the WmART package.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A759931.html"
+    },
+    {
+      "name": "pub.art.connection:disableConnection",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "connectionAlias",
+          "type": "String",
+          "description": "Name of the connection node you want to disable.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A72380.html"
+    },
+    {
+      "name": "pub.art.connection:enableConnection",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "connectionAlias",
+          "type": "String",
+          "description": "Name of the connection node you want to enable.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A20810.html"
+    },
+    {
+      "name": "pub.art.connection:getConnectionStatistics",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "aliasName",
+          "type": "String",
+          "description": "Name of the connection node for which you want usage statistics returned.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "connectionStatistics",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Information for each connection node.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A32726.html"
+    },
+    {
+      "name": "pub.art.connection:listAdapterConnections",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "adapterTypeName",
+          "type": "String",
+          "description": "The name of the adapter as registered with the WmART package.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "connectionDataList",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Information for each connection node registered with the specified adapter.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A58174.html"
+    },
+    {
+      "name": "pub.art.connection:queryConnectionState",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "connectionAlias",
+          "type": "String",
+          "description": "Name of the connection node for which you want the connection state and error status returned.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "connectionState",
+          "type": "String",
+          "description": "Current connection state (enabled/disabled).",
+          "optional": false
+        },
+        {
+          "name": "hasError",
+          "type": "Boolean",
+          "description": "Flag indicating if any error was detected on connection. The values are: true if an error was detected. false if no error was detected.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A30217.html"
+    },
+    {
+      "name": "pub.art.listener:disableListener",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "listenerName",
+          "type": "String",
+          "description": "Name of the listener you want to disable. The listener should have a state of enabled or suspended .",
+          "optional": false
+        },
+        {
+          "name": "forceDisable",
+          "type": "String",
+          "description": "Optional. Flag to disable the listener regardless of whether it is still waiting for data from a back-end resource. The string may have one of these values: true to disable the listener. false to keep the listener enabled.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A58883.html"
+    },
+    {
+      "name": "pub.art.listener:enableListener",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "listenerName",
+          "type": "String",
+          "description": "Name of the listener you want to enable.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A69463.html"
+    },
+    {
+      "name": "pub.art.listener:listAdapterListeners",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "adapterTypeName",
+          "type": "String",
+          "description": "The name of the adapter as registered with the WmART package.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "listenerDataList",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Information for each listener registered with the specified adapter.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A82643.html"
+    },
+    {
+      "name": "pub.art.listener:queryListenerState",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "listenerName",
+          "type": "String",
+          "description": "Name of the listener for which you want the current state returned.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "listenerState",
+          "type": "String",
+          "description": "Current state of the listener. The state will have one of these values: disabled if the listener is disabled. enabled if the listener is enabled. enablePending if the listener is in the process of starting. disablePending if the listener is in the process of disabling. suspended if the listener is suspended. suspendPending if the listener is in the process of suspending.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A70926.html"
+    },
+    {
+      "name": "pub.art.listener:resumeListener",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "listenerName",
+          "type": "String",
+          "description": "The name of the suspended listener you want to resume. The service returns an error if you specify an invalid listener.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A38424.html"
+    },
+    {
+      "name": "pub.art.listener:setListenerNodeConnection",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "listenerName",
+          "type": "String",
+          "description": "Name of the listener for which you want to change the connection node.",
+          "optional": false
+        },
+        {
+          "name": "connectionAlias",
+          "type": "String",
+          "description": "Name of the new connection node to use with the listener.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A62349.html"
+    },
+    {
+      "name": "pub.art.listener:suspendListener",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "listenerName",
+          "type": "String",
+          "description": "The name of the listener you want to suspend. The service returns an error if you specify an invalid listener.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A51324.html"
+    },
+    {
+      "name": "pub.art.notification:disableListenerNotification",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "notificationName",
+          "type": "String",
+          "description": "The name of the listener notification you want to disable.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A95533.html"
+    },
+    {
+      "name": "pub.art.notification:disablePollingNotification",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "notificationName",
+          "type": "String",
+          "description": "The name of the polling notification you want to disable. The polling notification should have a state of enabled or suspended .",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A62477.html"
+    },
+    {
+      "name": "pub.art.notification:disablePublishEvents",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "notificationName",
+          "type": "String",
+          "description": "The name of the notification for which you want to disable the publishing of events.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idc6282d01-bff4-4f64-87c9-7576bcab7aa5.html"
+    },
+    {
+      "name": "pub.art.notification:enableListenerNotification",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "notificationName",
+          "type": "String",
+          "description": "The name of the listener notification you want to enable.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A10061.html"
+    },
+    {
+      "name": "pub.art.notification:enablePollingNotification",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "notificationName",
+          "type": "String",
+          "description": "Name of the polling notification you want to enable.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A54879.html"
+    },
+    {
+      "name": "pub.art.notification:enablePublishEvents",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "notificationName",
+          "type": "String",
+          "description": "The name of the notification for which you want to enable the publishing of events.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/ide1fe5e59-99d4-4a1e-a250-4e8250549ff3.html"
+    },
+    {
+      "name": "pub.art.notification:listAdapterListenerNotifications",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "adapterTypeName",
+          "type": "String",
+          "description": "The name of the adapter as registered with the WmART package.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "notificationDataList",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Information for each listener notification registered with the specified adapter.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A50289.html"
+    },
+    {
+      "name": "pub.art.notification:listAdapterPollingNotifications",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "adapterTypeName",
+          "type": "String",
+          "description": "The name of the adapter as registered with the WmART package.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "notificationDataList",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Information for each polling notification registered with the specified adapter.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A87986.html"
+    },
+    {
+      "name": "pub.art.notification:queryListenerNotificationState",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "notificationName",
+          "type": "String",
+          "description": "The name of the listener notification for which you want the current state (enabled/disabled) returned.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "notificationState",
+          "type": "String",
+          "description": "The current state (enabled/disabled) for the listener notification.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A25909.html"
+    },
+    {
+      "name": "pub.art.notification:queryPollingNotificationState",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "notificationName",
+          "type": "String",
+          "description": "The name of the polling notification for which you want the current state and schedule settings returned.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "notificationState",
+          "type": "String",
+          "description": "The current state (enabled, disabled, pending disable, pending suspend, or suspended) for the polling notification.",
+          "optional": false
+        },
+        {
+          "name": "scheduleSettings",
+          "type": "IData",
+          "description": "Object that contains the notification's schedule settings as follows:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A56019.html"
+    },
+    {
+      "name": "pub.art.notification:resumePollingNotification",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "notificationName",
+          "type": "String",
+          "description": "The name of the polling notification you want to resume. The service returns an error if you specify an invalid polling notification.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A59675.html"
+    },
+    {
+      "name": "pub.art.notification:setListenerNotificationNodeListener",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "notificationName",
+          "type": "String",
+          "description": "Name of the listener notification for which you want to change the listener.",
+          "optional": false
+        },
+        {
+          "name": "listenerNode",
+          "type": "String",
+          "description": "Name of the new listener to use with the listener notification.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A18839.html"
+    },
+    {
+      "name": "pub.art.notification:setPollingNotificationNodeConnection",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "notificationName",
+          "type": "String",
+          "description": "Name of the polling notification for which you want to change the connection node.",
+          "optional": false
+        },
+        {
+          "name": "connectionAlias",
+          "type": "String",
+          "description": "Name of the new connection node to use with the polling notification.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A71296.html"
+    },
+    {
+      "name": "pub.art.notification:suspendPollingNotification",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "notificationName",
+          "type": "String",
+          "description": "The name of the polling notification you want to suspend. The service returns an error if you specify an invalid polling notification.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A78353.html"
+    },
+    {
+      "name": "pub.art.service:listAdapterServices",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "adapterTypeName",
+          "type": "String",
+          "description": "The name of the adapter as registered with the WmART package.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "serviceDataList",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Information for each adapter service registered with the specified adapter.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A18784.html"
+    },
+    {
+      "name": "pub.art.service:setAdapterServiceNodeConnection",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "serviceName",
+          "type": "String",
+          "description": "Name of an existing adapter service for which you want to change the connection node.",
+          "optional": false
+        },
+        {
+          "name": "connectionAlias",
+          "type": "String",
+          "description": "Name of the new connection node to use with the adapter service.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A64582.html"
+    },
+    {
+      "name": "pub.art.transaction:commitTransaction",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "commitTransactionInput",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Information for each commit request.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A63904.html"
+    },
+    {
+      "name": "pub.art.transaction:rollbackTransaction",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "rollbackTransactionInput",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Information for each rollback request.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A62447.html"
+    },
+    {
+      "name": "pub.art.transaction:setTransactionTimeout",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "timeoutSeconds",
+          "type": "Integer",
+          "description": "The number of seconds that the implicit or explicit transaction stays open before the transaction manager marks it for rollback.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A90444.html"
+    },
+    {
+      "name": "pub.art.transaction:startTransaction",
+      "folder": "ART",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "startTransactionInput",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Information for each start transaction request.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "startTransactionOutput",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Information for each start transaction request.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A78958.html"
+    }
+  ]
+}

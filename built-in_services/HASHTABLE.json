@@ -1,0 +1,202 @@
+{
+  "folder": "HASHTABLE",
+  "total_services": 7,
+  "services": [
+    {
+      "name": "pub.hashtable:containsKey",
+      "folder": "HASHTABLE",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "hashtable",
+          "type": "java.util.Hashtable",
+          "description": "Hashtable in which to check for the existence of a hashtable element.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Hashtable element to be checked for.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "containsKey",
+          "type": "String",
+          "description": "Indicates whether the specified hashtable element exists. A value of: true indicates that the element exists. false indicates that the element does not exist.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A33527.html"
+    },
+    {
+      "name": "pub.hashtable:createHashtable",
+      "folder": "HASHTABLE",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "hashtable",
+          "type": "java.util.Hashtable",
+          "description": "The new hashtable object.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "hashtable",
+          "type": "java.util.Hashtable",
+          "description": "The new hashtable object.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A49046.html"
+    },
+    {
+      "name": "pub.hashtable:get",
+      "folder": "HASHTABLE",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "hashtable",
+          "type": "java.util.Hashtable",
+          "description": "Hashtable from which to retrieve the specified value.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Key of the hashtable element whose value is to be retrieved.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "Value of the input hashtable element.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A26859.html"
+    },
+    {
+      "name": "pub.hashtable:listKeys",
+      "folder": "HASHTABLE",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "hashtable",
+          "type": "java.util.Hashtable",
+          "description": "Hashtable from which the keys are to be listed.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "keys",
+          "type": "String[]",
+          "description": "List of keys stored in the input hashtable.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A25776.html"
+    },
+    {
+      "name": "pub.hashtable:put",
+      "folder": "HASHTABLE",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "hashtable",
+          "type": "java.util.Hashtable",
+          "description": "Hashtable to which the key/value pair is to be added.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Key of the element to be added to the hashtable.",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "Value of the element to be inserted into the hashtable.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "hashtable",
+          "type": "java.util.Hashtable",
+          "description": "Hashtable object after the insertion of the key/value pair.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A48523.html"
+    },
+    {
+      "name": "pub.hashtable:remove",
+      "folder": "HASHTABLE",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "hashtable",
+          "type": "java.util.Hashtable",
+          "description": "Hashtable from which to remove the key/value pair.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Key of the hashtable element to be removed.",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "Value of the hashtable element to be removed.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "hashtable",
+          "type": "java.util.Hashtable",
+          "description": "Hashtable object after the key/value pair is removed.",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "Value of the hashtable element that was removed. Returns null if the input key is not found in the hashtable.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A90453.html"
+    },
+    {
+      "name": "pub.hashtable:size",
+      "folder": "HASHTABLE",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "hashtable",
+          "type": "java.util.Hashtable",
+          "description": "Hashtable from which the number of elements stored in it is to be retrieved.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "size",
+          "type": "String",
+          "description": "Number of elements in the hashtable.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A25448.html"
+    }
+  ]
+}

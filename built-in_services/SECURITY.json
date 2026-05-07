@@ -1,0 +1,1667 @@
+{
+  "folder": "SECURITY",
+  "total_services": 38,
+  "services": [
+    {
+      "name": "pub.security:clearAuthenticationCache",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/clearAuthenticationCache.html"
+    },
+    {
+      "name": "pub.security:clearKeyAndChain",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_security_clearKeyAndChain.html"
+    },
+    {
+      "name": "pub.security:decrypt",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "securityProvider",
+          "type": "String",
+          "description": "Optional. The type of security provider. The valid values are: PGP (Pretty Good Privacy) JCE-KBE (Java Cryptography Extension-Key Based Encryption) The default value is PGP.",
+          "optional": true
+        },
+        {
+          "name": "data",
+          "type": "Document",
+          "description": "The data that you want to decrypt must be in one of the following formats. If multiple input parameters are supplied for data , the service throws an exception stating that only one parameter must be passed.",
+          "optional": false
+        },
+        {
+          "name": "loadAs",
+          "type": "String",
+          "description": "Optional. The format in which the service returns the output. Set to: bytes to return the output as a byte array. This is the default. stream to return the output as a stream object. string to return the output as a string.",
+          "optional": true
+        },
+        {
+          "name": "secretKey",
+          "type": "Document",
+          "description": "The secret key to extract the private key required to decrypt the data. For PGP, provide secretKeyBytes , secretKeyString , or secretKeyRingFile . If you provide secretKeyRingFile , you must also provide secretKeyAlias . Otherwise, the service throws an exception. For JCE-KBE, provide secretKeyBytes , secretKeyString , or keyStoreAlias . If you provide keyStoreAlias , you must provide keyAlias . Otherwise, the service throws an exception.",
+          "optional": false
+        },
+        {
+          "name": "cipher",
+          "type": "String",
+          "description": "Optional. Applies only to JCE. The cipher for decryption. Select one of the following: RSA RSA/ECB/PKCS1Padding RSA/ECB/OAEPWithSHA-1AndMGF1Padding RSA/ECB/OAEPWithSHA-256AndMGF1Padding RSA/ECB/OAEPWithSHA-512AndMGF1Padding RSA/ECB/OAEPPadding The default value is RSA.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "stream",
+          "type": "java.io.OutputStream",
+          "description": "Conditional. Decrypted data as an output stream. Returned when the loadAs input parameter is set to stream .",
+          "optional": false
+        },
+        {
+          "name": "bytes",
+          "type": "byte[ ]",
+          "description": "Conditional. Decrypted data as bytes. Returned when the loadAs input parameter is set to bytes .",
+          "optional": false
+        },
+        {
+          "name": "string",
+          "type": "String",
+          "description": "Conditional. Decrypted data as a string. Returned when the loadAs input parameter is set to string .",
+          "optional": false
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Indicates whether the data is successfully decrypted or not. If successful, status is success . Otherwise, status contains failure along with an error message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_8E99023F3A9D42A0BADCBF986D4B1C76.html"
+    },
+    {
+      "name": "pub.security:decryptAndVerify",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "securityProvider",
+          "type": "String",
+          "description": "Optional. The type of security provider. The valid values are: PGP (Pretty Good Privacy) JCE-KBE (Java Cryptography Extension-Key Based Encryption) The default value is PGP.",
+          "optional": true
+        },
+        {
+          "name": "data",
+          "type": "Document",
+          "description": "The data that you want to decrypt and verify must be in one of the following formats. If multiple input parameters are supplied for data , the service throws an exception stating that only one parameter must be passed.",
+          "optional": false
+        },
+        {
+          "name": "loadAs",
+          "type": "String",
+          "description": "Optional The format in which the service returns the output. Set to: bytes to return the output as a byte array. This is the default. stream to return the output as a stream object. string to return the output as a string.",
+          "optional": true
+        },
+        {
+          "name": "secretKey",
+          "type": "Document",
+          "description": "The secret key to extract the private key required to decrypt the data. For PGP, provide secretKeyBytes , secretKeyString , or secretKeyRingFile . If you provide secretKeyRingFile , you must also provide secretKeyAlias . Otherwise, the service throws an exception. For JCE-KBE, provide secretKeyBytes , secretKeyString , or keyStoreAlias . If you provide keyStoreAlias , you must provide keyAlias . Otherwise, the service throws an exception.",
+          "optional": false
+        },
+        {
+          "name": "publicKey",
+          "type": "Document",
+          "description": "The public key required to verify the digital signature associated with the data. For PGP, provide publicKeyBytes , publicKeyString , or publicKeyRingFile . If you provide publicKeyRingFile , you must also provide publicKeyAlias . Otherwise, the service throws an exception. For JCE-KBE, provide publicKeyBytes , publicKeyString , or truststoreAlias . If you provide truststoreAlias , you must also provide certAlias . Otherwise, the service throws an exception.",
+          "optional": false
+        },
+        {
+          "name": "signingAlgorithm",
+          "type": "String",
+          "description": "The signing algorithm to use. For PGP, select one of the following: MD5 SHA256 SHA384 SHA512 The default value is SHA256 for PGP. For JCE, select one of the following: RSA SHA256withRSA SHA512withRSA SHA3-256withRSA SHA3-384withRSA SHA3-512withRSA Note: If the FIPS (Federal Information Processing Standards) mode is enabled, this service does not support the MD5 signing algorithm. FIPS mode can be enabled or disabled using the watt.security.fips.mode parameter. This is applicable only for PGP. Note: If the secret key for signing the data is of the DSA (Digital Signature Algorithm) key type, this service does not support the MD5 signing algorithm. This is applicable only for PGP.",
+          "optional": false
+        },
+        {
+          "name": "cipher",
+          "type": null,
+          "description": "String Optional. Applies only to JCE. The cipher for decryption. Select one of the following: RSA RSA/ECB/PKCS1Padding RSA/ECB/OAEPWithSHA-1AndMGF1Padding RSA/ECB/OAEPWithSHA-256AndMGF1Padding RSA/ECB/OAEPWithSHA-512AndMGF1Padding RSA/ECB/OAEPPadding The default value is RSA.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "stream",
+          "type": "java.io.OutputStream",
+          "description": "Conditional. Decrypted and verified data as an output stream. Returned when the loadAs input parameter is set to stream .",
+          "optional": false
+        },
+        {
+          "name": "bytes",
+          "type": "byte[ ]",
+          "description": "Conditional. Decrypted and verified data as bytes. Returned when the loadAs input parameter is set to bytes .",
+          "optional": false
+        },
+        {
+          "name": "string",
+          "type": "String",
+          "description": "Conditional. Decrypted and verified data as a string. Returned when the loadAs input parameter is set to string .",
+          "optional": false
+        },
+        {
+          "name": "verified",
+          "type": "Boolean",
+          "description": "Indicates whether the signature associated with the data is verified or not. A value of: true indicates that the signed data is verified. false indicates that the signed data is not verified.",
+          "optional": false
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Indicates whether the data is successfully decrypted and verified. If successful, status is success . Otherwise, status contains failure along with an error message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_706D030B7C1E49D58D088A49CD1C5BE3.html"
+    },
+    {
+      "name": "pub.security:encrypt",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "securityProvider",
+          "type": "String",
+          "description": "Optional. The type of security provider. The valid values are: PGP (Pretty Good Privacy) JCE-KBE (Java Cryptography Extension-Key Based Encryption) The default value is PGP.",
+          "optional": true
+        },
+        {
+          "name": "data",
+          "type": "Document",
+          "description": "Data that you want to encrypt. The data must be in one of the following formats. If multiple input parameters are supplied for data , the service throws an exception stating that only one parameter must be passed.",
+          "optional": false
+        },
+        {
+          "name": "loadAs",
+          "type": "String",
+          "description": "Optional. The format in which the service returns the output. Set to: bytes to return the output as a byte array. This is the default. stream to return the output as a stream object. string to return the output as a string.",
+          "optional": true
+        },
+        {
+          "name": "publicKey",
+          "type": "Document",
+          "description": "The public key required to encrypt the data. For PGP, provide publicKeyBytes , publicKeyString , or publicKeyRingFile . If you provide publicKeyRingFile , you must also provide publicKeyAlias . Otherwise, the service throws an exception. For JCE-KBE, provide publicKeyBytes , publicKeyString , or truststoreAlias . If you provide truststoreAlias , you must also provide certAlias . Otherwise, the service throws an exception.",
+          "optional": false
+        },
+        {
+          "name": "encryption​Algorithm",
+          "type": "String",
+          "description": "The key encryption algorithm to use. For PGP, select one of the following symmetric key encryption algorithms: AES_192 AES_256 BLOWFISH IDEA TRIPLE_DES TWOFISH The default value is AES_256. For JCE, select RSA (asymmetric key encryption algorithm).",
+          "optional": false
+        },
+        {
+          "name": "cipher",
+          "type": "String",
+          "description": "Optional. Applies only to JCE. The cipher for encryption. Select one of the following: RSA RSA/ECB/PKCS1Padding RSA/ECB/OAEPWithSHA-1AndMGF1Padding RSA/ECB/OAEPWithSHA-256AndMGF1Padding RSA/ECB/OAEPWithSHA-512AndMGF1Padding RSA/ECB/OAEPPadding The default value is RSA.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "stream",
+          "type": "java.io.OutputStream",
+          "description": "Conditional. Encrypted data as an output stream. Returned when the loadAs input parameter is set to stream .",
+          "optional": false
+        },
+        {
+          "name": "bytes",
+          "type": "byte[ ]",
+          "description": "Conditional. Encrypted data as bytes. Returned when the loadAs input parameter is set to bytes .",
+          "optional": false
+        },
+        {
+          "name": "string",
+          "type": "String",
+          "description": "Conditional. Encrypted data as a string in the ASCII-armored format. Returned when the loadAs input parameter is set to string .",
+          "optional": false
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Indicates whether the data is successfully encrypted or not. If successful, status is success . Otherwise, status contains failure along with an error message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_AD27FE791FB347589BD352EBD822DBF6.html"
+    },
+    {
+      "name": "pub.security:generateHashValue",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "inputString",
+          "type": "String",
+          "description": "The string that you want to convert to a hash value.",
+          "optional": false
+        },
+        {
+          "name": "hashAlgorithm",
+          "type": "String",
+          "description": "Optional. The algorithm to generate the hash value. Select one of the following: MD5 SHA256 SHA384 SHA512 The default value is SHA256.",
+          "optional": true
+        },
+        {
+          "name": "saltValue",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Optional. A random value that you can prefix to the input string before hashing. Note: To use a salt value in this service, run the pub.security:generateSalt service and map the generated salt value to this parameter.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "hashedValue",
+          "type": "String",
+          "description": "Hashed value of the input string.",
+          "optional": false
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Indicates whether the inputString is successfully hashed or not. If successful, status is success . Otherwise, status contains failure along with an error message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_nw1_zkj_qpb.html"
+    },
+    {
+      "name": "pub.security:generateSalt",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "saltValue",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Salt value to be used for hashing purposes.",
+          "optional": false
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Indicates whether a salt value is generated or not. If successful, status is success . Otherwise, status contains failure along with an error message.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "saltValue",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Salt value to be used for hashing purposes.",
+          "optional": false
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Indicates whether a salt value is generated or not. If successful, status is success . Otherwise, status contains failure along with an error message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_f1b_s3j_qpb.html"
+    },
+    {
+      "name": "pub.security.ports:hostNamesSpec",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "hostNames",
+          "type": "String",
+          "description": "Returns a list of IP addresses or hostnames in the CSV format, which can be allowed or denied IP access.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "hostNames",
+          "type": "String",
+          "description": "Returns a list of IP addresses or hostnames in the CSV format, which can be allowed or denied IP access.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_818645C92DD24F6E9F75635450460DAD.html"
+    },
+    {
+      "name": "pub.security:setKeyAndChain",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "privKeyFile",
+          "type": "String",
+          "description": "Absolute (for example, D:\\certs\\cert1.der) or relative path of the file containing the private key. A relative path is the path relative to the directory from which the Integration Server has been started (for example, Integration Server_directory \\instances\\ instance_name \\config\\certs\\cert1.der).",
+          "optional": false
+        },
+        {
+          "name": "certFiles",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "of file names containing the certificates that comprise the certificate chain. The list should start with the user's certificate followed by (in order) intermediate certificates and the root CA certificate. Absolute or relative paths of the files can be specified.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_security_setKeyAndChain.html"
+    },
+    {
+      "name": "pub.security:setKeyAndChainFromBytes",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "privKey",
+          "type": "Object",
+          "description": "A byte array containing the client's private key.",
+          "optional": false
+        },
+        {
+          "name": "certs",
+          "type": "Object\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "List of byte arrays containing the client's certificate chain. The list should start with the user's certificate followed by (in sequence) intermediate certificates and the root CA certificate.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_security_setKeyAndChainFromBytes.html"
+    },
+    {
+      "name": "pub.security:sign",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "securityProvider",
+          "type": "String",
+          "description": "Optional. The type of security provider. The valid values are: PGP (Pretty Good Privacy) JCE-KBE (Java Cryptography Extension-Key Based Encryption) The default value is PGP.",
+          "optional": true
+        },
+        {
+          "name": "data",
+          "type": "Document",
+          "description": "Data that you want to sign. The data must be in one of the following formats. If multiple input parameters are supplied for data , the service throws an exception stating that only one parameter must be passed.",
+          "optional": false
+        },
+        {
+          "name": "loadAs",
+          "type": "String",
+          "description": "Optional. The format in which the service returns the output. Set to: bytes to return the output as a byte array. This is the default. stream to return the output as a stream object. string to return the output as a string.",
+          "optional": true
+        },
+        {
+          "name": "secretKey",
+          "type": "Document",
+          "description": "The secret key required to sign the data. For PGP, provide secretKeyBytes , secretKeyString , or secretKeyRingFile . If you provide secretKeyRingFile , you must also provide secretKeyAlias . Otherwise, the service throws an exception. For JCE-KBE, provide secretKeyBytes , secretKeyString , or keyStoreAlias . If you provide keyStoreAlias , you must provide keyAlias . Otherwise, the service throws an exception.",
+          "optional": false
+        },
+        {
+          "name": "signingAlgorithm",
+          "type": "String",
+          "description": "The signing algorithm to use. For PGP, select one of the following: MD5 SHA256 SHA384 SHA512 The default value is SHA256 for PGP. For JCE, select one of the following: RSA SHA256withRSA SHA512withRSA SHA3-256withRSA SHA3-384withRSA SHA3-512withRSA Note: If the FIPS (Federal Information Processing Standards) mode is enabled, this service does not support the MD5 signing algorithm. FIPS mode can be enabled or disabled using the watt.security.fips.mode parameter. This is applicable only for PGP. Note: If the secret key for signing the data is of the DSA (Digital Signature Algorithm) key type, this service does not support the MD5 signing algorithm. This is applicable only for PGP.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "stream",
+          "type": "java.io.OutputStream",
+          "description": "Conditional. Signed data as an output stream. Returned when the loadAs input parameter is set to stream .",
+          "optional": false
+        },
+        {
+          "name": "bytes",
+          "type": "byte[ ]",
+          "description": "Conditional. Signed data as bytes. Returned when the loadAs input parameter is set to bytes .",
+          "optional": false
+        },
+        {
+          "name": "string",
+          "type": "String",
+          "description": "Conditional. Signed data as a string in the ASCII-armored format. Returned when the loadAs input parameter is set to string .",
+          "optional": false
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Indicates whether the data is successfully signed or not. If successful, status is success . Otherwise, status contains failure along with an error message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_C6832926AD6C4B0ABBE7BF977195C06F.html"
+    },
+    {
+      "name": "pub.security:signAndEncrypt",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "securityProvider",
+          "type": "String",
+          "description": "Optional. The type of security provider. The valid values are: PGP (Pretty Good Privacy) JCE-KBE (Java Cryptography Extension-Key Based Encryption) The default value is PGP.",
+          "optional": true
+        },
+        {
+          "name": "data",
+          "type": "Document",
+          "description": "Data that you want to sign and encrypt. The data must be in one of the following formats. If multiple input parameters are supplied for data , the service throws an exception stating that only one parameter must be passed.",
+          "optional": false
+        },
+        {
+          "name": "loadAs",
+          "type": "String",
+          "description": "Optional. The format in which the service returns the output. Set to: bytes to return the output as a byte array. This is the default. stream to return the output as a stream object. string to return the output as a string.",
+          "optional": true
+        },
+        {
+          "name": "publicKey",
+          "type": "Document",
+          "description": "The public key required to encrypt the data. For PGP, provide publicKeyBytes , publicKeyString , or publicKeyRingFile . If you provide publicKeyRingFile , you must also provide publicKeyAlias . Otherwise, the service throws an exception. For JCE-KBE, provide publicKeyBytes , publicKeyString , or truststoreAlias . If you provide truststoreAlias , you must also provide certAlias . Otherwise, the service throws an exception.",
+          "optional": false
+        },
+        {
+          "name": "encryptionAlgorithm",
+          "type": "String",
+          "description": "The encryption algorithm to use. For PGP, select one of the following symmetric key encryption algorithms: AES_192 AES_256 BLOWFISH IDEA TRIPLE_DES TWOFISH The default value is AES_256. For JCE, select RSA (asymmetric key encryption algorithm).",
+          "optional": false
+        },
+        {
+          "name": "secretKey",
+          "type": "Document",
+          "description": "The secret key required to sign the data. For PGP, provide secretKeyBytes , secretKeyString , or secretKeyRingFile . If you provide secretKeyRingFile , you must also provide secretKeyAlias . Otherwise, the service throws an exception. For JCE-KBE, provide secretKeyBytes , secretKeyString , or keyStoreAlias . If you provide keyStoreAlias , you must provide keyAlias . Otherwise, the service throws an exception.",
+          "optional": false
+        },
+        {
+          "name": "signingAlgorithm",
+          "type": "String",
+          "description": "The signing algorithm to use. For PGP, select one of the following: MD5 SHA256 SHA384 SHA512 The default value is SHA256 for PGP. For JCE, select one of the following: RSA SHA256withRSA SHA512withRSA SHA3-256withRSA SHA3-384withRSA SHA3-512withRSA Note: If the FIPS (Federal Information Processing Standards) mode is enabled, this service does not support the MD5 signing algorithm. FIPS mode can be enabled or disabled using the watt.security.fips.mode parameter. This is applicable only for PGP. Note: If the secret key for signing the data is of the DSA (Digital Signature Algorithm) key type, this service does not support the MD5 signing algorithm. This is applicable only for PGP.",
+          "optional": false
+        },
+        {
+          "name": "cipher",
+          "type": "String",
+          "description": "Optional. Applies only to JCE. The cipher for encryption. Select one of the following: RSA RSA/ECB/PKCS1Padding RSA/ECB/OAEPWithSHA-1AndMGF1Padding RSA/ECB/OAEPWithSHA-256AndMGF1Padding RSA/ECB/OAEPWithSHA-512AndMGF1Padding RSA/ECB/OAEPPadding The default value is RSA.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "stream",
+          "type": "java.io.OutputStream",
+          "description": "Conditional. Signed and encrypted data as an output stream. Returned when the loadAs input parameter is set to stream .",
+          "optional": false
+        },
+        {
+          "name": "bytes",
+          "type": "byte[ ]",
+          "description": "Conditional. Signed and encrypted data as bytes. Returned when the loadAs input parameter is set to bytes .",
+          "optional": false
+        },
+        {
+          "name": "string",
+          "type": "String",
+          "description": "Conditional. Signed and encrypted data as a string in the ASCII-armored format. Returned when the loadAs input parameter is set to string .",
+          "optional": false
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Indicates whether the data is successfully signed and encrypted or not. If successful, status is success . Otherwise, status contains failure along with an error message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_86B3E60E23E743FFA2919E7F6B30311A.html"
+    },
+    {
+      "name": "pub.security:userInfoSpec",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "userInfoClaims",
+          "type": "Document",
+          "description": "Optional. A document (IData) containing the claims from the UserInfo token returned by the OpenID Provider’s UserInfo Endpoint.",
+          "optional": true
+        },
+        {
+          "name": "userInfoError",
+          "type": "Document",
+          "description": "Optional. A document (IData) containing the error when the OpenID Provider returns an unsuccessful response. Integration Server redirects the User Agent to the OpenID Provider’s Authorization Endpoint to authenticate the End User. If the OpenID Provider responds to that redirection with an error, Integration Server will populate error with the error information.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "userInfoResponse",
+          "type": "Document",
+          "description": "A document (IData) for the result of the UserInfo service.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id8328ad36-5275-4f81-8cc8-99fc918038b3.html"
+    },
+    {
+      "name": "pub.security:verify",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "securityProvider",
+          "type": "String",
+          "description": "Optional. The type of security provider. The valid values are: PGP (Pretty Good Privacy) JCE-KBE (Java Cryptography Extension-Key Based Encryption) The default value is PGP.",
+          "optional": true
+        },
+        {
+          "name": "data",
+          "type": "Document",
+          "description": "Signed data that you want to verify. The data must be in one of the following formats. If multiple input parameters are supplied for data , the service throws an exception stating that only one parameter must be passed.",
+          "optional": false
+        },
+        {
+          "name": "loadAs",
+          "type": "String",
+          "description": "Optional. The format in which the service returns the output. Set to: bytes to return the output as a byte array. This is the default. stream to return the output as a stream object. string to return the output as a string.",
+          "optional": true
+        },
+        {
+          "name": "publicKey",
+          "type": "Document",
+          "description": "The signer's public key required to verify the signed data. For PGP, provide publicKeyBytes , publicKeyString , or publicKeyRingFile . If you provide publicKeyRingFile , you must also provide publicKeyAlias . Otherwise, the service throws an exception. For JCE-KBE, provide publicKeyBytes , publicKeyString , or truststoreAlias . If you provide truststoreAlias , you must also provide certAlias . Otherwise, the service throws an exception.",
+          "optional": false
+        },
+        {
+          "name": "signingAlgorithm",
+          "type": "String",
+          "description": "The signing algorithm to use. For PGP, select one of the following: MD5 SHA256 SHA384 SHA512 The default value is SHA256 for PGP. For JCE, select one of the following: RSA SHA256withRSA SHA512withRSA SHA3-256withRSA SHA3-384withRSA SHA3-512withRSA Note: If the FIPS (Federal Information Processing Standards) mode is enabled, this service does not support the MD5 signing algorithm. FIPS mode can be enabled or disabled using the watt.security.fips.mode parameter. This is applicable only for PGP. Note: If the secret key for signing the data is of the DSA (Digital Signature Algorithm) key type, this service does not support the MD5 signing algorithm. This is applicable only for PGP.",
+          "optional": false
+        },
+        {
+          "name": "actualData",
+          "type": "Document",
+          "description": "Applies only to JCE. The original data that was signed and needs to be verified against the signature to confirm that it hasn't been tampered with. The actualData parameter must be in one of the specified formats. If multiple input parameters are provided for actualData , the service throws an exception indicating that only one parameter should be passed.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "stream",
+          "type": "java.io.OutputStream",
+          "description": "Conditional. Verified data as an output stream. Returned when the loadAs input parameter is set to stream .",
+          "optional": false
+        },
+        {
+          "name": "bytes",
+          "type": "byte[ ]",
+          "description": "Conditional. Verified data in bytes. Returned when the loadAs input parameter is set to bytes .",
+          "optional": false
+        },
+        {
+          "name": "string",
+          "type": "String",
+          "description": "Conditional. Verified data as a string. Returned when the loadAs input parameter is set to string .",
+          "optional": false
+        },
+        {
+          "name": "verified",
+          "type": "Boolean",
+          "description": "Indicates whether the signature associated with the data is valid or not. A value of: true indicates that the signed data is verified. false indicates that the signed data is not verified.",
+          "optional": false
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Indicates whether the data is successfully verified or not. If successful, status is success . Otherwise, status contains failure along with an error message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_0F15FB6F07D643DAAD5AD97160B08DFD.html"
+    },
+    {
+      "name": "pub.security.enterpriseGateway:alertSpec",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "ruleName",
+          "type": "String",
+          "description": "The Enterprise Gateway rule that the request violates.",
+          "optional": false
+        },
+        {
+          "name": "alertInfo",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Information for Enterprise Gateway alert notification.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id127U908045Z.html"
+    },
+    {
+      "name": "pub.security.enterpriseGateway:customFilterSpec",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "requestHeaders",
+          "type": "Document",
+          "description": "IData object containing the standard HTTP headers in the request along with any custom headers that are present in the request. The following are the standard headers that will be extracted from the request: User-Agent , Accept , Host , Authorization , Cookie , Content-Type , Accept-Language , and Content-Length .",
+          "optional": false
+        },
+        {
+          "name": "payload",
+          "type": "Object",
+          "description": "Object containing the payload in the request.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "forwardRequest",
+          "type": "java.lang.Boolean",
+          "description": "Flag indicating whether Enterprise Gateway Server forwards the request to the Internal Server. A value of: True indicates that the request will be forwarded to the Internal Server. False indicates that the request will be denied and an error message is returned to the user.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idc91e3d2f-93c5-4e01-82d0-41affd7ee040.html"
+    },
+    {
+      "name": "pub.security.keystore.pkcs7:sign",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "signerInfo",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Information about a single signer of the signed data object. Each signerInfo requires either a certificate chain and a private key or a key alias that references them.",
+          "optional": false
+        },
+        {
+          "name": "data",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Optional. Data in the form of a byte array to be digitally signed. Note: If both data and dataAsStream are provided, dataAsStream takes precedence.",
+          "optional": true
+        },
+        {
+          "name": "dataAsStream",
+          "type": null,
+          "description": "java.io.InputStream Optional. Data in the form of an input stream to be digitally signed. Note: If both data and dataAsStream are provided, dataAsStream takes precedence.",
+          "optional": true
+        },
+        {
+          "name": "detachedSignature",
+          "type": "String",
+          "description": "Flag specifying whether to generate a detached signature. A detached signature does not include the data that was signed. Set to: true to generate a detached signature. false to generate an implicit signature (one that includes the signed data). This is the default.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "signature",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Conditional. Signature generated in the form of a byte array from the supplied data. This is a DER-encoded representation of the SignedData object as specified in PKCS#7. signature is returned when the input parameter data is provided.",
+          "optional": false
+        },
+        {
+          "name": "signatureAsStream",
+          "type": null,
+          "description": "java.io.OutputStream Conditional. Signature generated in the form of an output stream from the supplied data. signatureAsStream is returned when the input parameter dataAsStream is provided.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A91878.html"
+    },
+    {
+      "name": "pub.security.keystore:getCertificate",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "trustStoreAlias",
+          "type": "String",
+          "description": "Alias for the truststore containing the certificate.",
+          "optional": false
+        },
+        {
+          "name": "certAlias",
+          "type": "String",
+          "description": "Alias identifying a particular trusted certificate within a truststore.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "certificate",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "A byte array containing the trusted certificate.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A80613.html"
+    },
+    {
+      "name": "pub.security.keystore:getKeyAndChain",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "keyStoreAlias",
+          "type": "String",
+          "description": "Alias for the keystore that contains the private key of interest and its certificate.",
+          "optional": false
+        },
+        {
+          "name": "keyAlias",
+          "type": "String",
+          "description": "Alias for the private key stored in the specified keystore.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "privateKey",
+          "type": "java.security.PrivateKey",
+          "description": "Object representing the private key.",
+          "optional": false
+        },
+        {
+          "name": "certChain",
+          "type": "byte[ ] [\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "List of byte arrays representing the certificate chain associated with the private key.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A89774.html"
+    },
+    {
+      "name": "pub.security.keystore:getTrustedCertificates",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "trustStoreAlias",
+          "type": "String",
+          "description": "Name of the truststore alias.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "certificates",
+          "type": "byte[ ] [\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Trusted certificates, as a list of byte arrays.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A95392.html"
+    },
+    {
+      "name": "pub.security.keystore:setKeyAndChain",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "keyStoreAlias",
+          "type": "String",
+          "description": "Name of the keystore alias.",
+          "optional": false
+        },
+        {
+          "name": "keyAlias",
+          "type": "String",
+          "description": "Alias of the private key located in the keystore.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A49209.html"
+    },
+    {
+      "name": "pub.security.outboundPasswords:getPassword",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Key of the password entry to be retrieved.",
+          "optional": false
+        },
+        {
+          "name": "isInternal",
+          "type": "String",
+          "description": "\"true\" if this is an internal password; \"false\" if it is public. By default, this is \"false\". If you specify incorrectly whether the password is internal or public, the retrieve operation will fail. (For more information about internal and public passwords, see Internal and Public Passwords Internal passwords are passwords for use by the Integration Server itself to access secure resources (e.g., remote Integration Servers, JDBC connection pools, LDAP servers, etc.). Internal passwords are managed using the Integration Server Administrator and are stored in the outbound password store. Flow services are also allowed to store passwords in the outbound password store. However, by default, passwords stored by a flow service are considered \"public,\" as opposed to internal. This distinction allows flow services to use the outbound password store as a secure mechanism for storing and retrieving passwords, but protects the Integration Server's internal passwords. When calling any of the pub.security.outboundPasswords services (i.e. setPassword, getPassword, listKeys, removePassword, and updatePassword) the isInternal input parameter indicates whether the service is working with internal or public passwords. Note that even if this parameter is set to \"true\", you cannot access internal passwords if the Integration Server is configured to deny access to internal passwords. Access to internal passwords is controlled by the watt.security.ope.AllowInternalPasswordAccess configuration parameter on the Integration Server; for more information see webMethods Integration Server Administrator’s Guide. .)",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "WmSecureString",
+          "description": "Value of the retrieved password.",
+          "optional": false
+        },
+        {
+          "name": "result",
+          "type": "String",
+          "description": "\"true\" if the password value was successfully retrieved; \"false\" otherwise.",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "\"successful\" or reason for failure.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A38934.html"
+    },
+    {
+      "name": "pub.security.outboundPasswords:listKeys",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "isInternal",
+          "type": "String",
+          "description": "\"true\" if you want keys for internal passwords; \"false\" if you want keys for public passwords. By default this is \"false\". (For more information about internal and public passwords, see Internal and Public Passwords Internal passwords are passwords for use by the Integration Server itself to access secure resources (e.g., remote Integration Servers, JDBC connection pools, LDAP servers, etc.). Internal passwords are managed using the Integration Server Administrator and are stored in the outbound password store. Flow services are also allowed to store passwords in the outbound password store. However, by default, passwords stored by a flow service are considered \"public,\" as opposed to internal. This distinction allows flow services to use the outbound password store as a secure mechanism for storing and retrieving passwords, but protects the Integration Server's internal passwords. When calling any of the pub.security.outboundPasswords services (i.e. setPassword, getPassword, listKeys, removePassword, and updatePassword) the isInternal input parameter indicates whether the service is working with internal or public passwords. Note that even if this parameter is set to \"true\", you cannot access internal passwords if the Integration Server is configured to deny access to internal passwords. Access to internal passwords is controlled by the watt.security.ope.AllowInternalPasswordAccess configuration parameter on the Integration Server; for more information see webMethods Integration Server Administrator’s Guide. .)",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "key",
+          "type": "IData",
+          "description": "List of keys in the password store.",
+          "optional": false
+        },
+        {
+          "name": "result",
+          "type": "String",
+          "description": "\"true\" if the list of keys was successfully retrieved; \"false\" otherwise.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A70711.html"
+    },
+    {
+      "name": "pub.security.outboundPasswords:setPassword",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Key to be associated with the password entry.",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "WmSecureString",
+          "description": "Password to be stored.",
+          "optional": false
+        },
+        {
+          "name": "isInternal",
+          "type": "String",
+          "description": "\"true\" if this should be saved as an internal password; \"false\" if it should be saved as a public password. Default is \"false\". (See Internal and Public Passwords Internal passwords are passwords for use by the Integration Server itself to access secure resources (e.g., remote Integration Servers, JDBC connection pools, LDAP servers, etc.). Internal passwords are managed using the Integration Server Administrator and are stored in the outbound password store. Flow services are also allowed to store passwords in the outbound password store. However, by default, passwords stored by a flow service are considered \"public,\" as opposed to internal. This distinction allows flow services to use the outbound password store as a secure mechanism for storing and retrieving passwords, but protects the Integration Server's internal passwords. When calling any of the pub.security.outboundPasswords services (i.e. setPassword, getPassword, listKeys, removePassword, and updatePassword) the isInternal input parameter indicates whether the service is working with internal or public passwords. Note that even if this parameter is set to \"true\", you cannot access internal passwords if the Integration Server is configured to deny access to internal passwords. Access to internal passwords is controlled by the watt.security.ope.AllowInternalPasswordAccess configuration parameter on the Integration Server; for more information see webMethods Integration Server Administrator’s Guide. for more information.)",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "String",
+          "description": "\"true\" if password was successfully stored; \"false\" otherwise.",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "\"successful\" or reason for failure.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A17500.html"
+    },
+    {
+      "name": "pub.security.outboundPasswords:removePassword",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Key of the password to be removed.",
+          "optional": false
+        },
+        {
+          "name": "isInternal",
+          "type": "String",
+          "description": "\"true\" if this is an internal password; \"false\" if it is public. By default, this is \"false\". If you specify incorrectly whether the password is internal or public, the remove operation will fail. (For more information about internal and public passwords, see Internal and Public Passwords Internal passwords are passwords for use by the Integration Server itself to access secure resources (e.g., remote Integration Servers, JDBC connection pools, LDAP servers, etc.). Internal passwords are managed using the Integration Server Administrator and are stored in the outbound password store. Flow services are also allowed to store passwords in the outbound password store. However, by default, passwords stored by a flow service are considered \"public,\" as opposed to internal. This distinction allows flow services to use the outbound password store as a secure mechanism for storing and retrieving passwords, but protects the Integration Server's internal passwords. When calling any of the pub.security.outboundPasswords services (i.e. setPassword, getPassword, listKeys, removePassword, and updatePassword) the isInternal input parameter indicates whether the service is working with internal or public passwords. Note that even if this parameter is set to \"true\", you cannot access internal passwords if the Integration Server is configured to deny access to internal passwords. Access to internal passwords is controlled by the watt.security.ope.AllowInternalPasswordAccess configuration parameter on the Integration Server; for more information see webMethods Integration Server Administrator’s Guide. .)",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "String",
+          "description": "\"true\" if the password was successfully removed; \"false\" otherwise.",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "\"successful\" or reason for failure.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A59441.html"
+    },
+    {
+      "name": "pub.security.outboundPasswords:updatePassword",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Key of the password to be updated.",
+          "optional": false
+        },
+        {
+          "name": "newPassword",
+          "type": "WmSecureString",
+          "description": "New password value for the key.",
+          "optional": false
+        },
+        {
+          "name": "isInternal",
+          "type": "String",
+          "description": "\"true\" if this is an internal password; \"false\" if it is public. By default, this is \"false\". If you specify incorrectly whether the password is internal or public, the update operation will fail. (For more information about internal and public passwords, see Internal and Public Passwords Internal passwords are passwords for use by the Integration Server itself to access secure resources (e.g., remote Integration Servers, JDBC connection pools, LDAP servers, etc.). Internal passwords are managed using the Integration Server Administrator and are stored in the outbound password store. Flow services are also allowed to store passwords in the outbound password store. However, by default, passwords stored by a flow service are considered \"public,\" as opposed to internal. This distinction allows flow services to use the outbound password store as a secure mechanism for storing and retrieving passwords, but protects the Integration Server's internal passwords. When calling any of the pub.security.outboundPasswords services (i.e. setPassword, getPassword, listKeys, removePassword, and updatePassword) the isInternal input parameter indicates whether the service is working with internal or public passwords. Note that even if this parameter is set to \"true\", you cannot access internal passwords if the Integration Server is configured to deny access to internal passwords. Access to internal passwords is controlled by the watt.security.ope.AllowInternalPasswordAccess configuration parameter on the Integration Server; for more information see webMethods Integration Server Administrator’s Guide. .)",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "String",
+          "description": "\"true\" if the password value was successfully changed; \"false\" otherwise.",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "\"successful\" or reason for failure.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A54267.html"
+    },
+    {
+      "name": "pub.security.pkcs7:sign",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "signerInfo",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Information about a single signer of the signed data object. Each signerInfo requires either a certificate chain and a private key or a key alias that references them.",
+          "optional": false
+        },
+        {
+          "name": "data",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Data to be digitally signed.",
+          "optional": false
+        },
+        {
+          "name": "detachedSignature",
+          "type": "String",
+          "description": "Flag specifying whether to generate a detached signature. A detached signature does not include the data that was signed. Set to: true to generate a detached signature. false to generate an implicit signature (one that includes the signed data). This is the default.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "signature",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Signature generated from the supplied data. This is a DER-encoded representation of the SignedData object as specified in PKCS#7.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_security_pkcs7_sign.html"
+    },
+    {
+      "name": "pub.security.pkcs7:verify",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "signature",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Optional. Signature to use to determine whether the signed data is intact (a DER-encoded representation of the SignedData object as specified in PKCS#7) where the signature is in the form of a byte array. If you are processing a detached signature, pass the signature in signature . If you are processing an implicit signature, pass the entire signed message in signature . Note: If both signature and signatureAsStream are provided, signatureAsStream takes precedence.",
+          "optional": true
+        },
+        {
+          "name": "signatureAsStream",
+          "type": null,
+          "description": "java.io.InputStream Optional. Signature to use to determine whether the signed data is intact where the signature is in the form of an input stream. Note: If both signature and signatureAsStream are provided, signatureAsStream takes precedence.",
+          "optional": true
+        },
+        {
+          "name": "data",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Optional. Data in the form of a byte array that was signed. If you are processing a detached signature, you must supply data . If you are only processing an implicitly signed data as a byte array, you do not need to supply data because both the data and the signature reside in signature . If you are processing a detached signature and an implicitly signed data as a byte array, you must supply data . Note: If both data and dataAsStream are provided, dataAsStream takes precedence.",
+          "optional": true
+        },
+        {
+          "name": "dataAsStream",
+          "type": null,
+          "description": "java.io.InputStream Optional. Data in the form of an input stream that was signed. If you are processing a detached signature, you must supply dataAsStream . If you are only processing an implicitly signed data as an input stream, you do not need to supply dataAsStream because both the data and the signature reside in signatureAsStream . If you are processing a detached signature and an implicitly signed data as an input stream, you must supply dataAsStream . Note: If both data and dataAsStream are provided, dataAsStream takes precedence.",
+          "optional": true
+        },
+        {
+          "name": "detachedSignature",
+          "type": "String",
+          "description": "Optional. Flag indicating whether the message has a detached signature. Set to: true when the message has a detached signature. false when the message has an implicit signature. This is the default. Note: If detachedSignature is true and signature is provided, then data should be provided. If detachedSignature is true and signatureAsStream is provided, then dataAsStream should be provided.",
+          "optional": true
+        },
+        {
+          "name": "signerCertChain",
+          "type": "byte[ ][\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Optional. Certificate chains of the parties that signed the message. Note: If the signers included the certificate chain with the digital signature, you do not need to supply signerCertChain .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "content",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Conditional. The data (for example, the document that was originally signed) extracted in the form of a byte array from an implicit signature. If you are verifying a detached signature, content is not returned. Note: The extracted data is returned in content even if signature verification fails. content is returned when the input parameter data is provided.",
+          "optional": false
+        },
+        {
+          "name": "contentAsStream",
+          "type": null,
+          "description": "java.io.OutputStream Conditional. The data extracted in the form of an output stream from an implicit signature. contentAsStream is returned when the input parameter dataAsStream is provided.",
+          "optional": false
+        },
+        {
+          "name": "signerInfo",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Information about the signers. Each document in the list provides the following information about a single signer:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_security_pkcs7_verify.html"
+    },
+    {
+      "name": "pub.security.util:convertSecureString",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "secureString",
+          "type": "WmSecureString",
+          "description": "WmSecureString to be converted.",
+          "optional": false
+        },
+        {
+          "name": "returnAs",
+          "type": "String",
+          "description": "Format into which the WmSecureString is to be converted. Valid options are byte[], char[], and Java String. If a value for this parameter is not specified, the default is to convert the WmSecureString to a String.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "string",
+          "type": "String",
+          "description": "The WmSecureString converted to a Java String.",
+          "optional": false
+        },
+        {
+          "name": "bytes",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "The WmSecureString converted to a native Java byte array.",
+          "optional": false
+        },
+        {
+          "name": "chars",
+          "type": "char[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "The WmSecureString converted to a native Java character array.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A70559.html"
+    },
+    {
+      "name": "pub.security.util:createMessageDigest",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "algorithm",
+          "type": "String",
+          "description": "Name of the algorithm that you want to use to compute the message digest. Must be one of the following: MD5, SHA-1, SHA-256, SHA-384, or SHA-512 .",
+          "optional": false
+        },
+        {
+          "name": "input",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Optional. Message for which you want the digest generated where the message is in the form of a byte array. Note: If both input and inputAsStream are provided, inputAsStream takes precedence.",
+          "optional": true
+        },
+        {
+          "name": "inputAsStream",
+          "type": null,
+          "description": "java.io.InputStream Optional. Message for which you want to generate a message digest where the message is in the form of an input stream. Note: If both input and inputAsStream are provided, inputAsStream takes precedence.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Conditional. Computed digest in the form of a byte array. output is returned when the input parameter input is provided.",
+          "optional": false
+        },
+        {
+          "name": "outputAsStream",
+          "type": null,
+          "description": "OutputStream Conditional. Computed digest in the form of an output stream. outputAsStream is returned when the input parameter inputAsStream is provided.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_security_util_createmsgDigest.html"
+    },
+    {
+      "name": "pub.security.util:createSecureString",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "string",
+          "type": "String",
+          "description": "Java String to made into a WmSecureString.",
+          "optional": false
+        },
+        {
+          "name": "bytes",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Byte array to be made into a WmSecureString.",
+          "optional": false
+        },
+        {
+          "name": "chars",
+          "type": "char[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Character array to be made into a WmSecureString.",
+          "optional": false
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "If a byte array is supplied as an input parameter, encoding specifies the Java encoding of the byte array. This may be any encoding supported by Java String. By default, if no encoding is specified, then the default JVM encoding is used.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "secureString",
+          "type": "WmSecureString",
+          "description": "WmSecureString created from the supplied input parameters.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A54051.html"
+    },
+    {
+      "name": "pub.security.util:destroySecureString",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "secureString",
+          "type": "WmSecureString",
+          "description": "WmSecureString to be destroyed.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A45883.html"
+    },
+    {
+      "name": "pub.security.util:getCertificateInfo",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "certificate",
+          "type": "byte[]\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tjava.security.cert.X509Certificate",
+          "description": "The certificate whose information you want to retrieve.",
+          "optional": false
+        },
+        {
+          "name": "dateFormat",
+          "type": "String",
+          "description": "Optional. The date format to use for the date returned by the notBefore and notAfter fields in the validity output parameter. The value of dateFormat must be a pattern used by java.text.SimpleDateFormat , for example: MM/dd/yyyy By default, the pub.security.util:getCertificateInfo service uses a preset date format that returns only the last two digits of the certificate expiration year. This can lead can lead to ambiguity as a certificate that expires in 2109 returns an expiration year of 09, which some systems might treat as 2009.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "info",
+          "type": "Document",
+          "description": "Information from the certificate.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_security_util_getCertInfo.html"
+    },
+    {
+      "name": "pub.security.util:loadPKCS7CertChain",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "certificateChain",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "The certificate chain in PKCS #7 format.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "certificates",
+          "type": "byte[ ] [\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "List of byte arrays in which each byte[ ] in the list contains a certificate from certificateChain .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_security_util_loadCertChain.html"
+    },
+    {
+      "name": "pub.security.xml:decryptXML",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "xmldata",
+          "type": "String",
+          "description": "Optional. Encrypted XML that needs to be decrypted as plain text.",
+          "optional": true
+        },
+        {
+          "name": "xmlStream",
+          "type": "InputStream",
+          "description": "Optional. Encrypted XML in the form of an input stream. Note: If both xmldata and xmlStream are provided, xmlStream takes precedence; Integration Server uses the xmlStream value and returns only decryptedXMLStream .",
+          "optional": true
+        },
+        {
+          "name": "keyStoreAlias",
+          "type": "String",
+          "description": "Optional. Alias of the keystore that contains the private key used for decryption.",
+          "optional": true
+        },
+        {
+          "name": "keyAlias",
+          "type": "String",
+          "description": "Optional. Alias of the private key, contained in the keystore specified by the keyStoreAlias parameter, that is used for decryption.",
+          "optional": true
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Specifies the encoding to use if the encoding cannot be extracted from the XML. If encoding is not specified in the XML document or in the encoding parameter, Integration Server uses UTF-8. The encoding value must be a valid IANA encoding.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "decryptedXMLData",
+          "type": "String",
+          "description": "Conditional. Decrypted XML data. decryptedXMLData is returned when the input parameter xmldata is provided.",
+          "optional": false
+        },
+        {
+          "name": "decryptedXMLStream",
+          "type": "Object",
+          "description": "Conditional. A decrypted XML OutputStream object. decryptedXMLStream is returned when the input parameter xmlStream is provided.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A34643.html"
+    },
+    {
+      "name": "pub.security.xml:encryptXML",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "xmldata",
+          "type": "String",
+          "description": "Optional. The XML to be encrypted.",
+          "optional": true
+        },
+        {
+          "name": "xmlStream",
+          "type": "InputStream",
+          "description": "Optional. Input stream to the XML that needs to be encrypted. Note: If both xmldata and xmlStream are provided, xmlStream takes precedence.",
+          "optional": true
+        },
+        {
+          "name": "nodeSelectors",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "XPaths to the node to be encrypted. If the value for this parameter is left empty, no XML will be encrypted.",
+          "optional": false
+        },
+        {
+          "name": "nsDecls",
+          "type": "Document",
+          "description": "Optional. Mapping of the namespace prefixes to the namespace URIs. The first column contains the prefixes and the second column contains the corresponding URIs.",
+          "optional": true
+        },
+        {
+          "name": "recipientID",
+          "type": "String",
+          "description": "Optional. Name of the client to which the XML will be sent. The user name and certificate must be configured with Integration Server certificate mapping. The client name entry is mapped to a valid X.509 certificate, and both are stored in Integration Server . For information about Integration Server certificate mapping, see IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        },
+        {
+          "name": "recipientCert",
+          "type": "Byte[]",
+          "description": "Optional. The certificate containing the public key that will be used to encrypt the XML. If the input parameters recipientCert and recipientID are both provided, recipientCert is used.",
+          "optional": true
+        },
+        {
+          "name": "contentOnly",
+          "type": "Boolean",
+          "description": "Optional. Indicates whether the XML tags surrounding the content will be encrypted along with the content. Set to: true to encrypt only the content. false to encrypt both the tags and the content. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "algorithm",
+          "type": "String",
+          "description": "Optional. The symmetric key algorithm to use for encryption. Set to: tripledes-cbc for the algorithm at http://www.w3.org/2001/04/xmlenc#tripledes-cbc This is the default. aes256-cbc for the algorithm at http://www.w3.org/2001/04/xmlenc#aes256-cbc aes192-cbc for the algorithm at http://www.w3.org/2001/04/xmlenc#aes192-cbc aes128-cbc for the algorithm at http://www.w3.org/2001/04/xmlenc#aes128-cbc Note: If you are using aes256-cbc or aes192-cbc with JVM 1.6, make sure the unlimited policy jar files have been installed.",
+          "optional": true
+        },
+        {
+          "name": "encryptedKeyAlgorithm",
+          "type": "String",
+          "description": "Optional. The symmetric key that is randomly generated, and then encrypted with the receiver's public key. This encryption uses an asymmetric algorithm if public/private key pairs are being used. Set to: rsa-1_5 for the algorithm at http://www.w3.org/2001/04/xmlenc#rsa-1_5 This is the default. rsa-oaep-mgf1p for the algorithm at http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p",
+          "optional": true
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Specifies the encoding to use if the encoding cannot be extracted from the XML. If encoding is not specified in the XML document or in the encoding parameter, Integration Server uses UTF-8. The encoding value must be a valid IANA encoding.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "encryptedXMLData",
+          "type": "String",
+          "description": "Conditional. Encrypted XML data. encryptedXMLData is returned when the input parameter xmldata is provided.",
+          "optional": false
+        },
+        {
+          "name": "encryptedXMLStream",
+          "type": "OutputStream",
+          "description": "Conditional. Encrypted XML in the form of an OutputSream. encryptedXMLStream is returned when the input parameter xmlStream is provided.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A53501.html"
+    },
+    {
+      "name": "pub.security.xml:signXML",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "xmldata",
+          "type": "String",
+          "description": "Optional. XML that needs to be signed.",
+          "optional": true
+        },
+        {
+          "name": "xmlStream",
+          "type": "InputStream",
+          "description": "Optional. Input stream containing the XML that needs to be signed. Note: If both xmldata and xmlStream are provided, xmlStream takes precedence.",
+          "optional": true
+        },
+        {
+          "name": "uri",
+          "type": "String",
+          "description": "Optional. URI to the element to be signed. In combination with the nodeSelectors parameter, the uri identifies the nodes to be signed.",
+          "optional": true
+        },
+        {
+          "name": "noNamespace SchemaLocation",
+          "type": "String",
+          "description": "Optional. A URI that identifies the location of the XML schema definition that contains the ID attribute specified in uri . Provide a noNamespaceSchemaLocation when specifying an ID attribute for uri and the ID attribute resides in an XML schema with no namespaces.",
+          "optional": true
+        },
+        {
+          "name": "schemaLocations",
+          "type": "Document",
+          "description": "Optional. Document (IData) containing name-value pairs for the XML namespace and the location of the XML schema definition that contains element declarations, attribute declarations, and type definitions for that namespace. Provide a schemaLocation when specifying an ID attribute for uri and the ID attribute resides in an XML schema for a particular namespace. For example, XML namespace = http://www.w3schools.com XML schema definition location = file:C:/note.xsd",
+          "optional": true
+        },
+        {
+          "name": "nodeSelectors",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "XPath notation that identifies the nodes to be signed. The locations of the XPaths are not absolute, but relative, and work within the context of the node (an XPath Axes). Important: Do not use absolute location XPaths here.",
+          "optional": false
+        },
+        {
+          "name": "nsDecls",
+          "type": "Document",
+          "description": "Optional. Mapping of the namespace prefixes to the namespace URIs. The first column contains the prefixes and the second column contains the corresponding URIs.",
+          "optional": true
+        },
+        {
+          "name": "isEnveloped",
+          "type": "String",
+          "description": "Optional. Indicates whether the signature is enveloped or enveloping. Set to: True to indicate that the generated signature will be enveloped. This is the default. False to indicate that the generated signature will be enveloping, provided the isDetached parameter is set to False . Unlike the detached signature, which is kept apart from the original document, enveloping and enveloped signatures are tightly coupled with the original document.",
+          "optional": true
+        },
+        {
+          "name": "isDetached",
+          "type": "String",
+          "description": "Optional. Indicates whether the signature is detached or not. Integration Server uses <detached-signature> as the container for signature and the XML to be signed. Set to: True to indicate that the generated signature will be detached. False to indicate that the generated signature will be enveloping or enveloped, based on the isEnveloped parameter setting. This is the default. Note: Setting isDetached to True and isEnveloped to False , indicates that the signature will be detached. Setting isDetached to False and isEnveloped to True , indicates that the signature will be enveloped. Setting isDetached to False and isEnveloped to False , indicates that the signature will be enveloping. Setting isDetached to True and isEnveloped to True , results in error.",
+          "optional": true
+        },
+        {
+          "name": "signatureNodeSelector",
+          "type": "String",
+          "description": "Optional. XPath to the node where the signature is entered. Applicable only for enveloped signatures. If no value is provided, the signature is placed as a first child of the root node.",
+          "optional": true
+        },
+        {
+          "name": "signatureAlgorithm",
+          "type": "String",
+          "description": "Optional. Signature algorithm to use when signing the XML node or document. Specify one of the following or use the default value (first algorithm): SHA1 (default) SHA256 SHA384 SHA512",
+          "optional": true
+        },
+        {
+          "name": "digestAlgorithm",
+          "type": "String",
+          "description": "Optional. Digest algorithm to use when signing the XML node or document. Specify one of the following or use the default value (first algorithm): SHA1 (default) SHA256 SHA384 SHA512",
+          "optional": true
+        },
+        {
+          "name": "canonicalizationAlgorithm",
+          "type": "String",
+          "description": "Optional. Canonical algorithm used with the XML. Specify one of the following or use the default value (first algorithm): http://www.w3.org/TR/2001/rec-xml-c14n-20010315 (default) http://www.w3.org/TR/2001/rec-xml-c14n-20010315#WithComments http://www.w3.org/2001/10/xml-exc-c14n# http://www.w3.org/2001/10/xml-exc-c14n#WithComments",
+          "optional": true
+        },
+        {
+          "name": "signatureId",
+          "type": "String",
+          "description": "Optional. ID attribute for the signature node.",
+          "optional": true
+        },
+        {
+          "name": "keyStoreAlias",
+          "type": "String",
+          "description": "Optional. Name (alias) of the keystore that contains the private key/certificate.",
+          "optional": true
+        },
+        {
+          "name": "keyAlias",
+          "type": "String",
+          "description": "Optional. Name (alias) of the private key, contained in the keystore specified by the keyStoreAlias parameter, that is used for signing.",
+          "optional": true
+        },
+        {
+          "name": "keyName",
+          "type": "String",
+          "description": "Optional. Name that is used by the signer to communicate a key identifier to the recipient.",
+          "optional": true
+        },
+        {
+          "name": "includeKeyValue",
+          "type": "String",
+          "description": "Optional. Indicates whether to include the key value (RSAKeyValue or DSAKeyValue), based on the certificate used for signing. The KeyValue element contains a single public key that can be used in validating the signature. Set to: True to include the key value (RSAKeyValue or DSAKeyValue) based on the certificate used for signing. False to exclude the key value from the signature.",
+          "optional": true
+        },
+        {
+          "name": "includeCertChain",
+          "type": "String",
+          "description": "Optional. Indicates whether the certificate chain should be included in the signature. Set to: True to include the certificate chain in the signature. False to leave the certificate chain out of the signature. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "certData",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. Select the X509 certificate data to be entered into the signature's key information. X509_CERTIFICATE (default) X509_SUBJECT_NAME X509_ISSUER_SERIAL X509_SKI X509_CRL Note that the initials \"SKI\" and \"CRL\"in denote \"Subject Key Identifier\" and Certificate Revocation List\".",
+          "optional": true
+        },
+        {
+          "name": "idXmlObject",
+          "type": "String",
+          "description": "Optional. Specifies the ID for the node that holds the original XML that is signed. Applicable only for enveloping signatures.",
+          "optional": true
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Specifies the encoding to use if the encoding cannot be extracted from the XML. If encoding is not specified in the XML document or in the encoding parameter, Integration Server uses UTF-8. The encoding value must be a valid IANA encoding.",
+          "optional": true
+        },
+        {
+          "name": "addSignatureAsLastElement",
+          "type": "Boolean",
+          "description": "Optional. When isEnveloped is set to True , this parameter indicates the position at which Integration Server should add the signature element child to the root. Set to: True to add the signature element as the last child of the root. False to add the signature element as the first child of the root. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "addDSPrefixToSignature",
+          "type": "Boolean",
+          "description": "Optional. Set to False to create a Signature element in the signed XML without any prefixes. By default, this input variable is set to True and the \"ds:\" prefix is added.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "signedXMLData",
+          "type": "String",
+          "description": "Conditional. Signed XML data. signedXMLData is returned when xmlData is provided.",
+          "optional": false
+        },
+        {
+          "name": "signedXMLStream",
+          "type": "OutputStream",
+          "description": "Conditional. Signed XML in the form of an OutputSream. signedXMLStream is returned when xmlStream is provided.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A96837.html"
+    },
+    {
+      "name": "pub.security.xml:verifyXML",
+      "folder": "SECURITY",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "xmldata",
+          "type": "String",
+          "description": "Optional. Signed XML that needs to be verified.",
+          "optional": true
+        },
+        {
+          "name": "xmlStream",
+          "type": "InputStream",
+          "description": "Optional. Signed XML as an input stream that needs to be verified. Note: If both xmldata and xmlStream are provided, xmlStream takes precedence.",
+          "optional": true
+        },
+        {
+          "name": "signatureSelectors",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tArray",
+          "description": "XPaths that are used to identify the signature; can be any valid XPath. Following is an example: //*[@ID=\"Sign001\"]",
+          "optional": false
+        },
+        {
+          "name": "nsDecls",
+          "type": "Document",
+          "description": "Optional. Mapping of the namespace prefixes to the namespace URIs. The first column contains the prefixes and the second column contains the corresponding URIs.",
+          "optional": true
+        },
+        {
+          "name": "noNamespace SchemaLocation",
+          "type": "String",
+          "description": "Optional. Schema location for elements with no namespace. This parameter is used to locate the schema that defines elements without a namespace prefix.",
+          "optional": true
+        },
+        {
+          "name": "schemaLocations",
+          "type": "Document",
+          "description": "Optional. Holds the schema locations against the namespaces.",
+          "optional": true
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Specifies the encoding to use if the encoding cannot be extracted from the XML. If encoding is not specified in the XML document or in the encoding parameter, Integration Server uses UTF-8. The encoding value must be a valid IANA encoding.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "verifcationResult",
+          "type": "Boolean",
+          "description": "Indicates whether the signed XML is authentic (true) or cannot be verified or shows signs of tampering (false).",
+          "optional": false
+        },
+        {
+          "name": "failedSignatureSelector",
+          "type": "String",
+          "description": "Conditional. In case of a verification failure (the digests do not equate), indicates which signature selector failed.",
+          "optional": false
+        },
+        {
+          "name": "failureReason",
+          "type": "String",
+          "description": "Conditional. This output parameter is populated only in the case of a verification failure. Its value indicates whether (1) the signature caused the failure, or (2) the signature is from an untrusted certificate. Possible values are: SIGNATURE FAILED CERTIFICATE NOT TRUSTED",
+          "optional": false
+        },
+        {
+          "name": "certMap",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Conditional. For each XPath in signatureSelector , certMap contains a document that identifies the XPath and the corresponding signing certificate found at that XPath. certMap is only returned if certificates were resolved for at least one the XPaths specified in signatureSelector . If Integration Server encounters a signature failure, Integration Server does not resolve any subsequent XPaths. certMap contains all of the XPaths and corresponding certificates that Integration Server could resolve up to the point of failure.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A25218.html"
+    }
+  ]
+}

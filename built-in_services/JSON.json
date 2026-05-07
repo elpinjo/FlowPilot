@@ -1,0 +1,497 @@
+{
+  "folder": "JSON",
+  "total_services": 9,
+  "services": [
+    {
+      "name": "pub.json:closeArrayIterator",
+      "folder": "JSON",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "iterator",
+          "type": "Object",
+          "description": "The iterator object returned by the pub.json:getNextBatch service.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_788571B0AF27477E9BB9FCDE635C5584.html"
+    },
+    {
+      "name": "pub.json:documentToJSON",
+      "folder": "JSON",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "document",
+          "type": "Document",
+          "description": "The document (IData object) to be converted to a JSON object.",
+          "optional": false
+        },
+        {
+          "name": "jsonDocumentTypeName",
+          "type": "String",
+          "description": "Optional. If specified, the transformation from Document (IData) to JSON object is based on the JSON document type. Any deviations from the provided JSON document might cause transformation errors. This parameter must have the fully qualified name of a JSON document type on Integration Server against which the JSON content in document is validated. This parameter must be in the format: <Folder Name>:<JSON Document Type Name>. For example: data:employeeData When this parameter is provided to the service, Integration Server ignores the following parameters and the corresponding server configuration parameters, if set. encodeDateAs and watt.server.json.encodeDateAs encodeStringAsNumber encodeStringAsBoolean encodeMapAsString and watt.server.json.encodeMapAsString encodeListsAndSetsAsArrays and watt.server.json.encodeListsAndSetsAsArrays For more information about the server configuration parameters, see watt.server.",
+          "optional": true
+        },
+        {
+          "name": "strict",
+          "type": "String",
+          "description": "Optional. Whether the service performs a strict or loose transformation based on the supplied jsonDocumentTypeName . Valid values are true and false . The values of strict and jsonDocumentTypeName parameters together determine how Integration Server parses and converts Document (IData) to JSON object in the following manner: When strict is false and jsonDocumentTypeName is not specified, there is no change in the behavior. When strict is true and jsonDocumentTypeName is not specified, the service returns an exception. When strict is false and jsonDocumentTypeName is specified, the transformation from Document (IData) to JSON object is loosely based on the JSON document type. For conversion rules, see Table 2: Conversion of IData to JSON payload. When strict is true and jsonDocumentTypeName is specified, the transformation from Document (IData) to JSON object is strictly based on the JSON document type. The validation is performed first before the transformation, and any deviations lead to transformation errors. There is no default value for this input parameter.",
+          "optional": true
+        },
+        {
+          "name": "loadAs",
+          "type": "String",
+          "description": "Specifies the format in which you need the converted jsonObj . Set to: string to return jsonObj as a string. This is the default value. bytes to return jsonObj as a byte array. stream to return jsonObj as InputStream.",
+          "optional": false
+        },
+        {
+          "name": "prettyPrint",
+          "type": "String",
+          "description": "Optional. Whether the service formats the jsonObj output parameter for human readability by adding carriage returns and indentation to the JSON content. Set to: true to format the jsonObj output variable for human readability. false to leave the jsonObj output parameter in its unformatted state. The service will not add any additional carriage returns or indentation to the JSON content. <null> to use the prettyPrint setting already in effect for the HTTP client making the request, as follows: If the HTTP client request includes jsonPrettyPrint=true in the URI, JSON pretty printing is in effect. If the HTTP client request includes jsonPrettyPrint=false in the URI, JSON pretty printing is not in effect. If the HTTP client request does not include the jsonPrettyPrint parameter, the service uses the value of the watt.server.json.prettyPrint server configuration parameter. For more information about the parameter, see ../is_administrators_guide/z_server_config_parameters/Chunk1528165090.html#A_Ref462651821__prettyPrint .",
+          "optional": true
+        },
+        {
+          "name": "encodeDateAs",
+          "type": "String",
+          "description": "Optional. Specifies how java.util.Date instances in the document are encoded in the returned JSON object. Set to: long to encode java.util.Date instances as timestamps, specifically the number of milliseconds since Jan 1, 1970 00:00:00. The dates are encoded as JSON numbers. ISO8601 to encode java.util.Date instances as strings in a standard ISO format of: YYYY-MM-DD'T'HH:mm:ss.sssZ . The dates are encoded as JSON strings. ISO_LOCAL_DATE to encode java.util.Date instances as strings in a standard ISO format without an offset. For example, '2011-12-03'. The dates are encoded as JSON strings. ISO_DATE to encode java.util.Date instances as strings in a standard ISO format with the offset, if available. For example, '2011-12-03' or '2011-12-03+01:00'. The dates are encoded as JSON strings. ISO_ZONED_DATE_TIME to encode java.util.Date instances as strings in a standard ISO format with the offset and zone, if available. For example, '2011-12-03T10:15:30', '2011-12-03T10:15:30+01:00' or '2011-12-03T10:15:30+01:00[Europe/Paris]'. The dates are encoded as JSON strings. ISO_INSTANT to encode java.util.Date instances as strings in a standard ISO format in UTC. For example, '2011-12-03T10:15:30Z'. The dates are encoded as JSON strings. BASIC_ISO_DATE to encode java.util.Date instances as strings in a standard ISO format without an offset. For example, '20111203'. The dates are encoded as JSON strings. RFC_1123_DATE_TIME to encode java.util.Date instances as strings in a standard ISO format. For example, 'Tue, 3 Jun 2008 11:05:30 GMT'. The dates are encoded as JSON strings. Custom format in which dates are encoded as strings in the supplied pattern. The pattern must adhere to the date and time patterns as described in the java.text.SimpleDateFormat class in the Oracle Java API documentation. The dates are encoded as JSON strings. <null> to use the jsonDateEncoding setting already in effect for the HTTP client making the request, as follows: If the HTTP client request includes jsonDateEncoding=long in the URL, then java.util.Date instances are represented as timestamps, specifically the number of milliseconds since Jan 1, 1970 00:00:00. The dates are JSON numbers. If the HTTP client request includes jsonDateEncoding=ISO8601 in the URL, the java.util.Date instances are encoded as strings in a standard ISO format of: YYYY-MM-DD'T'HH:mm:ss.sssZ . The dates are JSON strings. If the HTTP client request includes jsonDateEncoding= format in the URL, the java.util.Date instances are encoded as strings in the supplied pattern. The pattern must adhere to the date and time patterns as described in the java.text.SimpleDateFormat class in the Oracle Java API documentation. If the HTTP client request does not include the jsonDateEncoding in the URL, the service uses the value of the watt.server.json.encodeDateAs parameter. For more information about the parameter, see ../is_administrators_guide/z_server_config_parameters/Chunk1528165090.html#A_Ref462651821__encodeDateAs There is no default value for this input parameter.",
+          "optional": true
+        },
+        {
+          "name": "encodeStringAsNumber",
+          "type": "Boolean",
+          "description": "Optional. Specifies whether the service encodes strings as numbers. Set to: true to convert all the numbers in the string format to numbers by removing the quotes. false to retain all the numbers in the string format. <null> to retain the original encoding in the request. There is no default value for this input parameter.",
+          "optional": true
+        },
+        {
+          "name": "encodeStringAsBoolean",
+          "type": "Boolean",
+          "description": "Optional. Specifies how the service handles boolean values in the string format. Set to: true to convert all the boolean values in the string format to boolean by removing the quotes. false to retain all the boolean values in the string format. <null> to retain the original encoding in the request. There is no default value for this input parameter.",
+          "optional": true
+        },
+        {
+          "name": "encodeMapAsString",
+          "type": "Boolean",
+          "description": "Optional. Specifies how the service encodes instances of java.util.Map. Set to: true to encode instances of java.util.Map as a JSON string. false to encode instances of java.util.Map as a nested JSON structure. <null> to use the value of watt.server.json.encodeMapAsString to determine the encoding. For more information about the parameter, see . There is no default value for this parameter.",
+          "optional": true
+        },
+        {
+          "name": "encodeListsAndSetsAsArrays",
+          "type": "Boolean",
+          "description": "Optional. Specifies how the service encodes instances of java.util.List or java.util.Set. Set to: true to encode instances of java.util.List or java.util.Set as arrays. false to encode instances of java.util.List or java.util.Set as a JSON string. <null> to use the value of watt.server.json.encodeListsAndSetsAsArrays to determine the encoding. For more information about the parameter, see ../is_administrators_guide/z_server_config_parameters/Chunk1528165090.html#A_Ref462651821__ListAndSetsAsArrays . There is no default value for this parameter.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "jsonObj",
+          "type": "Object",
+          "description": "Conditional. JSON of type byte array, string or stream (java.io.InputStream) resulting from the conversion of a document depending on the loadAs value.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_dtc_qh4_1bc.html"
+    },
+    {
+      "name": "pub.json:documentToJSONString",
+      "folder": "JSON",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "document",
+          "type": "Document",
+          "description": "The document (IData object) to be converted to a JSON string.",
+          "optional": false
+        },
+        {
+          "name": "jsonDocumentTypeName",
+          "type": "String",
+          "description": "Optional. If specified, the transformation from Document (IData) to JSON string is based on the JSON document type. Any deviations from the provided JSON document might cause transformation errors. When this parameter is provided, Integration Server ignores the encodeDateAs parameter and the watt.server.json.encodeDateAs server configuration parameter. This parameter must have the fully qualified name of a JSON document type on Integration Server against which the JSON content is validated. This parameter must be in the format: <Folder Name>:<JSON Document Type Name> For example: data:employeeData",
+          "optional": true
+        },
+        {
+          "name": "strict",
+          "type": "String",
+          "description": "Optional. Whether pub.json:documentToJSONString performs a strict or loose conversion based on the supplied jsonDocumentTypeName . Valid values are true and false . The default value is false . The values of strict and jsonDocumentTypeName parameters together determine how Integration Server parses and converts Document (IData) to JSON string in the following manner: When strict is false and jsonDocumentTypeName is not specified, there is no change in the behavior. When strict is false and jsonDocumentTypeName is specified, the transformation from Document (IData) to JSON string is loosely based on the JSON document type. For conversion rules, see Table 2: Conversion of IData to JSON String. When strict is true and jsonDocumentTypeName is not specified, the service returns an exception. When strict is true and jsonDocumentTypeName is specified, the transformation from Document (IData) to JSON string is strictly based on the JSON document type. The validation is performed first before the transformation, and any deviations lead to transformation errors. The encodeDateAs parameter and the watt.server.json.encodeDateAs server configuration parameter, if specified, are ignored.",
+          "optional": true
+        },
+        {
+          "name": "prettyPrint",
+          "type": "String",
+          "description": "Optional. Whether pub.json:documentToJSONString formats the jsonString output parameter for human readability by adding carriage returns and indentation to the JSON content. Set to: true to format jsonString output variable for human readability. false to leave the jsonString output variable in its unformatted state. The service will not add any additional carriage returns or indentation to the JSON content. null to use the prettyPrint setting already in effect for the HTTP client making the request, as follows: If the HTTP client request includes jsonPrettyPrint=true in the URI, JSON pretty printing is in effect. If the HTTP client request includes jsonPrettyPrint=false in the URI, JSON pretty printing is not in effect. If the HTTP client request does not include the jsonPrettyPrint parameter, the service uses the value of the watt.server.json.prettyPrint configuration parameter. For more information about watt.server.json.prettyPrint , see IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        },
+        {
+          "name": "encodeDateAs",
+          "type": "String",
+          "description": "Optional. Specifies how java.util.Date instances in the document are encoded in the returned JSON. Set to one of the following: long to encode java.util.Date instances as timestamps, specifically the number of milliseconds since Jan 1, 1970 00:00:00. The dates are encoded as JSON numbers. ISO8601 to encode java.util.Date instances as strings in a standard ISO format of: YYYY-MM-DD'T'HH:mm:ss.sssZ . The dates are encoded JSON Strings. ISO_LOCAL_DATE to encode java.util.Date instances as strings in a standard ISO format without an offset. For example, '2011-12-03'. The dates are encoded as JSON Strings. ISO_DATE to encode java.util.Date instances as strings in a standard ISO format with the offset if available. For example, '2011-12-03' or '2011-12-03+01:00'. The dates are encoded as JSON Strings. ISO_ZONED_DATE_TIME to encode java.util.Date instances as strings in a standard ISO format with the offset and zone if available. For example, '2011-12-03T10:15:30', '2011-12-03T10:15:30+01:00' or '2011-12-03T10:15:30+01:00[Europe/Paris]'. The dates are encoded as JSON Strings. ISO_INSTANT to encode java.util.Date instances as strings in a standard ISO format in UTC. For example, '2011-12-03T10:15:30Z'. The dates are encoded as JSON Strings. BASIC_ISO_DATE to encode java.util.Date instances as strings in a standard ISO format without an offset. For example, '20111203'. The dates are encoded as JSON Strings. RFC_1123_DATE_TIME to encode java.util.Date instances as strings in a standard ISO format. For example, 'Tue, 3 Jun 2008 11:05:30 GMT'. The dates are encoded as JSON Strings. Custom format in which dates are encoded as strings in the supplied pattern. The pattern must adhere to the date and time patterns as described in the java.text.SimpleDateFormat class in the Oracle Java API documentation. The dates are encoded as JSON strings. null to use the dateEncoding setting already in effect for the HTTP client making the request, as follows: If the HTTP client request includes jsonDateEncoding=long in the URL, then java.util.Date instances as timestamps, specifically the number of milliseconds since Jan 1, 1970 00:00:00. The dates are JSON numbers. If the HTTP client request includes jsonDateEncoding=ISO8601 in the URL, the java.util.Date instances are encoded as strings in a standard ISO format of: YYYY-MM-DD'T'HH:mm:ss.sssZ . The dates are JSON Strings. If the HTTP client request includes jsonDateEncoding= format in the URL, the java.util.Date instances are encoded as strings in the supplied pattern. The pattern must adhere to the date and time patterns as described in the java.text.SimpleDateFormat class in the Oracle Java API documentation. If the HTTP client request does not include the jsonDateEncoding query parameter in the URL, the service uses the value of the watt.server.json.encodeDateAs parameter. For more information about watt.server.json.encodeDataAs, see IBM webMethods Integration Server Administrator’s Guide",
+          "optional": true
+        },
+        {
+          "name": "encodeStringAsNumber",
+          "type": "String",
+          "description": "Optional. Specifies whether pub.json:documentToJSONString encodes strings as numbers. Set to: true , to convert all the numbers in the string format to numbers by removing the quotes. false , to retain all the numbers without converting. The default value is false.",
+          "optional": true
+        },
+        {
+          "name": "encodeStringAsBoolean",
+          "type": "String",
+          "description": "Optional. Specifies how pub.json:documentToJSONString handles boolean values in the string format. Set to: true , to convert all the boolean values in the string format to Boolean by removing the quotes. false , to retain all the boolean values without converting. This is the default value.",
+          "optional": true
+        },
+        {
+          "name": "encodeMapAsString",
+          "type": "String",
+          "description": "Optional. Specifies how the pub.json:documentToJSONString service encodes java.util.Map objects in the document (IData). Set to: true to encode java.util.Map objects as a JSON string. false to encode java.util.Map objects as a nested JSON structure. <null> to use the value of watt.server.json.encodeMapAsString to determine the encoding. There is no default value for this parameter.",
+          "optional": true
+        },
+        {
+          "name": "encodeListsAndSetsAsArrays",
+          "type": "String",
+          "description": "Optional. Specifies how the pub.json:documentToJSONString service encodes instances of java.util.List or java.util.Set. Set to: true to encode instances of java.util.List or java.util.Set as arrays. false to encode instances of java.util.List and java.util.Set as one String value. <null> to use the value of watt.server.json.encodeListsAndSetsAsArrays to determine the encoding. There is no default value for this parameter.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "jsonString",
+          "type": "String",
+          "description": "JSON string resulting from the conversion of document .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Chunk307275426.html"
+    },
+    {
+      "name": "pub.json:getArrayIterator",
+      "folder": "JSON",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "jsonStream",
+          "type": "Object",
+          "description": "JSON content to be converted to a document (an IData object).",
+          "optional": false
+        },
+        {
+          "name": "arrayPaths",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "The paths of the arrays to be parsed in the JSON input stream. Only the array elements from the paths mentioned in this parameter are considered even though the JSON stream might have more data. For example, to retrieve toppingA1 from the following JSON content, provide the array path as /topping/0/toppingA/0/toppingA1 . \"topping\": [{ \"toppingA\": [{ \"toppingA1\": [\"None71\", \"Glazed82\"] ... }]}] Note: This parameter must have only array paths. You must not enter individual array elements or other fields. Array paths must follow the JSON pointer syntax.",
+          "optional": false
+        },
+        {
+          "name": "decodeRealAsDouble",
+          "type": "String",
+          "description": "Optional. Converts real numbers from jsonStream to either a Float or Double Java wrapper type. Set to: true to convert real numbers to Double Java wrapper type. This is the default. false to convert real numbers to Float Java wrapper type. Note: The decodeRealAsDouble parameter overrides the value specified by the watt.server.json.decodeRealAsDouble server configuration parameter. If no value is supplied for decodeRealAsDouble , Integration Server uses the value set for watt.server.json.decodeRealAsDouble . For more information about watt.server.json.decodeRealAsDouble , see IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        },
+        {
+          "name": "decodeIntegerAsLong",
+          "type": "String",
+          "description": "Optional. Converts integers from jsonStream to either a Long or Integer Java wrapper type. Set to: true to convert integers to Long Java wrapper types. This is the default. false to convert integers to Integer Java wrapper types. Note: The decodeIntegerAsLong parameter overrides the value specified by the watt.server.json.decodeIntegerAsLong server configuration parameter. If no value is supplied for decodeIntegerAsLong , Integration Server uses the value specified in the watt.server.json.decodeIntegerAsLong property. For more information about watt.server.json.decodeIntegerAsLong , see IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        },
+        {
+          "name": "decodeRealAsString",
+          "type": "String",
+          "description": "Optional. Converts real numbers in the jsonStream to String. Set to: true to convert real numbers to String. false to not convert real numbers to String. The real numbers are then converted to either Float or Double Java wrapper type depending on the value specified in decodeRealAsDouble . This is the default value. Note: The decodeRealAsString parameter overrides the value specified by the watt.server.json.decodeRealAsString server configuration parameter. If no value is supplied for decodeRealAsString , Integration Server uses the value set in watt.server.json.decodeRealAsString . For more information about watt.server.json.decodeRealAsString , see IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        },
+        {
+          "name": "unescapeSpecialChars",
+          "type": "String",
+          "description": "Optional. Controls whether Integration Server unescapes the special characters '\\n', '\\r', '\\t', '\\b', '\\f', '\\\\', '\\\"' while parsing JSON documents. Set to: true to unescape these special characters (that is, '\\n' will be replaced with new line, similarly other characters will also be replaced) in the output document. This is the default. false to keep these characters as is in the output document. Note: The unescapeSpecialChars parameter overrides the value specified by the watt.server.json.decode.unescapeSpecialChars server configuration parameter. If no value is supplied for unescapeSpecialChars , Integration Server uses the value specified in the watt.server.json.decode.unescapeSpecialChars parameter. For more information about watt.server.json.decode.unescapeSpecialChars, see IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "iterator",
+          "type": "Object",
+          "description": "A batch iterator object that has the list of arrays to be parsed in the JSON input stream. This object is passed as input to the pub.json:getNextBatch service.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_09E7C5E9620B4850BD82A2406314BEFD.html"
+    },
+    {
+      "name": "pub.json:getNextBatch",
+      "folder": "JSON",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "iterator",
+          "type": "Object",
+          "description": "The iterator object returned by the pub.json:getArrayIterator service.",
+          "optional": false
+        },
+        {
+          "name": "batchSize",
+          "type": "Object",
+          "description": "Number of array elements that the service should retrieve in one batch. Note: This value must be lesser or equal to the value of the watt.server.json.iterator.maxBatchSize server configuration property. Similarly, it must be greater or equal to the value of the watt.server.json.iterator.minBatchSize server configuration property. Otherwise, the service throws an error.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "batch",
+          "type": "Document",
+          "description": "IData object that contains the following keys.",
+          "optional": false
+        },
+        {
+          "name": "iterationStatus",
+          "type": "Document",
+          "description": "IData object that contains the following keys.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_087C5CDA8BE24E03B38312C0D810F1EA.html"
+    },
+    {
+      "name": "pub.json:jsonStreamToDocument",
+      "folder": "JSON",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "jsonStream",
+          "type": "Object",
+          "description": "JSON content in an input stream to convert to a document (an IData object).",
+          "optional": false
+        },
+        {
+          "name": "decodeRealAsDouble",
+          "type": "String",
+          "description": "Optional. Converts real numbers from jsonStream to either a Float or Double Java wrapper type. Set to: true to convert real numbers to Double Java wrapper types. This is the default. false to convert real numbers to Float Java wrapper types. Note: The decodeRealAsDouble parameter overrides the value specified by the watt.server.json.decodeRealAsDouble server configuration parameter. If no value is supplied for decodeRealAsDouble , Integration Server uses the value set in watt.server.json.decodeRealAsDouble. For more information about watt.server.json.decodeRealAsDouble, see IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        },
+        {
+          "name": "decodeRealAsString",
+          "type": "String",
+          "description": "Optional. Converts real numbers in the jsonStream to String. Set to: true to convert real numbers to String. false to not convert real numbers to String. The real numbers are then converted to either Float or Double Java wrapper type depending on the value specified in decodeRealAsDouble . This is the default. Note: The decodeRealAsString parameter overrides the value specified by the watt.server.json.decodeRealAsString server configuration parameter. If no value is supplied for decodeRealAsString , Integration Server uses the value set in watt.server.json.decodeRealAsString. For more information about watt.server.json.decodeRealAsString, see IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        },
+        {
+          "name": "decodeIntegerAsLong",
+          "type": "String",
+          "description": "Optional. Converts integers from jsonStream to either a Long or Integer Java wrapper type. Set to: true to convert integers to Long Java wrapper types. This is the default. false to convert integers to Integer Java wrapper types. Note: The decodeIntegerAsLong parameter overrides the value specified by the watt.server.json.decodeIntegerAsLong server configuration parameter. If no value is supplied for decodeIntegerAsLong , Integration Server uses the value specified in the watt.server.json.decodeIntegerAsLong property. For more information about watt.server.json.decodeIntegerAsLong, see IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        },
+        {
+          "name": "decodeNullRootAsEmpty",
+          "type": "String",
+          "description": "Optional. Converts a null value that Integration Server retrieves from JSON content to either IData or empty IData. Set to: true to convert the null value to empty IData. The subsequent encoding of empty IData creates a JSON text of “{}”. This JSON content is different from the original JSON content (null) as the original null value gets converted to JSON text of \"{}\". false to convert the null value to IData. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "jsonDocumentTypeName",
+          "type": "String",
+          "description": "Optional. If specified, the transformation from the JSON stream to Document (IData) is based on the JSON document type. Any deviations from the provided JSON document might cause transformation errors. When this parameter is provided, Integration Server ignores the following parameters: decodeRealAsDouble decodeIntegerAsLong decodeRealAsString and the following server configuration parameters: watt.server.json.decodeIntegerAsLong watt.server.json.decodeRealAsDouble watt.server.json.decodeRealAsString This parameter must have the fully qualified name of a JSON document type on Integration Server against which the JSON content is validated. This parameter must be in the format: <Folder Name>:<JSON Document Type Name> For example: data:employeeData",
+          "optional": true
+        },
+        {
+          "name": "strict",
+          "type": "String",
+          "description": "Optional. Valid values are true and false . The default value is false . The values of strict and jsonDocumentTypeName parameters together determine how Integration Server parses and converts JSON stream to Document (IData) in the following manner: When strict is false and jsonDocumentTypeName is not specified, there is no change in the behavior. When strict is false and jsonDocumentTypeName is specified, the transformation from JSON stream to Document (IData) is loosely based on the JSON document type. For conversion rules, see Table 1: Conversion of JSON Payload to IData . When strict is true and jsonDocumentTypeName is not specified, the service returns an exception. When strict is true and jsonDocumentTypeName is specified, the transformation from JSON stream to Document (IData) is strictly based on the JSON document type. The validation is performed first before the transformation, and any deviations lead to transformation errors. The decodeRealAsDouble , decodeIntegerAsLong , and decodeRealAsString parameters and the server configuration parameters, if specified, are ignored.",
+          "optional": true
+        },
+        {
+          "name": "unescapeSpecialChars",
+          "type": "String",
+          "description": "Optional. Controls whether Integration Server unescapes the special characters '\\n', '\\r', '\\t', '\\b', '\\f', '\\\\', '\\\"' while parsing JSON documents. Set to: true to unescape these special characters (that is, '\\n' will be replaced with new line, similarly other characters will also be replaced) in the output document. This is the default. false to keep these characters as is in the output document. Note: The unescapeSpecialChars parameter overrides the value specified by the watt.server.json.decode.unescapeSpecialChars server configuration parameter. If no value is supplied for unescapeSpecialChars , Integration Server uses the value specified in the watt.server.json.decode.unescapeSpecialChars parameter. For more information about watt.server.json.decode.unescapeSpecialChars, see IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "document",
+          "type": "Document",
+          "description": "Document (IData object) resulting from the conversion of jsonStream .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id924c5161-62d7-4b68-9b31-f3a6b972b275.html"
+    },
+    {
+      "name": "pub.json:jsonStringToDocument",
+      "folder": "JSON",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "jsonString",
+          "type": "String",
+          "description": "JSON content in a string to convert to a document (IData object).",
+          "optional": false
+        },
+        {
+          "name": "decodeRealAsDouble",
+          "type": "String",
+          "description": "Optional. Converts real numbers from jsonString to either a Float or Double Java wrapper type. Set to: true to convert real numbers to Double Java wrapper types. This is the default. false to convert real numbers to Float Java wrapper types. Note: The decodeRealAsDouble parameter overrides the value specified by the watt.server.json.decodeRealAsDouble server configuration parameter. If no value is supplied for decodeRealAsDouble , Integration Server uses the value set in watt.server.json.decodeRealAsDouble. For more information about watt.server.json.decodeRealAsDouble, see IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        },
+        {
+          "name": "decodeRealAsString",
+          "type": "String",
+          "description": "Optional. Converts real numbers in the jsonStream to String. Set to: true to convert real numbers to String. false to not convert real numbers to String. The real numbers are then converted to either Float or Double Java wrapper type depending on the values specified in decodeRealAsDouble . This is the default. Note: The decodeRealAsString parameter overrides the value specified by the watt.server.json.decodeRealAsString server configuration parameter. If no value is supplied for decodeRealAsString , Integration Server uses the value set in watt.server.json.decodeRealAsString. For more information about watt.server.json.decodeRealAsString, see IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        },
+        {
+          "name": "decodeIntegerAsLong",
+          "type": "String",
+          "description": "Optional. Converts integers from jsonString to either a Long or Integer Java wrapper type. Set to: true to convert integers to Long Java wrapper types. This is the default. false to convert integers to Integer Java wrapper types. Note: The decodeRealAsDouble parameter overrides the value specified by the watt.server.json.decodeIntegerAsLong server configuration parameter. If no value is supplied for decodeIntegerAsLong , Integration Server uses the value specified in the watt.server.json.decodeIntegerAsLong property. For more information about watt.server.json.decodeIntegerAsLong, see IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        },
+        {
+          "name": "decodeNullRootAsEmpty",
+          "type": "String",
+          "description": "Optional. Converts a null value that Integration Server retrieves from JSON content to either IData or empty IData. Set to: true to convert the null value to empty IData. The subsequent encoding of empty IData creates a JSON text of “{}”. This JSON content is different from the original JSON content (null) as the original null value gets converted to JSON text of \"{}\". false to convert the null value to IData. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "jsonDocumentTypeName",
+          "type": "String",
+          "description": "Optional. If specified, the transformation from JSON string to Document (IData) is based on the JSON document type. Any deviations from the provided JSON document might cause transformation errors. When this parameter is provided, Integration Server ignores the following parameters: decodeRealAsDouble decodeIntegerAsLong decodeRealAsString and the following server configuration parameters: watt.server.json.decodeIntegerAsLong watt.server.json.decodeRealAsDouble watt.server.json.decodeRealAsString This parameter must have the fully qualified name of a JSON document type on Integration Server against which the JSON content is validated. This parameter must be in the format: <Folder Name>:<JSON Document Type Name> For example: data:employeeData",
+          "optional": true
+        },
+        {
+          "name": "strict",
+          "type": "String",
+          "description": "Optional. Valid values are true and false . The default value is false . The values of strict and jsonDocumentTypeName parameters together determine how Integration Server parses and converts JSON string to Document (IData) in the following manner: When strict is false and jsonDocumentTypeName is not specified, there is no change in the behavior. When strict is false and jsonDocumentTypeName is specified, the transformation from JSON string to Document (IData) is loosely based on the JSON document type. For conversion rules, see: Table 1: Conversion of JSON Payload to IData . When strict is true and jsonDocumentTypeName is not specified, the service returns an exception. When strict is true and jsonDocumentTypeName is specified, the transformation from JSON string to Document (IData) is strictly based on the JSON document type. The validation is performed first before the transformation, and any deviations lead to transformation errors. The decodeRealAsDouble , decodeIntegerAsLong , and decodeRealAsString parameters and the server configuration parameters, if specified, are ignored.",
+          "optional": true
+        },
+        {
+          "name": "unescapeSpecialChars",
+          "type": "String",
+          "description": "Optional. Controls whether Integration Server unescapes the special characters '\\n', '\\r', '\\t', '\\b', '\\f', '\\\\', '\\\"' while parsing JSON documents. Set to: true to unescape these special characters (that is, '\\n' will be replaced with new line, similarly other characters will also be replaced) in the output document. This is the default. false to keep these characters as is in the output document. Note: The unescapeSpecialChars parameter overrides the value specified by the watt.server.json.decode.unescapeSpecialChars server configuration parameter. If no value is supplied for unescapeSpecialChars , Integration Server uses the value specified in the watt.server.json.decode.unescapeSpecialChars parameter. For more information about watt.server.json.decode.unescapeSpecialChars, see IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "document",
+          "type": "Document",
+          "description": "Document (IData object) resulting from the conversion of jsonString .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idebb5d354-4ad1-4e0a-82a1-6198fb438349.html"
+    },
+    {
+      "name": "pub.json:jsonToDocument",
+      "folder": "JSON",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "document",
+          "type": "Object",
+          "description": "The document (IData object) to be converted to a JSON string.",
+          "optional": false
+        },
+        {
+          "name": "jsonData",
+          "type": "Object",
+          "description": "JSON content in a string or an input stream to convert to a document (IData object).",
+          "optional": false
+        },
+        {
+          "name": "documentTypeName",
+          "type": "String",
+          "description": "Optional. If specified, the transformation from the JSON data to Document (IData) is based on the document type. Any deviations from the provided document result in errors. documentTypeName accepts all kinds of document types. When this parameter is provided, Integration Server ignores the following parameters: decodeIntegerAs decodeDecimalAs decodeBooleanAs This parameter must have the fully qualified name of the document type against which the JSON content is validated. For example: data:employeeData",
+          "optional": true
+        },
+        {
+          "name": "decodeIntegerAs",
+          "type": "String",
+          "description": "Optional. Converts all the integer values in jsonData to either String, Integer, Long, or BigInteger Java wrapper type. Depending on the data type to which you want to convert the integer values in jsonData , set to: String to convert all the integer values to String. This is the default. Integer to convert all the integer values to Integer. Long to convert all the integer values to Long. BigInteger to convert all the integer values to BigInteger. Auto to check the Java wrapper type range in which the input value fits and convert the value to the appropriate wrapper type. If there is no user selection and documentTypeName is not specified, then by default, converts the value to String. Note: If you select the datatype as Integer and the JSON data contains a value outside the range of Integer, the service fails with an error.",
+          "optional": true
+        },
+        {
+          "name": "decodeDecimalAs",
+          "type": "String",
+          "description": "Optional. Converts all the decimal values in jsonData to either String, Float, Double, or BigDecimal Java wrapper type. Depending on the data type to which you want to convert the decimal values in jsonData , set to: String to convert all the decimal values to String. This is the default. Float to convert all the decimal values to Float. Double to convert all the decimal values to Double. BigDecimal to convert all the decimal values to BigDecimal. Auto to check the Java wrapper type range in which the input value fits and convert the value to the appropriate wrapper type. If there is no user selection and documentTypeName is not specified, then by default, converts the value to String. Note: If you select the datatype as Float and the JSON data contains a value outside the range of Float, the service fails with an error.",
+          "optional": true
+        },
+        {
+          "name": "decodeBooleanAs",
+          "type": "String",
+          "description": "Optional. Converts all the boolean values in jsonData to String or Boolean. Depending on the value of the variable in jsonData , set to: String to convert all the boolean values to String. This is the default. Boolean to convert all the boolean values to Boolean. If there is no user selection and documentTypeName is not specified, then by default converts the value to String.",
+          "optional": true
+        },
+        {
+          "name": "decodeNullRootAsEmpty",
+          "type": "String",
+          "description": "Optional. Converts a null value at the root that Integration Server retrieves from JSON content to IData. Depending on the data type to which you want to convert the null values in jsonData , set to: true to convert the null value in the JSON data to an empty IData. false to convert the null value in the JSON data to an IData with $rootValue. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "unescapeSpecialChars",
+          "type": "String",
+          "description": "Optional. Controls whether Integration Server unescapes the special characters '\\n', '\\r', '\\t', '\\b', '\\f', '\\\\', '\\\"' while parsing JSON documents. Set to: true to unescape these special characters (for example, '\\n' is replaced with new line; similarly, other characters are also replaced) in the output document. This is the default. false to keep these characters as is in the output document. The behavior applies to both values and keys. Note: The unescapeSpecialChars parameter overrides the value specified by the watt.server.json.decode.unescapeSpecialChars server configuration parameter. If no value is supplied for unescapeSpecialChars , Integration Server uses the value specified in the watt.server.json.decode.unescapeSpecialChars parameter. For more information about watt.server.json.decode.unescapeSpecialChars , see IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "document",
+          "type": "Document",
+          "description": "Document (IData object) resulting from the conversion of jsonData .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_ojs_p4t_wtb.html"
+    },
+    {
+      "name": "pub.json.schema:validate",
+      "folder": "JSON",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "jsonString",
+          "type": "String",
+          "description": "Optional. JSON content for validation in a String. If you specify the value of this parameter, you need not specify jsonStream or jsonDocument .",
+          "optional": true
+        },
+        {
+          "name": "jsonStream",
+          "type": "java.io.InputStream",
+          "description": "Optional. JSON content for validation in an input stream. If you specify the value of this parameter, you need not specify jsonString or jsonDocument .",
+          "optional": true
+        },
+        {
+          "name": "jsonDocument",
+          "type": "Document",
+          "description": "Optional. JSON content for validation in a document (IData object). If you specify the value of this parameter, you need not specify jsonString or jsonStream .",
+          "optional": true
+        },
+        {
+          "name": "streamEncoding",
+          "type": "String",
+          "description": "Optional. Character encoding that applies to jsonStream . The default is UTF-8 .",
+          "optional": true
+        },
+        {
+          "name": "conformsTo",
+          "type": "String",
+          "description": "Fully qualified name of a JSON document type on Integration Server against which the JSON content will be validated.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "isValid",
+          "type": "String",
+          "description": "Flag that indicates whether or not validation was successful. A value of: true indicates that validation was successful. false indicates that validation was unsuccessful.",
+          "optional": false
+        },
+        {
+          "name": "errors",
+          "type": "Document List",
+          "description": "Conditional. Returned only when errors are encountered during validation. Each document contains the following information:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_018CF236F84B451FAE3330D38DA5DC99.html"
+    }
+  ]
+}

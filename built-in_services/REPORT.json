@@ -1,0 +1,192 @@
+{
+  "folder": "REPORT",
+  "total_services": 6,
+  "services": [
+    {
+      "name": "pub.report:runFileTemplate",
+      "folder": "REPORT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$template",
+          "type": "java.io.File",
+          "description": "Template file.",
+          "optional": false
+        },
+        {
+          "name": "$values",
+          "type": "Document",
+          "description": "Document (IData object) to bind against $template .",
+          "optional": false
+        },
+        {
+          "name": "fileEncoding",
+          "type": "String",
+          "description": "Optional. The encoding of the template file. If fileEncoding is not specified, the default file encoding specified in the watt.server.netEncoding server parameter or the system file encoding will be used. Examples: SJIS, ASCII, ISO8859_1.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$txt",
+          "type": "String",
+          "description": "Results from applying $template to $values .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_report_runFileTemplate.html"
+    },
+    {
+      "name": "pub.report:runFileTemplateOnPipe",
+      "folder": "REPORT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$template",
+          "type": "java.io.File",
+          "description": "Template file.",
+          "optional": false
+        },
+        {
+          "name": "fileEncoding",
+          "type": "String",
+          "description": "Optional. The encoding of the template file. If fileEncoding is not specified, the default file encoding specified in the watt.server.netEncoding server parameter or the system file encoding will be used. Examples: SJIS, ASCII, ISO8859_1.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$txt",
+          "type": "String",
+          "description": "Results from applying $template to the pipeline.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_report_runFileTemplateOnPipe.html"
+    },
+    {
+      "name": "pub.report:runStringTemplate",
+      "folder": "REPORT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$template",
+          "type": "String",
+          "description": "Template to apply.",
+          "optional": false
+        },
+        {
+          "name": "$values",
+          "type": "Document",
+          "description": "Document (IData object) to bind against $template .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$txt",
+          "type": "String",
+          "description": "Results from applying $template to $values .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_report_runStringTemplate.html"
+    },
+    {
+      "name": "pub.report:runStringTemplateOnPipe",
+      "folder": "REPORT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$template",
+          "type": "String",
+          "description": "Template to apply to pipeline.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$txt",
+          "type": "String",
+          "description": "Result from applying $template to the pipeline.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_report_runStringTemplateOnPipe.html"
+    },
+    {
+      "name": "pub.report:runTemplate",
+      "folder": "REPORT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$template",
+          "type": "String",
+          "description": "Name of the template file (for example, mytemp.html or mytemp.xml ).",
+          "optional": false
+        },
+        {
+          "name": "$package",
+          "type": "String",
+          "description": "Name of the package where the template resides (for example, Default ).",
+          "optional": false
+        },
+        {
+          "name": "$values",
+          "type": "Document",
+          "description": "Document (IData object) to bind against $template .",
+          "optional": false
+        },
+        {
+          "name": "fileEncoding",
+          "type": "String",
+          "description": "Optional. The encoding of the template file. If fileEncoding is not specified, the default file encoding specified in the watt.server.netEncoding server parameter or the system file encoding will be used. Examples: SJIS, ASCII, ISO8859_1.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$txt",
+          "type": "String",
+          "description": "Result from applying the template to $values .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_report_runTemplate.html"
+    },
+    {
+      "name": "pub.report:runTemplateOnPipe",
+      "folder": "REPORT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$template",
+          "type": "String",
+          "description": "Name of template file (for example, mytemp.html or mytemp.xml ).",
+          "optional": false
+        },
+        {
+          "name": "$package",
+          "type": "String",
+          "description": "Name of the package in which the template resides (for example, Default ).",
+          "optional": false
+        },
+        {
+          "name": "fileEncoding",
+          "type": "String",
+          "description": "Optional. The encoding of the template file. If fileEncoding is not specified, the default file encoding specified in the watt.server.netEncoding server parameter or the system file encoding will be used. Examples: SJIS, ASCII, ISO8859_1.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$txt",
+          "type": "String",
+          "description": "Results from applying the template file to the pipeline.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_report_runTemplateOnPipe.html"
+    }
+  ]
+}

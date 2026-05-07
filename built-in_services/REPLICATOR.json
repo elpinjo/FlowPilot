@@ -1,0 +1,353 @@
+{
+  "folder": "REPLICATOR",
+  "total_services": 10,
+  "services": [
+    {
+      "name": "pub.replicator:addReleaseRegistryEntry",
+      "folder": "REPLICATOR",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "package",
+          "type": "String",
+          "description": "Name of the package. The service confirms that this package exists on the server before adding an entry to the Package Release Registry.",
+          "optional": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "description": "Name of the release. This name could be different from the name of the package.",
+          "optional": false
+        },
+        {
+          "name": "version",
+          "type": "String",
+          "description": "Version number of the release, in the format #.# or #.#.# (for example, 1.2 or 1.2.1 ).",
+          "optional": false
+        },
+        {
+          "name": "build",
+          "type": "String",
+          "description": "Build number of the release (for example, 12, 530 ).",
+          "optional": false
+        },
+        {
+          "name": "patchNums",
+          "type": "String",
+          "description": "One or more comma-separated patch numbers included in this release.",
+          "optional": false
+        },
+        {
+          "name": "JVMVersion",
+          "type": "String",
+          "description": "Minimum JVM version number that this release requires.",
+          "optional": false
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "description": "Brief description of this release. You may want to use this parameter to summarize the nature and purpose of the release.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "packages",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Entries in the server's Package Release Registry.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A16086.html"
+    },
+    {
+      "name": "pub.replicator:deleteReleaseRegistryEntry",
+      "folder": "REPLICATOR",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "packageName",
+          "type": "String",
+          "description": "Name of the release that you want to delete.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "packages",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Entries that remain in the server's Package Release Registry.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_replicator_delRelRegEntry.html"
+    },
+    {
+      "name": "pub.replicator:distributeViaFTP",
+      "folder": "REPLICATOR",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "packageName",
+          "type": "String",
+          "description": "Name of the released package.",
+          "optional": false
+        },
+        {
+          "name": "action",
+          "type": "String",
+          "description": "Flag that specifies whether you want to send (put) a package to another Integration Server or whether you want to retrieve (get) a package from another Integration Server . Set to: get to retrieve a package from the publisher's server. This is the default. put to send a package to a subscriber's server.",
+          "optional": false
+        },
+        {
+          "name": "serverhost",
+          "type": "String",
+          "description": "Host name or IP address of the remote Integration Server .",
+          "optional": false
+        },
+        {
+          "name": "serverport",
+          "type": "String",
+          "description": "Number of the FTP port on the remote Integration Server .",
+          "optional": false
+        },
+        {
+          "name": "username",
+          "type": "String",
+          "description": "User name that your server will use to log on to the remote Integration Server .",
+          "optional": false
+        },
+        {
+          "name": "password",
+          "type": "String",
+          "description": "Password that your server will use to log on to the remote Integration Server .",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_replicator_distribViaFTP.html"
+    },
+    {
+      "name": "pub.replicator:distributeViaSvcPull",
+      "folder": "REPLICATOR",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "packageName",
+          "type": "String",
+          "description": "Name of the release.",
+          "optional": false
+        },
+        {
+          "name": "publisher",
+          "type": "String",
+          "description": "Alias of the publisher's server.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_replicator_distribViaSvcPull.html"
+    },
+    {
+      "name": "pub.replicator:distributeViaSvcPush",
+      "folder": "REPLICATOR",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "packageName",
+          "type": "String",
+          "description": "The name of the release.",
+          "optional": false
+        },
+        {
+          "name": "subscriber",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "List of the subscriber's host names or IP addresses.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_replicator_distribViaSvcPush.html"
+    },
+    {
+      "name": "pub.replicator:generateReplicationEvent",
+      "folder": "REPLICATOR",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "packageName",
+          "type": "String",
+          "description": "Name of the package.",
+          "optional": false
+        },
+        {
+          "name": "action",
+          "type": "String",
+          "description": "User-defined string that describes the replication event, such as “pulled” or “pushed.”",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_replicator_generateReplicationEvent.html"
+    },
+    {
+      "name": "pub.replicator:getLocalReleasedList",
+      "folder": "REPLICATOR",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "packages",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Entries in the server's Package Release Registry.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "packages",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Entries in the server's Package Release Registry.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_replicator_getLocalRelList.html"
+    },
+    {
+      "name": "pub.replicator:getRemoteReleasedList",
+      "folder": "REPLICATOR",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "publisher",
+          "type": "String",
+          "description": "Alias of the publishing server.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "packages",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "List of released packages on the publishing server to which you subscribe.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_replicator_getRemoteRelList.html"
+    },
+    {
+      "name": "pub.replicator:notifyPackageRelease",
+      "folder": "REPLICATOR",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "packageName",
+          "type": "String",
+          "description": "Name of the release.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_replicator_notifyPkgRelease.html"
+    },
+    {
+      "name": "pub.replicator:packageCreation",
+      "folder": "REPLICATOR",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "package",
+          "type": "String",
+          "description": "Name of the package.",
+          "optional": false
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "description": "Name of the release.",
+          "optional": false
+        },
+        {
+          "name": "version",
+          "type": "String",
+          "description": "Version number of the release, in the format #.# or #.#.# (for example, 1.2 or 1.2.1 ).",
+          "optional": false
+        },
+        {
+          "name": "build",
+          "type": "String",
+          "description": "Build number of the release (for example, 12 , 530 ).",
+          "optional": false
+        },
+        {
+          "name": "patchNums",
+          "type": "String",
+          "description": "Comma-separated list of patch numbers included in the release.",
+          "optional": false
+        },
+        {
+          "name": "targetPkgVersion",
+          "type": "String",
+          "description": "Version number of the target package. To prevent the installation program from overwriting an existing (higher) version of the package, this field is checked when the subscriber installs this package over an existing package.",
+          "optional": false
+        },
+        {
+          "name": "targetServerVersion",
+          "type": "String",
+          "description": "Version number of the IBM webMethods Integration Server that this release requires.",
+          "optional": false
+        },
+        {
+          "name": "JVMVersion",
+          "type": "String",
+          "description": "Minimum JVM version number that this release requires.",
+          "optional": false
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "description": "Brief description of this release. You might use this parameter to summarize the nature and purpose of the release.",
+          "optional": false
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "description": "Flag indicating the type of release. Set to: full to indicate a full package. This is the default. partial to indicate a patch or an update for the package.",
+          "optional": false
+        },
+        {
+          "name": "filter",
+          "type": "String",
+          "description": "Flag that specifies whether all files are to be included in the distribution file or only selected files. If only selected files are to be included, use this parameter in conjunction with fileList to specify which files to include. Set to: includeall to include all the files in the distribution file. This is the default. include to include selected files in the distribution file. exclude to include all except selected files in the distribution file.",
+          "optional": false
+        },
+        {
+          "name": "fileList",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Names of files to include or exclude from the distribution file, depending on the value of filter .",
+          "optional": false
+        },
+        {
+          "name": "fileNamePattern",
+          "type": "String",
+          "description": "Pattern string that specifies the names of files to be included in the distribution file. The asterisk ( * ) is the only wildcard character allowed in a pattern string. All other characters are treated literally (for example, *.java , *.dsp ).",
+          "optional": false
+        },
+        {
+          "name": "filesToDeleteList",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. The names of files that will be deleted from the target package when the subscribing server installs the package created by this service.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$result",
+          "type": "String",
+          "description": "Conditional. If the distribution file is created successfully, this parameter contains the value OK . If the distribution file was not created successfully, this parameter is not present in the output signature and the service throws an exception.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_replicator_packageCreation.html"
+    }
+  ]
+}

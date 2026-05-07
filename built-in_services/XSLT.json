@@ -1,0 +1,138 @@
+{
+  "folder": "XSLT",
+  "total_services": 3,
+  "services": [
+    {
+      "name": "pub.xslt.Transformations:transformSerialXML",
+      "folder": "XSLT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "stylesheetSystemId",
+          "type": "String",
+          "description": "URI (simple file path or URL) for the XSLT stylesheet to use.",
+          "optional": false
+        },
+        {
+          "name": "systemId",
+          "type": "String",
+          "description": "URL of the XML to transform. If you specify this parameter, do not specify the filename , bytes , or xmlStream parameter.",
+          "optional": false
+        },
+        {
+          "name": "filename",
+          "type": "String",
+          "description": "Fully qualified name of the file that contains the XML to transform. The file must be located on the local machine. If you specify this parameter, do not specify the systemId , bytes , or xmlStream parameter.",
+          "optional": false
+        },
+        {
+          "name": "bytes",
+          "type": "byte[]",
+          "description": "XML to transform. If you specify this parameter, do not specify the systemId , filename , or xmlStream parameter.",
+          "optional": false
+        },
+        {
+          "name": "xmlStream",
+          "type": "Input\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tstream",
+          "description": "XML to transform. If you specify this parameter, do not specify the systemId , filename , or bytes parameter.",
+          "optional": false
+        },
+        {
+          "name": "xslParamInput",
+          "type": "Document",
+          "description": "Optional. Name/value pairs to pass to the stylesheet. See the IBM webMethods Service Development Help for instructions on setting up a stylesheet to work with this parameter.",
+          "optional": true
+        },
+        {
+          "name": "resultType",
+          "type": "String",
+          "description": "Tells Designer what to transform the XML into. Must be one of these values: bytes to transforms the XML into a byte array. file to transforms the XML into a file. If you specify file , you must also specify the outFileName parameter. xmlNode to transforms the XML into an XML node.",
+          "optional": false
+        },
+        {
+          "name": "outFileName",
+          "type": "String",
+          "description": "Fully qualified name of the file in which to store the transformed XML. The file must be located on the local machine. Use this parameter only if you specified file on the resultType parameter.",
+          "optional": false
+        },
+        {
+          "name": "useCompiling\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tProcessor",
+          "type": "Boolean",
+          "description": "Optional. Specifies whether to use the Xalan compiling processor (XSLTC), which creates and uses compiled stylesheets or translets . Set to: true to use the org.apache.xalan.xsltc.trax.TransformerFactoryImpl class as a transformer factory. false to use the transformer factory that is specified on the home page of the WmXSLT package. This is the default. If no translet currently exists for the stylesheet, the processor creates one. If a translet exists and the stylesheet has changed since the translet was created, the processor replaces the existing translet with a new one. If the stylesheet has not changed since the translet was created, the processor reuses the existing translet. If the stylesheetSystemId input parameter specifies a simple file path, the service writes the translet to the same folder in which the stylesheet for your XSLT service resides. If the stylesheetSystemId input parameter specifies a URL, the service writes the translet to memory. As a result, the translet will not survive Integration Server restart.",
+          "optional": true
+        },
+        {
+          "name": "loadExternalEntities",
+          "type": "String",
+          "description": "Optional. Specifies whether or not to load external entities (file URIs, HTTP URLs, and so on) referenced in the XML that the service receives or in the XSLT stylesheet the service uses to transform the XML. Set to: true to load content from all external entities that are referenced in the XSLT stylesheet or in the XML. This is the default. false to not load content from external entities that are referenced in the XSLT stylesheet or in the XML. Use this setting to prevent attacks from external entities by blocking those entities. Important: To help prevent an external entity attack in a production environment, set loadExternalEntities to false in each instance of the transformSerialXML service.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "bytes",
+          "type": "byte[]",
+          "description": "Byte array that contains the transformed XML. The service places the byte array in the pipeline so that subsequent services can use it. This value is present only if you specified bytes in the resultType input parameter.",
+          "optional": false
+        },
+        {
+          "name": "node",
+          "type": "com.wm.lang.xml.Node",
+          "description": "Node that contains the transformed XML. The service places the XML node in the pipeline so that subsequent services can use it. This value is present only if you specified xmlNode in the resultType input parameter.",
+          "optional": false
+        },
+        {
+          "name": "xslParamOutput",
+          "type": "Document",
+          "description": "Document that contains name/value pairs that were returned by the stylesheet. The service places the document in the pipeline so that subsequent services can use it. This value is present only if you add name/value pairs to it within your stylesheet. See the section on passing name/value pairs from the stylesheet to the pipeline in IBM webMethods Service Development Help for instructions on setting up your stylesheet to work with this parameter.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_xslt_Transformations_transformSerialXML.html"
+    },
+    {
+      "name": "pub.xslt.Cache:removeAllTemplates",
+      "folder": "XSLT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Indicates whether the service was able to clear the cache.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Indicates whether the service was able to clear the cache.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_xslt_cache_removeall.html"
+    },
+    {
+      "name": "pub.xslt.Cache:removeTemplate",
+      "folder": "XSLT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "stylesheetSystemId",
+          "type": "String",
+          "description": "URI for the XSLT stylesheet to remove from the cache.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Indicates whether the service was able to remove the stylesheet from the cache.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_xslt_cache_removetemplate.html"
+    }
+  ]
+}

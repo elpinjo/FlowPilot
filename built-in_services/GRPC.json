@@ -1,0 +1,81 @@
+{
+  "folder": "GRPC",
+  "total_services": 3,
+  "services": [
+    {
+      "name": "pub.grpc.observer:onCompleted",
+      "folder": "GRPC",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "streamObserver",
+          "type": "Object",
+          "description": "A gRPC object used by the gRPC server to return the response to the gRPC client.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id087VB070ZHT.html"
+    },
+    {
+      "name": "pub.grpc.observer:onError",
+      "folder": "GRPC",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "streamObserver",
+          "type": "Object",
+          "description": "A gRPC object used by the gRPC server to return the response to the gRPC client.",
+          "optional": false
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "description": "The gRPC error code to be returned. The codes correspond to status codes defined by gRPC.io minus the prefix “ GRPC_STATUS_ ”. Set status to one of the following: ABORTED ALREADY_EXISTS CANCELLED DATA_LOSS DEADLINE_EXCEEDED FAILED_PRECONDITION INTERNAL INVALID_ARGUMENT NOT_FOUND OK OUT_OF_RANGE PERMISSION_DENIED RESOURCE_EXHAUSTED UNAVAILABLE UNAUTHENTICATED UNIMPLEMENTED UNKNOWN",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Message text to be returned with the gRPC error, including any specific error details you want to return to the gRPC client.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id76abb7d6-b391-46c4-865d-c18a6db0e9f7.html"
+    },
+    {
+      "name": "pub.grpc.observer:onNext",
+      "folder": "GRPC",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "document",
+          "type": "Document",
+          "description": "A document (IData object) representing the gRPC response message to be returned to the gRPC client. The document must conform to the document type in documentTypeName .",
+          "optional": false
+        },
+        {
+          "name": "documentTypeName",
+          "type": "String",
+          "description": "Fully qualified name of the gRPC document type representing the gRPC response.",
+          "optional": false
+        },
+        {
+          "name": "streamObserver",
+          "type": "Object",
+          "description": "A gRPC object used by the gRPC framework to return the response to the gRPC client.",
+          "optional": false
+        },
+        {
+          "name": "streamType",
+          "type": "Object",
+          "description": "A gRPC object used by the gRPC framework to identify the gRPC message type of the expected response.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id502d20b3-e70c-4746-b343-e8c1d81f03a3.html"
+    }
+  ]
+}

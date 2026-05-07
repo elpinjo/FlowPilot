@@ -1,0 +1,526 @@
+{
+  "folder": "SMIME",
+  "total_services": 10,
+  "services": [
+    {
+      "name": "pub.smime:createCertsOnlyData",
+      "folder": "SMIME",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "certificates",
+          "type": "byte[ ][\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "The certificates that are to be encapsulated within the S/MIME entity. Each byte[ ] represents a single certificate.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SMimeEnvStream",
+          "type": "java.io.InputStream",
+          "description": "S/MIME entity.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_smime_CreatCertsOnlyMessage.html"
+    },
+    {
+      "name": "pub.smime:createEncryptedData",
+      "folder": "SMIME",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "envStream",
+          "type": "java.io.InputStream",
+          "description": "MIME message that you want to encrypt (for example, the output produced by pub.mime:getEnvelopeStream ).",
+          "optional": false
+        },
+        {
+          "name": "recipientCerts",
+          "type": "byte[ ][\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "The X.509 certificates of the recipients for whom this message will be encrypted. Each element in the list represents a certificate for a single recipient in the form of a byte[ ]. Note: When you have multiple recipients, createEncryptedData creates a single message that is encrypted for all recipients. It does not create a separate message for each recipient.",
+          "optional": false
+        },
+        {
+          "name": "encryptionAlg",
+          "type": "String",
+          "description": "Optional. Code specifying the encryption algorithm to use. Must be TripleDES (default), DES , or RC2 . Note: If you have enabled the FIPS (Federal Information Processing Standards) mode , then Integration Server uses only TripleDES .",
+          "optional": true
+        },
+        {
+          "name": "keyLength",
+          "type": "String",
+          "description": "Optional. Length of the encryption key for RC2 encryption. Must be 40 , 64 , or 128 (default). This parameter is ignored if encryptionAlg is not RC2.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SMimeEnvStream",
+          "type": "java.io.InputStream",
+          "description": "The encrypted MIME message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_smime_createEncryptedData.html"
+    },
+    {
+      "name": "pub.smime:createSignedAndEncryptedData",
+      "folder": "SMIME",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "envStream",
+          "type": "java.io.InputStream",
+          "description": "The MIME message that you want to sign and encrypt (for example, the output produced by pub.mime:getEnvelopeStream ).",
+          "optional": false
+        },
+        {
+          "name": "privKey",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Private key of the party signing the message.",
+          "optional": false
+        },
+        {
+          "name": "certificates",
+          "type": "byte[ ] [\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Optional. The certificate chain of the party signing the message, where each byte[ ] represents a single certificate in the chain. Certificates must appear in hierarchical order, starting with the signer's certificate in element 0. The following list shows how the elements of a complete chain would appear for a certificate that was issued through two intermediate CAs:",
+          "optional": true
+        },
+        {
+          "name": "signerCert",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Digital certificate of the party signing the message.",
+          "optional": false
+        },
+        {
+          "name": "explicit",
+          "type": "String",
+          "description": "Optional. Flag indicating whether an implicit or explicit signature is to be generated. Set to: true to generate an explicit (detached) signature. This is the default. false to generate an implicit signature.",
+          "optional": true
+        },
+        {
+          "name": "recipientCerts",
+          "type": "byte[ ][\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "X.509 certificates of the recipients for whom this message will be encrypted. Each element in the list contains the certificate for a single recipient in the form of a byte array.",
+          "optional": false
+        },
+        {
+          "name": "encryptionAlg",
+          "type": "String",
+          "description": "Optional. Code specifying the encryption algorithm to use. Must be TripleDES (default), DES , or RC2 . Note: If you have enabled the FIPS (Federal Information Processing Standards) mode , then Integration Server uses only TripleDES .",
+          "optional": true
+        },
+        {
+          "name": "keyLength",
+          "type": "String",
+          "description": "Optional. Length of the encryption key for RC2 encryption. Must be 40 , 64 , or 128 (default). This parameter is ignored if encryptionAlg is not RC2.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SMimeEnvStream",
+          "type": "java.io.InputStream",
+          "description": "Signed and encrypted MIME message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_smime_createSignedAndEncryptedData.html"
+    },
+    {
+      "name": "pub.smime:createSignedData",
+      "folder": "SMIME",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "envStream",
+          "type": "java.io.InputStream",
+          "description": "MIME message that you want to sign (for example, the output produced by pub.mime:getEnvelopeStream ).",
+          "optional": false
+        },
+        {
+          "name": "privKey",
+          "type": "byte[]",
+          "description": "Private key of the party signing the message.",
+          "optional": false
+        },
+        {
+          "name": "certificates",
+          "type": "byte[ ][\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Optional. Certificate chain of the party that signed the message, where each byte[ ] represents a single certificate in the chain. Certificates must appear in hierarchical order, starting with the signer's certificate in element 0. The following shows how the elements of a complete chain would appear for a certificate that was issued through two intermediate CAs:",
+          "optional": true
+        },
+        {
+          "name": "signerCert",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Digital certificate of the party signing the message.",
+          "optional": false
+        },
+        {
+          "name": "explicit",
+          "type": "String",
+          "description": "Optional. Flag indicating whether an implicit or explicit signature is generated. Set to: true to generate an explicit (detached) signature. This is the default. false to generate an implicit signature.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SMimeEnvStream",
+          "type": "java.io.InputStream",
+          "description": "The signed MIME message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_smime_createSignedData.html"
+    },
+    {
+      "name": "pub.smime:processCertsOnlyData",
+      "folder": "SMIME",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "SMimeEnvStream",
+          "type": "java.io.InputStream",
+          "description": "The certs-only S/MIME entity.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "certificates",
+          "type": "byte[ ][\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "The extracted certificates. Each element in the list contains one of the extracted certificates represented as a byte[ ].",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_smime_getContentType.html"
+    },
+    {
+      "name": "pub.smime:processEncryptedData",
+      "folder": "SMIME",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "SMimeEnvStream",
+          "type": "java.io.InputStream",
+          "description": "The encrypted S/MIME entity (for example, the output produced by pub.smime:createEncryptedData ).",
+          "optional": false
+        },
+        {
+          "name": "recipientCert",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Digital certificate of the party receiving the message.",
+          "optional": false
+        },
+        {
+          "name": "privKey",
+          "type": "byte[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Private key of the party receiving the message (that is, the party whose public key was used to encrypt the message).",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mimeData",
+          "type": "Document",
+          "description": "MIME object containing the decrypted MIME message.",
+          "optional": false
+        },
+        {
+          "name": "contentDigest",
+          "type": "String",
+          "description": "Message digest of the encrypted content, base64-encoded. (Some sites return this digest to the sender to acknowledge their receipt of the message.)",
+          "optional": false
+        },
+        {
+          "name": "encrypted",
+          "type": "String",
+          "description": "Conditional. Flag indicating whether the decrypted MIME entity is encrypted. A value of: true indicates that the MIME entity is encrypted. false indicates that the MIME entity is not encrypted.",
+          "optional": false
+        },
+        {
+          "name": "signed",
+          "type": "String",
+          "description": "Conditional. Flag indicating whether the decrypted MIME entity is signed. A value of: true indicates that the MIME entity is signed. false indicates that the MIME entity is not signed.",
+          "optional": false
+        },
+        {
+          "name": "certsOnly",
+          "type": "String",
+          "description": "Conditional. Flag indicating whether the decrypted MIME entity is a certs-only entity. A value of: true indicates that the MIME entity is a certs-only entity. false indicates that the MIME entity is not a certs-only entity.",
+          "optional": false
+        },
+        {
+          "name": "stream",
+          "type": "java.io.InputStream",
+          "description": "Conditional. The decrypted MIME entity.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_smime_processEncryptedData.html"
+    },
+    {
+      "name": "pub.smime:processSignedData",
+      "folder": "SMIME",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "SMimeEnvStream",
+          "type": "java.io.InputStream",
+          "description": "Signed MIME entity (for example, the output produced by pub.smime:createSignedData ).",
+          "optional": false
+        },
+        {
+          "name": "signerCertChain",
+          "type": "byte[ ][\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Optional. Certificate chain of the party that signed the message, where each byte[ ] represents a single certificate in the chain. Certificates must appear in hierarchical order, starting with the signer's certificate in element 0. The following shows how the elements of a complete chain would appear for a certificate that was issued through two intermediate CAs:",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mimeData",
+          "type": "Document",
+          "description": "MIME object containing the extracted MIME entity.",
+          "optional": false
+        },
+        {
+          "name": "contentDigest",
+          "type": "String",
+          "description": "Message digest (base64-encoded) that was recalculated by processSignedData .",
+          "optional": false
+        },
+        {
+          "name": "signerCert",
+          "type": "java.security.cert.X509Certificate",
+          "description": "Signer's X.509 certificate.",
+          "optional": false
+        },
+        {
+          "name": "encrypted",
+          "type": "String",
+          "description": "Conditional. Flag indicating whether the extracted MIME entity is encrypted. A value of: true indicates that the MIME entity is encrypted. false indicates that the MIME entity is not encrypted.",
+          "optional": false
+        },
+        {
+          "name": "signed",
+          "type": "String",
+          "description": "Conditional. Flag indicating whether the extracted MIME entity is signed. A value of: true indicates that the MIME entity is signed. false indicates that the MIME entity is not signed.",
+          "optional": false
+        },
+        {
+          "name": "certsOnly",
+          "type": "String",
+          "description": "Conditional. Flag indicating whether the extracted MIME entity is a certs-only entity. A value of: true indicates that the MIME entity is a certs-only entity. false indicates that the MIME entity is not a certs-only entity.",
+          "optional": false
+        },
+        {
+          "name": "stream",
+          "type": "java.io.InputStream",
+          "description": "Conditional. Extracted MIME entity.",
+          "optional": false
+        },
+        {
+          "name": "verify",
+          "type": "String",
+          "description": "Flag indicating whether the signature was successfully processed. Success indicates that the signature was successfully verified with the supplied public key. A value of: true indicates that signature processing was successful. false indicates that signature processing failed. The signature could not be verified because an errorCode 1, 2, 3, or 4 occurred.",
+          "optional": false
+        },
+        {
+          "name": "trusted",
+          "type": "String",
+          "description": "Flag indicating whether the signer certificate is trusted or not. A value of: true indicates that the signer certificate is trusted. false indicates that the signer certificate is not trusted.",
+          "optional": false
+        },
+        {
+          "name": "errorCode",
+          "type": "String",
+          "description": "Conditional. Number indicating the kind of error that occurred while processing the signature. See errorMessage for possible values. If no error occurred, errorCode will not be returned.",
+          "optional": false
+        },
+        {
+          "name": "errorMessage",
+          "type": "String",
+          "description": "Conditional. Textual error message indicating what kind of error occurred while processing the signature. Error codes and messages are as follows:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_smime_processSignedData.html"
+    },
+    {
+      "name": "pub.smime.keystore:createSignedAndEncryptedData",
+      "folder": "SMIME",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "envStream",
+          "type": "java.io.InputStream",
+          "description": "The MIME message that you want to sign and encrypt (for example, the output produced by pub.mime:getEnvelopeStream ).",
+          "optional": false
+        },
+        {
+          "name": "keyStoreAlias",
+          "type": "String",
+          "description": "Alias of the keystore containing the signing key.",
+          "optional": false
+        },
+        {
+          "name": "keyAlias",
+          "type": "String",
+          "description": "Alias of the private key to be used for signing.",
+          "optional": false
+        },
+        {
+          "name": "explicit",
+          "type": "String",
+          "description": "Optional. Flag indicating whether an implicit or explicit signature is to be generated. Set to: True to generate an explicit (detached) signature. This is the default. False to generate an implicit signature.",
+          "optional": true
+        },
+        {
+          "name": "recipientCerts",
+          "type": "Object\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "A list of byte[ ] for the partner certificates for whom this message will be encrypted.",
+          "optional": false
+        },
+        {
+          "name": "encryptionAlg",
+          "type": "String",
+          "description": "Optional. Code specifying the encryption algorithm to use. Must be TripleDES (default), DES, or RC2.",
+          "optional": true
+        },
+        {
+          "name": "keyLength",
+          "type": "String",
+          "description": "Optional. Length of the encryption key for RC2 encryption. Must be 40, 64, or 128 (default). This parameter is ignored if encryptionAlg is not RC2.",
+          "optional": true
+        },
+        {
+          "name": "signingAlg",
+          "type": "String",
+          "description": "Optional. The signing algorithm to use to sign the S/MIME messages. Set to: SHA1 SHA224 SHA256 SHA384 SHA512 MD5 The default is SHA1 . Note: If you do not set this parameter, Integration Server uses SHA512 algorithm to sign the incoming messages. Note: The MD5 signing algorithm is not available if FIPS mode is enabled on Integration Server .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SMimeEnvStream",
+          "type": "java.io.InputStream",
+          "description": "Signed and encrypted data as a stream.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A11884.html"
+    },
+    {
+      "name": "pub.smime.keystore:createSignedData",
+      "folder": "SMIME",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "envStream",
+          "type": "java.io.InputStream",
+          "description": "MIME message that you want to sign (for example, the output produced by pub.mime:getEnvelopeStream ).",
+          "optional": false
+        },
+        {
+          "name": "keyStoreAlias",
+          "type": "String",
+          "description": "Alias of the keystore.",
+          "optional": false
+        },
+        {
+          "name": "keyAlias",
+          "type": "String",
+          "description": "Alias of the private key of interest in the keystore.",
+          "optional": false
+        },
+        {
+          "name": "explicit",
+          "type": "String",
+          "description": "Optional. Flag indicating whether an implicit or explicit signature is generated. Set to: True to generate an explicit (detached) signature. This is the default. False to generate an implicit signature.",
+          "optional": true
+        },
+        {
+          "name": "signingAlg",
+          "type": "String",
+          "description": "Optional. The signing algorithm to use to sign the S/MIME messages. Set to: SHA1 SHA224 SHA256 SHA384 SHA512 MD5 The default is SHA1 . Note: If you do not set this parameter, Integration Server uses SHA1 algorithm to sign the incoming messages. Note: The MD5 signing algorithm is not available if FIPS mode is enabled on the Integration Server .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SMimeEnvStream",
+          "type": "java.io.InputStream",
+          "description": "The signed MIME stream.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A28332.html"
+    },
+    {
+      "name": "pub.smime.keystore:processEncryptedData",
+      "folder": "SMIME",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "SMimeEnvStream",
+          "type": "java.io.InputStream",
+          "description": "The encrypted S/MIME stream.",
+          "optional": false
+        },
+        {
+          "name": "keyStoreAlias",
+          "type": "String",
+          "description": "Alias of the keystore containing the decryption key.",
+          "optional": false
+        },
+        {
+          "name": "keyAlias",
+          "type": "String",
+          "description": "Alias of the key used for decryption.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mimeData",
+          "type": "Document",
+          "description": "The decrypted MIME message.",
+          "optional": false
+        },
+        {
+          "name": "contentDigest",
+          "type": "String",
+          "description": "Message digest of the encrypted content, base64-encoded. (Some sites return this digest to the sender to acknowledge their receipt of the message.",
+          "optional": false
+        },
+        {
+          "name": "encrypted",
+          "type": "String",
+          "description": "Flag indicating whether the MIME entity passed in to the service was encrypted. A value of: True indicates that the MIME entity was encrypted. False indicates that the MIME entity was not encrypted.",
+          "optional": false
+        },
+        {
+          "name": "signed",
+          "type": "String",
+          "description": "Flag indicating whether the MIME entity passed in to the service was signed. A value of: True indicates that the MIME entity is signed. False indicates that the MIME entity is not signed.",
+          "optional": false
+        },
+        {
+          "name": "certsOnly",
+          "type": "String",
+          "description": "Flag indicating whether the MIME entity passed in to the service contained only digital certificates. A value of: True indicates that the MIME entity is a certs-only entity. False indicates that the MIME entity is not a certs-only entity.",
+          "optional": false
+        },
+        {
+          "name": "stream",
+          "type": "java.io.InputStream",
+          "description": "The decrypted MIME entity.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A38797.html"
+    }
+  ]
+}

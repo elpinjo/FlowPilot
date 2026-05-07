@@ -1,0 +1,356 @@
+{
+  "folder": "XMLDATA",
+  "total_services": 9,
+  "services": [
+    {
+      "name": "pub.xmldata:getAttributes",
+      "folder": "XMLDATA",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "xmlDataAttributes",
+          "type": "Document",
+          "description": "The *attributes from which you want to retrieve a list of attributes. The *attributes field is an XMLData document. If an element of complex type defines or carries attributes, Integration Server places the attributes in an *attributes document that is of type XMLData.",
+          "optional": false
+        },
+        {
+          "name": "ncName",
+          "type": "String",
+          "description": "Optional. The NCName (non-colonized name), of the attribute. The NCName is also called the local name. If you do not specify a value for ncName , the service returns all attributes belonging to the namespace specified in the namespace input parameter.",
+          "optional": true
+        },
+        {
+          "name": "namespace",
+          "type": "String",
+          "description": "Optional. The namespace URI for the attribute. If you do not specify a value, the service looks for attributes that do not belong to a namespace.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "results",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "A list of XMLData documents that contain the attributes that match the supplied ncName and namespace values. If no attributes match the supplied ncName and namespace values, the service returns an empty (zero length) list.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id97dc16b8-e927-486d-895e-38ef6d5c4dca.html"
+    },
+    {
+      "name": "pub.xmldata:getGroupObjects",
+      "folder": "XMLDATA",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "query",
+          "type": "Document.",
+          "description": "Document containing the group to query and the query parameters.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "results",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList.",
+          "description": "Query results. Returns one document for each tag in the input group that meets the query parameters.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id00c895fc-156c-4648-8c9d-63bc4e412572.html"
+    },
+    {
+      "name": "pub.xmldata:getInstanceTag",
+      "folder": "XMLDATA",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "xmlDataParent",
+          "type": "Document",
+          "description": "The XMLData document that is a parent of the field for which to retrieve the instance tag value.",
+          "optional": false
+        },
+        {
+          "name": "ncName",
+          "type": "String",
+          "description": "The NCName (non-colonized name), of the field for which you want to retrieve an instance tag value. The NCName is also called the local name.",
+          "optional": false
+        },
+        {
+          "name": "namespace",
+          "type": "String",
+          "description": "Optional. The namespace URI for the field for which you want to retrieve an instance tag value. If you do not specify a value, the service looks for tags that do not belong to a namespace.",
+          "optional": true
+        },
+        {
+          "name": "particleId",
+          "type": "String",
+          "description": "The sequential number for the particle in a model group for which you wan to retrieve an instance tag value. A value of 1 refers to the first instance of the field with ncName # namespace name in a model group.",
+          "optional": false
+        },
+        {
+          "name": "index",
+          "type": "String",
+          "description": "Optional. If the field for which you want to retrieve a tag value is a repeating field ( minOccurs > 0), specify the index for the occurrence for which you want to retrieve a tag value. A value of 0 refers to the first instance of a repeating field. Note: Repeating elements are represented as arrays in XMLData.",
+          "optional": true
+        },
+        {
+          "name": "tagName",
+          "type": "String",
+          "description": "Name of the instance tag for which you want to retrieve a value, such as type, nil, schemaLocation. Note: Tag names are case-sensitive.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "tagValue",
+          "type": "String",
+          "description": "Value of the tag.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/ida5da03bb-9dc4-4ce1-99b9-4d82df2930e7.html"
+    },
+    {
+      "name": "pub.xmldata:getNamespaceTags",
+      "folder": "XMLDATA",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "xmlDataParent",
+          "type": "Document",
+          "description": "The XMLData document that is a parent of the field for which to retrieve the namespace tag and value.",
+          "optional": false
+        },
+        {
+          "name": "ncName",
+          "type": "String",
+          "description": "The NCName (non-colonized name), of the field for which you want to retrieve an namespace declaration. The NCName is also called the local name.",
+          "optional": false
+        },
+        {
+          "name": "namespace",
+          "type": "String",
+          "description": "Optional. The namespace URI for the field for which you want to retrieve the namespace declaration. If you do not specify a namespace, the service looks for a field that does not belong to a namespace.",
+          "optional": true
+        },
+        {
+          "name": "particleId",
+          "type": "String",
+          "description": "The sequential number for the particle in a model group for which you want to retrieve a namespace declaration. A value of 1 refers to the first instance of the field with ncName # namespace name in a model group.",
+          "optional": false
+        },
+        {
+          "name": "index",
+          "type": "String",
+          "description": "Optional. If the field for which you want to retrieve a namespace declaration is a repeating field ( minOccurs > 0), the index for the occurrence for which you want to retrieve the namespace declaration. A value of 0 refers to the first instance of a repeating field. Note: Repeating elements are represented as arrays in XMLData.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "results",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "A document (IData) containing namespace declarations for the specified field. A namespace declaration consists of a prefix and a namespace URI.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idd60f984a-ef5a-4264-bac1-530b1bda2281.html"
+    },
+    {
+      "name": "pub.xmldata:queryXMLNode",
+      "folder": "XMLDATA",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "node",
+          "type": "com.wm.lang.xml.Node",
+          "description": "The XML node or enhanced XML node that you want to query. This parameter supports the following types of input: com.wm.lang.xml.Node XML node that you want to query. An XML node can be produced by pub.xml:loadXMLNode , pub.xml:xmlStringToXMLNode , or an XML content handler. enhanced XML node The enhanced XML node that you want to query. An enhanced XML node can be produced by pub.xml:loadEnhancedXMLNode , pub.xml:xmlStringToEnhancedXMLNode , or an XML content handler that receives a document with an xmlFormat is set to enhanced. If you supply an enhanced XML node, you must use XQL to query the node.",
+          "optional": false
+        },
+        {
+          "name": "nsDecls",
+          "type": "Document",
+          "description": "Optional. Namespaces associated with any namespace prefixes used to specify elements in fields/query . Each entry in nsDecls represents a namespace prefix/URI pair, where a key name represents a prefix and the value of the key specifies the namespace URI. nsDecls is not used for creating output fields. For example, to define the URIs associated with two prefixes called GSX and TxMon , you would set nsDecls as follows: Instead of defining prefix/namespace pairs in nsDecls , you can specify a namespace for each field using the namespace parameter that is an immediate child of the fields variable, (i.e., fields/namespace )",
+          "optional": true
+        },
+        {
+          "name": "defaultNamespace",
+          "type": "String",
+          "description": "Optional. The namespace to use as the default for each namespace parameter. An empty string indicates no default namespace. You can override the default namespace by specifying a namespace for a field in the fields/namespace parameter.",
+          "optional": true
+        },
+        {
+          "name": "fields",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. An array of documents where each document defines a field to be created in the output. Each document contains parameters that describe how data is to be extracted from node . That is, each document in the list contains parameters for a single query.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id521f0014-6449-4aa2-ae4f-c07b116bab4c.html"
+    },
+    {
+      "name": "pub.xmldata:setAttribute",
+      "folder": "XMLDATA",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "xmlDataAttributes",
+          "type": "Document",
+          "description": "The *attributes document of type XMLData in which you want to set the value of an attribute.",
+          "optional": false
+        },
+        {
+          "name": "ncName",
+          "type": "String",
+          "description": "The NCName (non-colonized name) of the attribute whose value you want to set. The NCName is also called a local name.",
+          "optional": false
+        },
+        {
+          "name": "namespace",
+          "type": "String",
+          "description": "Optional. The namespace URI for the attribute whose value you want to set. Leave namespace blank if the attribute does not belong to a namespace.",
+          "optional": true
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "description": "The value that you want to assign to the attribute.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idf879b0e7-8581-41d9-8d1d-5eff544d5615.html"
+    },
+    {
+      "name": "pub.xmldata:setInstanceTag",
+      "folder": "XMLDATA",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "xmlDataParent",
+          "type": "Document",
+          "description": "The XMLData document that is a parent of the field for which to set the instance tag value.",
+          "optional": false
+        },
+        {
+          "name": "ncName",
+          "type": "String",
+          "description": "The NCName (non-colonized name), of the field for which you want to set an instance tag value. The NCName is also called the local name.",
+          "optional": false
+        },
+        {
+          "name": "namespace",
+          "type": "String",
+          "description": "Optional. The namespace URI for the field for which you want to set an instance tag value. If the field does not belong to a namespace, do not specify a value for the namespace input parameter.",
+          "optional": true
+        },
+        {
+          "name": "particleID",
+          "type": "String",
+          "description": "The sequential number for the particle in a model group for which you want to set an instance tag value. A value of 1 refers to the first instance of the field with ncName # namespace name.",
+          "optional": false
+        },
+        {
+          "name": "index",
+          "type": "String",
+          "description": "Optional. If the field for which you want to set a tag value is a repeating field (minOccurs > 0), the index for the occurrence for which you want to set a tag value. A value of 0 refers to the first instance of a repeating field. If you specify the array index that is greater than the current size of the array, the array size increases and missing entries are null. Note: Repeating elements are represented as arrays in XMLData.",
+          "optional": true
+        },
+        {
+          "name": "tagName",
+          "type": "String",
+          "description": "Name of the instance tag for which you want to set a value, such as type, nil, schemaLocation. Note: Tag names are case-sensitive.",
+          "optional": false
+        },
+        {
+          "name": "tagValue",
+          "type": "String",
+          "description": "Value to assign to the instance tag. If you specify a null value, the service removes the tag and its value from the XMLData.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id74e1e6cd-d01b-4ca4-9b10-b4ba37264ee6.html"
+    },
+    {
+      "name": "pub.xmldata:setNamepaceTag",
+      "folder": "XMLDATA",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "xmlDataParent",
+          "type": "Document",
+          "description": "The XMLData document that is a parent of the field for which to set a namespace declaration.",
+          "optional": false
+        },
+        {
+          "name": "ncName",
+          "type": "String",
+          "description": "The NCName (non-colonized name), of the field for which you want to set a namespace declaration. The NCName is also called the local name.",
+          "optional": false
+        },
+        {
+          "name": "namespace",
+          "type": "String",
+          "description": "Optional. The namespace URI for the field for which you want to set a namespace declaration. If the field does not belong to a namespace, do not specify a value for the namespace input parameter.",
+          "optional": true
+        },
+        {
+          "name": "particleID",
+          "type": "String",
+          "description": "The sequential number for the particle in a model group for which you want to set a namespace declaration. A value of 1 refers to the first instance of the field with ncName # namespace name.",
+          "optional": false
+        },
+        {
+          "name": "index",
+          "type": "String",
+          "description": "Optional. If the field for which you want to set a namespace declaration is a repeating element (minOccurs > 0), the index for the occurrence for which you want to set a tag value. A value of 0 refers to the first instance of a repeating field. If you specify the array index that is greater than the current size of the array, the array size increases and missing entries are null. If you specify an index that is beyond the end of the array, the service increases the size of the array and the intervening indexes have a null value. Note: Repeating elements are represented as arrays in XMLData.",
+          "optional": true
+        },
+        {
+          "name": "tagName",
+          "type": "String",
+          "description": "The prefix to associate with the namespace declaration. Specify an empty string to associate a value with the default namespace declaration, that is, specify: “”",
+          "optional": false
+        },
+        {
+          "name": "tagValue",
+          "type": "String",
+          "description": "The namespace URI to associate with the prefix in tagName . If you specify a null value, the service removes the namespace declaration from the XMLData.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id847e5f9c-71d1-4703-be05-5ecdab8a1465.html"
+    },
+    {
+      "name": "pub.xmldata:xmlDataToXMLString",
+      "folder": "XMLDATA",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "xmlDataDocument",
+          "type": "Document",
+          "description": "XMLData document that is to be converted to XML.",
+          "optional": false
+        },
+        {
+          "name": "encode",
+          "type": "String",
+          "description": "Optional. Flag indicating whether to HTML-encode the data. Set this parameter to true if your XML data contains special characters, including the following: < > & \" ' Set to: true to HTML-encode the data. For example, the string expression 5 < 6 would be converted to <expr>5 &lt; 6</expr> , which is valid. false to not HTML-encode the data. This is the default. For example, the string expression 5 < 6 would be converted to <expr>5 < 6</expr> , which is invalid.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "xmlString",
+          "type": "String",
+          "description": "XML String produced from xmlDataDocument .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id74e03dc9-d4e3-48ac-b1bc-ca7e0cdfdc17.html"
+    }
+  ]
+}

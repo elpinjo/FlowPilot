@@ -1,0 +1,76 @@
+{
+  "folder": "SYNC",
+  "total_services": 3,
+  "services": [
+    {
+      "name": "pub.sync:notify",
+      "folder": "SYNC",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Name of the key. Waiting services with the same key will receive notification and input from this service.",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "Document",
+          "description": "Input for the waiting services.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "notified",
+          "type": "String",
+          "description": "Number of waiting services that received the notification. The notified count only includes services waiting at the time the pub.sync:notify service was called. Wait requests that start after pub.sync:notify executes are not included in the notified count.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_sync_notify.html"
+    },
+    {
+      "name": "pub.sync:shutdown",
+      "folder": "SYNC",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id68768b2e-b80a-47e1-b830-4b157cbc8684.html"
+    },
+    {
+      "name": "pub.sync:wait",
+      "folder": "SYNC",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Name of the key for which the service is waiting notification. The service receives notification and data from a notifying service with the same key .",
+          "optional": false
+        },
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Length of time, in seconds, the service waits for notification. If the request times out, an exception is thrown. Note: A time value of -1 or 0 results in undefined behavior.",
+          "optional": false
+        },
+        {
+          "name": "exclusive",
+          "type": "String",
+          "description": "Optional. Flag indicating whether this service waits exclusively for the notification and prevents other services from waiting for a notification for the specified key . Set to: yes to specify that this service waits exclusively for the notification from the specified key . Integration Server prevents other services from waiting for the specified notification. no to allow multiple services to wait for notification. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "Document",
+          "description": "Input delivered by the notifying service.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_sync_wait.html"
+    }
+  ]
+}

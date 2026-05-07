@@ -1,0 +1,432 @@
+{
+  "folder": "PUBLISH",
+  "total_services": 12,
+  "services": [
+    {
+      "name": "pub.publish:deliver",
+      "folder": "PUBLISH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "documentTypeName",
+          "type": "String",
+          "description": "Fully qualified name of the publishable document type being delivered. The publishable document type must be in sync with the associated provider definition. The provider definition is a representation of the publishable document type and its properties on the provider. In the case of Universal Messaging , this is a channel. For Broker , it is a Broker document type. If the document type and provider definition are not synchronized, publication might fail. A publishable document type that uses the IS_LOCAL_CONNECTION alias cannot be delivered because delivery can only occur with a messaging provider ( Broker or Universal Messaging ).",
+          "optional": false
+        },
+        {
+          "name": "document",
+          "type": "Document",
+          "description": "Document (IData object) conforming to the publishable document type in documentTypeName .",
+          "optional": false
+        },
+        {
+          "name": "destId",
+          "type": "String",
+          "description": "The destination to which the document will be delivered. You can specify the ID for an individual trigger or the default client of an Integration Server as the destination. When you deliver a document to the default client of Integration Server , Integration Server routes the delivered document to any subscribers on that Integration Server . When working with Universal Messaging , the destination ID is a subject. When working with Broker , the destination ID is the client ID. For details about the destination IDs, see the Usage Notes for this service. If you specify an invalid client ID, the Integration Server delivers the document to the messaging provider, but the messaging provider never delivers the document to the intended recipient and no error is produced.",
+          "optional": false
+        },
+        {
+          "name": "delayUntilServiceSuccess",
+          "type": "String",
+          "description": "Optional. Flag indicating whether the Integration Server should publish the document when the pub.publish:deliver service executes or after the top-level service successfully completes. If the top-level service fails, the Integration Server will not publish the document. Set to: true to delay publishing until after the top-level service executes successfully. false to publish the document when the pub.publish:deliver service executes. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_publish_deliver.html"
+    },
+    {
+      "name": "pub.publish:deliverAndWait",
+      "folder": "PUBLISH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "documentTypeName",
+          "type": "String",
+          "description": "Fully qualified name of the publishable document type being delivered. The publishable document type must be in sync with the associated provider definition. The provider definition is a representation of the publishable document type and its properties on the provider. In the case of Universal Messaging , this is a channel. For Broker , it is a Broker document type. If the document type and provider definition are not synchronized, publication might fail. A publishable document type that uses the IS_LOCAL_CONNECTION alias cannot be delivered because delivery can only occur with a messaging provider ( Broker or Universal Messaging ).",
+          "optional": false
+        },
+        {
+          "name": "document",
+          "type": "Document",
+          "description": "Document (IData object) conforming to the publishable document type in documentTypeName .",
+          "optional": false
+        },
+        {
+          "name": "receiveDocumentType Name",
+          "type": "String",
+          "description": "Optional. Fully qualified name of the publishable document type expected as a reply. If no value is specified, the service uses the first reply document of any type it receives, as long as the value of tag in the envelope of the reply document matches the tag in the envelope of the published document. All other reply documents are discarded.",
+          "optional": true
+        },
+        {
+          "name": "destId",
+          "type": "String",
+          "description": "The destination to which the document will be delivered. You can specify the ID for an individual trigger or the default client of an Integration Server as the destination. When you deliver a document to the default client of Integration Server , Integration Server routes the delivered document to any subscribers on that Integration Server . When working with Universal Messaging , the destination ID is a subject. When working with Broker , the destination ID is the client ID. For details about the destination ID, see the Usage Notes for this service. If you specify an invalid client ID, the Integration Server delivers the document to the messaging provider, but the messaging provider never delivers the document to the intended recipient and no error is produced.",
+          "optional": false
+        },
+        {
+          "name": "waitTime",
+          "type": "String",
+          "description": "Optional. Specifies the time to wait (in milliseconds) for the response to arrive. If no value is specified, the service waits indefinitely until it receives a reply.",
+          "optional": true
+        },
+        {
+          "name": "async",
+          "type": "String",
+          "description": "Optional. Flag specifying whether this is an asynchronous or synchronous request/reply. Set to: true to indicate that this is an asynchronous request/reply. After publishing the document, the Integration Server executes the next step in the flow service immediately. Integration Server does not wait for a reply before continuing service execution. Note: To retrieve the reply to an asynchronous request, invoke the pub.publish:waitForReply service. false to indicate that this is a synchronous request/reply. After publishing the document, Integration Server waits for a reply before executing the next step in the flow service. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "receivedDocument",
+          "type": "Document",
+          "description": "A Document (IData object) received as reply. Important: Integration Server treats all reply documents as volatile documents. If the Integration Server shuts down before processing the reply document, the reply document is lost.",
+          "optional": false
+        },
+        {
+          "name": "tag",
+          "type": "String",
+          "description": "Conditional. A unique identifier for a deliver request. The Integration Server uses the tag value to match the requesting document with its corresponding reply document. The service produces a tag output value only when the async field is set to true . The tag value is required input when using the pub.publish:waitForReply service to retrieve the reply. Note: The tag output value is the same value that the Integration Server places in the tag field of the request document's envelope.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_publish_deliverAndWait.html"
+    },
+    {
+      "name": "pub.publish:documentResolverSpec",
+      "folder": "PUBLISH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "documentTypeName",
+          "type": "String",
+          "description": "Fully qualified name of the document whose status is In Doubt.",
+          "optional": false
+        },
+        {
+          "name": "redeliveryCount",
+          "type": "String",
+          "description": "Number of times the document has been redelivered to the trigger queue on the Integration Server .",
+          "optional": false
+        },
+        {
+          "name": "uuid",
+          "type": "String",
+          "description": "Universally unique identifier for the document. The publishing application assigns the uuid to a document.",
+          "optional": false
+        },
+        {
+          "name": "document",
+          "type": "Document",
+          "description": "The document (IData object) whose status needs to be resolved. This document must conform to the publishable document type specified in documentTypeName .",
+          "optional": false
+        },
+        {
+          "name": "transport",
+          "type": "String",
+          "description": "The transport (such as LOCAL, BROKER, or UM) used to send the document to the Integration Server .",
+          "optional": false
+        },
+        {
+          "name": "triggerName",
+          "type": "String",
+          "description": "The name of the IBM webMethods messaging trigger that received the document whose status needs to be resolved.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Indicates the status of the document. The value of this field determines whether the Integration Server processes the document, discards the document, or sends the document to the audit log. The status field must have one of the following values. NEW indicates that the document is new and has not been processed by the trigger. Integration Server instructs the trigger to process the document. DUPLICATE indicates that the document is a duplicate of one already processed by the trigger. Integration Server discards the document and generates a journal log message. IN_DOUBT indicates that the status of the document is still in doubt. The document resolver service could not conclusively determine whether the trigger already processed the document. If the audit log is a database, the audit subsystem logs the document and the Integration Server generates a journal log message.",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Conditional. A user-specified string that indicates why the document status is DUPLICATE or IN_DOUBT . Integration Server writes the message to the journal log when the server discards the document or routes it to the audit log.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A78507.html"
+    },
+    {
+      "name": "pub.publish:envelope",
+      "folder": "PUBLISH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_publish_envelope.html"
+    },
+    {
+      "name": "pub.publish:getRedeliveryCount",
+      "folder": "PUBLISH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "redeliveryCount",
+          "type": "String",
+          "description": "Specifies the number of times the trigger on Integration Server has received the document. The redelivery count can be one of the following:",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "redeliveryCount",
+          "type": "String",
+          "description": "Specifies the number of times the trigger on Integration Server has received the document. The redelivery count can be one of the following:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A97140.html"
+    },
+    {
+      "name": "pub.publish:publish",
+      "folder": "PUBLISH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "documentTypeName",
+          "type": "String",
+          "description": "Fully qualified name of the publishable document type of which you are publishing an instance. If you intend to publish the document to a messaging provider ( Broker or Universal Messaging ), the publishable document type must be in sync with the associated provider definition. The provider definition is a representation of the publishable document type and its properties on the provider. In the case of Universal Messaging , this is a channel. For Broker , it is a Broker document type. If the document type and provider definition are not synchronized, publication might fail.",
+          "optional": false
+        },
+        {
+          "name": "document",
+          "type": "Document",
+          "description": "Document (IData object) conforming to the document type in documentTypeName .",
+          "optional": false
+        },
+        {
+          "name": "local",
+          "type": "String",
+          "description": "Optional. Flag specifying whether the document is to be published locally or to the messaging provider. Set to: true to publish locally (to this Integration Server only). false to publish to the messaging provider using the messaging connection alias specified in the document type of which you are publishing an instance. This is the default. The local parameter is applicable only when the publishable document type uses Broker as the messaging provider. If the publishable document type specifies the IS_LOCAL_CONNECTION alias, the document can be published locally only. Integration Server ignores the value of local . A publishable document type that specifies Universal Messaging as the messaging provider cannot be published locally. If the document type in documentTypeName is associated with a Universal Messaging connection alias, Integration Server ignores the value of local .",
+          "optional": true
+        },
+        {
+          "name": "delayUntilServiceSuccess",
+          "type": "String",
+          "description": "Optional. Flag indicating whether the publish should happen when the pub.publish:publish service executes or after the top-level service successfully completes. If the top-level service fails, Integration Server will not publish the document. Set to: true to delay publishing until after the top-level service executes successfully. Note: Integration Server does not return the status output parameter when delayUntilServiceSuccess is set to true . false to publish the document when the publish service executes. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Status indicating whether the service was successful. Integration Server reports status only for locally published documents. A value of: success indicates that the service executed successfully. Note: If at least one subscribing trigger has room in its queue, the status is set to success . noSubscriber indicates that Integration Server does not contain any triggers that subscribe to the document. capacityExceeded indicates that the document could not be placed in the queue of the subscribing trigger because the trigger queue is currently at its maximum capacity. Note: Integration Server reports this status only when the watt.server.publish.local.rejectOOS property is set to true.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_publish_publish.html"
+    },
+    {
+      "name": "pub.publish:publishAndWait",
+      "folder": "PUBLISH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "documentTypeName",
+          "type": "String",
+          "description": "Fully qualified name of the publishable document type being published. If you intend to publish the document to a messaging provider ( Broker or Universal Messaging ), the publishable document type must be in sync with the associated provider definition. The provider definition is a representation of the publishable document type and its properties on the provider. In the case of Universal Messaging , this is a channel. For Broker , it is a Broker document type. If the document type and provider definition are not synchronized, publication might fail.",
+          "optional": false
+        },
+        {
+          "name": "document",
+          "type": "Document",
+          "description": "Document (IData object) conforming to the document type in documentTypeName .",
+          "optional": false
+        },
+        {
+          "name": "receiveDocumentType Name",
+          "type": "String",
+          "description": "Optional. Fully qualified name of the document type expected as a reply. If no value is specified, the service uses the first reply document of any type it receives, as long as the value of tag in the reply document envelope matches the tag in the envelope of the published document. All other reply documents are discarded.",
+          "optional": true
+        },
+        {
+          "name": "local",
+          "type": "String",
+          "description": "Optional. Flag specifying whether the document is to be published locally or to the IBM webMethods Broker . Set to: true to publish locally (to this Integration Server only). false to publish to the IBM webMethods Broker . This is the default. The local parameter is applicable only when the publishable document type uses Broker as the messaging provider. The local parameter is applicable only when the publishable document type uses Broker as the messaging provider. If the publishable document type specifies the IS_LOCAL_CONNECTION alias, the document can be published locally only. Integration Server ignores the value of local . A publishable document type that specifies Universal Messaging as the messaging provider cannot be published locally. If the document type in documentTypeName is associated with a Universal Messaging connection alias, Integration Server ignores the value of local .",
+          "optional": true
+        },
+        {
+          "name": "waitTime",
+          "type": "String",
+          "description": "Optional. Time to wait (in milliseconds) for the response to arrive. If no value is specified, the service waits indefinitely for a reply.",
+          "optional": true
+        },
+        {
+          "name": "async",
+          "type": "String",
+          "description": "Optional. Flag specifying whether this is an asynchronous or synchronous publish. Set to: true to indicate that this is an asynchronous request/reply. After publishing the document, the Integration Server executes the next step in the flow service immediately. The Integration Server does not wait for a reply before continuing service execution. Note: To retrieve the reply to an asynchronous publish, invoke the pub.publish:waitForReply service. false to indicate that this is a synchronous request/reply. After publishing the document, the Integration Server waits for a reply before executing the next step in the flow service. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "receivedDocument",
+          "type": "Document",
+          "description": "Document (IData object) received as response. If no matching document is received within the wait time, this will be null. Important: Integration Server treats all reply documents as volatile documents. If Integration Server shuts down before processing the reply document, the reply document is lost.",
+          "optional": false
+        },
+        {
+          "name": "tag",
+          "type": "String",
+          "description": "Conditional. A unique identifier for a publish request. Integration Server uses the tag value to match the request document with its corresponding reply document. The service produces a tag output value only when the async field is set to true . The tag value is required input when using the pub.publish:waitForReply service to retrieve the reply. Note: The tag output value is the same value that Integration Server places in the tag field of the request document's envelope.",
+          "optional": false
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Conditional. Status indicating whether the service was successful. Integration Server reports status only for locally published documents. A value of: success indicates that the service executed successfully. Note: If at least one subscribing trigger has room in its queue, the status is set to success . requestTimedOut indicates that the service timed out (that is, the waitTime specified in the service elapsed before Integration Server received a reply). noSubscriber indicates that Integration Server does not contain any triggers that subscribe to the document. capacityExceeded indicates that the document could not be placed in the queue of the subscribing trigger because the trigger queue is currently at its maximum capacity. Note: Integration Server reports the capacityExceeded status only when the watt.server.publish.local.rejectOOS property is set to true.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_publish_publishAndWait.html"
+    },
+    {
+      "name": "pub.publish:reply",
+      "folder": "PUBLISH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "receivedDocumentEnvelope",
+          "type": "Document",
+          "description": "Optional. The envelope of the document to which you are replying. By default receivedDocumentEnvelope specifies the envelope of the document that triggered this service. In case of a join, receivedDocumentEnvelope will specify the last document that satisfied the join condition. However, you may specify the envelope of any published document to which you want to reply.",
+          "optional": true
+        },
+        {
+          "name": "documentTypeName",
+          "type": "String",
+          "description": "Fully qualified name of the publishable document type for the document that you are sending as a reply. Keep in mind that the publisher of the requesting document might be expecting a reply document that conforms to specific publishable document type.",
+          "optional": false
+        },
+        {
+          "name": "document",
+          "type": "Document",
+          "description": "The reply IData object. This document must conform to the publishable document type specified in documentTypeName .",
+          "optional": false
+        },
+        {
+          "name": "delayUntilServiceSuccess",
+          "type": "String",
+          "description": "Optional. Flag indicating whether Integration Server should publish the document when the pub.publish:reply service executes or after the top-level service successfully completes. If the top-level service fails, Integration Server will not publish the document. Set to: true to delay publishing until after the top-level service executes successfully. false to publish the document when the publish service executes. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_publish_reply.html"
+    },
+    {
+      "name": "pub.publish:syncToBroker",
+      "folder": "PUBLISH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "documentTypes",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Fully qualified names of the publishable document types to synchronize with their associated provider definition.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "successfulPDTs",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Conditional. Fully qualified names of the publishable document types that Integration Server updated successfully on the provider. The service only produces this output parameter if one or more publishable document types updated successfully.",
+          "optional": false
+        },
+        {
+          "name": "unsuccessfulPDTs",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Conditional. Fully qualified names of the publishable document types that Integration Server did not update successfully on the provider. The service only produces this output parameter if one or more publishable document types did not update successfully.",
+          "optional": false
+        },
+        {
+          "name": "errors",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Conditional. Lists any errors that occurred during document type synchronization.",
+          "optional": false
+        },
+        {
+          "name": "warnings",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Conditional. Lists any warnings that occurred during document type synchronization.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A94936.html"
+    },
+    {
+      "name": "pub.publish:syncToProvider",
+      "folder": "PUBLISH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "documentTypes",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Fully qualified names of the publishable document types to synchronize with their associated provider definition.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "successfulPDTs",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Conditional. Fully qualified names of the publishable document types that Integration Server updated successfully on the provider. The service only produces this output parameter if one or more publishable document types updated successfully.",
+          "optional": false
+        },
+        {
+          "name": "unsuccessfulPDTs",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Conditional. Fully qualified names of the publishable document types that Integration Server did not update successfully on the provider. The service only produces this output parameter if one or more publishable document types did not update successfully.",
+          "optional": false
+        },
+        {
+          "name": "errors",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Conditional. Lists any errors that occurred during document type synchronization.",
+          "optional": false
+        },
+        {
+          "name": "warnings",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Conditional. Lists any warnings that occurred during document type synchronization.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/CEHHBAEG.html"
+    },
+    {
+      "name": "pub.publish:waitForReply",
+      "folder": "PUBLISH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "tag",
+          "type": "String",
+          "description": "A unique identifier for the publish request for which you are retrieving a reply. Integration Server uses the tag value to match the request document with its corresponding reply document.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "receivedDocument",
+          "type": "Document",
+          "description": "Document (IData object) received as the reply to the request. If the request expires (that is, the waitTime elapses) before Integration Server receives the reply document, the receivedDocument field contains a null document. Important: Integration Server treats all reply documents as volatile documents. If Integration Server shuts down before processing the reply document, the reply document is lost.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A26279.html"
+    },
+    {
+      "name": "pub.publish.notification:error",
+      "folder": "PUBLISH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_publish_notification_error.html"
+    }
+  ]
+}

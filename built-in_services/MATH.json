@@ -1,0 +1,604 @@
+{
+  "folder": "MATH",
+  "total_services": 22,
+  "services": [
+    {
+      "name": "pub.math:absoluteValue",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "num",
+          "type": "String",
+          "description": "Number whose absolute value is to be returned.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positiveNumber",
+          "type": "String",
+          "description": "Absolute value of the input number.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc462907973.html"
+    },
+    {
+      "name": "pub.math:addFloatList",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "numList",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Numbers (floating point numbers represented in a string list) to add.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "String",
+          "description": "Sum of the numbers in numList . If a sum cannot be produced, value contains one of the following:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A68596.html"
+    },
+    {
+      "name": "pub.math:addFloats",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "num1",
+          "type": "String",
+          "description": "Number to add.",
+          "optional": false
+        },
+        {
+          "name": "num2",
+          "type": "String",
+          "description": "Number to add.",
+          "optional": false
+        },
+        {
+          "name": "precision",
+          "type": "String",
+          "description": "Optional. Number of decimal places to which the sum will be rounded. The default value is null. The precision parameter, if specified, will override the behavior set by the watt.server.math.floatOperation.mode property. For information about the watt.server.math.floatOperation.mode property, see the IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "String",
+          "description": "Sum of the numbers in num1 and num2 . If a sum cannot be produced, value contains one of the following:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc462907974.html"
+    },
+    {
+      "name": "pub.math:addIntList",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "numList",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Numbers (integers represented as Strings) to add.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "String",
+          "description": "Sum of the numbers in numList .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc462907975.html"
+    },
+    {
+      "name": "pub.math:addInts",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "num1",
+          "type": "String",
+          "description": "Number (integer represented as a String) to add.",
+          "optional": false
+        },
+        {
+          "name": "num2",
+          "type": "String",
+          "description": "Number (integer represented as a String) to add.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "String",
+          "description": "Sum of num1 and num2 .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc462907976.html"
+    },
+    {
+      "name": "pub.math:addObjects",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "num1",
+          "type": "java.lang.Number",
+          "description": "Number to add. See the Usage Notes for supported sub-classes.",
+          "optional": false
+        },
+        {
+          "name": "num2",
+          "type": "java.lang.Number",
+          "description": "Number to add. See the Usage Notes for supported sub-classes.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "java.lang.Number",
+          "description": "Sum of the numeric values of num1 and num2 .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_math_addObjects.html"
+    },
+    {
+      "name": "pub.math:divideFloats",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "num1",
+          "type": "String",
+          "description": "Number (floating point number represented as a String) that is the dividend.",
+          "optional": false
+        },
+        {
+          "name": "num2",
+          "type": "String",
+          "description": "Number (floating point number represented as a String) that is the divisor.",
+          "optional": false
+        },
+        {
+          "name": "precision",
+          "type": "String",
+          "description": "Optional. Number of decimal places to which the quotient will be rounded. The default value is null. The precision parameter, if specified, will override the behavior set by the watt.server.math.floatOperation.mode property. For information about the watt.server.math.floatOperation.mode property, see the IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "String",
+          "description": "The quotient of num1 / num2 . If a quotient cannot be produced, value contains one of the following:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc462907977.html"
+    },
+    {
+      "name": "pub.math:divideInts",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "num1",
+          "type": "String",
+          "description": "Number (integer represented as a String) that is the dividend.",
+          "optional": false
+        },
+        {
+          "name": "num2",
+          "type": "String",
+          "description": "Number (integer represented as a String) that is the divisor.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "String",
+          "description": "The quotient of num1 / num2 .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc462907978.html"
+    },
+    {
+      "name": "pub.math:divideObjects",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "num1",
+          "type": "java.lang.Number",
+          "description": "Number that is the dividend. See the Usage Notes for supported sub-classes.",
+          "optional": false
+        },
+        {
+          "name": "num2",
+          "type": "java.lang.Number",
+          "description": "Number that is the divisor. See the Usage Notes for supported sub-classes.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "java.lang.Number",
+          "description": "Quotient of num1 / num2 .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_math_divideObjects.html"
+    },
+    {
+      "name": "pub.math:max",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "numList",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "List of numbers from which the largest number is to be returned.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "maxValue",
+          "type": "String",
+          "description": "Largest number from the list of numbers.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A32337.html"
+    },
+    {
+      "name": "pub.math:min",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "numList",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "List of numbers from which the smallest number is to be returned.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "minValue",
+          "type": "String",
+          "description": "Smallest number from the list of numbers.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A31815.html"
+    },
+    {
+      "name": "pub.math:multiplyFloatList",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "numList",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Numbers (floating point numbers represented as Strings) to multiply.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "String",
+          "description": "Product of the numbers in numlist . If a product cannot be produced, value contains one of the following:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc462907979.html"
+    },
+    {
+      "name": "pub.math:multiplyFloats",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "num1",
+          "type": "String",
+          "description": "Number (floating point number represented as a String) to multiply.",
+          "optional": false
+        },
+        {
+          "name": "num2",
+          "type": "String",
+          "description": "Number (floating point number represented as a String) to multiply.",
+          "optional": false
+        },
+        {
+          "name": "precision",
+          "type": "String",
+          "description": "Optional. Number of decimal places to which the product will be rounded. The default value is null. The precision parameter, if specified, will override the behavior set by the watt.server.math.floatOperation.mode property. For information about the watt.server.math.floatOperation.mode property, see the IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "String",
+          "description": "Product of the numeric values of num1 and num2 . If a product cannot be produced, value contains one of the following:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc462907980.html"
+    },
+    {
+      "name": "pub.math:multiplyIntList",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "numList",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Numbers (floating point numbers represented as Strings) to multiply.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "String",
+          "description": "Product of the numbers in numList .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc462907981.html"
+    },
+    {
+      "name": "pub.math:multiplyInts",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "num1",
+          "type": "String",
+          "description": "Number (integer represented as a String) to multiply.",
+          "optional": false
+        },
+        {
+          "name": "num2",
+          "type": "String",
+          "description": "Number (integer represented as a String) to multiply.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "String",
+          "description": "Product of num1 and num2 .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc462907982.html"
+    },
+    {
+      "name": "pub.math:multiplyObjects",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "num1",
+          "type": "java.lang.Number",
+          "description": "Number to multiply. See the Usage Notes for supported sub-classes.",
+          "optional": false
+        },
+        {
+          "name": "num2",
+          "type": "java.lang.Number",
+          "description": "Number to multiply. See the Usage Notes for supported sub-classes.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "java.lang.Number",
+          "description": "Product of num1 and num2 .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_math_multiplyObjects.html"
+    },
+    {
+      "name": "pub.math:randomDouble",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "number",
+          "type": "String",
+          "description": "Generated random number.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "number",
+          "type": "String",
+          "description": "Generated random number.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_math_randomDouble.html"
+    },
+    {
+      "name": "pub.math:roundNumber",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "num",
+          "type": "String",
+          "description": "Number to be rounded.",
+          "optional": false
+        },
+        {
+          "name": "numberOfDigits",
+          "type": "String",
+          "description": "Specifies the number of digits to which you want to round the number.",
+          "optional": false
+        },
+        {
+          "name": "roundingMode",
+          "type": "String",
+          "description": "Optional. Specifies the rounding method. Valid values for the roundingMode parameter are RoundHalfUp , RoundUp , RoundDown , RoundCeiling , RoundFloor , RoundHalfDown , and RoundHalfEven . The default value is RoundHalfUp .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "roundedNumber",
+          "type": "String",
+          "description": "The rounded number.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A18955.html"
+    },
+    {
+      "name": "pub.math:subtractFloats",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "num1",
+          "type": "String",
+          "description": "Number (floating point number represented as a String).",
+          "optional": false
+        },
+        {
+          "name": "num2",
+          "type": "String",
+          "description": "Number (floating point number represented as a String) to subtract from num1 .",
+          "optional": false
+        },
+        {
+          "name": "precision",
+          "type": "String",
+          "description": "Optional. Number of decimal places to which the difference will be rounded. The default value is null. The precision parameter, if specified, will override the behavior set by the watt.server.math.floatOperation.mode property. For information about the watt.server.math.floatOperation.mode property, see the IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "String",
+          "description": "Difference of num1 - num2 . If a difference cannot be produced, value contains one of the following:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_math_subtractFloats.html"
+    },
+    {
+      "name": "pub.math:subtractInts",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "num1",
+          "type": "String",
+          "description": "Number (integer represented as a String).",
+          "optional": false
+        },
+        {
+          "name": "num2",
+          "type": "String",
+          "description": "Number (integer represented as a String) to subtract from num1 .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "String",
+          "description": "Difference of num1 - num2 .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc462907984.html"
+    },
+    {
+      "name": "pub.math:subtractObjects",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "num1",
+          "type": "java.lang.Number",
+          "description": "Number. See the Usage Notes for supported sub-classes.",
+          "optional": false
+        },
+        {
+          "name": "num2",
+          "type": "java.lang.Number",
+          "description": "Number to subtract from num1 . See Usage Notes for supported sub-classes.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "java.lang.Number",
+          "description": "Difference of num1 - num2 .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_math_subtractrObjects.html"
+    },
+    {
+      "name": "pub.math:toNumber",
+      "folder": "MATH",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "num",
+          "type": "String",
+          "description": "Number (represented as a string) to be converted to numeric format.",
+          "optional": false
+        },
+        {
+          "name": "convertAs",
+          "type": "String",
+          "description": "Optional. Specifies the Java numeric data type to which the num parameter is to be converted. Valid values for the convertAs parameter are java.lang.Double , java.lang.Float , java.lang.Integer , java.math.BigDecimal , java.math.BigInteger , java.lang.Long . The default value is java.lang.Double .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "num",
+          "type": "java.lang.Number",
+          "description": "Converted numeric object.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A97287.html"
+    }
+  ]
+}

@@ -1,0 +1,337 @@
+{
+  "folder": "FILE",
+  "total_services": 10,
+  "services": [
+    {
+      "name": "pub.file:bytesToFile",
+      "folder": "FILE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "fileName",
+          "type": "String",
+          "description": "The absolute path name of the file to which to write the byte array.",
+          "optional": false
+        },
+        {
+          "name": "bytes",
+          "type": "Byte[]",
+          "description": "The byte array to write to the file specified in the filename parameter.",
+          "optional": false
+        },
+        {
+          "name": "append",
+          "type": "String",
+          "description": "Optional. Specifies whether to append or overwrite if the specified file already exists. The default behavior is to create a new file if file does not exist or overwrite an existing file if file already exists. Set to: true to append to the file if the file already exists. false to overwrite the file if the file already exists.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "length",
+          "type": "String",
+          "description": "Number of bytes written to the file.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A94673.html"
+    },
+    {
+      "name": "pub.file:checkFileExistence",
+      "folder": "FILE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "fileName",
+          "type": "String",
+          "description": "The absolute path name of the file to be checked.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "exists",
+          "type": "String",
+          "description": "Indicates whether the specified fileName exists or not. A value of: true indicates that the specified fileName exists. false indicates that the specified fileName does not exist.",
+          "optional": false
+        },
+        {
+          "name": "isDirectory",
+          "type": "String",
+          "description": "Indicates whether the specified fileName is a file or a directory. true indicates that the specified fileName is a directory. false indicates that the specified fileName is a file.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A65480.html"
+    },
+    {
+      "name": "pub.file:copyFile",
+      "folder": "FILE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "fileName",
+          "type": "String",
+          "description": "The absolute path name of the file to be copied.",
+          "optional": false
+        },
+        {
+          "name": "targetDirectory",
+          "type": "String",
+          "description": "Directory to which the file specified in the fileName parameter will be copied.",
+          "optional": false
+        },
+        {
+          "name": "appendTimestamp",
+          "type": "String",
+          "description": "Optional. Specifies whether the current timestamp will be appended to the target filename. Set to: true to append a timestamp to the target fileName in the yyyyMMddHHmmss format. false to omit a timestamp from the target fileName.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "targetFileName",
+          "type": "String",
+          "description": "The absolute path name of the target file to which the fileName parameter is copied.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A46894.html"
+    },
+    {
+      "name": "pub.file:deleteFile",
+      "folder": "FILE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "fileName",
+          "type": "String",
+          "description": "The absolute path name of the file to be deleted.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Specifies the status of the delete operation. A value of: true indicates that the deletion succeeded. false indicates that the deletion failed.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A48437.html"
+    },
+    {
+      "name": "pub.file:getFile",
+      "folder": "FILE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "filename",
+          "type": "String",
+          "description": "The absolute path name of the file in the local file system (for example c:\\rubicon\\document.xml).",
+          "optional": false
+        },
+        {
+          "name": "loadAs",
+          "type": "String",
+          "description": "Optional. Form in which you want the getFile service to make the contents of the file available to subsequent services. Set to: bytes to return the file as a byte array. Use this option if the contents of the file will be used as input to a service that operates on whole documents (for example, pub.xml:queryXMLNode ). This is the default. stream to return the file as an input stream. Use this option if the contents of the file will be used as input to a service that can process a document incrementally (for example, pub.xml:getXMLNodeIterator ). string to return the file as a string. reader to return the file as a reader.",
+          "optional": true
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Character set in which the file is encoded. Specify an IANA-registered character set (for example, ISO-8859-1). This information is required to correctly convert the String object to bytes when performing a get. If no value is specified or if the value is set to autoDetect, the service uses the default operating system encoding. If you specify an unsupported encoding, the system throws an exception.",
+          "optional": true
+        },
+        {
+          "name": "bufferSize",
+          "type": "String",
+          "description": "Optional. Buffer size (in bytes) to use if you are loading an InputStream (that is, loadAs = stream ). The default is 4096 bytes.",
+          "optional": true
+        },
+        {
+          "name": "largeFile",
+          "type": "String",
+          "description": "Optional. Indicates whether the file specified in the input is a large file or not. As large files are loaded as a stream , set this parameter to true and the loadAs parameter to stream to get larger files. The default value is false . Note: Files larger than the system memory are considered as large files.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "body",
+          "type": "Document",
+          "description": "Document (IData object) containing the file as a byte[ ], InputStream, string, or reader. The body parameter will contain one of the following keys, depending on how the loadAs parameter was set:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_file_getFile.html"
+    },
+    {
+      "name": "pub.file:listFiles",
+      "folder": "FILE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "directory",
+          "type": "String[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Name of the directory that is to be queried.",
+          "optional": false
+        },
+        {
+          "name": "filter",
+          "type": "String",
+          "description": "Optional. Filter string for the file list (for example, *.java or EDI*.tx*).",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "fileList",
+          "type": "String",
+          "description": "Names of the files in the directory specified in the directory parameter. Only the file names are returned; not the full path name. filel]List does not list subdirectories or recursively list subdirectory content.",
+          "optional": false
+        },
+        {
+          "name": "numFiles",
+          "type": "String",
+          "description": "Number of files in the specified directory.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A70668.html"
+    },
+    {
+      "name": "pub.file:moveFile",
+      "folder": "FILE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "fileName",
+          "type": "String",
+          "description": "The absolute path name of the file to be moved.",
+          "optional": false
+        },
+        {
+          "name": "targetDirectory",
+          "type": "String",
+          "description": "Name of the directory to which the file specified in the fileName parameter is to be moved.",
+          "optional": false
+        },
+        {
+          "name": "appendTimeStamp",
+          "type": "String",
+          "description": "Optional. Specifies whether the current timestamp is to be appended to the file name after the file is moved to the target directory. Set to: false if you do not want to append a timestamp. This is the default. true if you want to append a timestamp in the following format: yyyyMMddHHmmss.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Status of the move. A value of: true indicates that the move was successful. false indicates that the move failed.",
+          "optional": false
+        },
+        {
+          "name": "targetFileName",
+          "type": "String",
+          "description": "Fully qualified path of the target file.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A44297.html"
+    },
+    {
+      "name": "pub.file:readerToFile",
+      "folder": "FILE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "fileName",
+          "type": "String",
+          "description": "Fully qualified name of the file to which the data is to be written.",
+          "optional": false
+        },
+        {
+          "name": "reader",
+          "type": "java.io.Reader",
+          "description": "The reader object from which the data is read.",
+          "optional": false
+        },
+        {
+          "name": "append",
+          "type": "String",
+          "description": "Optional. Specifies whether to append to or overwrite the file if it already exists. The default behavior is to create a new file if the file does not exist or overwrite an existing file if the file already exists. Set to: true to append if the file already exists. false to overwrite if the file already exists.",
+          "optional": true
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Name of a registered, IANA character set (for example, ISO-8859-1). If you specify an unsupported encoding, the system throws an exception. If no value is specified or if the encoding is set to autoDetect , the default operating system encoding is used.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A14580.html"
+    },
+    {
+      "name": "pub.file:streamToFile",
+      "folder": "FILE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "fileName",
+          "type": "String[]",
+          "description": "Fully qualified name of the file to be written to.",
+          "optional": false
+        },
+        {
+          "name": "stream",
+          "type": "java.io.InputStream",
+          "description": "The stream from which data is read.",
+          "optional": false
+        },
+        {
+          "name": "append",
+          "type": "String",
+          "description": "Optional. Specifies whether to append or overwrite if the specified file already exists. The default behavior is to create a new file if the file does not exist or overwrite an existing file if the file already exists. Set to: true to append if the file already exists. false to overwrite if the file already exists.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A31283.html"
+    },
+    {
+      "name": "pub.file:stringToFile",
+      "folder": "FILE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "fileName",
+          "type": "String[]",
+          "description": "Fully qualified name of the file to be written to.",
+          "optional": false
+        },
+        {
+          "name": "data",
+          "type": "String",
+          "description": "Text to be written.",
+          "optional": false
+        },
+        {
+          "name": "append",
+          "type": "String",
+          "description": "Optional. Specifies whether to append or overwrite if the specified file already exists. The default behavior is to create a new file if the file does not exist or overwrite an existing file if the file already exists. Set to: true to append if the file already exists. false to overwrite if the file already exists.",
+          "optional": true
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Name of a registered, IANA character set (for example, ISO-8859-1). If you specify an unsupported encoding, the system throws an exception. If no value is specified or if the encoding is set to autoDetect , the default operating system encoding is used.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A71537.html"
+    }
+  ]
+}

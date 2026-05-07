@@ -1,0 +1,3412 @@
+{
+  "folder": "CLIENT",
+  "total_services": 53,
+  "services": [
+    {
+      "name": "pub.client:ftp",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "serverhost",
+          "type": "String",
+          "description": "Name or IP address of the FTP server (for example, ftp.netscape.com ).",
+          "optional": false
+        },
+        {
+          "name": "serverport",
+          "type": "String",
+          "description": "Port number of the FTP server (for example, 4566 ).",
+          "optional": false
+        },
+        {
+          "name": "username",
+          "type": "String",
+          "description": "Valid FTP user of the remote FTP server (for example, anonymous ).",
+          "optional": false
+        },
+        {
+          "name": "password",
+          "type": "String",
+          "description": "Optional. Valid password of the FTP user.",
+          "optional": true
+        },
+        {
+          "name": "command",
+          "type": "String",
+          "description": "One of the following FTP commands: ls , put , or ge t.",
+          "optional": false
+        },
+        {
+          "name": "dirpath",
+          "type": "String",
+          "description": "Working directory of the FTP server (for example, /tmp/ pub ). If the directory does not exist, the server throws an exception.",
+          "optional": false
+        },
+        {
+          "name": "transfermode",
+          "type": "String",
+          "description": "One of two FTP file transfer modes: ascii or binary . The default is ascii .",
+          "optional": false
+        },
+        {
+          "name": "transfertype",
+          "type": "String",
+          "description": "One of two FTP data transfer types: passive or active . The default is active.",
+          "optional": false
+        },
+        {
+          "name": "localfile",
+          "type": "String",
+          "description": "When command is set to put , this parameter specifies the name of the local file you want to transfer. (If content is specified, this field is ignored.) When command is set to get , this parameter specifies the name of the local file in which you want the retrieved content saved.",
+          "optional": false
+        },
+        {
+          "name": "remotefile",
+          "type": "String",
+          "description": "When command is set to put , this parameter specifies the name of the remote file in which you want the save the data you are sending. When command is set to get , this parameter specifies the name of the remote file that you want to retrieve.",
+          "optional": false
+        },
+        {
+          "name": "content",
+          "type": "java.io.InputStream,\nbyte[ ], or String",
+          "description": "Data to be transferred when command is set to put .",
+          "optional": false
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Character set in which the document is encoded. Specify an IANA-registered character set (for example, ISO-8859-1 ). This information is required to correctly convert the String object to bytes when performing a get. If parameter is null, the default JVM encoding is used.",
+          "optional": true
+        },
+        {
+          "name": "serverencoding",
+          "type": "String",
+          "description": "Optional. Specifies the encoding this service uses to convert the incoming FTP command string to encoded bytes that are supported by IANA and the FTP server. If the parameter is null, the service uses the 'UTF-8' character set to encode the FTP command String to bytes.",
+          "optional": true
+        },
+        {
+          "name": "timeout",
+          "type": "String",
+          "description": "Time (measured in seconds) this service waits for the FTP server response on the command channel before timing out and aborting the request. Default is to wait forever.",
+          "optional": false
+        },
+        {
+          "name": "putunique",
+          "type": "String",
+          "description": "Optional. Indicates whether to send a STOR or a STOU (Store as Unique File) command to the remote FTP server. Set to: true to send a STOU (Store as Unique File) command. false to send a STOR command. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "secure",
+          "type": "Document",
+          "description": "Indicates whether the FTP session is with a secure FTP server. Note: Integration Server does not support FTPS (FTP over SSL) requests through FTP proxy.",
+          "optional": false
+        },
+        {
+          "name": "cleanlinefeeds",
+          "type": "String",
+          "description": "Optional. Indicates whether the service should retain or remove carriage return characters at the end of each line of text. Set to: true to remove carriage returns. This is the default. false to retain carriage returns.",
+          "optional": true
+        },
+        {
+          "name": "newSession",
+          "type": "String",
+          "description": "Optional. Flag indicating whether a a new FTP session will be created for this FTP operation. Set to: yes to create a new session for this FTP operation. no to use the current session, if one is available, for this FTP operation. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "clientTimeout",
+          "type": "String",
+          "description": "Optional. Specifies the idle time-out, measured in seconds, for this FTP session. If clientTimeout is set to 0 (zero), the session will never time out. The default is 600 seconds (10 minutes).",
+          "optional": true
+        },
+        {
+          "name": "proxyAlias",
+          "type": "String",
+          "description": "Optional. Name of the proxy server alias for the proxy server to which Integration Server routes the FTP request. If you do not specify a proxyAlias , Integration Server routes the FTP request through the proxy server specified in the default FTP proxy alias. If there is no default FTP proxy alias, the action taken by Integration Server depends on the value specified for the watt.net.proxy.useNonDefaultProxies parameter. If the watt.net.proxy.useNonDefaultProxies parameter is set to true, Integration Server routes the FTP request through the proxy server in any configured FTP proxy alias. If the Integration Server does not have any defined FTP proxy aliases, Integration Server sends the FTP request directly to the FTP server or throws an exception depending on the settings specified for the watt.net.proxy.fallbackToDirectConnection parameter. If the watt.net.proxy.useNonDefaultProxies parameter is set to false, Integration Server sends the request to the remote server using a direct connection. For more information about proxy server usage, refer to How Integration Server Uses Proxy Servers .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "command",
+          "type": "String",
+          "description": "FTP command that was executed ( ls , get , or put ).",
+          "optional": false
+        },
+        {
+          "name": "dirlist",
+          "type": "String List",
+          "description": "File names returned by the ls command.",
+          "optional": false
+        },
+        {
+          "name": "localfile",
+          "type": "String",
+          "description": "Name of the local file used for a get or put operation.",
+          "optional": false
+        },
+        {
+          "name": "remotefile",
+          "type": "String",
+          "description": "Name of the remote file used for a get or put operation.",
+          "optional": false
+        },
+        {
+          "name": "content",
+          "type": "byte[ ]",
+          "description": "If localfile was not specified, this parameter contains the Content object sent to the remote server (if a put command was executed) or received from the remote server (if a get command was executed).",
+          "optional": false
+        },
+        {
+          "name": "returncode",
+          "type": "String",
+          "description": "Standard FTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnmsg",
+          "type": "String",
+          "description": "Standard FTP protocol return message.",
+          "optional": false
+        },
+        {
+          "name": "logmsg",
+          "type": "String",
+          "description": "FTP log message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_client_ftp.html"
+    },
+    {
+      "name": "pub.client.ftp:append",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionkey",
+          "type": "String",
+          "description": "Unique key for the current FTP session. The sessionkey is returned by the pub.client.ftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "transfermode",
+          "type": "String",
+          "description": "FTP file transfer mode ( ascii or binary ). The default is ascii .",
+          "optional": false
+        },
+        {
+          "name": "content",
+          "type": "java.io.InputStream,\nbyte[ ], or String",
+          "description": "Data to be transferred to the remote file.",
+          "optional": false
+        },
+        {
+          "name": "localfile",
+          "type": "String",
+          "description": "Optional. Name of the local file to append to the remote file. Used only when content is not specified.",
+          "optional": true
+        },
+        {
+          "name": "remotefile",
+          "type": "String",
+          "description": "Name of the remote file to which to append the data specified in content or localfile .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returncode",
+          "type": "String",
+          "description": "Standard FTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnmsg",
+          "type": "String",
+          "description": "Standard FTP protocol return message.",
+          "optional": false
+        },
+        {
+          "name": "logmsg",
+          "type": "String",
+          "description": "FTP log messages for the entire user session.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A74271.html"
+    },
+    {
+      "name": "pub.client.ftp:cd",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionkey",
+          "type": "String",
+          "description": "Unique key for the current FTP session. The sessionkey is returned by the pub.client.ftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "dirpath",
+          "type": "String",
+          "description": "Directory to which you want to switch on the FTP server. For example: pub",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returncode",
+          "type": "String",
+          "description": "Standard FTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnmsg",
+          "type": "String",
+          "description": "Standard FTP protocol return message.",
+          "optional": false
+        },
+        {
+          "name": "logmsg",
+          "type": "String",
+          "description": "FTP log messages for the entire user session.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idb00c4090-38b1-4248-af36-8ac0810cb608.html"
+    },
+    {
+      "name": "pub.client.ftp:cdls",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionkey",
+          "type": "String",
+          "description": "Unique key for the current FTP session. The sessionkey is returned by the pub.client.ftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "dirpath",
+          "type": "String",
+          "description": "Directory to which you want to switch on the FTP server (for example, pub ).",
+          "optional": false
+        },
+        {
+          "name": "filenamepattern",
+          "type": "String",
+          "description": "Optional. Pattern that specifies the file names to list (for example, *.txt ).",
+          "optional": true
+        },
+        {
+          "name": "orderby",
+          "type": "String",
+          "description": "Optional. The order of the returned file list. Set to: none to send an NLST command to the remote FTP server. This is the default. timestamp to return the list in order of the timestamp. Sends an NLST -t command to the remote FTP server. Note: The -t command is not part of the RFC959 standard. Some FTP servers may not support this command. Servers that support this command may return the results in either ascending or descending order of creation time.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "dirlist",
+          "type": "String List",
+          "description": "List of file names matching filenamepattern .",
+          "optional": false
+        },
+        {
+          "name": "returncode",
+          "type": "String",
+          "description": "Standard FTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnmsg",
+          "type": "String",
+          "description": "Standard FTP protocol return message.",
+          "optional": false
+        },
+        {
+          "name": "logmsg",
+          "type": "String",
+          "description": "FTP log messages for the entire user session.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A84739.html"
+    },
+    {
+      "name": "pub.client.ftp:delete",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionkey",
+          "type": "String",
+          "description": "Unique key for the current FTP session. The sessionkey is returned by the pub.client.ftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "remotefile",
+          "type": "String",
+          "description": "Name of the file to be deleted from the current working directory. For example: text.txt If you specify pattern-matching characters in remotefile , all files matching the pattern will be deleted.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returncode",
+          "type": "String",
+          "description": "Standard FTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnmsg",
+          "type": "String",
+          "description": "Standard FTP protocol return message.",
+          "optional": false
+        },
+        {
+          "name": "logmsg",
+          "type": "String",
+          "description": "FTP log messages for the entire user session.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A39457.html"
+    },
+    {
+      "name": "pub.client.ftp:dir",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionkey",
+          "type": "String",
+          "description": "Unique key for the current FTP session. The sessionkey is returned by the pub.client.ftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "filenamepattern",
+          "type": "String",
+          "description": "Optional. Pattern that specifies the names of the files to include in the list (for example, *.txt ).",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "dirlist",
+          "type": "String List",
+          "description": "Directory listing of the files matching filenamepattern including the file names and timestamps.",
+          "optional": false
+        },
+        {
+          "name": "returncode",
+          "type": "String",
+          "description": "Standard FTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnmsg",
+          "type": "String",
+          "description": "Standard FTP protocol return message.",
+          "optional": false
+        },
+        {
+          "name": "logmsg",
+          "type": "String",
+          "description": "FTP log messages for the entire user session.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A76088.html"
+    },
+    {
+      "name": "pub.client.ftp:get",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionkey",
+          "type": "String",
+          "description": "Unique key for the current FTP session. The sessionkey is returned by the pub.client.ftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "transfermode",
+          "type": "String",
+          "description": "FTP file transfer mode ( ascii or binary ). The default is ascii .",
+          "optional": false
+        },
+        {
+          "name": "localfile",
+          "type": "String",
+          "description": "Optional. Name of a local file where the retrieved file is to be saved.",
+          "optional": true
+        },
+        {
+          "name": "remotefile",
+          "type": "String",
+          "description": "Name of the remote file.",
+          "optional": false
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Character set in which the file is encoded. This variable is required to convert the file to bytes correctly. Specify an IANA-registered character set (for example: ISO-8859-1 ). If this variable is null, the encoding currently set for the FTP session is used. If encoding was never set for this FTP session, the default JVM encoding is used.",
+          "optional": true
+        },
+        {
+          "name": "largefilethreshold",
+          "type": "String",
+          "description": "Optional. Defines the size (in bytes) of a \"large\" file. For more information, see the Usage Notes.",
+          "optional": true
+        },
+        {
+          "name": "cleanlinefeeds",
+          "type": "String",
+          "description": "Optional. Indicates whether the service should retain or remove carriage return characters at the end of each line of text. Set to: true to remove carriage returns. false to retain carriage returns. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "content",
+          "type": "byte[ ]",
+          "description": "Data retrieved from the remote file.",
+          "optional": false
+        },
+        {
+          "name": "returncode",
+          "type": "String",
+          "description": "Standard FTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnmsg",
+          "type": "String",
+          "description": "Standard FTP protocol return message.",
+          "optional": false
+        },
+        {
+          "name": "logmsg",
+          "type": "String",
+          "description": "FTP log messages for the entire user session.",
+          "optional": false
+        },
+        {
+          "name": "islargefile",
+          "type": "String",
+          "description": "Indicates whether the file is considered to be large (as specified by the input parameter largefilethreshold ). A value of: true indicates that the file is larger than the value of largethreshold . false indicates that the file is not larger than the value of largethreshold (or largethreshold is blank).",
+          "optional": false
+        },
+        {
+          "name": "contentstream",
+          "type": "Object",
+          "description": "An java.io.InputStream object.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A16442.html"
+    },
+    {
+      "name": "pub.client.ftp:getCompletedNotification",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A56701.html"
+    },
+    {
+      "name": "pub.client.ftp:login",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "serverhost",
+          "type": "String",
+          "description": "Name or IP address of the FTP server (for example, ftp.netscape.com ).",
+          "optional": false
+        },
+        {
+          "name": "serverport",
+          "type": "String",
+          "description": "Port number on which the FTP server listens for requests (for example, 4566 ). The default is 21 .",
+          "optional": false
+        },
+        {
+          "name": "dataport",
+          "type": "String",
+          "description": "Optional. Listener port number of the data transfer channel (for example, 3345 ). If you do not specify dataport , the Integration Server will choose the listener port number. This value is used only when the transfertype value is active .",
+          "optional": true
+        },
+        {
+          "name": "username",
+          "type": "String",
+          "description": "Valid FTP user on the remote FTP server (for example, anonymous ).",
+          "optional": false
+        },
+        {
+          "name": "password",
+          "type": "String",
+          "description": "Optional. Valid password for the FTP user specified in username (for example, someone@somewhere ).",
+          "optional": true
+        },
+        {
+          "name": "account",
+          "type": "String",
+          "description": "Optional. The user name for an account on the FTP server. Specify account if your FTP host requires account information. The account is defined in the FTP protocol to further identify the user that is identified by the username and password input variables.",
+          "optional": true
+        },
+        {
+          "name": "transfertype",
+          "type": "String",
+          "description": "Type of the FTP data transfer mode ( passive or active ). The default is active .",
+          "optional": false
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Default character set for encoding data transferred during this session. Specify an IANA-registered character set (for example, ISO-8859-1 ). If you do not set encoding , the default JVM encoding is used.",
+          "optional": true
+        },
+        {
+          "name": "serverencoding",
+          "type": "String",
+          "description": "Optional. Specifies the encoding this service uses to convert the incoming FTP command string to encoded bytes that are supported by IANA and the FTP server. If the parameter is null, the service uses the 'UTF-8' character set to encode the FTP command String to bytes.",
+          "optional": true
+        },
+        {
+          "name": "timeout",
+          "type": "String",
+          "description": "Optional. Time (measured in seconds) to wait for a response from the FTP server before timing out and terminating the request. The default is to wait forever.",
+          "optional": true
+        },
+        {
+          "name": "secure",
+          "type": "Document",
+          "description": "Indicates whether the FTP session is with a secure FTP server. Note: Integration Server does not support FTPS (FTP over SSL) requests through FTP proxy.",
+          "optional": false
+        },
+        {
+          "name": "newSession",
+          "type": "String",
+          "description": "Optional. Flag indicating whether a a new FTP session will be created for this FTP operation. Set to: yes to create a new session for this FTP operation. no to use the current session, if one is available, for this FTP operation. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "clientTimeout",
+          "type": "String",
+          "description": "Optional. Specifies the idle time-out, measured in seconds, for this FTP session. If clientTimeout is set to 0 (zero), the session will never time out. The default is 600 seconds (10 minutes).",
+          "optional": true
+        },
+        {
+          "name": "proxyAlias",
+          "type": "String",
+          "description": "Optional. Name of the proxy alias for the proxy server through which Integration Server routes the FTP request. If you do not specify a proxyAlias , Integration Server routes the FTP request through the proxy server specified in the default FTP proxy alias. If there is no default FTP proxy alias, the action taken by Integration Server depends on the value specified for the watt.net.proxy.useNonDefaultProxies parameter. If the watt.net.proxy.useNonDefaultProxies parameter is set to true, Integration Server routes the FTP request through the proxy server in any configured FTP proxy alias. If the Integration Server does not have any defined FTP proxy aliases, Integration Server sends the FTP request directly to the FTP server or throws an exception depending on the settings specified for the watt.net.proxy.fallbackToDirectConnection parameter. If the watt.net.proxy.useNonDefaultProxies parameter is set to false, Integration Server sends the request to the remote server using a direct connection. For more information about proxy server usage, refer to IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "sessionkey",
+          "type": "String",
+          "description": "Unique key for the current FTP session. This session key must be provided to execute most other services in pub.client.ftp .",
+          "optional": false
+        },
+        {
+          "name": "returncode",
+          "type": "String",
+          "description": "Standard FTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnmsg",
+          "type": "String",
+          "description": "Standard FTP protocol return message.",
+          "optional": false
+        },
+        {
+          "name": "logmsg",
+          "type": "String",
+          "description": "FTP log messages for the entire user session.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A26574.html"
+    },
+    {
+      "name": "pub.client.ftp:logout",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionkey",
+          "type": "String",
+          "description": "Unique key for the current FTP session. The sessionkey is returned by the pub.client.ftp:login service.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returncode",
+          "type": "String",
+          "description": "Standard FTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnmsg",
+          "type": "String",
+          "description": "Standard FTP protocol return message.",
+          "optional": false
+        },
+        {
+          "name": "logmsg",
+          "type": "String",
+          "description": "FTP log messages for the entire user session.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A53081.html"
+    },
+    {
+      "name": "pub.client.ftp:ls",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionkey",
+          "type": "String",
+          "description": "Unique key for the current FTP session. The sessionkey is returned by the pub.client.ftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "filenamepattern",
+          "type": "String",
+          "description": "Optional. Pattern that specifies the names of the files to include in the list (for example, *.txt ).",
+          "optional": true
+        },
+        {
+          "name": "orderby",
+          "type": "String",
+          "description": "Optional. The order of the returned file list.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "dirlist",
+          "type": "String List",
+          "description": "List of file names matching filenamepattern .",
+          "optional": false
+        },
+        {
+          "name": "returncode",
+          "type": "String",
+          "description": "Standard FTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnmsg",
+          "type": "String",
+          "description": "Standard FTP protocol return message.",
+          "optional": false
+        },
+        {
+          "name": "logmsg",
+          "type": "String",
+          "description": "FTP log messages for the entire user session.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A82423.html"
+    },
+    {
+      "name": "pub.client.ftp:mdelete",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionkey",
+          "type": "String",
+          "description": "Unique key for the current FTP session. The sessionkey is returned by the pub.client.ftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "filenamepattern",
+          "type": "String",
+          "description": "Pattern that specifies the names of the files to be deleted from the current working directory (for example, *.txt ). Important: If you do not specify a value for filenamepattern , all files in the working directory are deleted.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returncode",
+          "type": "String",
+          "description": "Standard FTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnmsg",
+          "type": "String",
+          "description": "Standard FTP protocol return message.",
+          "optional": false
+        },
+        {
+          "name": "logmsg",
+          "type": "String",
+          "description": "FTP log messages for the entire user session.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A54768.html"
+    },
+    {
+      "name": "pub.client.ftp:mget",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionkey",
+          "type": "String",
+          "description": "Unique key for the current FTP session. The sessionkey is returned by the pub.client.ftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "transfermode",
+          "type": "String",
+          "description": "FTP file transfer mode ( ascii or binary ). The default is ascii .",
+          "optional": false
+        },
+        {
+          "name": "localdir",
+          "type": "String",
+          "description": "Directory in the local file system where the retrieved files are to be saved (for example, c:\\temp\\ftpfiles ).",
+          "optional": false
+        },
+        {
+          "name": "filenamepattern",
+          "type": "String",
+          "description": "Pattern that specifies the names of the files to be retrieved (for example, *.txt ).",
+          "optional": false
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Character set in which the files are encoded. This variable is required to convert the files to bytes correctly. Specify an IANA-registered character set (for example, ISO-8859-1 ). If you do not specify encoding , the encoding assigned to the FTP session is used. If the encoding was not set for the FTP session, the default JVM encoding is used.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "filenames",
+          "type": "String List",
+          "description": "List of files retrieved from the remote FTP server.",
+          "optional": false
+        },
+        {
+          "name": "returncode",
+          "type": "String",
+          "description": "Standard FTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnmsg",
+          "type": "String",
+          "description": "Standard FTP protocol return message.",
+          "optional": false
+        },
+        {
+          "name": "logmsg",
+          "type": "String",
+          "description": "FTP log messages for the entire user session.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A24582.html"
+    },
+    {
+      "name": "pub.client.ftp:mput",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionkey",
+          "type": "String",
+          "description": "Unique key for the current FTP session. The sessionkey is returned by the pub.client.ftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "transfermode",
+          "type": "String",
+          "description": "FTP file transfer mode ( ascii or binary ). The default is ascii .",
+          "optional": false
+        },
+        {
+          "name": "localdir",
+          "type": "String",
+          "description": "Local directory containing the files you want to transfer to the remote FTP server (for example, c:\\temp\\ftpfiles ).",
+          "optional": false
+        },
+        {
+          "name": "filenamepattern",
+          "type": "String",
+          "description": "Pattern that specifies the names of the files to be transferred (for example, *.txt ).",
+          "optional": false
+        },
+        {
+          "name": "putunique",
+          "type": "String",
+          "description": "Optional. Indicates whether to send a STOR or a STOU (Store as Unique File) command to the remote FTP server. Set to: true to send a STOU (Store as Unique File) command. false to send a STOR command. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "filenames",
+          "type": "String List",
+          "description": "List of files transferred to the remote FTP server.",
+          "optional": false
+        },
+        {
+          "name": "returncode",
+          "type": "String",
+          "description": "Standard FTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnmsg",
+          "type": "String",
+          "description": "Standard FTP protocol return message.",
+          "optional": false
+        },
+        {
+          "name": "logmsg",
+          "type": "String",
+          "description": "FTP log messages for the entire user session.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A98655.html"
+    },
+    {
+      "name": "pub.client.ftp:put",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionkey",
+          "type": "String",
+          "description": "Unique key for the current FTP session. The sessionkey is returned by the pub.client.ftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "transfermode",
+          "type": "String",
+          "description": "FTP file transfer mode ( ascii or binary ). The default is ascii .",
+          "optional": false
+        },
+        {
+          "name": "content",
+          "type": "java.io.InputStream,\nbyte[ ], or String",
+          "description": "Data to be transferred to the remote file.",
+          "optional": false
+        },
+        {
+          "name": "localfile",
+          "type": "String",
+          "description": "Optional. Name of the local file to be appended to the remote file. Used only if content is not specified.",
+          "optional": true
+        },
+        {
+          "name": "remotefile",
+          "type": "String",
+          "description": "The name of the remote file.",
+          "optional": false
+        },
+        {
+          "name": "putunique",
+          "type": "String",
+          "description": "Optional. Indicates whether to send a STOR or a STOU (Store as Unique File) command to the remote FTP server. Set to: true to send a STOU (Store as Unique File) command. false to send a STOR command. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returncode",
+          "type": "String",
+          "description": "Standard FTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnmsg",
+          "type": "String",
+          "description": "Standard FTP protocol return message.",
+          "optional": false
+        },
+        {
+          "name": "logmsg",
+          "type": "String",
+          "description": "FTP log messages for the entire user session.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A59447.html"
+    },
+    {
+      "name": "pub.client.ftp:putCompletedNotification",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A52288.html"
+    },
+    {
+      "name": "pub.client.ftp:quote",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionkey",
+          "type": "String",
+          "description": "Unique key for the current FTP session. The sessionkey is returned by the pub.client.ftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "string",
+          "type": "String",
+          "description": "The command to be executed on the FTP server. This service submits the command exactly as it is specified in string .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returncode",
+          "type": "String",
+          "description": "Standard FTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnmsg",
+          "type": "String",
+          "description": "Standard FTP protocol return message.",
+          "optional": false
+        },
+        {
+          "name": "logmsg",
+          "type": "String",
+          "description": "FTP log messages for the entire user session.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A40662.html"
+    },
+    {
+      "name": "pub.client.ftp:rename",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionkey",
+          "type": "String",
+          "description": "Unique key for the current FTP session. The sessionkey is returned by the pub.client.ftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "oldname",
+          "type": "String",
+          "description": "Fully qualified name of the file you want to rename (for example, temp/oldname.txt ).",
+          "optional": false
+        },
+        {
+          "name": "newname",
+          "type": "String",
+          "description": "New fully qualified name for the file (for example, temp/newname.txt ).",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returncode",
+          "type": "String",
+          "description": "Standard FTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnmsg",
+          "type": "String",
+          "description": "Standard FTP protocol return message.",
+          "optional": false
+        },
+        {
+          "name": "logmsg",
+          "type": "String",
+          "description": "FTP log messages for the entire user session.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A59590.html"
+    },
+    {
+      "name": "pub.client.ftp:sessioninfo",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "name",
+          "type": null,
+          "description": "Not used. Reserved for future use.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "sessioninfo",
+          "type": "Document List",
+          "description": "Information about the current FTP sessions. Each document in sessioninfo represents a single session and contains the following information:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A10249.html"
+    },
+    {
+      "name": "pub.client:http",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "url",
+          "type": "String",
+          "description": "URL of the resource that you want to access. For example: http://www.rubicon.com/orders/orders.html Important: This string must begin with http:// or https:// .",
+          "optional": false
+        },
+        {
+          "name": "method",
+          "type": "String",
+          "description": "Specifies the HTTP method you want to use. Valid values are: delete get head options patch post put trace",
+          "optional": false
+        },
+        {
+          "name": "loadAs",
+          "type": "String",
+          "description": "Optional. Form in which you want the pub.client:http service to store the returned document. Set to: bytes to return the body of the response as a byte[ ]. Use this option if the body will be used as input to a service that operates on whole HTML or XML documents (for example, pub.xml:queryXMLNode ). This is the default. stream to return the body of the response as a java.io.InputStream. Use this option if the document will be used as input to a service that can process documents incrementally (for example, pub.xml:getXMLNodeIterator ).",
+          "optional": true
+        },
+        {
+          "name": "data",
+          "type": "Document",
+          "description": "Data that you want the pub.client:http service to submit with the HTTP request. Specify data using one or more of the following keys. Important: When you use more than one key, args is appended first, table is appended second, and string is appended last.",
+          "optional": false
+        },
+        {
+          "name": "auth",
+          "type": "Document",
+          "description": "Optional. Authorization information that the pub.client:http service will submit if the resource specified in url is protected.",
+          "optional": true
+        },
+        {
+          "name": "headers",
+          "type": "Document",
+          "description": "Optional. Fields that you want to explicitly override in the HTTP request header issued by the pub.client:http service. Specify a key in headers for each header field that you want to set, where the key's name represents the name of the header field and the key's value represents the value of that header field. If you do not set headers , the pub.client:http service uses the default header values for the Accept and User-Agent headers as determined by the watt.net.default.accept and watt.net.userAgent respectively.",
+          "optional": true
+        },
+        {
+          "name": "timeout",
+          "type": "String",
+          "description": "Optional. Time, measured in milliseconds, that Integration Server waits for a response from the remote server before timing out and terminating the request. If you do not specify a value, Integration Server uses the value of the watt.net.timeout server configuration parameter. For information about the watt.net.timeout server configuration parameter, see IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        },
+        {
+          "name": "maxKeepAlive Connections",
+          "type": "String",
+          "description": "Optional. Number of client keep alive connections that you want Integration Server to retain in the client connection pool it uses for this HTTP connection. Integration Server establishes a client connection pool for each protocol (i.e., HTTP or HTTPS), host, and port combination. How the service uses this input value differs based on whether a suitable client connection pool already exists for the HTTP connection. If a suitable pool already exists, Integration Server uses a connection from the pool for the HTTP request. If the specified maxKeepAliveConnections is different from what is currently being used for the pool, Integration Server updates the pool to use the value you specify. If a suitable pool does not exist, Integration Server establishes one, using the maximum connections defined by this parameter. If you do not specify a value, the service uses the default value defined by the watt.net.maxClientKeepAliveConns server configuration parameter. After establishing the client connection pool, the service uses a connection from the newly established connection pool to the HTTP request.",
+          "optional": true
+        },
+        {
+          "name": "keepAliveTimeout",
+          "type": "String",
+          "description": "Optional. Number of seconds that you want Integration Server to keep an idle connection in the client connection pool before closing it. Integration Server establishes a client connection pool for each protocol (i.e., HTTP or HTTPS), host, and port combination. How the service uses this input value differs based on whether a suitable client connection pool already exists for the HTTP connection. If a suitable pool already exists, Integration Server uses a connection from the pool for the HTTP request. If the specified keepAliveTimeout is different from what is currently being used for the pool, Integration Server updates the pool to use the value you specify. If a suitable pool does not exist, Integration Server establishes one, using the timeout value defined by this parameter. If you do not specify a value, the service uses the default value defined by the watt.net.clientKeepAliveTimeout server configuration parameter. After establishing the client connection pool, the service uses a connection from the newly established connection pool to the HTTP request.",
+          "optional": true
+        },
+        {
+          "name": "newSession",
+          "type": "String",
+          "description": "Optional. Flag indicating whether a new session will be created for this HTTP request. This parameter overrides the watt.server.new.http.session.context server configuration parameter. For information about the watt.server.new.http.session.context server configuration parameter, see IBM webMethods Integration Server Administrator’s Guide . Set to: no to use the current session, if one is available, for this HTTP request. If one is not available, Integration Server creates one with the name “(httpclient)”. This is the default. yes to create a new session for this HTTP request. Integration Server creates one with the name “(httpclient)”.",
+          "optional": true
+        },
+        {
+          "name": "trustStore",
+          "type": "String",
+          "description": "Optional. Alias for the truststore that contains the list of certificates that Integration Server uses to validate the trust relationship. If you do not specify a truststore alias, the default truststore alias will be used.",
+          "optional": true
+        },
+        {
+          "name": "keyStoreAlias",
+          "type": "String",
+          "description": "Optional. Alias for the keystore that contains Integration Server private keys and the associated SSL certificates. If you specify keyStoreAlias and not the keyAlias , Integration Server uses the key alias defined for the keystore in Integration Server Administrator > Security > Keystore.",
+          "optional": true
+        },
+        {
+          "name": "keyAlias",
+          "type": "String",
+          "description": "Optional. Alias for a private key stored in the specified keystore. If you specify keyAlias , you must specify keyStoreAlias . If you do not specify either keyStoreAlias or keyAlias , Integration Server uses the default keystore and key alias configured in Integration Server Administrator > Security > Keystore.",
+          "optional": true
+        },
+        {
+          "name": "hostNameVerification",
+          "type": "String",
+          "description": "Optional. Specifies whether Integration Server , when working as a client, verifies the hostname in the url against the DNS Name in the Certificate Subject Alternative Name field of the certificate presented by the server to which the request is being sent. If the hostname verification succeeds, the HTTP request is successful. Set to: <null> to enable or disable hostname verification in the pub.client:http service based on the value of the watt.net.ssl.client.hostnameverification parameter. This is the default. true to enable hostname verification in the pub.client:http service regardless of the value of the watt.net.ssl.client.hostnameverification parameter. false to disable hostname verification in the pub.client:http service regardless of the value of the watt.net.ssl.client.hostnameverification parameter. For information about the parameter, see webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        },
+        {
+          "name": "cipherSuites",
+          "type": "String",
+          "description": "Optional. One or more comma-separated cipher suites that Integration Server supports for outbound HTTP requests. If one or more cipher suites are provided, Integration Server uses only the supported cipher suites from the list. If the parameter is empty, Integration Server uses the value of the watt.net.jsse.client.enabledCipherSuiteList parameter. For information about the parameter, see webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        },
+        {
+          "name": "checkCRL",
+          "type": "String",
+          "description": "Optional. Specifies whether Integration Server , when acting as a client, verifies the certificate presented by the HTTP server to which the request is being sent against the Certificate Revocation List (CRL). The CRL is a list of certificates revoked by the Certificate Authority (CA). Integration Server downloads the CRL from the CA's CRL distribution point. If Integration Server finds the certificate in the CRL, the HTTP request does not succeed. Set to: <null> or false , if the pub.client:http service does not check the CRL. <null> is the default. true if the pub.client:http service checks the CRL. If checkCRL is true , Integration Server downloads the CRL from the CA's CRL distribution point and caches the CRL for 30 minutes, by default. After 30 minutes, the cache is refreshed (CRL is downloaded and cached again). However, you can control the CRL cache refresh time by using the watt.net.client.crlCache.refreshTime server configuration parameter. For more information about the parameter, see webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        },
+        {
+          "name": "proxyAlias",
+          "type": "String",
+          "description": "Optional. Name of the proxy alias for the proxy server to which Integration Server routes the HTTP request. If you do not specify a proxyAlias , Integration Server routes the HTTP request through the proxy server specified in the default HTTP proxy alias. If there is no default HTTP proxy alias, the action taken by Integration Server depends on the value specified for the watt.net.proxy.useNonDefaultProxies parameter. If the watt.net.proxy.useNonDefaultProxies parameter is set to true, Integration Server routes the HTTP request through the proxy server in any configured HTTP proxy alias. If the Integration Server does not have any defined HTTP proxy aliases, Integration Server sends the HTTP request directly to the HTTP server or throws an exception depending on the settings specified for the watt.net.proxy.fallbackToDirectConnection parameter. If the watt.net.proxy.useNonDefaultProxies parameter is set to false, Integration Server sends the request to the remote server using a direct connection. For more information about proxy server usage, refer to IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        },
+        {
+          "name": "connectTimeout",
+          "type": "String",
+          "description": "Optional. Time, measured in milliseconds, that Integration Server waits to connect to the remote server before timing out and terminating the request. If you do not specify a value for connectTimeout , Integration Server uses the value specified for the watt.net.timeout server configuration parameter. If no value is specified for the watt.net.timeout server configuration parameter, Integration Server waits for the timeout value defined by the operating system before terminating the connection request. For more information about the watt.net.timeout server configuration parameter, see IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        },
+        {
+          "name": "followRedirect",
+          "type": "String",
+          "description": "Optional. Whether the outbound request follows a redirect when receiving a response code between 300 and 400. Set to one of the following: yes if the request follows the redirect. no if the request does not follow the redirect and instead returns the response code and all the response headers from the original outbound request. <null> if the value of the watt.net.http.followRedirect parameter determines whether or not the request follows a redirect. Note: A value of yes or no overrides the value of the watt.net.http.followRedirect parameter.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "encodedURL",
+          "type": "String",
+          "description": "The URL that was submitted by pub.client:http . This will contain any argument set in args , table , or string . If the remote server redirected pub.client:http to a different location, encodedURL will contain the URL that pub.client:http submitted to the server to which it was redirected.",
+          "optional": false
+        },
+        {
+          "name": "header",
+          "type": "Document",
+          "description": "Conditional. HTTP response headers.",
+          "optional": false
+        },
+        {
+          "name": "body",
+          "type": "Document",
+          "description": "Body of the HTTP response.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_client_http.html"
+    },
+    {
+      "name": "pub.client.ldap:add",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "url",
+          "type": "String",
+          "description": "Optional. URL of the directory server to connect to. For example ldap://servername:389.",
+          "optional": true
+        },
+        {
+          "name": "principal",
+          "type": "String",
+          "description": "Optional. The principal for the directory server.",
+          "optional": true
+        },
+        {
+          "name": "credentials",
+          "type": "String",
+          "description": "Optional. Credentials for the directory server.",
+          "optional": true
+        },
+        {
+          "name": "timeout",
+          "type": "String",
+          "description": "Optional. Connection timeout in milliseconds. The default value is 30000 milliseconds.",
+          "optional": true
+        },
+        {
+          "name": "ldapEnv",
+          "type": "Record",
+          "description": "Optional. Key/value parameters to be passed to JNDI to further define the connection environment. See your JNDI provider documentation or the Oracle JNDI documentation for more information about parameters you can pass to JNDI.",
+          "optional": true
+        },
+        {
+          "name": "close",
+          "type": "String",
+          "description": "Flag that specifies whether to close the connection after the service finishes. Set to: yes to close the connection. This is the default. no to leave the connection open and available.",
+          "optional": false
+        },
+        {
+          "name": "dn",
+          "type": "String",
+          "description": "The distinguished name of the new entry to add to the directory.",
+          "optional": false
+        },
+        {
+          "name": "attrs",
+          "type": "Document List",
+          "description": "Optional. LDAP attributes and their corresponding values. If an attribute is specified more than once, it will be assigned multiple values. The following example shows how to specify a user name of John Smith and one nickname.",
+          "optional": true
+        },
+        {
+          "name": "attrsData",
+          "type": "Document",
+          "description": "Optional. LDAP attributes and their corresponding values. If an attribute is specified more than once, it will be assigned multiple values. The following example shows how to assign a user name of John Smith with two nicknames.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "connectionHandle",
+          "type": "Object",
+          "description": "Optional. The returned connection object. Returned only if the close parameter is set to \"no\".",
+          "optional": true
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A10444.html"
+    },
+    {
+      "name": "pub.client.ldap:bind",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "url",
+          "type": "String",
+          "description": "URL of the LDAP server to connect to.",
+          "optional": false
+        },
+        {
+          "name": "principal",
+          "type": "String",
+          "description": "Optional. The principal for the LDAP server.",
+          "optional": true
+        },
+        {
+          "name": "credentials",
+          "type": "String",
+          "description": "Optional. Credentials for the LDAP server.",
+          "optional": true
+        },
+        {
+          "name": "timeout",
+          "type": "String",
+          "description": "Optional. Connection timeout in milliseconds. The default value is 30000 milliseconds.",
+          "optional": true
+        },
+        {
+          "name": "ldapEnv",
+          "type": "Record",
+          "description": "Optional. Key/value parameters to be passed to JNDI to further define the connection environment. See your JNDI provider documentation or the Oracle JNDI documentation for more information about parameters you can pass to JNDI.",
+          "optional": true
+        },
+        {
+          "name": "close",
+          "type": "String",
+          "description": "Flag that specifies whether to close the connection after the service finishes. Set to: yes to close the connection. This is the default. no to leave the connection open and available.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "connectionHandle",
+          "type": "Object",
+          "description": "Optional. The returned connection object. Returned only if the close parameter is set to \"no\".",
+          "optional": true
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A89516.html"
+    },
+    {
+      "name": "pub.client.ldap:cancelNotification",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "url",
+          "type": "String",
+          "description": "Optional. URL of the LDAP server to connect to.",
+          "optional": true
+        },
+        {
+          "name": "principal",
+          "type": "String",
+          "description": "Optional. The principal for the LDAP server.",
+          "optional": true
+        },
+        {
+          "name": "credentials",
+          "type": "String",
+          "description": "Optional. Credentials for the LDAP server.",
+          "optional": true
+        },
+        {
+          "name": "timeout",
+          "type": "String",
+          "description": "Optional. Connection timeout in milliseconds. The default value is 30000 milliseconds.",
+          "optional": true
+        },
+        {
+          "name": "ldapEnv",
+          "type": "Record",
+          "description": "Optional. Key/value parameters to be passed to JNDI to further define the connection environment. See your JNDI provider documentation or the Oracle JNDI documentation for more information about parameters you can pass to JNDI.",
+          "optional": true
+        },
+        {
+          "name": "close",
+          "type": "String",
+          "description": "Flag that specifies whether to close the connection after the service finishes. Set to: yes to close the connection. This is the default. no to leave the connection open and available.",
+          "optional": false
+        },
+        {
+          "name": "dn",
+          "type": "String",
+          "description": "The distinguished name of the entry.",
+          "optional": false
+        },
+        {
+          "name": "connectionHandle",
+          "type": "Object",
+          "description": "Optional. Connection object returned by a previously invoked LDAP service.",
+          "optional": true
+        },
+        {
+          "name": "scope",
+          "type": "String",
+          "description": "The scope of the search. Must be \"object\" (only search the specified directory entry), \"onelevel\" (only search the immediate children of the specified directory entry), or \"subtree\" (search the directory, its children, and all of their children).",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "connectionHandle",
+          "type": "Object",
+          "description": "Optional. The returned connection object. Returned only if the close parameter is set to \"no\".",
+          "optional": true
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A41156.html"
+    },
+    {
+      "name": "pub.client.ldap:compare",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "url",
+          "type": "String",
+          "description": "Optional. URL of the LDAP server to connect to.",
+          "optional": true
+        },
+        {
+          "name": "principal",
+          "type": "String",
+          "description": "Optional. The principal for the LDAP server.",
+          "optional": true
+        },
+        {
+          "name": "credentials",
+          "type": "String",
+          "description": "Optional. Credentials for the LDAP server.",
+          "optional": true
+        },
+        {
+          "name": "timeout",
+          "type": "String",
+          "description": "Optional. Connection timeout in milliseconds. The default value is 30000 milliseconds.",
+          "optional": true
+        },
+        {
+          "name": "ldapEnv",
+          "type": "Record",
+          "description": "Optional. Key/value parameters to be passed to JNDI to further define the connection environment. See your JNDI provider documentation or the Oracle JNDI documentation for more information about parameters you can pass to JNDI.",
+          "optional": true
+        },
+        {
+          "name": "close",
+          "type": "String",
+          "description": "Flag that specifies whether to close the connection after the service finishes. Set to: yes to close the connection. This is the default. no to leave the connection open and available.",
+          "optional": false
+        },
+        {
+          "name": "dn",
+          "type": "String",
+          "description": "The distinguished name of the entry whose attribute value you want to compare to attrValue .",
+          "optional": false
+        },
+        {
+          "name": "connectionHandle",
+          "type": "Object",
+          "description": "Optional. Connection object returned by a previously invoked LDAP service.",
+          "optional": true
+        },
+        {
+          "name": "attrName",
+          "type": "String",
+          "description": "Name of the attribute whose value you want to compare to attrValue .",
+          "optional": false
+        },
+        {
+          "name": "attrValue",
+          "type": "String",
+          "description": "The string to compare against the value of the attribute identified by attrName .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "connectionHandle",
+          "type": "Object",
+          "description": "Optional. The returned connection object. Returned only if the close parameter is set to \"no\".",
+          "optional": true
+        },
+        {
+          "name": "result",
+          "type": "String",
+          "description": "The result of the compare operation. Can be \"true\" or \"false\".",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A10851.html"
+    },
+    {
+      "name": "pub.client.ldap:delete",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "url",
+          "type": "String",
+          "description": "Optional. URL of the LDAP server to connect to.",
+          "optional": true
+        },
+        {
+          "name": "principal",
+          "type": "String",
+          "description": "Optional. The principal for the LDAP server.",
+          "optional": true
+        },
+        {
+          "name": "credentials",
+          "type": "String",
+          "description": "Optional. Credentials for the LDAP server.",
+          "optional": true
+        },
+        {
+          "name": "timeout",
+          "type": "String",
+          "description": "Optional. Connection timeout in milliseconds. The default value is 30000 milliseconds.",
+          "optional": true
+        },
+        {
+          "name": "ldapEnv",
+          "type": "Record",
+          "description": "Optional. Key/value parameters to be passed to JNDI to further define the connection environment. See your JNDI provider documentation or the Oracle JNDI documentation for more information about parameters you can pass to JNDI.",
+          "optional": true
+        },
+        {
+          "name": "close",
+          "type": "String",
+          "description": "Flag that specifies whether to close the connection after the service finishes. Set to: yes to close the connection. This is the default. no to leave the connection open and available.",
+          "optional": false
+        },
+        {
+          "name": "dn",
+          "type": "String",
+          "description": "The distinguished name of the entry to delete.",
+          "optional": false
+        },
+        {
+          "name": "failIfNotFound",
+          "type": null,
+          "description": "String . Optional. Specifies whether the service returns an error when the requested DN does not exist in the LDAP directory. Set to: yes for the service to fail and return an error when the DN is not found. no for the service to complete even when the DN is not found. The default value is no.",
+          "optional": true
+        },
+        {
+          "name": "connectionHandle",
+          "type": "Object",
+          "description": "Optional. Connection object returned by a previously invoked LDAP service.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "connectionHandle",
+          "type": "Object",
+          "description": "Optional. The returned connection object. Returned only if the close parameter is set to \"no\".",
+          "optional": true
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A73749.html"
+    },
+    {
+      "name": "pub.client.ldap:modify",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "url",
+          "type": "String",
+          "description": "Optional. URL of the LDAP server to connect to.",
+          "optional": true
+        },
+        {
+          "name": "principal",
+          "type": "String",
+          "description": "Optional. The principal for the LDAP server.",
+          "optional": true
+        },
+        {
+          "name": "credentials",
+          "type": "String",
+          "description": "Optional. Credentials for the LDAP server.",
+          "optional": true
+        },
+        {
+          "name": "timeout",
+          "type": "String",
+          "description": "Optional. Connection timeout in milliseconds. The default value is 30000 milliseconds.",
+          "optional": true
+        },
+        {
+          "name": "ldapEnv",
+          "type": "Record",
+          "description": "Optional. Key/value parameters to be passed to JNDI to further define the connection environment. See your JNDI provider documentation or the Oracle JNDI documentation for more information about parameters you can pass to JNDI.",
+          "optional": true
+        },
+        {
+          "name": "close",
+          "type": "String",
+          "description": "Flag that specifies whether to close the connection after the service finishes. Set to: yes to close the connection. This is the default. no to leave the connection open and available.",
+          "optional": false
+        },
+        {
+          "name": "dn",
+          "type": "String",
+          "description": "The distinguished name of the entry to modify.",
+          "optional": false
+        },
+        {
+          "name": "connectionHandle",
+          "type": "Object",
+          "description": "Optional. Connection object returned by a previously invoked LDAP service.",
+          "optional": true
+        },
+        {
+          "name": "attrs",
+          "type": "Document List",
+          "description": "Optional. For each LDAP attribute to change, specifies the attribute name, the values affected, and the action to perform on those values. The following example shows how to specify the removal of John Smith's nickname Johnny.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "connectionHandle",
+          "type": "Object",
+          "description": "Optional. The returned connection object. Returned only if the close parameter is set to \"no\".",
+          "optional": true
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A67218.html"
+    },
+    {
+      "name": "pub.client.ldap:registerNotification",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "url",
+          "type": "String",
+          "description": "Optional. URL of the LDAP server to connect to.",
+          "optional": true
+        },
+        {
+          "name": "principal",
+          "type": "String",
+          "description": "Optional. The principal for the LDAP server.",
+          "optional": true
+        },
+        {
+          "name": "credentials",
+          "type": "String",
+          "description": "Optional. Credentials for the LDAP server.",
+          "optional": true
+        },
+        {
+          "name": "timeout",
+          "type": "String",
+          "description": "Optional. Connection timeout in milliseconds. The default value is 30000 milliseconds.",
+          "optional": true
+        },
+        {
+          "name": "ldapEnv",
+          "type": "Record",
+          "description": "Optional. Key/value parameters to be passed to JNDI to further define the connection environment. See your JNDI provider documentation or the Oracle JNDI documentation for more information about parameters you can pass to JNDI.",
+          "optional": true
+        },
+        {
+          "name": "close",
+          "type": "String",
+          "description": "Flag that specifies whether to close the connection after the service finishes. Set to: yes to close the connection. This is the default. no to leave the connection open and available.",
+          "optional": false
+        },
+        {
+          "name": "dn",
+          "type": "String",
+          "description": "The distinguished name of the entry to be monitored.",
+          "optional": false
+        },
+        {
+          "name": "connectionHandle",
+          "type": "Object",
+          "description": "Optional. Connection object returned by a previously invoked LDAP service.",
+          "optional": true
+        },
+        {
+          "name": "scope",
+          "type": "String",
+          "description": "The scope of the search. Must be \"object\" (only search the specified directory entry, \"onelevel\" (only search the immediate children of the specified directory entry), or \"subtree\" (search the directory entry, its children, and all of their children).",
+          "optional": false
+        },
+        {
+          "name": "service",
+          "type": "String",
+          "description": "The target service to be invoked when the LDAP event is retrieved.",
+          "optional": false
+        },
+        {
+          "name": "user",
+          "type": "String",
+          "description": "Optional. Integration Server user to run service (the target service to be invoked when the LDAP event is retrieved). If you do not specify a user, the service runs as the Default user. Make sure user has the permissions necessary to run the service. Be careful when assigning the user because no password is required when invoking a service in this manner. It is recommended that you create a special account just for invoking the target service.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "connectionHandle",
+          "type": "Object",
+          "description": "Optional. The returned connection object. Returned only if the close parameter is set to \"no\".",
+          "optional": true
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A57598.html"
+    },
+    {
+      "name": "pub.client.ldap:rename",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "url",
+          "type": "String",
+          "description": "Optional. URL of the LDAP server to connect to.",
+          "optional": true
+        },
+        {
+          "name": "principal",
+          "type": "String",
+          "description": "Optional. The principal for the LDAP server.",
+          "optional": true
+        },
+        {
+          "name": "credentials",
+          "type": "String",
+          "description": "Optional. Credentials for the LDAP server.",
+          "optional": true
+        },
+        {
+          "name": "timeout",
+          "type": "String",
+          "description": "Optional. Connection timeout in milliseconds. The default value is 30000 milliseconds.",
+          "optional": true
+        },
+        {
+          "name": "ldapEnv",
+          "type": "Record",
+          "description": "Optional. Key/value parameters to be passed to JNDI to further define the connection environment. See your JNDI provider documentation or the Oracle JNDI documentation for more information about parameters you can pass to JNDI.",
+          "optional": true
+        },
+        {
+          "name": "close",
+          "type": "String",
+          "description": "Flag that specifies whether to close the connection after the service finishes. Set to: yes to close the connection. This is the default. no to leave the connection open and available.",
+          "optional": false
+        },
+        {
+          "name": "connectionHandle",
+          "type": "Object",
+          "description": "Optional. Connection object returned by a previously invoked LDAP service.",
+          "optional": true
+        },
+        {
+          "name": "newDn",
+          "type": "String",
+          "description": "The new name for the entry.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "connectionHandle",
+          "type": "Object",
+          "description": "Optional. The returned connection object. Returned only if the close parameter is set to \"no\".",
+          "optional": true
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A84564.html"
+    },
+    {
+      "name": "pub.client.ldap:search",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "url",
+          "type": "String",
+          "description": "Optional. URL of the LDAP server to connect to.",
+          "optional": true
+        },
+        {
+          "name": "principal",
+          "type": "String",
+          "description": "Optional. The principal for the LDAP server.",
+          "optional": true
+        },
+        {
+          "name": "credentials",
+          "type": "String",
+          "description": "Optional. Credentials for the LDAP server.",
+          "optional": true
+        },
+        {
+          "name": "timeout",
+          "type": "String",
+          "description": "Optional. Connection timeout in milliseconds. The default value is 30000 milliseconds.",
+          "optional": true
+        },
+        {
+          "name": "ldapEnv",
+          "type": "Record",
+          "description": "Optional. Key/value parameters to be passed to JNDI to further define the connection environment. See your JNDI provider documentation or the Oracle JNDI documentation for more information about parameters you can pass to JNDI.",
+          "optional": true
+        },
+        {
+          "name": "close",
+          "type": "String",
+          "description": "Flag that specifies whether to close the connection after the service finishes. Set to: yes to close the connection. This is the default. If the close parameter is set to \"yes\", the connectionHandle parameter must also be mapped. no to leave the connection open and available.",
+          "optional": false
+        },
+        {
+          "name": "dn",
+          "type": "String",
+          "description": "The distinguished name indicating the root from to begin the search.",
+          "optional": false
+        },
+        {
+          "name": "connectionHandle",
+          "type": "Object",
+          "description": "Required if the close parameter is set to \"yes\", otherwise it is optional. Connection object returned by a previously invoked LDAP service.",
+          "optional": true
+        },
+        {
+          "name": "scope",
+          "type": "String",
+          "description": "The scope of the search. Must be \"object\" (only search the specified directory entry), \"onelevel\" (only search the immediate children of the specified directory entry), or \"subtree\" (search the directory entry, its children, and all their children).",
+          "optional": false
+        },
+        {
+          "name": "filter",
+          "type": "String",
+          "description": "The filter string that works with RFC 2254.",
+          "optional": false
+        },
+        {
+          "name": "countLimit",
+          "type": "String",
+          "description": "Optional. The maximum number of results to return (0, the default, indicates no limit).",
+          "optional": true
+        },
+        {
+          "name": "pageSize",
+          "type": null,
+          "description": "String Optional. The number of entries to return in a page.",
+          "optional": true
+        },
+        {
+          "name": "timeLimit",
+          "type": "String",
+          "description": "Optional. The number of milliseconds to wait for the search to complete (0, the default, indicates to wait forever).",
+          "optional": true
+        },
+        {
+          "name": "returnAttributes",
+          "type": "Record",
+          "description": "Optional. A list of attribute names to return (an empty array indicates that no results should be returned. A null array, the default, indicates that all attributes should be returned).",
+          "optional": true
+        },
+        {
+          "name": "returnObjects",
+          "type": "String",
+          "description": "Optional. Specifies whether or not objects associated with the results should be returned. Can be \"yes\" or \"no\". The default is \"no\".",
+          "optional": true
+        },
+        {
+          "name": "dereferenceLinks",
+          "type": "String",
+          "description": "Optional. Whether to return the symbolic link to the entry or the entry itself. Can be \"yes\"/\"no\". The default is \"yes\", which returns the entry to which the link points.",
+          "optional": true
+        },
+        {
+          "name": "isDocumentList",
+          "type": "String",
+          "description": "Optional. Whether to return results as a list. Set to: Yes to return results as a Document List containing Documents (IData). The results are returned in the resultsList output parameter. No (the default) to return results as a Document containing Documents. The results are returned in the results output parameter.",
+          "optional": true
+        },
+        {
+          "name": "ldapCookie",
+          "type": null,
+          "description": "byte[] Optional. Contains the index of the page count for the search.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "connectionHandle",
+          "type": "Object",
+          "description": "Optional. The returned connection object. Returned only if the close parameter is set to No .",
+          "optional": true
+        },
+        {
+          "name": "ldapCookie",
+          "type": null,
+          "description": "byte[] Optional. Contains the index of the page count for the search.",
+          "optional": true
+        },
+        {
+          "name": "results",
+          "type": "Document",
+          "description": "Conditional. The returned results of the search. Returned only if isDocumentList is set to No .",
+          "optional": false
+        },
+        {
+          "name": "resultsList",
+          "type": "Document List",
+          "description": "Conditional. Returned only if isDocumentList is set to Yes .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A36037.html"
+    },
+    {
+      "name": "pub.client.oauth:executeRequest",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "provider",
+          "type": null,
+          "description": "String Name of the service provider to which the client will connect. Integration Server uses this parameter to determine which OAuth client implementation in the Scribe library to use when issuing requests. Possible values are IntegrationServer and Other (case insensitive). Note: If set to Other , you must specify a value for providerClass .",
+          "optional": false
+        },
+        {
+          "name": "providerClass",
+          "type": null,
+          "description": "String Name of a class that implements the org.scribe.builder.api.Api interface. This parameter is required only when the provider parameter is set to Other . Note: The org.scribe.builder.api.Api interface is part of the Scribe API. It facilitates the use of the pub.client.oauth:executeRequest service to connect to providers other than IntegrationServer . For more information about org.scribe.builder.api.Api see the Usage Notes.",
+          "optional": false
+        },
+        {
+          "name": "clientID",
+          "type": null,
+          "description": "String The client identifier assigned to the client by the provider. The clientID is used to authenticate the client to the provider. The value is assigned by the provider at registration time.",
+          "optional": false
+        },
+        {
+          "name": "clientSecret",
+          "type": null,
+          "description": "String The secret assigned to the client when it registered with the provider. Use this parameter to specify either the client secret or the key to the client secret in the outbound password store. For information about using the outbound password store, see the Usage Notes.",
+          "optional": false
+        },
+        {
+          "name": "accessToken",
+          "type": null,
+          "description": "String The access token assigned to the client application when it registered with the provider. Note: The process for obtaining the accessToken varies depending on the provider. For information about obtaining the accessToken , refer to your provider's documentation. Use this parameter to specify either the access token or the key to the access token in the outbound password store. For information about using the outbound password store, see the Usage Notes.",
+          "optional": false
+        },
+        {
+          "name": "acccessTokenSecret",
+          "type": null,
+          "description": "String Optional. The access token secret assigned to the client application when it registered with the provider. Note: The process for obtaining the accessTokenSecret varies depending on the provider. For information about obtaining the accessTokenSecret , refer to your provider's documentation. Use this parameter to specify either the access token secret or the key to the access token secret in the outbound password store. For information about using the outbound password store, see the Usage Notes. Note: Not all providers use an access token secret. If the provider issued a secret with the token, you must specify it with the accessTokenSecret parameter.",
+          "optional": true
+        },
+        {
+          "name": "resourceUri",
+          "type": null,
+          "description": "String The URI given to the client application when it registered with the provider. The client application uses this URI when issuing requests to the provider. It points to the resource that the client application wants to access on the provider.",
+          "optional": false
+        },
+        {
+          "name": "method",
+          "type": null,
+          "description": "String The HTTP method Integration Server will use to issue the request to the provider. Possible values are get , post , put , and delete .",
+          "optional": false
+        },
+        {
+          "name": "headers",
+          "type": null,
+          "description": "Document List Optional. One or more name/value pairs to add to the header of the request sent to the provider. If the provider requires a request header, you must provide a value.",
+          "optional": true
+        },
+        {
+          "name": "queryString Parameters",
+          "type": null,
+          "description": "Document List Optional. One or more name/value pairs to add to the URL of the get request sent to the provider.",
+          "optional": true
+        },
+        {
+          "name": "bodyParameters",
+          "type": null,
+          "description": "Document List Optional. One or more name/value pairs to add to the body of the request sent to the provider.",
+          "optional": true
+        },
+        {
+          "name": "requestDataType",
+          "type": null,
+          "description": "String Optional. If supplying data with the request to the provider, indicates the data type of the requestData parameter. If set to: bytes , requestData must be a byte[]. This is the default. string , requestData must be a java.lang.String.",
+          "optional": true
+        },
+        {
+          "name": "requestData",
+          "type": null,
+          "description": "Object Optional. Data to include in the body of the request sent to the provider. The value can be a string or a byte[]. Note: The data type of requestData must match what is specified by the requestDataType parameter. requestData is ignored if bodyParameters is specified.",
+          "optional": true
+        },
+        {
+          "name": "responseDataType",
+          "type": null,
+          "description": "String Optional. Indicates the data type of the responseData output parameter. Set to: stream to return the responseData as a java.io.InputStream. This is the default. bytes to return the responseData as a byte[]. string to return the responseData as a java.lang.String, constructed using the default platform encoding (indicated by the file.encoding Java system property, or UTF-8 if file.encoding is not set).",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "responseData",
+          "type": null,
+          "description": "Object The response from the provider. If the responseDataType is set to: stream , responseData is a java.io.InputStream. bytes , responseData is a byte[]. string , responseData is a java.lang.String, constructed using the default platform encoding (indicated by the file.encoding Java system property, or UTF-8 if file.encoding is not set).",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id1258960N05Z.html"
+    },
+    {
+      "name": "pub.client:restClient",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "path",
+          "type": "String",
+          "description": "Relative path of the individual endpoints of the REST API.",
+          "optional": false
+        },
+        {
+          "name": "httpMethod",
+          "type": "String",
+          "description": "Specifies the HTTP method you want to use. Valid values are: get post put delete patch options head",
+          "optional": false
+        },
+        {
+          "name": "body",
+          "type": "Document",
+          "description": "Optional. Body of the REST API request.",
+          "optional": true
+        },
+        {
+          "name": "scheme",
+          "type": "String",
+          "description": "Transfer protocol that you want to use to send the REST API request. Valid values are: http https",
+          "optional": false
+        },
+        {
+          "name": "produces",
+          "type": "String",
+          "description": "Optional. MIME media type the REST operation can produce and send back to the REST client. Valid values are: application/xml application/json",
+          "optional": true
+        },
+        {
+          "name": "consumes",
+          "type": "String",
+          "description": "Optional. MIME media type the REST operation can consume or accept from the REST client. Valid values are: application/xml application/json",
+          "optional": true
+        },
+        {
+          "name": "basePath",
+          "type": "String",
+          "description": "Optional. Base path on which the REST API is served, which is relative to the host . If base path is not included, the REST API is served directly under the host . The path must begin with a “/” (slash).",
+          "optional": true
+        },
+        {
+          "name": "auth",
+          "type": "Document",
+          "description": "Optional. Authorization information that this service submits to the server.",
+          "optional": true
+        },
+        {
+          "name": "secure",
+          "type": "Document",
+          "description": "Optional. Specifies the truststore information for certificate validation that Integration Server uses when communicating with the HTTPS server port.",
+          "optional": true
+        },
+        {
+          "name": "params",
+          "type": "Document",
+          "description": "Optional. All path parameters must be added under this document as key value pairs.",
+          "optional": true
+        },
+        {
+          "name": "host",
+          "type": "String",
+          "description": "Host serving the REST API.",
+          "optional": false
+        },
+        {
+          "name": "radName",
+          "type": "String",
+          "description": "The namespace of the consumer REST API descriptor.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "response",
+          "type": "Object",
+          "description": "Optional. Body of the REST API response as a document or document list.",
+          "optional": true
+        },
+        {
+          "name": "code",
+          "type": "String",
+          "description": "HTTP code of the REST API response.",
+          "optional": false
+        },
+        {
+          "name": "phrase",
+          "type": "String",
+          "description": "HTTP message of the REST API response.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_5B01DB0E389A4B949F106B0F1B5FC176.html"
+    },
+    {
+      "name": "pub.client.sftp:cd",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionKey",
+          "type": "String",
+          "description": "Unique key for the current SFTP session. The sessionKey is returned by the pub.client.sftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "path",
+          "type": "String",
+          "description": "Absolute or relative path of the directory that you want as the working directory on the remote SFTP server.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returnCode",
+          "type": "String",
+          "description": "Standard SFTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnMsg",
+          "type": "String",
+          "description": "Text message describing the return code.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/CJDGBEJE.html"
+    },
+    {
+      "name": "pub.client.sftp:chgrp",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionKey",
+          "type": "String",
+          "description": "Unique key for the current SFTP session. The sessionKey is returned by the pub.client.sftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "groupId",
+          "type": "String",
+          "description": "Numeric group identifier of the group to which you want to transfer ownership of the remote files.",
+          "optional": false
+        },
+        {
+          "name": "path",
+          "type": "String",
+          "description": "Absolute or relative path of the remote files.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returnCode",
+          "type": "String",
+          "description": "Standard SFTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnMsg",
+          "type": "String",
+          "description": "Text message describing the return code.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/CJDICFIG.html"
+    },
+    {
+      "name": "pub.client.sftp:chmod",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionKey",
+          "type": "String",
+          "description": "Unique key for the current SFTP session. The sessionKey is returned by the pub.client.sftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "mode",
+          "type": "String",
+          "description": "The permission mode to apply to the remote file (for example, 777 ).",
+          "optional": false
+        },
+        {
+          "name": "path",
+          "type": "String",
+          "description": "Absolute or relative path of the remote files.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returnCode",
+          "type": "String",
+          "description": "Standard SFTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnMsg",
+          "type": "String",
+          "description": "Text message describing the return code.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/CJDDGIIE.html"
+    },
+    {
+      "name": "pub.client.sftp:chown",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionKey",
+          "type": "String",
+          "description": "Unique key for the current SFTP session. The sessionKey is returned by the pub.client.sftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "uid",
+          "type": "String",
+          "description": "Numeric user ID of the new owning user of the file.",
+          "optional": false
+        },
+        {
+          "name": "path",
+          "type": "String",
+          "description": "Absolute or relative path of the remote files.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returnCode",
+          "type": "String",
+          "description": "Standard SFTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnMsg",
+          "type": "String",
+          "description": "Text message describing the return code.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id95c18c5f-405f-4f7d-a1a7-eed5b60f4036.html"
+    },
+    {
+      "name": "pub.client.sftp:get",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionKey",
+          "type": "String",
+          "description": "Unique key for the current SFTP session. The sessionKey is returned by the pub.client.sftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "remoteFile",
+          "type": "String",
+          "description": "Absolute or relative path of the remote file.",
+          "optional": false
+        },
+        {
+          "name": "localFile",
+          "type": "String",
+          "description": "Optional. Absolute or relative path of the local file. If localFile is not specified, the pub.client.sftp:get service returns the retrieved file in the output parameter contentStream (as a java.io.InputStream object).",
+          "optional": true
+        },
+        {
+          "name": "mode",
+          "type": "String",
+          "description": "Optional. Specifies how the retrieved file is to be saved to the local file. Use this parameter only if you have specified a value for localFile . Set to: overwrite to overwrite the contents of the local file with the contents of the remote file. This is the default. append to append the entire contents of the remote file to the local file. resume to resume writing the contents of the remote file to the local file from the point at which the writing stopped during previous SFTP sessions.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returnCode",
+          "type": "String",
+          "description": "Standard SFTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnMsg",
+          "type": "String",
+          "description": "Text message describing the return code.",
+          "optional": false
+        },
+        {
+          "name": "contentStream",
+          "type": "Object",
+          "description": "Conditional. A java.io.InputStream object. The pub.client.sftp:get service returns the retrieved file in the output parameter contentStream (as a java.io.InputStream object) if localFile is not specified.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/CJDCECDH.html"
+    },
+    {
+      "name": "pub.client.sftp:login",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "userAlias",
+          "type": "String",
+          "description": "Optional. Alias containing the SFTP client configuration for an SFTP user account. Integration Server creates a new session each time it logs in to the SFTP server and returns the session key to the user. This parameter is optional. Instead of using this parameter, you can pass the login credentials and the configuration parameters using the fields within the sftpConfigurationParameters document. Note: It is recommended to use userAlias instead of the fields within the sftpConfigurationParameters document because it is resilient to changes in configuration, such as removal of algorithms or ciphers in favor of stronger algorithms and ciphers. If you provide inputs for both userAlias and SFTP configuration parameters, then userAlias takes precedence.",
+          "optional": true
+        },
+        {
+          "name": "reuseSession",
+          "type": "String",
+          "description": "Optional. Flag indicating whether or not Integration Server reuses a session that is already open for the specified user alias. Set to: true , to reuse the session that is already open for the specified user alias. If a session is not open for this user alias, the pub.client.sftp:login service creates a new session and returns the key for this new session. false , to create a new session for the specified user alias. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "sftpConfigurationParameters",
+          "type": "Document",
+          "description": "Optional. The following parameters are part of this document.",
+          "optional": true
+        },
+        {
+          "name": "sftpClientVersion",
+          "type": "String",
+          "description": "Indicates the Integration Server SFTP client version, which can be version1 (existing) or version2 (new). Set to version2 , if you want Integration Server to use the newer SFTP client that has new configuration properties, additional Key Exchange Algorithms, Machine Access Code (MAC) algorithms, and ciphers.",
+          "optional": false
+        },
+        {
+          "name": "serverHost",
+          "type": "String",
+          "description": "The IP address or the host name of the SFTP server.",
+          "optional": false
+        },
+        {
+          "name": "serverPort",
+          "type": "Integer",
+          "description": "The SFTP server port number. The port number must be within the range of 0 and 65535 (inclusive).",
+          "optional": false
+        },
+        {
+          "name": "userName",
+          "type": "String",
+          "description": "The user name for the SFTP user account.",
+          "optional": false
+        },
+        {
+          "name": "authenticationType",
+          "type": "String",
+          "description": "Type of authentication that Integration Server uses to authenticate itself on the SFTP server. Set to: password, to use password-based authentication. public key, to use public key-based authentication. If the authentication type is password, then the value in the password field is used. If the authentication type is publicKey , then the value provided in the privateKeyBytes field is used.",
+          "optional": false
+        },
+        {
+          "name": "privateKeyBytes",
+          "type": "Object",
+          "description": "(an array of bytes (byte[])). Optional. If the authentication type is publicKey , then provide the private key of the specified SFTP user account.",
+          "optional": true
+        },
+        {
+          "name": "minDHKeySize",
+          "type": "Integer",
+          "description": "Optional. The minimum DH key size. The default value is 1024. This field is not applicable if sftpClientVersion is version1.",
+          "optional": true
+        },
+        {
+          "name": "maxDHKeySize",
+          "type": "Integer",
+          "description": "Optional. The maximum DH key size. The default value is 8192. This field is not applicable, if sftpClientVersion is version1.",
+          "optional": true
+        },
+        {
+          "name": "preferredCiphersS2C",
+          "type": "String",
+          "description": "Optional. A comma-separated list of preferred server-to-client ciphers. If no value is provided, then the default list of server-to-client ciphers (in the default order) is used.",
+          "optional": true
+        },
+        {
+          "name": "preferredMacC2S",
+          "type": "String",
+          "description": "Optional. A comma-separated list of preferred client-to-server Message Authentication Code (MAC) algorithms. If a value is not provided, then the default list of client-to-server MAC algorithms (in the default order) is used.",
+          "optional": true
+        },
+        {
+          "name": "proxyAlias",
+          "type": "String",
+          "description": "Optional. The proxy alias through which the request should be routed. The proxy alias can be HTTP, HTTPS, or SOCKS. If a proxy alias is not specified, Integration Server makes outbound requests using each enabled proxy server alias until the request is sent successfully or all proxy servers are tried.",
+          "optional": true
+        },
+        {
+          "name": "connectionTimeout",
+          "type": "Integer",
+          "description": "Optional. The time (in seconds) that Integration Server waits for a response from the SFTP server before timing out and terminating the request. The default is 0, which indicates that the session never times out.",
+          "optional": true
+        },
+        {
+          "name": "compression",
+          "type": "String",
+          "description": "Optional. Determines whether data should be compressed or not, to reduce the size of the data in transition. Integration Server supports compression using the zlib compression algorithm. The allowed values for this field are none and zlib . Note: Use compression, only if the SFTP server to which you connect supports compression.",
+          "optional": true
+        },
+        {
+          "name": "strictHostKeyChecking",
+          "type": "String",
+          "description": "Optional. Enables host key checking. The default value is Yes . If set to Yes and the host key does not match the host key provided in the hostKeyBytes field at the time of handshake, then the connection fails. If set to No , then the host key is not checked during the handshake. This field is ignored if the hostKeyBytes field is empty.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "sessionKey",
+          "type": "String",
+          "description": "On successful login, this field contains the session key.",
+          "optional": false
+        },
+        {
+          "name": "returnCode",
+          "type": "String",
+          "description": "The code returned for the login command.",
+          "optional": false
+        },
+        {
+          "name": "returnMsg",
+          "type": "String",
+          "description": "The message returned for the login command.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/CJDBHEFF.html"
+    },
+    {
+      "name": "pub.client.sftp.admin:getDefaultAlgorithms",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sftpClientVersion",
+          "type": "String",
+          "description": "Indicates the Integration Server SFTP client version, which can be version1 (existing) or version2 (newer). Set to version2 , if you want Integration Server to use the newer SFTP client that has new configuration properties, additional Key Exchange Algorithms, Machine Access Code (MAC) algorithms, and ciphers.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "keyExchangeAlgorithms",
+          "type": "String",
+          "description": "A comma-separated list of supported Key Exchange Algorithms.",
+          "optional": false
+        },
+        {
+          "name": "ciphersC2S",
+          "type": "String",
+          "description": "A comma-separated list of supported client-to-server ciphers.",
+          "optional": false
+        },
+        {
+          "name": "ciphersS2C",
+          "type": "String",
+          "description": "A comma-separated list of supported server-to-client ciphers.",
+          "optional": false
+        },
+        {
+          "name": "macC2S",
+          "type": "String",
+          "description": "A comma-separated list of supported client-to-server Message Authentication Code (MAC) algorithms.",
+          "optional": false
+        },
+        {
+          "name": "macS2C",
+          "type": "String",
+          "description": "A comma-separated list of supported server-to-client Message Authentication Code (MAC) algorithms.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_A58FDE9252A24C86A9135FA860C91EDD.html"
+    },
+    {
+      "name": "pub.client.sftp.admin:getHostKey",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sftpClientVersion",
+          "type": "String",
+          "description": "Indicates the Integration Server SFTP client version, which can be version1 (existing) or version2 (newer). Set to version2 , if you want Integration Server to use the newer SFTP client that has new configuration properties, additional Key Exchange Algorithms, Machine Access Code (MAC) algorithms, and ciphers.",
+          "optional": false
+        },
+        {
+          "name": "serverHost",
+          "type": "String",
+          "description": "The IP address or the host name of the SFTP server.",
+          "optional": false
+        },
+        {
+          "name": "serverPort",
+          "type": "Integer",
+          "description": "The SFTP server port number. The port number must be within the range of 0 and 65535 (inclusive).",
+          "optional": false
+        },
+        {
+          "name": "preferredKeyExchangeAlgorithms",
+          "type": "String",
+          "description": "Optional. A comma-separated list of preferred key exchange algorithms. If not defined, then the default list of key exchange algorithms (in the default order) is used. Note: You can get the list of default key exchange algorithms, MAC algorithms, and ciphers by using the pub.client.sftp.admin:getDefaultAlgorithms service.",
+          "optional": true
+        },
+        {
+          "name": "preferredCiphersS2C",
+          "type": "String",
+          "description": "Optional. A comma-separated list of preferred server-to-client ciphers. If no value is provided, then the default list of server-to-client ciphers (in the default order) is used.",
+          "optional": true
+        },
+        {
+          "name": "preferredCiphersC2S",
+          "type": "String",
+          "description": "Optional. A comma-separated list of preferred client-to-server ciphers. If a value is not provided, then the default list of client-to-server ciphers (in the default order) is used.",
+          "optional": true
+        },
+        {
+          "name": "preferredMacC2S",
+          "type": "String",
+          "description": "Optional. A comma-separated list of preferred client-to-server Message Authentication Code (MAC) algorithms. If a value is not provided, then the default list of client-to-server MAC algorithms (in the default order) is used.",
+          "optional": true
+        },
+        {
+          "name": "preferredMacS2C",
+          "type": "String",
+          "description": "Optional. A comma-separated list of preferred server-to-client Message Authentication Code (MAC) algorithms. If a value is not provided, then the default list of server-to-client MAC algorithms (in the default order) is used.",
+          "optional": true
+        },
+        {
+          "name": "minDHKeySize",
+          "type": "Integer",
+          "description": "Optional. The minimum DH key size. The default value is 1024. This field is not applicable if sftpClientVersion is version1.",
+          "optional": true
+        },
+        {
+          "name": "maxDHKeySize",
+          "type": "Integer",
+          "description": "Optional. The maximum DH key size. The default value is 8192. This field is not applicable, if sftpClientVersion is version1.",
+          "optional": true
+        },
+        {
+          "name": "proxyAlias",
+          "type": "String",
+          "description": "Optional. The proxy alias through which the request should be routed. The proxy alias can be HTTP, HTTPS, or SOCKS. If a proxy alias is not specified, Integration Server makes outbound requests using each enabled proxy server alias until the request is sent successfully or all proxy servers are tried.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "hostKeyBytes",
+          "type": "Object",
+          "description": "An array of bytes (byte[]). The host key in byte array format.",
+          "optional": false
+        },
+        {
+          "name": "fingerprint",
+          "type": "String",
+          "description": "Fingerprint of the host key.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_8D2FEF1EAFBA47908A32AA7BFD797F3F.html"
+    },
+    {
+      "name": "pub.client.sftp:logout",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionKey",
+          "type": "String",
+          "description": "Unique key for the current SFTP session. The sessionKey parameter is returned by the pub.client.sftp:login service.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returnCode",
+          "type": "String",
+          "description": "Standard SFTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnMsg",
+          "type": "String",
+          "description": "Text message describing the return code.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/CJDDEEBB.html"
+    },
+    {
+      "name": "pub.client.sftp:ls",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionKey",
+          "type": "String",
+          "description": "Unique key for the current SFTP session. The sessionKey parameter is returned by the pub.client.sftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "path",
+          "type": "String",
+          "description": "Optional. Absolute or relative path of the remote directory. If no path is specified, the pub.client.sftp:ls service retrieves the directory listing of the current remote directory. You can use the wildcard characters asterisk (*) and question mark (?) after the last slash mark (/) to view all remote directories that match the specified path. Note: SFTP client version 2 supports only the asterisk (*) wildcard for filtering files. For example, *.xml , *.txt , and so on. However, Java regular expressions are not supported.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returnCode",
+          "type": "String",
+          "description": "Standard SFTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnMsg",
+          "type": "String",
+          "description": "Text message describing the return code.",
+          "optional": false
+        },
+        {
+          "name": "dirList",
+          "type": "Document",
+          "description": "List of directories matching the pattern specified in the path parameter. Following are the parameters in the document:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/CJDGHEHB.html"
+    },
+    {
+      "name": "pub.client.sftp:mkdir",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionKey",
+          "type": "String",
+          "description": "Unique key for the current SFTP session. The sessionKey parameter is returned by the pub.client.sftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "path",
+          "type": "String",
+          "description": "Absolute or relative path of the remote directory where you want to create a new directory.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returnCode",
+          "type": "String",
+          "description": "Standard SFTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnMsg",
+          "type": "String",
+          "description": "Text message describing the return code.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/CJDHACCA.html"
+    },
+    {
+      "name": "pub.client.sftp:put",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionKey",
+          "type": "String",
+          "description": "Unique key for the current SFTP session. The sessionKey is returned by the pub.client.sftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "contentStream",
+          "type": "java.io.InputStream",
+          "description": "Optional. Data to be transferred to the remote file.",
+          "optional": true
+        },
+        {
+          "name": "localFile",
+          "type": "String",
+          "description": "Optional. Name of the local file to be appended to the remote file. Use localFile only if contentStream is not specified.",
+          "optional": true
+        },
+        {
+          "name": "remoteFile",
+          "type": "String",
+          "description": "Optional. Absolute or relative path of the remote file to which the local file is to be appended.",
+          "optional": true
+        },
+        {
+          "name": "mode",
+          "type": "String",
+          "description": "Optional. Specifies how the local file is to be transferred to the remote SFTP server. Set to: overwrite to overwrite the contents of the remote file with the contents of the local file. This is the default. append to append the entire contents of the local file to the remote file. resume to resume writing the contents of the local file to the remote file from the point the writing was stopped during previous SFTP sessions.",
+          "optional": true
+        },
+        {
+          "name": "remoteFileNameEncoding",
+          "type": "String",
+          "description": "Optional. Character set in which the remote file is encoded. The default is UTF-8.",
+          "optional": true
+        },
+        {
+          "name": "localFileNameEncoding",
+          "type": "String",
+          "description": "Optional. Character set in which the local file is encoded. The default is UTF-8.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returnCode",
+          "type": "String",
+          "description": "Standard SFTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnMsg",
+          "type": "String",
+          "description": "Text message describing the return code.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/CJDBIGAI.html"
+    },
+    {
+      "name": "pub.client.sftp:pwd",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionKey",
+          "type": "String",
+          "description": "Unique key for the current SFTP session. The sessionKey is returned by the pub.client.sftp:login service.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returnCode",
+          "type": "String",
+          "description": "Standard SFTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnMsg",
+          "type": "String",
+          "description": "Text message describing the return code.",
+          "optional": false
+        },
+        {
+          "name": "path",
+          "type": "String",
+          "description": "Absolute or relative path of the working directory on the remote SFTP server.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idf5a5f931-9696-4d0b-8b36-944cf5962a95.html"
+    },
+    {
+      "name": "pub.client.sftp:rename",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionKey",
+          "type": "String",
+          "description": "Unique key for the current SFTP session. The sessionKey is returned by the pub.client.sftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "oldPath",
+          "type": "String",
+          "description": "Fully qualified name of the file you want to rename (for example, temp/oldname.txt ).",
+          "optional": false
+        },
+        {
+          "name": "newPath",
+          "type": "String",
+          "description": "New fully qualified name for the file (for example, temp/newname.txt ).",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returnCode",
+          "type": "String",
+          "description": "Standard SFTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnMsg",
+          "type": "String",
+          "description": "Text message describing the return code.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/CJDJACIG.html"
+    },
+    {
+      "name": "pub.client.sftp:rm",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionKey",
+          "type": "String",
+          "description": "Unique key for the current SFTP session. The sessionKey is returned by the pub.client.sftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "path",
+          "type": "String",
+          "description": "Absolute or relative path of the file you want to delete.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returnCode",
+          "type": "String",
+          "description": "Standard SFTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnMsg",
+          "type": "String",
+          "description": "Text message describing the return code.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id51269a75-66f9-4e78-8e84-3bc4e6058c59.html"
+    },
+    {
+      "name": "pub.client.sftp:rmdir",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionKey",
+          "type": "String",
+          "description": "Unique key for the current SFTP session. The sessionKey is returned by the pub.client.sftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "path",
+          "type": "String",
+          "description": "Absolute or relative path of the directory you want to delete.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returnCode",
+          "type": "String",
+          "description": "Standard SFTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnMsg",
+          "type": "String",
+          "description": "Text message describing the return code.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/CJDEBDEB.html"
+    },
+    {
+      "name": "pub.client.sftp:symlink",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "sessionKey",
+          "type": "String",
+          "description": "Unique key for the current SFTP session. The sessionKey is returned by the pub.client.sftp:login service.",
+          "optional": false
+        },
+        {
+          "name": "oldPath",
+          "type": "String",
+          "description": "Old path of the file for which you want to create a symbolic link.",
+          "optional": false
+        },
+        {
+          "name": "newPath",
+          "type": "String",
+          "description": "New path of the file to which the symbolic link should point.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "returnCode",
+          "type": "String",
+          "description": "Standard SFTP protocol return code.",
+          "optional": false
+        },
+        {
+          "name": "returnMsg",
+          "type": "String",
+          "description": "Text message describing the return code.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idd1eacfe1-0f83-415c-89bc-448ca66fb04a.html"
+    },
+    {
+      "name": "pub.client:smtp",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "to",
+          "type": "String",
+          "description": "Optional. E-mail address of the receiver. If you specify multiple addresses, separate them with commas.",
+          "optional": true
+        },
+        {
+          "name": "cc",
+          "type": "String",
+          "description": "Optional. E-mail addresses of additional receivers. If you specify multiple addresses, separate them with commas.",
+          "optional": true
+        },
+        {
+          "name": "bcc",
+          "type": "String",
+          "description": "Optional. E-mail addresses of additional receivers. If you specify multiple addresses, separate them with commas.",
+          "optional": true
+        },
+        {
+          "name": "subject",
+          "type": "String",
+          "description": "Optional. Subject of the message.",
+          "optional": true
+        },
+        {
+          "name": "subjectCharset",
+          "type": "String",
+          "description": "Optional. The character set used to encode the MIME message headers (including subject). If subjectCharset is not specified, then charset is used. If charset is not specified, the value in the server configuration parameter watt.server.email.charset is used. If that parameter is not set, the utf-8 encoding is used.",
+          "optional": true
+        },
+        {
+          "name": "charset",
+          "type": "String",
+          "description": "Optional. The character encoding of the body text. If you do not specify the value of charset , the value in the server configuration parameter watt.server.email.charset is used. If that parameter is not set, the utf-8 encoding is used.",
+          "optional": true
+        },
+        {
+          "name": "from",
+          "type": "String",
+          "description": "Optional. E-mail address of the sender. If you do not specify a from value, Integration Server uses the value specified for the mail.smtp.from JVM property. If no value is specified for that property, Integration Server uses the default value, user@servername , where user is the operating system user ID, and servername is the host name of the Integration Server .",
+          "optional": true
+        },
+        {
+          "name": "mailhost",
+          "type": "String",
+          "description": "SMTP host name for outbound messages. For example: smtp.webMethods.com If no value is provided for the mailhost parameter, Integration Server uses the value of the Java system property mail.smtp.host set for Integration Server as the mailhost value. For more information about setting Java system properties for Integration Server , which includes modifying the custom_wrapper.conf file, see Changing Settings in the Configuration File custom_wrapper.conf . If no value is supplied for the mailhost parameter and the mail.smtp.host Java system property is not set, the pub.client:smtp service ends with an exception.",
+          "optional": false
+        },
+        {
+          "name": "mailhostPort",
+          "type": "String",
+          "description": "Optional. The number of the port on which the SMTP host listens. This parameter does not need to be set if the host listens on port 25 (the standard SMTP port).",
+          "optional": true
+        },
+        {
+          "name": "auth",
+          "type": "Document",
+          "description": "Optional. Authorization information that the SMTP service will submit.",
+          "optional": true
+        },
+        {
+          "name": "secure",
+          "type": "Document",
+          "description": "Optional. Parameters specifying the security protocol and truststore information for certificate validation that Integration Server uses when communicating with the SMTP server port.",
+          "optional": true
+        },
+        {
+          "name": "body",
+          "type": "String",
+          "description": "Optional. The content of the message.",
+          "optional": true
+        },
+        {
+          "name": "mimeStream",
+          "type": "java.io.InputStream",
+          "description": "Optional. MIME or S/MIME message that you want to send in the e-mail. A mimeStream is created by the pub.mime:getEnvelopeStream , pub.smime:createEncryptedData , pub.smime:createSignedData , or pub.smime.keystore:createSignedData services. It contains both headers and content. If the mimeStream already contains the from, to, and subject headers, you do not need to pass them as individual inputs to this service.",
+          "optional": true
+        },
+        {
+          "name": "attachments",
+          "type": "Document List",
+          "description": "Optional. Attachments to the message. Each attachment defines one message part in a multi-part message.",
+          "optional": true
+        },
+        {
+          "name": "properties",
+          "type": "Document List",
+          "description": "Optional. SMTP system properties to send to the SMTP server. This parameter overrides the settings on the watt.config.systemProperties server configuration parameter. If you omit this properties parameter, Integration Server uses the settings specified on the watt.config.systemProperties server configuration parameter.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Final status of service.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_client_smtp.html"
+    },
+    {
+      "name": "pub.client:soapClient",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "address",
+          "type": "String",
+          "description": "String specifying the URI of the web service endpoint. If you are submitting the request to an Integration Server , remember to direct it to the default SOAP processor (ws) as shown in the following example: http://rubicon:5555/soap/ws/example:calculator",
+          "optional": false
+        },
+        {
+          "name": "request",
+          "type": "Document",
+          "description": "The input parameters that are to be passed to the web service.",
+          "optional": false
+        },
+        {
+          "name": "wsdName",
+          "type": "String",
+          "description": "The name of the consumer web service descriptor that contains the operation you want to invoke.",
+          "optional": false
+        },
+        {
+          "name": "wsdBinderName",
+          "type": "String",
+          "description": "The name of a binder that contains information to use to create and send the request. This binder must be in the consumer web service descriptor specified in wsdName . Note: The consumer web service endpoint alias assigned to a binder indicates which proxy server Integration Server uses to send the request. For more information about proxy server usage and web service endpoint aliases, see Creating an Endpoint Alias for a Provider Web Service Descriptor for Use... .",
+          "optional": false
+        },
+        {
+          "name": "wsdOperationName",
+          "type": "String",
+          "description": "The name of the operation that you want to invoke. This operation must be contained in the binder specified in wsdBinderName .",
+          "optional": false
+        },
+        {
+          "name": "targetInputSignature",
+          "type": "String",
+          "description": "Fully qualified name of the IS document type to use to validate and encode the contents of request .",
+          "optional": false
+        },
+        {
+          "name": "targetOutputSignature",
+          "type": "String",
+          "description": "Fully qualified name of the IS document type to use to validate and decode the output value returned by the web service.",
+          "optional": false
+        },
+        {
+          "name": "soapHeaders",
+          "type": "Document",
+          "description": "Optional. Header documents included in the SOAP request as SOAP headers.",
+          "optional": true
+        },
+        {
+          "name": "transportHeaders",
+          "type": "Document",
+          "description": "Optional. Transport header fields that you want to explicitly set in the request issued by the pub.client:soapClient service. Specify a key in transportHeaders for each header field that you want to set, where the key's name represents the name of the header field and the key's value represents the value of that header field. The names and values supplied to transportHeaders must be of type String. If a transport header has a name or value that is not of type String, the header will not be included in the message. The headers that you pass in to transportHeaders vary depending on the transport used to send the SOAP message. The supplied wsdBinderName determines the transport. For more information about specifying transportHeaders , refer to the Usage Notes.",
+          "optional": true
+        },
+        {
+          "name": "method",
+          "type": "Document",
+          "description": "Optional. The QName of the requested procedure. The name is defined as follows:",
+          "optional": true
+        },
+        {
+          "name": "auth",
+          "type": "Document",
+          "description": "Optional. Parameters specifying the credentials that are to be submitted to the server specified in address . Integration Server allows two levels of authorization credentials: transport level and message level. Each element is defined as follows:",
+          "optional": true
+        },
+        {
+          "name": "timeout",
+          "type": "String",
+          "description": "Optional. Time (measured in milliseconds) to wait for a response from the server hosting the web service before timing out and terminating the request. A value of 0 means Integration Server waits for a response indefinitely. If the connection to the host or JMS provider ends before Integration Server receives a response, the service ends with an exception and a status code of 408. If this parameter is not specified, or an invalid (non-numeric) value is specified, Integration Server uses one of the following values: For HTTP, Integration Server uses the value of the watt.server.SOAP.request.timeout server configuration parameter as the timeout value For JMS, Integration Server uses the value of the watt.server.soapjms.request.timeout server configuration parameter as the timeout value. For more information about watt.server.SOAP.request.timeout and watt.server.soapjms.request.timeout server configuration parameter, see IBM webMethods Integration Server Administrator’s Guide . Integration Server ignores timeout if the name/value pair jms.async= true is passed in to transportHeaders .",
+          "optional": true
+        },
+        {
+          "name": "soapAction",
+          "type": "String",
+          "description": "Optional. Specifies one of the following: If soapProtocol is set to SOAP 1.1 Protocol , specifies the value to which you want to set the SOAPAction HTTP header. If soapProtocol is set to SOAP 1.2 Protocol , specifies the value to which you want to set the action attribute in the Content-Type header. Integration Server ignores soapAction in either of the following situations: The Content-Type header is passed in to transportHeaders and soapProtocol is set to SOAP 1.2 Protocol . The soapAction header is passed into transportHeaders and soapProtocol is set to SOAP 1.1 Protocol .",
+          "optional": true
+        },
+        {
+          "name": "soapProtocol",
+          "type": "String",
+          "description": "Optional. Indicates the SOAP protocol the service uses to send messages. Valid values are SOAP 1.1 Protocol or SOAP 1.2 Protocol .",
+          "optional": true
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Specifies the encoding method. Default value is UTF-8 . Integration Server ignores encoding if the Content-Type header is passed in to transportHeaders .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "soapResponseData",
+          "type": "Object",
+          "description": "A SOAP object containing the SOAP response message returned by the server specified in address .",
+          "optional": false
+        },
+        {
+          "name": "response",
+          "type": "Document",
+          "description": "Output parameters returned from the web service.",
+          "optional": false
+        },
+        {
+          "name": "header",
+          "type": "Document",
+          "description": "Conditional. Headers from the response and request messages. header contains the following keys:",
+          "optional": false
+        },
+        {
+          "name": "soapStatus",
+          "type": "String",
+          "description": "Flag indicating whether the SOAP request message was processed successfully.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A99284.html"
+    },
+    {
+      "name": "pub.client:soapHTTP",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "soapRequestData",
+          "type": "Object",
+          "description": "SOAP message that is to be sent. This object must be produced with the services in the soap folder. See the Usage Notes for more information.",
+          "optional": false
+        },
+        {
+          "name": "address",
+          "type": "String",
+          "description": "URL to which you want the SOAP message sent. For example: https://servername:5555/soap/default",
+          "optional": false
+        },
+        {
+          "name": "auth",
+          "type": "Document",
+          "description": "Optional. Parameters specifying the credentials that are to be submitted to the server specified in address . Each element is defined as follows:",
+          "optional": true
+        },
+        {
+          "name": "validateSOAP",
+          "type": "String",
+          "description": "Optional. Indicates whether or not the response message is to be validated against the SOAP schema. Set to: true to validate the response message and throw an exception if the response does not conform to the SOAP schema. false to bypass the validation process. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "SOAPAction",
+          "type": "String",
+          "description": "Optional. Value to which you want to set the SOAPAction HTTP header.",
+          "optional": true
+        },
+        {
+          "name": "contentType",
+          "type": "String",
+          "description": "Optional. Specifies the value of Content-Type in the HTTP header. Set to: text/xml; charset=\"utf-8\" to specify the content type as XML and the character encoding of the message text as UTF-8. This is the default. text/xml to specify the content type as XML. Since the charset parameter is not specified, the character encoding of the message text defaults to US-ASCII.",
+          "optional": true
+        },
+        {
+          "name": "loadAs",
+          "type": "String",
+          "description": "Optional. Specifies the format of the soapResponseData. Default value is stream for an HTTP service and byteArrayStream for an HTTPS service. Set to: stream to return the body of the response as a java.io.InputStream. Use this option when you will invoke an HTTP web service. This is the default for an HTTP service. bytes to return the body of the response as a byte[ ]. Use this option if the body will be used as input to a service that operates on whole HTML or XML documents (for example, pub.xml:queryXMLNode ). byteArrayStream to have the response stream fully read and converted to java.io.ByteArrayStream. This prevents data loss or a truncated SOAP response if the connection closes prematurely. Use this option when you will invoke an HTTPS web service. This is the default for an HTTPS service.",
+          "optional": true
+        },
+        {
+          "name": "timeout",
+          "type": "String",
+          "description": "Optional. Time (measured in milliseconds) to wait for a response from the remote server before timing out and terminating the request. The default value is to wait forever.",
+          "optional": true
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Default character set for encoding SOAP message. Specify an IANA-registered character set (for example, ISO-8859-1). The default is UTF-8. The encoding parameter is used to override the encoding determined by the watt.server.netEncoding server configuration parameter. For more information about watt.server.netEncoding, see IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "soapResponseData",
+          "type": "Object",
+          "description": "The SOAP response message returned by the server specified in address .",
+          "optional": false
+        },
+        {
+          "name": "header",
+          "type": "Document",
+          "description": "Conditional. Headers from the HTTP response. Will contain the following keys:",
+          "optional": false
+        },
+        {
+          "name": "soapStatus",
+          "type": "String",
+          "description": "Flag indicating whether the SOAP request message was processed successfully.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_client_soapHTTP.html"
+    },
+    {
+      "name": "pub.client:soapRPC",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "address",
+          "type": "String",
+          "description": "String specifying the numeric address or name of the server on which the remote procedure resides. If you are submitting the request to an Integration Server , remember to direct it to the RPC processor as shown in the following example: http://rubicon:5555/soap/rpc",
+          "optional": false
+        },
+        {
+          "name": "reqParms",
+          "type": "Document",
+          "description": "The input parameters that are to be passed to the remote procedure. For example, if you wanted to pass three String parameters, acct , amt , and org , containing the values Cash , 150.00 , and Sales , reqParms would contain the following:",
+          "optional": false
+        },
+        {
+          "name": "method",
+          "type": "Document",
+          "description": "The QName of the requested procedure where:",
+          "optional": false
+        },
+        {
+          "name": "auth",
+          "type": "Document",
+          "description": "Optional. User name and password that are to be submitted to the server specified in address .",
+          "optional": true
+        },
+        {
+          "name": "targetInputSignature",
+          "type": "String",
+          "description": "Optional. Fully qualified name of the IS document type to use to validate and encode the contents of reqParms .",
+          "optional": true
+        },
+        {
+          "name": "targetOutputSignature",
+          "type": "String",
+          "description": "Optional. Fully qualified name of the IS document type to use to validate and decode the output value returned by the remote procedure.",
+          "optional": true
+        },
+        {
+          "name": "SOAPAction",
+          "type": "String",
+          "description": "Optional. Value to which you want to set the SOAPAction HTTP header.",
+          "optional": true
+        },
+        {
+          "name": "contentType",
+          "type": "String",
+          "description": "Optional. Specifies the value of Content-Type in the HTTP header. Set to: text/xml; charset=\"utf-8\" to specify the content type as XML and the character encoding of the text as UTF-8. This is the default. text/xml to specify the content type as XML. Since the charset parameter is not specified, the character encoding of the text defaults to US-ASCII.",
+          "optional": true
+        },
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Specifies the encoding method. Default value is UTF-8.",
+          "optional": true
+        },
+        {
+          "name": "loadAs",
+          "type": "String",
+          "description": "Optional. Specifies the format of the soapResponseData. Default value is stream. Set to: stream to return the body of the response as a java.io.InputStream. Use this option when you will invoke an HTTP web service. This is the default. byteArrayStream to have the response stream fully read and converted to java.io.ByteArrayStream. This prevents data loss or a truncated SOAP response if the connection closes prematurely. Use this option when you will invoke an HTTPS web service.",
+          "optional": true
+        },
+        {
+          "name": "timeout",
+          "type": "String",
+          "description": "Optional. Time (measured in milliseconds) to wait for a response from the server hosting the remote procedure before timing out and terminating the request. The default value is to wait forever.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "soapResponseData",
+          "type": "Object",
+          "description": "A SOAP object containing the SOAP response message returned by the server specified in address .",
+          "optional": false
+        },
+        {
+          "name": "respParms",
+          "type": "Document",
+          "description": "Output parameters returned by the remote procedure. For example, if the remote procedure returned two String parameters, status and balance , containing the values closed and -4.95 , respParms would contain the following:",
+          "optional": false
+        },
+        {
+          "name": "header",
+          "type": "Document",
+          "description": "Conditional. Headers from the HTTP response. Will contain the following keys:",
+          "optional": false
+        },
+        {
+          "name": "soapStatus",
+          "type": "String",
+          "description": "Flag indicating whether the SOAP request message was processed successfully.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_client_soapRPC.html"
+    },
+    {
+      "name": "pub.client:websocket",
+      "folder": "CLIENT",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "nsName",
+          "type": "String",
+          "description": "Namespace name of the WebSocket client endpoint.",
+          "optional": false
+        },
+        {
+          "name": "headers",
+          "type": "Record",
+          "description": "Optional. Headers that are part of the HTTP request used to establish the WebSocket connection.",
+          "optional": true
+        },
+        {
+          "name": "auth",
+          "type": "String",
+          "description": "Authentication information that the pub.client:websocket service will submit to the URL in WebSocket client endpoint.",
+          "optional": false
+        },
+        {
+          "name": "secure",
+          "type": "String",
+          "description": "Optional. Parameters specifying the truststore information for certificate validation that Integration Server uses when communicating with the WebSocket server port:",
+          "optional": true
+        },
+        {
+          "name": "connectTimeout",
+          "type": "String",
+          "description": "Optional. Time (measured in milliseconds) the server will wait to connect to the remote server before timing out and terminating the request. If a value for connectTimeout is not specified, Integration Server uses the value specified for the watt.net.timeout server configuration parameter. If no value is specified for the watt.net.timeout server configuration parameter, the server will wait for the timeout value defined by the operating system before terminating the connection request. For more information about the watt.net.timeout server configuration parameter, see webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        },
+        {
+          "name": "cookies",
+          "type": "String",
+          "description": "Optional. The cookies which are to be part of the HTTP request used to establish a WebSocket connection.",
+          "optional": true
+        },
+        {
+          "name": "extensions",
+          "type": "String",
+          "description": "Optional. The extensions which are to be part of the HTTP request used to establish a WebSocket connection.",
+          "optional": true
+        },
+        {
+          "name": "subProtocols",
+          "type": "String",
+          "description": "Optional. The subprotocols which are to be part of the HTTP request used to establish a WebSocket connection.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "sessionId",
+          "type": "String",
+          "description": "Session ID to identify the WebSocket session.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_081E1C3DEBB44FD7983F033B4A74BC17.html"
+    }
+  ]
+}

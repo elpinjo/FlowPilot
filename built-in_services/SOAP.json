@@ -1,0 +1,2330 @@
+{
+  "folder": "SOAP",
+  "total_services": 100,
+  "services": [
+    {
+      "name": "pub.soap.handler:addBodyBlock",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context containing the SOAP message to which to add a body block. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers.",
+          "optional": false
+        },
+        {
+          "name": "documentType",
+          "type": "String",
+          "description": "Optional. Fully qualified name of the IS document type that specifies the structure of the document that you want to add as a new body block; that is, that specifies the structure of inputBodyBlock/bodyDocument . If specified, inputBodyBlock/bodyDocument must be an instance of this document type. Specify a document type that Integration Server created while creating the consumer or the WSDL first provider web service descriptor or one that was created using the pub.soap.handler:generateDocumentTypesFromWSDL service. If you do not specify a document type, the service performs a literal conversion of inputBodyBlock/bodyDocument into the SOAP body; that is, the conversion will not consider style or use.",
+          "optional": true
+        },
+        {
+          "name": "inputBodyBlock",
+          "type": "Document",
+          "description": "Contents of the body block.",
+          "optional": false
+        },
+        {
+          "name": "wrapPayloadWith OperationQName FromContext",
+          "type": "String",
+          "description": "Optional. Flag that indicates whether the service should obtain the qualified name for the web service wrapper from the message context or from operationQName . Set to: true to have the service obtain the qualified name for the web service wrapper from messageContext . If the operationQName parameters are specified, the service ignores them. false to have the service use the values you specify in the operationQName parameters. This is the default. Note: For RPC/Encoded and RPC/Literal services, be sure to set wrapPayloadWithOperationQNameFromContext to true if you do not specify operationQName . This service ignores wrapPayloadWithOperationQNameFromContext for Document/Literal services.",
+          "optional": true
+        },
+        {
+          "name": "validate",
+          "type": "String",
+          "description": "Optional. Flag that indicates whether you want the service to validate inputBodyBlock/bodyDocument against the IS document type specified in the documentType input parameter. If you do not use documentType to specify an IS document type, the validation will fail. Set validate to: true to validate inputBodyBlock/bodyDocument . If the validation fails, an exception is thrown. false to skip validating inputBodyBlock/bodyDocument . This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Flag indicating the outcome of the service. A value of: true indicates that adding the body block was successful. false indicates that adding the body block failed. Note: If the SOAP message already contains a body block, the service sets status to false .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A50681.html"
+    },
+    {
+      "name": "pub.soap.handler:addFaultBlock",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context containing the SOAP message to which to add a fault block. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers.",
+          "optional": false
+        },
+        {
+          "name": "documentType",
+          "type": "String",
+          "description": "Optional. Fully qualified name of the IS document type that specifies the structure of the document in soapFault/detail . If specified, soapFault/detail must be an instance of this document type. Specify a document type that Integration Server created while creating the consumer or the WSDL first provider web service descriptor or one that was created using the pub.soap.handler:generateDocumentTypesFromWSDL service. If you do not specify a document type, the service performs a literal conversion of soapFault/detail ; that is, the conversion will not consider style or use.",
+          "optional": true
+        },
+        {
+          "name": "soapFault",
+          "type": "Document",
+          "description": "SOAP fault block that you want to add to the SOAP message. Integration Server converts the document to an XML node and inserts it as a fault block.",
+          "optional": false
+        },
+        {
+          "name": "validate",
+          "type": "String",
+          "description": "Optional. Flag that indicates whether you want the service to validate soapFault/detail against the IS document type specified in the documentType input parameter. If you do not use documentType to specify an IS document, the validation will fail. Set validate to: true to validate soapFault/detail . If the validation fails, an exception is thrown. false to skip validating soapFault/detail This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Flag indicating the outcome of the service. A value of: true indicates that adding the fault block succeeded. false indicates that adding the fault block failed. Note: If the SOAP message already contains a fault block, the service sets status to false.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A97530.html"
+    },
+    {
+      "name": "pub.soap.handler:addHeaderBlock",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context containing the SOAP message to which to add a header block. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the header handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers.",
+          "optional": false
+        },
+        {
+          "name": "documentType",
+          "type": "String",
+          "description": "Name of the IS document type that specifies the structure and namespaces of the document to use as a new header block. Specify a document type that Integration Server created while creating the consumer or the WSDL first provider web service descriptor or one that was created using the pub.soap.handler:generateDocumentTypesFromWSDL service. The QName of the first element in the IS document type is used as the QName of the header block to add to the SOAP message. The inputHeaderBlock / headerDocument must be a instance of this document type.",
+          "optional": false
+        },
+        {
+          "name": "inputHeaderBlock",
+          "type": "Document",
+          "description": "Contains information used to create the header block to add to the SOAP message.",
+          "optional": false
+        },
+        {
+          "name": "validate",
+          "type": "String",
+          "description": "Optional. Flag that indicates whether you want the service to validate the inputHeaderBlock/headerDocument document against the IS document type specified in the documentType input parameter. If you do not use documentType to specify an IS document type, the validation will fail. Set validate to: true to validate inputHeaderBlock/headerDocument . If the validation fails, an exception is thrown. false to skip validating inputHeaderBlock/headerDocument . This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A72180.html"
+    },
+    {
+      "name": "pub.soap.handler:addHeaderElement",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context containing the SOAP message to which to add a header element. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the header handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers.",
+          "optional": false
+        },
+        {
+          "name": "QName",
+          "type": "Document",
+          "description": "Optional. Qualified name (namespace name and local name) of the header element to add. The QName document references the pub.soap.utils:QName document type. Note: If you do not specify QName value, you must specify documentType .",
+          "optional": true
+        },
+        {
+          "name": "headerDocument",
+          "type": "Document",
+          "description": "Document to add as a header element. Integration Server converts the document to an XML node and inserts it as a child element of the header element specified in QName .",
+          "optional": false
+        },
+        {
+          "name": "documentType",
+          "type": "String",
+          "description": "Optional. Name of the IS document type that specifies the structure and namespaces of the document to use as a new header element. Integration Server uses the universal name assigned to the IS document type to determine the qualified name to use for the new header element. If you specify documentType , headerDocument must be a instance of this document type. Note: If you do not specify documentType , you must specify QName .",
+          "optional": true
+        },
+        {
+          "name": "mustUnderstand",
+          "type": "String",
+          "description": "Optional. Sets the value of the mustUnderstand attribute for the new header element (block). The mustUnderstand attribute specifies whether recipients (the actor or role at which the header is targeted) are required to process a header entry. Recipients that cannot process a mandatory header entry must reject the message and return a SOAP fault. Set to: true to indicate that processing the header entry is optional. false to indicate that processing the header entry is mandatory. There is no default value. If you do not set mustUnderstand , Integration Server omits the mustUnderstand attribute from the header entry, which is equivalent to setting mustUnderstand to false . Note: In SOAP 1.2, the values of the mustUnderstand attribute changed from 0 and 1 to True and False; however, Integration Server processes both sets of values the same and performs any necessary conversions.",
+          "optional": true
+        },
+        {
+          "name": "actor",
+          "type": "String",
+          "description": "Optional. Target of the header entry. The value of actor determines the value of the actor or role attribute for the header entry. The actor or role attribute specifies a URI for the recipient of a header entry. If you do not specify a value for actor , the actor or role attribute will be blank in the SOAP header. In SOAP 1.1, this indicates that the recipient is the ultimate destination of the SOAP message. In SOAP 1.2, this is equivalent to supplying that attribute with the value \"http://www.w3.org/2003/05/soap-envelope/role/ultimateReceiver\". Note: In SOAP 1.2, the actor attribute is named role; however, Integration Server processes both names the same and performs any necessary conversions.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "QName",
+          "type": null,
+          "description": "userHandlerNamespaceName",
+          "optional": false
+        },
+        {
+          "name": "headerDocument",
+          "type": null,
+          "description": "An instance of documentTypes:myNewHeader , which contains a single field of type String named myString . The value of myString is: Value of myString field.",
+          "optional": false
+        },
+        {
+          "name": "documentType",
+          "type": null,
+          "description": "Not provided.",
+          "optional": false
+        },
+        {
+          "name": "mustUnderstand",
+          "type": null,
+          "description": "true",
+          "optional": false
+        },
+        {
+          "name": "actor",
+          "type": null,
+          "description": "soapActor",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A20936.html"
+    },
+    {
+      "name": "pub.soap.handler:generateDocumentTypesFromWSDL",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "wsdlURL",
+          "type": "String",
+          "description": "Optional. Network accessible URL to a WSDL document or the path to and name of a WSDL on the same file system as the Integration Server . Note: All the XML Schema definitions and WSDL documents imported by or included by the target WSDL document must be network accessible or on the local file system as well.",
+          "optional": true
+        },
+        {
+          "name": "wsdlString",
+          "type": "String",
+          "description": "Optional. WSDL document as a string. Note: All the XML Schema definitions and WSDL documents imported by or included by the target WSDL document must be network accessible or on the local file system as well.",
+          "optional": true
+        },
+        {
+          "name": "targetPackageName",
+          "type": "String",
+          "description": "Name of the package in which to place the generated IS document types on Integration Server .",
+          "optional": false
+        },
+        {
+          "name": "targetFolderName",
+          "type": "String",
+          "description": "Name of the folder in which to place the generated IS document types. Use the format folder.subfolder to specify the folder name. The folder must be empty or must not yet exist.",
+          "optional": false
+        },
+        {
+          "name": "generateheaderDocs",
+          "type": "String",
+          "description": "Optional. Flag indicating whether the service should generate the documents corresponding to headers in the SOAP messages described in the WSDL document. Set to: true to generate the documents. This is the default. false to skip generating the documents.",
+          "optional": true
+        },
+        {
+          "name": "generateBodyDocs",
+          "type": "String",
+          "description": "Optional. Flag indicating whether the service should generate the documents corresponding to SOAP body in the SOAP messages described in the WSDL document. Set to: true to generate the documents. false to skip generating the documents. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "generateFaultDocs",
+          "type": "String",
+          "description": "Optional. Flag indicating whether the service should generate the documents corresponding to SOAP faults in the SOAP messages described in the WSDL document. Set to: true to generate the documents. false to skip generating the documents. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "generateXOPObject ForBase64Binary",
+          "type": "String",
+          "description": "Optional. Flag indicating whether the service should generate fields of type com.wm.util.XOPObject corresponding to the xsd:base64Binary elements. Set to: true to generate fields of type com.wm.util.XOPObject. false to skip generating fields of type com.wm.util.XOPObject. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "content ModelCompliance",
+          "type": "String",
+          "description": "Optional. Flag that specifies how strictly the service represents content models from the XML Schema definition in the generated IS document types. Set to: Strict to generate the IS document type only if Integration Server can represent the content models defined in the XML Schema definition correctly. Document type generation fails if Integration Server cannot accurately represent the content models in the source XML Schema definition. Currently, Integration Server does not support repeating model groups, nested model groups, or the any attribute. If you select strict compliance, Integration Server does not generate an IS document type from any XML schema definition that contains those items. Lax to generate an IS document type that correctly represents the content models for the complex types defined in the XML schema definition, when possible. If Integration Server cannot correctly represent the content model in the XML Schema definition in the resulting IS document type, Integration Server generates the IS document type using a compliance mode of None. When compliance is set to lax, Integration Server will generate the IS document type even if the content models in the XML schema definition cannot be represented correctly. None to generate an IS document type that does not necessarily represent or maintain the content models in the source XML Schema definition. When compliance is set to none, Integration Server generates IS document types the same way they were generated in Integration Server releases prior to version 8.2.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "warnings",
+          "type": "Document List",
+          "description": "Conditional. Contains any warnings encountered while generating IS document types from the provided WSDL.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A43862.html"
+    },
+    {
+      "name": "pub.soap.handler:getBodyBlock",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context containing the SOAP message from which to retrieve the body block. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers.",
+          "optional": false
+        },
+        {
+          "name": "documentType",
+          "type": "String",
+          "description": "Optional. Fully qualified name of the IS document type that specifies the structure of the SOAP body block to be retrieved from the SOAP message. Specify a document type that Integration Server created while creating the consumer or the WSDL first provider web service descriptor or one that was created using the pub.soap.handler:generateDocumentTypesFromWSDL service. If you do not specify a document type, the service performs a literal conversion of body block; that is, the conversion will not consider style or use.",
+          "optional": true
+        },
+        {
+          "name": "validate",
+          "type": "String",
+          "description": "Optional. Flag that indicates whether you want the service to validate the document returned in the outputBodyBlock/bodyDocument parameter against the IS document type specified in the documentType input parameter. If you do not use documentType to specify an IS document type, the validation will fail. Set validate to: true to validate the body block. If the validation fails, an exception is thrown. false to skip validating the body block. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "outputBodyBlock",
+          "type": "Document",
+          "description": "Contents of the body block.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A35473.html"
+    },
+    {
+      "name": "pub.soap.handler:getBodyBlockQNames",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context containing the SOAP message from which to retrieve the body block QNames. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "bodyBlockQNames",
+          "type": "Document List",
+          "description": "A list of documents containing the qualified names (namespace name and local name) for each body block. The bodyBlockQName document references the pub.soap.utils:QName document type.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A49061.html"
+    },
+    {
+      "name": "pub.soap.handler:getFaultBlock",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context containing the SOAP message from which to retrieve the fault block. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers.",
+          "optional": false
+        },
+        {
+          "name": "documentTypes",
+          "type": "String List",
+          "description": "Optional. Fully qualified name of the possible IS document types that could represent the structure of soapFault/detail . Specify document types that Integration Server created while creating the consumer or the WSDL first provider web service descriptor or ones that were created using the pub.soap.handler:generateDocumentTypesFromWSDL service. If you do not specify any document type, the service performs a literal conversion of the document; that is, the conversion will not consider style or use.",
+          "optional": true
+        },
+        {
+          "name": "validate",
+          "type": "String",
+          "description": "Optional. Flag that indicates whether you want the service to validate soapFault/detail against one of the IS document types specified in the documentTypes input parameter. Set validate to: true to validate the contents of soapFault/detail . To validate the service uses an IS document type from documentTypes that matches the structure. If none of the IS document types specified in documentTypes match, validation fails. If you do not use documentTypes to specify IS document types, the validation fails. If the validation fails, an exception is thrown. false to skip validating the contents of soapFault/detail . This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "soapFault",
+          "type": "Document",
+          "description": "The retrieved fault block.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A72663.html"
+    },
+    {
+      "name": "pub.soap.handler:getHeaderBlock",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context containing the SOAP message from which to retrieve a header block. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the header handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers.",
+          "optional": false
+        },
+        {
+          "name": "documentType",
+          "type": "String",
+          "description": "Fully qualified name of the IS document type that specifies the structure to apply to the content of the header block. Specify a document type that Integration Server created while creating the consumer or the WSDL first provider web service descriptor or one that was created using the pub.soap.handler:generateDocumentTypesFromWSDL service. Integration Server uses the QName of the first field of the document type to determine which header block to retrieve from the SOAP message.",
+          "optional": false
+        },
+        {
+          "name": "validate",
+          "type": "String",
+          "description": "Optional. Flag that indicates whether you want the service to validate the document returned in the outputHeaderBlock/headerDocument parameter against the IS document type specified in the documentType input parameter. Set validate to: true to validate outputHeaderBlock/headerDocument . If the validation fails, an exception is thrown. false to skip validating outputHeaderBlock/headerDocument . This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "outputHeaderBlock",
+          "type": "Document List",
+          "description": "Content of the requested header block(s) as IData. This service returns multiple header blocks if the QName of the first field of the document type matches multiple header blocks in the SOAP message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A67569.html"
+    },
+    {
+      "name": "pub.soap.handler:getHeaderBlockQNames",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context containing the SOAP message from which to retrieve the header block QNames. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the header handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "headerBlockQNames",
+          "type": "Document List",
+          "description": "A list of documents containing the qualified names (namespace name and local name) in the header block. The headerBlockQName document references the pub.soap.utils:QName document type.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_handler_getHeaderBlockQNames.html"
+    },
+    {
+      "name": "pub.soap.handler:getHeaderElement",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context containing the SOAP message from which to retrieve a header element. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the header handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers.",
+          "optional": false
+        },
+        {
+          "name": "QName",
+          "type": "Document",
+          "description": "Optional. Qualified name (namespace name and local name) of the header element to retrieve. The QName document references the pub.soap.utils:QName document type. If you do not specify QName , you must specify documentType .",
+          "optional": true
+        },
+        {
+          "name": "documentType",
+          "type": "String",
+          "description": "Optional. Fully qualified name of the IS document type that specifies the structure to impose on the resulting document. Integration Server uses the explicit universal name assigned to the document type to determine which header element to retrieve from the SOAP message. If you do not specify documentType , you must specify QName .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "outputHeaderDocument",
+          "type": "Document",
+          "description": "Header element from the SOAP message in the form of a document (IData).",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A50046.html"
+    },
+    {
+      "name": "pub.soap.handler:getInitialSOAPMessage",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context from which to retrieve the initial SOAP request message. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the header handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "initialSOAPMessage",
+          "type": "Object",
+          "description": "Object of type javax.xml.soap.SOAPMessage that represents the initial SOAP request message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id9d6d59b5-f739-4f81-8f2c-253a485ade35.html"
+    },
+    {
+      "name": "pub.soap.handler:getMessageAddressingProperties",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context from which to retrieve the message addressing property value. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the header handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "messageAddressing Properties",
+          "type": "Document",
+          "description": "Value of the specified message addressing property.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id12AGB90205Z.html"
+    },
+    {
+      "name": "pub.soap.handler:getProperty",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context from which to retrieve a property value. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the header handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers. For example, in a chain of request header handlers, the first request header handler could set a message property that the second request header handler retrieves.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Name of the selected property whose value to retrieve.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "Value of the specified property.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A28413.html"
+    },
+    {
+      "name": "pub.soap.handler:getServicePipeline",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context from which to get the service pipeline. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the header handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "servicePipeline",
+          "type": "Document",
+          "description": "Document (IData) containing the service pipeline. The contents of servicePipeline depend on whether the pub.soap.handler:getServicePipeline service executes as part of a consumer handler chain or a provider handler chain and which type of handler service (request, response, or fault) executes the service.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A23861.html"
+    },
+    {
+      "name": "pub.soap.handler:getSOAPMessage",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context from which to get the SOAP message. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the header handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SOAPMessage",
+          "type": "Object",
+          "description": "Object of type javax.xml.soap.SOAPMessage that represents the SOAP message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A22512.html"
+    },
+    {
+      "name": "pub.soap.handler:getWebServiceInvocationProperties",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Optional. Message context containing the SOAP message from which to retrieve the web service invocation properties. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "soapAction",
+          "type": "String",
+          "description": "SOAP action associated with the SOAP message request.",
+          "optional": false
+        },
+        {
+          "name": "binderName",
+          "type": "String",
+          "description": "Name of the WSBinder being invoked.",
+          "optional": false
+        },
+        {
+          "name": "binding",
+          "type": "String",
+          "description": "Binding against which the service was invoked.",
+          "optional": false
+        },
+        {
+          "name": "portType",
+          "type": "String",
+          "description": "Port type against which the service was invoked.",
+          "optional": false
+        },
+        {
+          "name": "operationQName",
+          "type": "Document",
+          "description": "Qualified name for the web service wrapper. The service only returns operationQName for RPC/Encoded and RPC/Literal services.",
+          "optional": false
+        },
+        {
+          "name": "style",
+          "type": "String",
+          "description": "Style of the SOAP message. Possible values are: document rpc",
+          "optional": false
+        },
+        {
+          "name": "use",
+          "type": "String",
+          "description": "Use of the SOAP message. Possible values are: literal encoded",
+          "optional": false
+        },
+        {
+          "name": "inbound",
+          "type": "String",
+          "description": "Flag indicating whether the message is incoming or outgoing. A value of: true indicates that the SOAP message is incoming. false indicates that the SOAP message is outgoing.",
+          "optional": false
+        },
+        {
+          "name": "soapVersion",
+          "type": "String",
+          "description": "SOAP version of the message. Possible values are: SOAP11 SOAP12",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A97784.html"
+    },
+    {
+      "name": "pub.soap.handler:handlerSpec",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context to be processed by the header handler. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the header handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "statusCode",
+          "type": "String",
+          "description": "Specifies the status of the handler service execution which indicates the action Integration Server will take next. The statusCode parameter must be an integer from 0-3. The action Integration Server takes for a particular status code depends on whether the service is registered as a request handler, response handler, or fault handler. For more information, see What Are Handlers and Handler Services? or IBM webMethods Designer Online Help . If statusCode does not contain one of the specified values, Integration Server assumes a value of 0.",
+          "optional": false
+        },
+        {
+          "name": "faultMessage",
+          "type": "String",
+          "description": "Conditional. Text to be used in the fault message. Integration Server uses the faultMessage value for any handler service that returns a status of 2 and when a response handler service returns a status of 3. For more information, see What Are Handlers and Handler Services? . or IBM webMethods Designer Online Help .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A78040.html"
+    },
+    {
+      "name": "pub.soap.handler:hasFaultMessage",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context from which to get the SOAP message. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the header handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "hasFaultMessage",
+          "type": "String",
+          "description": "Flag indicating whether the SOAP message contains a SOAP fault. A value of: True indicates the SOAP message contains a SOAP fault. False indicates the SOAP message does not contain a SOAP fault.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A66909.html"
+    },
+    {
+      "name": "pub.soap.handler:listConsumer",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "Handlers",
+          "type": "Document List",
+          "description": "A document list identifying the registered consumer handlers on Integration Server . Information about each consumer handler is contained in a separate document.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Handlers",
+          "type": "Document List",
+          "description": "A document list identifying the registered consumer handlers on Integration Server . Information about each consumer handler is contained in a separate document.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A46770.html"
+    },
+    {
+      "name": "pub.soap.handler:listProvider",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "Handlers",
+          "type": "Document List",
+          "description": "A document list identifying the registered consumer handlers on Integration Server . Information about each consumer handler is contained in a separate document.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Handlers",
+          "type": "Document List",
+          "description": "A document list identifying the registered consumer handlers on Integration Server . Information about each consumer handler is contained in a separate document.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A65039.html"
+    },
+    {
+      "name": "pub.soap.handler:registerConsumer",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "descriptiveName",
+          "type": "String",
+          "description": "Name that you want to assign to the SOAP consumer handler.",
+          "optional": false
+        },
+        {
+          "name": "handler",
+          "type": "Object",
+          "description": "The instance of the handler object.",
+          "optional": false
+        },
+        {
+          "name": "handlerInfo",
+          "type": "Object",
+          "description": "Optional. The instance of the handlerInfo object.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A78796.html"
+    },
+    {
+      "name": "pub.soap.handler:registerProvider",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "descriptiveName",
+          "type": "String",
+          "description": "Name that you want to assign to the SOAP provider handler.",
+          "optional": false
+        },
+        {
+          "name": "handler",
+          "type": "Object",
+          "description": "The instance of the handler object.",
+          "optional": false
+        },
+        {
+          "name": "handlerInfo",
+          "type": "Object",
+          "description": "Optional. The instance of the handlerInfo object.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A37790.html"
+    },
+    {
+      "name": "pub.soap.handler:registerWmConsumer",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "descriptiveName",
+          "type": "String",
+          "description": "Name to assign to the consumer header handler. Each consumer header handler must have a unique name.",
+          "optional": false
+        },
+        {
+          "name": "QNameList",
+          "type": "Document List",
+          "description": "Optional. Qualified names of the headers on which the handler operates. In the document list, each document references the pub.soap.utils:QName document type.",
+          "optional": true
+        },
+        {
+          "name": "handleRequestService",
+          "type": "String",
+          "description": "Optional. Fully qualified name of the service to use as the request header handler.",
+          "optional": true
+        },
+        {
+          "name": "handleResponseService",
+          "type": "String",
+          "description": "Optional. Fully qualified name of the service to use as the response header handler.",
+          "optional": true
+        },
+        {
+          "name": "handleFaultService",
+          "type": "String",
+          "description": "Optional. Fully qualified name of the service to use as the fault header handler.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A74861.html"
+    },
+    {
+      "name": "pub.soap.handler:registerWmProvider",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "descriptiveName",
+          "type": "String",
+          "description": "Name to assign to the provider header handler. Each provider header handler must have a unique name.",
+          "optional": false
+        },
+        {
+          "name": "QNameList",
+          "type": "Document List",
+          "description": "Optional. Qualified names of the headers on which the handler operates. In the document list, each document references the pub.soap.utils:QName document type.",
+          "optional": true
+        },
+        {
+          "name": "handleRequestService",
+          "type": "String",
+          "description": "Optional. Fully qualified name of the service to use as the request header handler.",
+          "optional": true
+        },
+        {
+          "name": "handleResponseService",
+          "type": "String",
+          "description": "Optional. Fully qualified name of the service to use as the response header handler.",
+          "optional": true
+        },
+        {
+          "name": "handleFaultService",
+          "type": "String",
+          "description": "Optional. Fully qualified name of the service to use as the fault header handler.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A69761.html"
+    },
+    {
+      "name": "pub.soap.handler:removeBodyBlock",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context that contains the SOAP message from which to remove the body block. A message context contains properties for the SOAP message as well as providing access to the SOAP message. Integration Server creates the message context and passes it to the handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context. This enables you to use the message context to pass information between handlers.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A38848.html"
+    },
+    {
+      "name": "pub.soap.handler:removeHeaderBlock",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context that contains the SOAP message from which to remove a header block. A message context contains properties for the SOAP message as well as providing access to the SOAP message. Integration Server creates the message context and passes it to the header handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context. This enables you to use the message context to pass information between handlers.",
+          "optional": false
+        },
+        {
+          "name": "QName",
+          "type": "Object",
+          "description": "Optional. Qualified name of the header block to remove. The QName document references the pub.soap.utils:QName document type. Note: Either QName or documentType must be supplied.",
+          "optional": true
+        },
+        {
+          "name": "documentType",
+          "type": "String",
+          "description": "Optional. Fully qualified name of the IS document type that corresponds to the structure of the header block that you want to remove. Integration Server uses the QName of the first element in the IS document type to determine which header block to remove. Note: Either QName or documentType must be supplied.",
+          "optional": true
+        },
+        {
+          "name": "index",
+          "type": "String",
+          "description": "Optional. An integer representing the position of the header block entry with the specified QName to remove. A SOAP message can contain multiple header blocks with the same QName. If you specify an index, Integration Server removes that occurrence of the header block. Note that 0 (zero) represents the first header block with the specified QName. If index is not provided, Integration Server removes all the header blocks with a matching QName. For example, if QName is myNSName:myLocalName and index is 1, Integration Server removes the second occurrence of the header block with the QName myNSName:myLocalName.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Indicates whether Integration Server removed the header block.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_handler_removeHeaderBlock.html"
+    },
+    {
+      "name": "pub.soap.handler:removeHeaderElement",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context that contains the SOAP message from which to remove a header element (block). A message context contains properties for the SOAP message as well as providing access to the SOAP message. Integration Server creates the message context and passes it to the header handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context. This enables you to use the message context to pass information between handlers.",
+          "optional": false
+        },
+        {
+          "name": "QName",
+          "type": "Object",
+          "description": "Qualified name of the header element (block) to remove. The QName document references the pub.soap.utils:QName document type.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Indicates whether Integration Server successfully removed the header element. A value of: True indicates that Integration Server removed the header element. False indicates that Integration Server did not remove the header element because the SOAP message did not contain a header element that matched the provided QName .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A75403.html"
+    },
+    {
+      "name": "pub.soap.handler:removeProperty",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context from which to remove a property. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the header handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers. For example, in a chain of request header handlers, the first request header handler could set a message property that the second request header handler retrieves.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Name of the property to remove.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A13019.html"
+    },
+    {
+      "name": "pub.soap.handler:setProperty",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context in which to set a property. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the header handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers. For example, in a chain of request header handlers, the first request header handler could set a message property that the second request header handler retrieves.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Name of the property to set.",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "Object",
+          "description": "Value to assign to the specified property.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A67444.html"
+    },
+    {
+      "name": "pub.soap.handler:setSOAPMessage",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context in which to set the SOAP message. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the header handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers.",
+          "optional": false
+        },
+        {
+          "name": "SOAPMessage",
+          "type": "Object",
+          "description": "of type javax.xml.soap.SOAPMessage to use to overwrite the existing SOAP message in the message context.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A68108.html"
+    },
+    {
+      "name": "pub.soap.handler:unregisterConsumer",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "descriptiveName",
+          "type": "String",
+          "description": "Name of the consumer web service descriptor handler that you want to unregister.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A31393.html"
+    },
+    {
+      "name": "pub.soap.handler:unregisterProvider",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "descriptiveName",
+          "type": "String",
+          "description": "Name of the provider web service descriptor handler that you want to unregister.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A27964.html"
+    },
+    {
+      "name": "pub.soap.handler:updateFaultBlock",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context containing the SOAP message that contains the fault block to be updated. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the handler. All handlers invoked by a given instance of a SOAP request or SOAP response use the same message context, which enables you to use the message context to pass information among handlers. If the SOAP Message in messageContext does not contain a SOAP fault, the service returns the status output parameter as false .",
+          "optional": false
+        },
+        {
+          "name": "soapFault",
+          "type": "Document",
+          "description": "The IData instance to be used to update the values in the fault block.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Flag indicating whether the fault block was updated successfully. A value of: true indicates that the fault block was successfully updated. false indicates that either a fault block is not present in the messageContext parameter or that the fault block was not successfully updated.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/ida03528f6-b1c2-4921-92d4-681b456fe11a.html"
+    },
+    {
+      "name": "pub.soap.processor:list",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "list",
+          "type": "Document List",
+          "description": "List of processors currently registered on the server. Each document in the list contains the following information:",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "list",
+          "type": "Document List",
+          "description": "List of processors currently registered on the server. Each document in the list contains the following information:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A23400.html"
+    },
+    {
+      "name": "pub.soap.processor:processMessage",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "soapRequestData",
+          "type": "Object",
+          "description": "SOAP object containing the SOAP request submitted to the Integration Server by a client.",
+          "optional": false
+        },
+        {
+          "name": "soapResponseData",
+          "type": "Object",
+          "description": "Empty SOAP object that the service will use to compose the SOAP response message.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "soapResponseData",
+          "type": "Object",
+          "description": "SOAP object containing the SOAP response message that is to be returned to the client.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_processor_procMsg.html"
+    },
+    {
+      "name": "pub.soap.processor:processRPCMessage",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "soapRequestData",
+          "type": "Object",
+          "description": "SOAP object containing the SOAP request submitted to the Integration Server by a client.",
+          "optional": false
+        },
+        {
+          "name": "soapResponseData",
+          "type": "Object",
+          "description": "Empty SOAP object that the service will use to compose the SOAP response message.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "soapResponseData",
+          "type": "Object",
+          "description": "SOAP object containing the SOAP response message that is to be returned to the client.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_processor_procRPCMsg.html"
+    },
+    {
+      "name": "pub.soap.processor:registerProcessor",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "directive",
+          "type": "String",
+          "description": "Process directive that you want to assign to the SOAP processor. Note: Use only letters, digits, or the characters -_.!~*'( ) in the name you specify in directive .",
+          "optional": false
+        },
+        {
+          "name": "svcName",
+          "type": "String",
+          "description": "Fully qualified name of the service that you are registering as a SOAP processor.",
+          "optional": false
+        },
+        {
+          "name": "descriptiveName",
+          "type": "String",
+          "description": "Descriptive comment for this SOAP processor. This comment is shown when you run the utility service pub.soap.processor:list to get a list of the registered SOAP processors.",
+          "optional": false
+        },
+        {
+          "name": "validateSOAPMessage",
+          "type": "String",
+          "description": "Optional. Flag indicating whether the SOAP message handler validates the SOAP messages that this processor sends and receives. Set to: true to validate messages sent and received by this SOAP processor. Be aware that the validation process checks only that the message envelope is structured correctly. For example, it checks the message has at least one body element and there is at most one header element. It does not validate any of the data carried by the message. This setting overrides the server's global watt.server.SOAP.validateSOAPMessage setting. false to bypass validation on messages sent and received by this SOAP processor. This setting overrides the server's global watt.server.SOAP.validateSOAPMessage setting.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc530745733.html"
+    },
+    {
+      "name": "pub.soap.processor:unregisterProcessor",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "directive",
+          "type": "String",
+          "description": "Process directive that you want to remove from the registry. Directive names are case sensitive. Tip: To obtain a list of the current SOAP processor directives registered on the server, run the pub.soap.processor:list service.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc530745734.html"
+    },
+    {
+      "name": "pub.soap.schema:encoding",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_schema_encoding.html"
+    },
+    {
+      "name": "pub.soap.schema:encoding_1_2",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_schema_encoding_1_2.html"
+    },
+    {
+      "name": "pub.soap.schema:envelope",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_schema_envelope.html"
+    },
+    {
+      "name": "pub.soap.schema:envelope_1_2",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_schema_envelope_1_2.html"
+    },
+    {
+      "name": "pub.soap.utils:addBodyEntry",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object to which you want the body entry added.",
+          "optional": false
+        },
+        {
+          "name": "bodyEntry",
+          "type": "com.wm.lang.xml.Node",
+          "description": "XML node containing the body entry that you want to add to soapData . Note: An XML node is a parsable representation of a node in an XML document. You generate an XML node using services such as pub.xml:xmlStringToXMLNode . Important: This service adds a single body entry to a SOAP object. If you need to add more than one entry, execute bodyEntry pub.soap.utils:addBodyEntry once for each entry. Important: In IBM webMethods Integration Server versions 6.0.1 and later, this service expects the node in to be namespace qualified. If the node is not qualified, the service throws an exception. If you created solutions based on the earlier behavior of this service (which permitted non-qualified entries), you can disable namespace enforcement by setting the server's watt.server.SOAP.EnforceMsgPartNS parameter to false.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object to which the body entry was added.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_addBodyEntry.html"
+    },
+    {
+      "name": "pub.soap.utils:addHeaderEntry",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object to which you want the header entry added.",
+          "optional": false
+        },
+        {
+          "name": "headerEntry",
+          "type": "com.wm.lang.xml.Node",
+          "description": "XML node containing the entry that you want to add to soapData . Note: An XML node is a parsable representation of a node in an XML document. You generate an XML node using services such as pub.xml:xmlStringToXMLNode . Important: This service adds a single header entry to a SOAP object. If you need to add more than one entry, execute addHeaderEntry once for each entry. Important: In IBM webMethods Integration Server versions 6.0.1 and later, this service expects the node in headerEntry to be namespace qualified. If the node is not qualified, the service throws an exception. If you created solutions based on the earlier behavior of this service (which permitted non-qualified entries), you can disable namespace enforcement by setting the server's watt.server.SOAP.EnforceMsgPartNS parameter to false.",
+          "optional": false
+        },
+        {
+          "name": "mustUnderstand",
+          "type": "String",
+          "description": "Optional. Value to which you want the mustUnderstand attribute set. The mustUnderstand attribute specifies whether recipients are required to process a header entry (that is, whether processing of the entry is mandatory or optional). Recipients that cannot process a mandatory header entry must reject the message and return a SOAP fault. A value of: 0 indicates that the header is optional. 1 indicates that the header is mandatory. For additional information about the mustUnderstand attribute, see the Simple Object Access Protocol (SOAP) 1.1 - W3C Note 08 May 2000 at http://www.w3.org/TR/SOAP/. Note: If you do not set mustUnderstand , the mustUnderstand attribute is omitted from the header entry, which is equivalent to setting mustUnderstand to 0.",
+          "optional": true
+        },
+        {
+          "name": "actor",
+          "type": "String",
+          "description": "Optional. Value to which you want the actor attribute set. The actor attribute specifies a URI that identifies the recipient to which a header entry is targeted. For additional information about the mustUnderstand attribute, see the Simple Object Access Protocol (SOAP) 1.1 - W3C Note 08 May 2000 at http://www.w3.org/TR/SOAP/.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object to which the header entry was added.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_addHeaderEntry.html"
+    },
+    {
+      "name": "pub.soap.utils:addTrailer",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object to which you want the trailer added.",
+          "optional": false
+        },
+        {
+          "name": "trailer",
+          "type": "com.wm.lang.xml.Node",
+          "description": "XML node containing the trailer that you want to add to soapData . Note: An XML node is a parsable representation of a node in an XML document. You generate an XML node using services such as pub.xml:xmlStringToXMLNode . Important: This service adds a single trailer to a SOAP object. If you need to insert more than one trailer in the message, execute addTrailer once for each trailer that needs to be added. Note: The SOAP specification states that trailers must be namespace qualified, so be sure that the node in trailer specifies a namespace.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object to which the trailer was added.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_addTrailer.html"
+    },
+    {
+      "name": "pub.soap.utils:callbackServiceSpec",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "messageContext",
+          "type": "Object",
+          "description": "Message context to be processed by the outbound callback service. A message context contains properties for the SOAP message and provides access to the SOAP message. Integration Server creates the message context and passes it to the outbound callback service.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idf6b5ff16-d5a2-4037-bdbc-274a137c7636.html"
+    },
+    {
+      "name": "pub.soap.utils:convertToVersionSpecificSOAPFault",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "soapProtocol",
+          "type": "String",
+          "description": "Optional. SOAP protocol with which the SOAP fault to convert works. Valid values are SOAP 1.1 Protocol or SOAP 1.2 Protocol . The default is SOAP 1.2 Protocol .",
+          "optional": true
+        },
+        {
+          "name": "fault",
+          "type": "Document",
+          "description": "The generic SOAP fault that is to be converted. The fault document references the pub.soap.utils:soapFault document type.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SOAP-FAULT",
+          "type": "Document",
+          "description": "Document containing the converted SOAP fault.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id3af24a54-6151-4b22-b4e5-74502b42cfce.html"
+    },
+    {
+      "name": "pub.soap.utils:createSoapData",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "encoding",
+          "type": "String",
+          "description": "Optional. Specifies the encoding method. Default value is UTF-8.",
+          "optional": true
+        },
+        {
+          "name": "addEmptyHeader",
+          "type": "String",
+          "description": "Optional. Specifies whether to create an empty header entry along with the SOAP envelope and body entries in the SOAP message. Set to: True to create an empty header entry in the SOAP message. False to create only the SOAP envelope and body entries. This setting overrides the global watt.server.SOAP.addEmptyHeader setting of Integration Server . Important: There is no default value. If you do not specify a value for the addEmptyHeader parameter, the service adds an empty header entry, which is equivalent to setting addEmptyHeader to True .",
+          "optional": true
+        },
+        {
+          "name": "soapProtocol",
+          "type": "String",
+          "description": "Optional. Indicates the SOAP protocol that the SOAP object works with. The default value is read from the watt.server.SOAP.defaultProtocol property. Set to: SOAP 1.1 protocol to indicate the SOAP object works with SOAP 1.1. SOAP 1.2 protocol to indicate the SOAP object works with SOAP 1.2.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_createSoapData.html"
+    },
+    {
+      "name": "pub.soap.utils:createXOPObject",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "contentType",
+          "type": "String",
+          "description": "Optional. MIME type of the input data.",
+          "optional": true
+        },
+        {
+          "name": "data",
+          "type": "Document",
+          "description": "Data from which you want to generate a com.wm.util.XOPObject instance.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "xopObject",
+          "type": "Object",
+          "description": "Conditional. An instance of com.wm.util.XOPObject generated from the input data. The value of xopObject will be null if you do not specify any value for the data input parameter.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idad22ae8d-e03c-4334-8bdc-b4f17f53b882.html"
+    },
+    {
+      "name": "pub.soap.utils:exitUnableToUnderstand",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "headerEntry",
+          "type": "com.wm.lang.xml.Node",
+          "description": "XML node containing the header entry that cannot be understood.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_exitUnableToUnderStd.html"
+    },
+    {
+      "name": "pub.soap.utils:getActor",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "headerEntry",
+          "type": "com.wm.lang.xml.Node",
+          "description": "The header entry whose actor value you want to retrieve. If you use pub.soap.utils:getHeaderEntries to retrieve header entries, you can loop over the list of header nodes to retrieve the actor value from each entry. If you use pub.soap.utils:getHeader to retrieve header entries, you must query the node returned by that service (using the pub.xml:queryXMLNode service) to extract a node for an individual header entry. Then you can run getActor on the resulting node.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "actor",
+          "type": "String",
+          "description": "Value of the header entry's actor attribute (for SOAP 1.1) or the role attribute (for SOAP 1.2). If the header entry does not have an actor attribute, actor will be null.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_getActor.html"
+    },
+    {
+      "name": "pub.soap.utils:getBody",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object containing the message whose Body node you want to retrieve.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "body",
+          "type": "com.wm.lang.xml.Node",
+          "description": "The Body node from the SOAP message (that is, <SOAP-ENV:Body> to </SOAP-ENV:Body> ).",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_getBody.html"
+    },
+    {
+      "name": "pub.soap.utils:getBodyEntries",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "The SOAP object containing the message whose body entries you want to retrieve.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "bodyEntries",
+          "type": "com.wm.lang.xml.Node[\n]",
+          "description": "An array of XML nodes, where each node represents a body entry from the message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_getBodyEntries.html"
+    },
+    {
+      "name": "pub.soap.utils:getDocument",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object for which you want a node representation.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "node",
+          "type": "com.wm.lang.xml.Node",
+          "description": "Node representation of the entire SOAP message in soapData (that is, <SOAP-ENV:Envelope> to </SOAP-ENV:Envelope>.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc528666370.html"
+    },
+    {
+      "name": "pub.soap.utils:getEncoding",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object containing the message whose encoding you want to retrieve.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "encoding",
+          "type": "com.wm.lang.xml.Node",
+          "description": "Encoding from the SOAP message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_getEncoding.html"
+    },
+    {
+      "name": "pub.soap.utils:getHeader",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object containing the message whose Header node you want to retrieve.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "header",
+          "type": "com.wm.lang.xml.Node",
+          "description": "Header node from the SOAP message (that is, <SOAP-ENV:Header> to </SOAP-ENV:Header> ).",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_getHeader.html"
+    },
+    {
+      "name": "pub.soap.utils:getHeaderEntries",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object containing the message whose header entries you want to retrieve.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "headerEntries",
+          "type": "com.wm.lang.xml.Node[\n]",
+          "description": "Header entries from the SOAP message. Each node in the array represents a header entry from the message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_getHeaderEntries.html"
+    },
+    {
+      "name": "pub.soap.utils:getMustUnderstand",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "headerEntry",
+          "type": "com.wm.lang.xml.Node",
+          "description": "The header entry whose mustUnderstand status you want to retrieve. If you use pub.soap.utils:getHeaderEntries to retrieve header entries, you can loop over the list of header nodes to check the status of each entry. If you use pub.soap.utils:getHeader to retrieve header entries, you will need to query the node returned by that service (using the pub.xml:queryXMLNode service) to extract a node for an individual header entry. Then you can run pub.soap.utils:getMustUnderstand on the resulting node.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mustUnderstand",
+          "type": "String",
+          "description": "Header entry's mustUnderstand status. If the header entry has a mustUnderstand attribute, mustUnderstand will return one of the following values: 0 indicates that the header is optional. 1 indicates that the header is mandatory. If the header entry does not have a mustUnderstand attribute, mustUnderstand will return 0 .",
+          "optional": true
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_getMustUnderstd.html"
+    },
+    {
+      "name": "pub.soap.utils:getQName",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "node",
+          "type": "com.wm.app.b2b.server.saaj.SOAPElement",
+          "description": "The XML node whose qualified name you want to discover.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Qname",
+          "type": "Document",
+          "description": "The node's qualified name. Qname will contain the following keys:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_getQName.html"
+    },
+    {
+      "name": "pub.soap.utils:getTrailers",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object containing the message whose trailers you want to retrieve.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "trailers",
+          "type": "com.wm.lang.xml.Node[\n]",
+          "description": "Array of nodes wherein each node represents a trailer from the message. If the message does not contain trailers, trailers will be null.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_getTrailers.html"
+    },
+    {
+      "name": "pub.soap.utils:getXOPObjectContent",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "xopObject",
+          "type": "Object",
+          "description": "Optional. The object of type com.wm.util.XOPObject.",
+          "optional": true
+        },
+        {
+          "name": "getAs",
+          "type": "String",
+          "description": "Optional. The object type in which you want to retrieve the contents in the com.wm.util.XOPObject instance.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "contentType",
+          "type": "String",
+          "description": "Conditional. MIME type of the contents in the input com.wm.util.XOPObject instance. The contentType parameter is returned only if you have specified a value for the xopObject input parameter.",
+          "optional": false
+        },
+        {
+          "name": "data",
+          "type": "Document",
+          "description": "Contents of the input com.wm.util.XOPObject instance. If the xopObject input parameter is null, this parameter has a null value.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idfd3b091e-87a3-4220-8642-ccad276c4f86.html"
+    },
+    {
+      "name": "pub.soap.utils:QName",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_QName.html"
+    },
+    {
+      "name": "pub.soap.utils:removeBodyEntry",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object containing the body entry that you want to delete.",
+          "optional": false
+        },
+        {
+          "name": "bodyEntry",
+          "type": "com.wm.lang.xml.Node",
+          "description": "Optional. The entry that you want to remove from soapData . (You would obtain the node with the pub.soap.utils:getBodyEntries service.) Note: You can use bodyEntry or index to specify the entry that you want removeBodyEntry to delete.",
+          "optional": true
+        },
+        {
+          "name": "index",
+          "type": "String",
+          "description": "Optional. Index of the entry that you want to remove (where index 0 represents the first body entry). index is ignored if bodyEntry is specified.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_removeBodyEntry.html"
+    },
+    {
+      "name": "pub.soap.utils:removeHeaderEntry",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object containing the header entry that you want to delete.",
+          "optional": false
+        },
+        {
+          "name": "headerEntry",
+          "type": "com.wm.lang.xml.Node",
+          "description": "Optional. The header entry that you want to remove from soapData . (You would obtain the node with the pub.soap.utils:getHeaderEntries service.) Note: You can use headerEntry or index to specify the entry that you want removeHeaderEntry to delete.",
+          "optional": true
+        },
+        {
+          "name": "index",
+          "type": "String",
+          "description": "Optional. Index of the entry that you want to remove (where index 0 represents the first header entry). index is ignored if headerEntry is specified.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_removeHeaderEntry.html"
+    },
+    {
+      "name": "pub.soap.utils:removeTrailer",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object containing the trailer that you want to delete.",
+          "optional": false
+        },
+        {
+          "name": "trailer",
+          "type": "com.wm.lang.xml.Node",
+          "description": "Optional. The trailer that you want to remove from soapData . (You would obtain the node with the pub.soap.utils:getTrailers service.) Note: You can use trailer or index to specify the trailer that you want removeTrailer to delete.",
+          "optional": true
+        },
+        {
+          "name": "index",
+          "type": "String",
+          "description": "Optional. Index of the trailer that you want to remove (where index 0 represents the first trailer). index is ignored if trailer is specified.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_removeTrailer.html"
+    },
+    {
+      "name": "pub.soap.utils:requestResponseSpec",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "soapRequestData",
+          "type": "Object",
+          "description": "SOAP object containing the SOAP request submitted to the Integration Server by the client.",
+          "optional": false
+        },
+        {
+          "name": "soapResponseData",
+          "type": "Object",
+          "description": "Empty SOAP object that the custom processor or target service uses to compose the SOAP response message.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "soapResponseData",
+          "type": "Object",
+          "description": "SOAP object containing the message that is to be returned to the client.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_reqRespSpec.html"
+    },
+    {
+      "name": "pub.soap.utils:resetWSDEffectivePolicy",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "wsdName",
+          "type": "String",
+          "description": "The name of the web service descriptor for which you want to reset the effective policy. Note: The resetWSDEffectivePolicy service applies only to web services that run in pre-8.2 compatibility mode (i.e., the Pre-8.2 compatibility mode property is set to true ).",
+          "optional": false
+        },
+        {
+          "name": "handlerName",
+          "type": "String",
+          "description": "The name of the handler for which you want to reset the effective policy.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_resetWSDEffectivePolicy.html"
+    },
+    {
+      "name": "pub.soap.utils:soapDataToBytes",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object that you want to convert to a Byte Array.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "bytes",
+          "type": "Object",
+          "description": "Entire SOAP message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_soapDataToBytes.html"
+    },
+    {
+      "name": "pub.soap.utils:soapDataToString",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object that you want to convert to a String.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "string",
+          "type": "String",
+          "description": "Entire SOAP message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_soapDataToString.html"
+    },
+    {
+      "name": "pub.soap.utils:soapFault",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/ide7ce7d8d-0fff-4d45-b4c9-ab0244f4c7c6.html"
+    },
+    {
+      "name": "pub.soap.utils:streamToSoapData",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "stream",
+          "type": "java.io.InputStream",
+          "description": "SOAP message that is to be converted to a SOAP object.",
+          "optional": false
+        },
+        {
+          "name": "soapProtocol",
+          "type": "String",
+          "description": "Optional. Indicates the SOAP protocol that the resulting SOAP object will work with. The default value is read from the watt.server.SOAP.defaultProtocol property. Set to: SOAP 1.1 Protocol to indicate the SOAP object works with SOAP 1.1. SOAP 1.2 Protocol to indicate the SOAP object works with SOAP 1.2.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object representation of the SOAP message in stream .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_streamToSoapData.html"
+    },
+    {
+      "name": "pub.soap.utils:stringToSoapData",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "string",
+          "type": "String",
+          "description": "SOAP message that is to be converted to a SOAP object.",
+          "optional": false
+        },
+        {
+          "name": "soapProtocol",
+          "type": "String",
+          "description": "Optional. Indicates the SOAP protocol that the resulting SOAP object will work with. The default value is read from the watt.server.SOAP.defaultProtocol property. Set to: SOAP 1.1 Protocol to indicate the SOAP object works with SOAP 1.1. SOAP 1.2 Protocol to indicate the SOAP object works with SOAP 1.2.",
+          "optional": true
+        },
+        {
+          "name": "addEmptyHeader",
+          "type": "String",
+          "description": "Optional. Specifies whether to create an empty header entry along with the SOAP envelope and body entries in the SOAP message. Set to: True to create an empty header entry in the SOAP message. False to create only the SOAP envelope and body entries. This setting overrides the global watt.server.SOAP.addEmptyHeader setting of Integration Server . Important: There is no default value. If you do not specify a value for the addEmptyHeader parameter, the service uses the value specified in the watt.server.SOAP.addEmptyHeader server configuration parameter. For more information about watt.server.SOAP.addEmptyHeader, see IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object representation of the SOAP message in string .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_stringToSoapData.html"
+    },
+    {
+      "name": "pub.soap.utils:validateSoapData",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "soapData",
+          "type": "Object",
+          "description": "SOAP object that you want to validate.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_soap_utils_validateSoapData.html"
+    },
+    {
+      "name": "pub.soap.wsa:action",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id5aec5755-0969-4c87-89ee-ae2aef5268a6.html"
+    },
+    {
+      "name": "pub.soap.wsa:faultTo",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id12B6G0130UI.html"
+    },
+    {
+      "name": "pub.soap.wsa:from",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id12B6H10N0YK.html"
+    },
+    {
+      "name": "pub.soap.wsa:messageID",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id879d5059-75ee-4559-8881-be23ba9d2626.html"
+    },
+    {
+      "name": "pub.soap.wsa:problemAction",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id12B6J0E60HT.html"
+    },
+    {
+      "name": "pub.soap.wsa:problemHeaderQName",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id12B790EE05Z.html"
+    },
+    {
+      "name": "pub.soap.wsa:problemIRI",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id12B7A0FF0Y4.html"
+    },
+    {
+      "name": "pub.soap.wsa:relatesTo",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idd1627012-582c-4993-8b32-e9702fe3f7b5.html"
+    },
+    {
+      "name": "pub.soap.wsa:replyTo",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id12B7A0P0DHS.html"
+    },
+    {
+      "name": "pub.soap.wsa:retryAfter",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id12CCD0A0C5Z.html"
+    },
+    {
+      "name": "pub.soap.wsa:to",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idb151496c-524c-4902-99ee-2bb2964fe07f.html"
+    },
+    {
+      "name": "pub.soap.wsa:schema_wsa",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Chunk119586538.html"
+    },
+    {
+      "name": "pub.soap.wsa.submission:action",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id12B7B0EM0PF.html"
+    },
+    {
+      "name": "pub.soap.wsa.submission:faultTo",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id12B7B0EC0HT.html"
+    },
+    {
+      "name": "pub.soap.wsa.submission:from",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id12B7B0X0YPN.html"
+    },
+    {
+      "name": "pub.soap.wsa.submission:messageID",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id12B7B800A7Q.html"
+    },
+    {
+      "name": "pub.soap.wsa.submission:relatesTo",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id12B7BA00O30.html"
+    },
+    {
+      "name": "pub.soap.wsa.submission:replyTo",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id12B7BD0F0RO.html"
+    },
+    {
+      "name": "pub.soap.wsa.submission:retryAfter",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id12CCD90D0Y4.html"
+    },
+    {
+      "name": "pub.soap.wsa.submission:to",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id12B7BI0014Y.html"
+    },
+    {
+      "name": "pub.soap.wsa.submission:schema_wsa_submission",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id12B7C0D0QXW.html"
+    },
+    {
+      "name": "pub.soap.wsrm:closeSequence",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "serverSequenceId",
+          "type": "String",
+          "description": "Unique identifier associated with the reliable messaging sequence that you want to close. Note: The serverSequenceId parameter is returned as the output parameter of the pub.soap.wsrm:createSequence service or as the reliableMessagingInfo/responseReliableMessagingProperties/server SequenceId output parameter of a web service connector.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "fault",
+          "type": "Document",
+          "description": "Conditional. Contents of the fault block. The fault document references the pub.soap.utils:soapFault document type.",
+          "optional": false
+        },
+        {
+          "name": "transportInfo",
+          "type": "Document",
+          "description": "Conditional. Headers from response and request messages. The contents of transportInfo vary depending on the actual transport used by the service. Note: The transport information returned by this service is similar to the transport information returned by a web service connector. For more information, see About Transport and Fault Information Returned by a Web Service Connector . The transportInfo parameter contains the following keys:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id133DB0P0A5Z.html"
+    },
+    {
+      "name": "pub.soap.wsrm:createSequence",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "consumer WebService DescriptorName",
+          "type": "String",
+          "description": "Fully qualified name of the consumer web service descriptor for which the reliable message sequence is to be created. That is, the consumer web service descriptor that contains the reliable messaging destination endpoint information. Note: The consumer web service descriptor must have a reliable messaging policy attached or must be created from a reliable messaging policy annotated WSDL.",
+          "optional": false
+        },
+        {
+          "name": "_port",
+          "type": "String",
+          "description": "Specifies the port that Integration Server uses to resolve the endpoint address with which the reliable messaging sequence is to be established.",
+          "optional": false
+        },
+        {
+          "name": "sequenceKey",
+          "type": "String",
+          "description": "Optional. Unique key to identify the message sequence. A reliable messaging client associates a sequence key to a message sequence based on the endpoint URL to which the message sequence is directed. In cases where there are several message sequences directed to the same endpoint URL, you can specify a custom sequence key to identify each sequence. Each sequence is then uniquely identified by the endpoint URL and the user-specified sequence key. Important: The user-specified sequence key should not exceed 32 characters in length.",
+          "optional": true
+        },
+        {
+          "name": "acksTo",
+          "type": "Document",
+          "description": "Optional. Consumer response endpoint address to which the reliable message destination must send the acknowledgment. To specify the consumer response endpoint address, use the Response endpoint address template binder property of the consumer web service descriptor for which the reliable message sequence is to be created, as the address template and replace the placeholders <server> and <port> with appropriate values. If no address is specified as acksTo , the acknowledgment messages are sent back to the requester.",
+          "optional": true
+        },
+        {
+          "name": "auth",
+          "type": "Document",
+          "description": "Optional. Transport-level credentials to include in the request. Integration Server uses the information provided in auth to create the SOAP request. Note: Information specified in auth overwrites any authentication credentials specified in the consumer endpoint alias that is assigned to the binder.",
+          "optional": true
+        },
+        {
+          "name": "timeout",
+          "type": "String",
+          "description": "Optional. Time (in milliseconds) to wait for a response from the reliable messaging server before timing out and terminating the request. If timeout is not specified, or a value less than 0 is specified, Integration Server uses the value of the watt.server.SOAP.request.timeout server property. For more information about server configuration properties, see IBM webMethods Integration Server Administrator’s Guide . A timeout value of 0 means Integration Server waits for a response indefinitely. If the connection to the reliable messaging server ends before Integration Server receives a response, the service ends with an exception and a status code of 408.",
+          "optional": true
+        },
+        {
+          "name": "_url",
+          "type": "String",
+          "description": "Optional. URL to use as the endpoint URL for the web service. If supplied, the value of _url overwrites the endpoint URL in the original WSDL.",
+          "optional": true
+        },
+        {
+          "name": "transportHeaders",
+          "type": "Document",
+          "description": "Optional. Transport header fields that you want to explicitly set in the request issued by the reliable messaging client. Specify a key in transportHeaders for each header field that you want to set. The key name represents the name of the header field and the key value represents the value of that header field. The names and values supplied to transportHeaders must be of type String. For information about using transportHeaders , including a description of the default Integration Server behavior, see Signature for a Web Service Connector .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "serverSequenceId",
+          "type": "String",
+          "description": "Unique identifier returned by Integration Server and associated with each message sequence. Note: The serverSequenceId is used as the input parameter of pub.soap.wsrm:closeSequence , pub.soap.wsrm:sendAcknowledgementRequest , pub.soap.wsrm:terminateSequence , and pub.soap.wsrm:waitUntilSequenceCompleted services.",
+          "optional": false
+        },
+        {
+          "name": "fault",
+          "type": "Document",
+          "description": "Conditional. Contents of the fault block. The fault document references the pub.soap.utils:soapFault document type.",
+          "optional": false
+        },
+        {
+          "name": "transportInfo",
+          "type": "Document",
+          "description": "Conditional. Headers from response and request messages. The contents of transportInfo vary depending on the actual transport used by the service. Note: The transport information returned by this service is similar to the transport information returned by a web service connector. For more information, see About Transport and Fault Information Returned by a Web Service Connector . The transportInfo parameter contains the following keys:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id133DD100GY4.html"
+    },
+    {
+      "name": "pub.soap.wsrm:sendAcknowledgementRequest",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "serverSequenceId",
+          "type": "String",
+          "description": "Unique identifier associated with the reliable messaging sequence for which you want an acknowledgment. Note: The serverSequenceId parameter is returned as the output parameter of the pub.soap.wsrm:createSequence service or as the reliableMessagingInfo/responseReliableMessagingProperties/ serverSequenceId output parameter of the web service connector.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "fault",
+          "type": "Document",
+          "description": "Conditional. Contents of the fault block. The fault document references the pub.soap.utils:soapFault document type.",
+          "optional": false
+        },
+        {
+          "name": "transportInfo",
+          "type": "Document",
+          "description": "Conditional. Headers from response and request messages. The contents of transportInfo vary depending on the actual transport used by the service. Note: The transport information returned by this service is similar to the transport information returned by a web service connector. For more information, see About Transport and Fault Information Returned by a Web Service Connector . The transportInfo parameter contains the following keys:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id133F909M05Z.html"
+    },
+    {
+      "name": "pub.soap.wsrm:terminateSequence",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "serverSequenceId",
+          "type": "String",
+          "description": "Unique identifier associated with the reliable messaging sequence that you want to terminate. Note: The serverSequenceId parameter is returned as the output parameter of the pub.soap.wsrm:createSequence service or as the reliableMessagingInfo/responseReliableMessagingProperties/ serverSequenceId output parameter of the web service connector.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "fault",
+          "type": "Document",
+          "description": "Conditional. Contents of the fault block. The fault document references the pub.soap.utils:soapFault document type.",
+          "optional": false
+        },
+        {
+          "name": "transportInfo",
+          "type": "Document",
+          "description": "Conditional. Headers from response and request messages. The contents of transportInfo vary depending on the actual transport used by the service. Note: The transport information returned by this service is similar to the transport information returned by a web service connector. For more information, see About Transport and Fault Information Returned by a Web Service Connector . The transportInfo parameter contains the following keys:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id133F9H00VY4.html"
+    },
+    {
+      "name": "pub.soap.wsrm:waitUntilSequenceCompleted",
+      "folder": "SOAP",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "serverSequenceId",
+          "type": "String",
+          "description": "Unique identifier associated with a reliable messaging sequence. Integration Server waits for all the messages in the specified message sequence to be sent and acknowledged before terminating the sequence. Note: The serverSequenceId parameter is returned as the output parameter of the pub.soap.wsrm:createSequence service or as the reliableMessagingInfo/responseReliableMessagingProperties/ serverSequenceId output parameter of the web service connector.",
+          "optional": false
+        },
+        {
+          "name": "maxWaitingTime",
+          "type": "String",
+          "description": "Optional. Maximum time (in milliseconds) to wait for the reliable messaging sequence to complete before terminating it. If no value is specified, the service waits indefinitely until it receives a reply.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "fault",
+          "type": "Document",
+          "description": "Conditional. Contents of the fault block. The fault document references the pub.soap.utils:soapFault document type.",
+          "optional": false
+        },
+        {
+          "name": "transportInfo",
+          "type": "Document",
+          "description": "Conditional. Headers from response and request messages. The contents of transportInfo vary depending on the actual transport used by the service. Note: The transport information returned by this service is similar to the transport information returned by a web service connector. For more information, see About Transport and Fault Information Returned by a Web Service Connector . The transportInfo parameter contains the following keys:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id133FA0U0YHS.html"
+    }
+  ]
+}

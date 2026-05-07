@@ -1,0 +1,198 @@
+{
+  "folder": "LIST",
+  "total_services": 6,
+  "services": [
+    {
+      "name": "pub.list:addItemToVector",
+      "folder": "LIST",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "vector",
+          "type": "java.util.Vector",
+          "description": "Optional. The vector object to which you want to add an item or list of items. If no value is specified, the service creates a new java.util.Vector object to which the item(s) will be added.",
+          "optional": true
+        },
+        {
+          "name": "item",
+          "type": "Object",
+          "description": "Optional. Item to be added to the vector object. Note: You can use either item or itemList to specify the input object. If both item and itemList input parameters are specified, the item as well as the list of items will be added to the vector object.",
+          "optional": true
+        },
+        {
+          "name": "itemList",
+          "type": "Object[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Optional. List of items to be added to the vector object.",
+          "optional": true
+        },
+        {
+          "name": "addNulls",
+          "type": "String",
+          "description": "Optional. Specifies whether a null item can be added to the vector object. Set to: false to prevent null values from being added to the vector object. This is the default. true to allow null values to be added to the vector object.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "vector",
+          "type": "java.util.Vector",
+          "description": "Updated vector object with the list of items added or an empty vector in case no items are added.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A52525.html"
+    },
+    {
+      "name": "pub.list:appendToDocumentList",
+      "folder": "LIST",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "toList",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. List to which you want to append documents. If you do not specify toList , the service creates a new list.",
+          "optional": true
+        },
+        {
+          "name": "fromList",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. Documents you want to append to the end of toList .",
+          "optional": true
+        },
+        {
+          "name": "fromItem",
+          "type": "Document",
+          "description": "Optional. Document you want to append to the end of toList . If you specify both fromList and fromItem , the service adds the document specified in fromItem after the documents in fromList .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "toList",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "The toList document list with the documents in fromList and fromItem appended to it.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_list_appendToDocList.html"
+    },
+    {
+      "name": "pub.list:appendToStringList",
+      "folder": "LIST",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "toList",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. List to which you want to append Strings. If the value of toList is null, a null pointer exception error is thrown. If you do not specify toList , the service creates a new list.",
+          "optional": true
+        },
+        {
+          "name": "fromList",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. List of Strings to add to toList . Strings are added after the entries of toList .",
+          "optional": true
+        },
+        {
+          "name": "fromItem",
+          "type": "String",
+          "description": "Optional. String you want to append to the end of toList . If you specify both fromList and fromItem , the service adds the String specified in fromItem after the Strings specified in fromList .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "toList",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "The toList String list with the Strings from fromList and fromItem appended to it.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A29636.html"
+    },
+    {
+      "name": "pub.list:sizeOfList",
+      "folder": "LIST",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "fromList",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList, String List, or Object List",
+          "description": "Optional. List whose size you want to discover. If fromList is not specified, the service returns a size of 0.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "size",
+          "type": "String",
+          "description": "Number of entries in fromList .",
+          "optional": false
+        },
+        {
+          "name": "fromList",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList, String List, or Object List",
+          "description": "Original list.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_list_sizeOfList.html"
+    },
+    {
+      "name": "pub.list:stringListToDocumentList",
+      "folder": "LIST",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "fromList",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. List of Strings (a String[ ]) that you want to convert to a list of documents (an IData[ ]). If fromList is not specified, the service returns a zero length array for toList .",
+          "optional": true
+        },
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Optional. Key name to use in the generated document list.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "toList",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Resulting document list.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_list_stringListToDocList.html"
+    },
+    {
+      "name": "pub.list:vectorToArray",
+      "folder": "LIST",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "vector",
+          "type": "java.util.Vector",
+          "description": "The object to be converted to an array.",
+          "optional": false
+        },
+        {
+          "name": "stronglyType",
+          "type": "String",
+          "description": "Optional. If this option is specified, the service expects all items in the vector to have the same Java type as the first non-null item in the vector. If the service detects an item of a different type, an error is thrown. Set to: false to convert the vector to an object array. This is the default. true to convert the vector to a strongly typed array holding the same type of objects.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "array",
+          "type": "Object[\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t]",
+          "description": "Converted object array.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A84419.html"
+    }
+  ]
+}

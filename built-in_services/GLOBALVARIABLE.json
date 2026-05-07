@@ -1,0 +1,40 @@
+{
+  "folder": "GLOBALVARIABLE",
+  "total_services": 1,
+  "services": [
+    {
+      "name": "pub.globalVariable:getGlobalVariable",
+      "folder": "GLOBALVARIABLE",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Name of a global variable. For more information about global variables, see IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": false
+        },
+        {
+          "name": "defaultValue",
+          "type": "String.",
+          "description": "Optional. The default value that Integration Server must return in the absence of a global variable.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "String",
+          "description": "Returns the global variable value.",
+          "optional": false
+        },
+        {
+          "name": "isSecure",
+          "type": "String.",
+          "description": "Indicates whether the global variable is a password or not.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_mvw_j1j_3yb.html"
+    }
+  ]
+}

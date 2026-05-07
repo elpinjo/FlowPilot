@@ -1,0 +1,34 @@
+{
+  "folder": "STREAMPROCESSING",
+  "total_services": 1,
+  "services": [
+    {
+      "name": "pub.streamProcessing:combineCalculations",
+      "folder": "STREAMPROCESSING",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "fromCalculations",
+          "type": "Document",
+          "description": "A document (IData object) containing the values to combine with toCalculations .",
+          "optional": false
+        },
+        {
+          "name": "toCalculations",
+          "type": "Document",
+          "description": "A document (IData object) containing the calculations to combine with fromCalculations .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "toCalculations",
+          "type": "Document",
+          "description": "The toCalculations document (IData object) combined with the values in fromCalculations .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Chunk1347998482.html"
+    }
+  ]
+}

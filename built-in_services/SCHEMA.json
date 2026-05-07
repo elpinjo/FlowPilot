@@ -1,0 +1,182 @@
+{
+  "folder": "SCHEMA",
+  "total_services": 7,
+  "services": [
+    {
+      "name": "pub.schema:createXSD",
+      "folder": "SCHEMA",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "name",
+          "type": "String",
+          "description": "Fully qualified name of a document type, service, or specification on the Integration Server .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "isSuccessful",
+          "type": "String",
+          "description": "Flag indicating whether the schema definition was created successfully. A value of: true indicates that the schema definition was created successfully. false indicates that the schema definition was not created successfully. See errors for detailed information.",
+          "optional": false
+        },
+        {
+          "name": "xsd",
+          "type": "Document",
+          "description": "Conditional. The schema definition xsd has the following keys:",
+          "optional": false
+        },
+        {
+          "name": "errors",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Conditional. List of fatal errors, if any, that occurred when generating the XSD. Each document in the list has the following structure:",
+          "optional": false
+        },
+        {
+          "name": "warnings",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Conditional. List of non-fatal errors, if any, that were encountered while generating the XSD. Each document in the list has the following structure:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_schema_createXSD.html"
+    },
+    {
+      "name": "pub.schema:validate",
+      "folder": "SCHEMA",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "object",
+          "type": "Document",
+          "description": "Where Document is an IData or an XMLData-formatted document, com.wm.lang.xml.Document or com.wm.lang.xml.Node Document or object to be validated.",
+          "optional": false
+        },
+        {
+          "name": "conformsTo",
+          "type": "String",
+          "description": "Document type or schema to validate object against. If object is a Document (IData object), conformsTo must specify the fully qualified name of an IS document type on the Integration Server . If object is a XMLData-formatted document, conformsTo must specify the fully qualified name of an XML document type on Integration Server . Note: One or more XML document types and XML fields are created from a single XML schema definition. To validate an XMLData-formatted Document using the XML document types created from an XML Schema definition, you need specify only one of the XML document types or XML fields created from the schema. Integration Server locates the related XML document types, using the complete collection of XML document types and XML fields created from the XML schema definition during validation. If object is a com.wm.lang.xml.Document or com.wm.lang.xml.Node object, conformsTo must specify the fully qualified name of an IS schema on the Integration Server . The specified IS schema is needed only for validating nodes with \"Names\" that are not from XML namespaces (that is, qualified nodes whose XML Namespace Name properties are absent). Integration Server can only locate the IS schema if its fully qualified name is provided. If the XML document ( com.wm.lang.xml.Document or com.wm.lang.xml.Node ) contains namespace-qualified tags, conformsTo is ignored. Instead, Integration Server uses the XML namespaces declared in the instance document to locate the IS schemas that contain definitions and declarations for that XML namespace. Note: When validating a document type created from an XML schema definition, if you want to use the OR operator for pattern-matching, use the | operator after the pattern string. If the | operator is used at the start of the regular expression, Integration Server treats it as an empty string.",
+          "optional": false
+        },
+        {
+          "name": "maxErrors",
+          "type": "String",
+          "description": "Optional. Number of errors to be collected. Default value is 1 . When the number of errors found is equal to maxErrors , the validation processor stops validation and returns the result. If maxErrors is set to -1 , the validation processor returns all errors.",
+          "optional": true
+        },
+        {
+          "name": "ignoreContent",
+          "type": "String",
+          "description": "Optional. Flag that specifies whether the validation processor will validate content keys of the type String, String List, or String Table. Set to: true to ignore content (that is, do not validate keys of these types). false to validate content. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "failIfInvalid",
+          "type": "String",
+          "description": "Optional. Flag that indicates whether the service should fail and throw an exception if the object is invalid. Set to: true to indicate that the service should fail if the object is invalid. false to indicate that service should signal success and return errors to the pipeline if object is invalid. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "schemaDomain",
+          "type": "String",
+          "description": "Optional. Schema domain in which the schema specified by the XML namespaces resides. If schemaDomain is not specified, Integration Server uses the default schema domain. Note: This parameter only applies if object is a com.wm.lang.xml.Document or com.wm.lang.xml.Node",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "isValid",
+          "type": "String",
+          "description": "Flag that indicates whether or not the validation was successful. A value of: true indicates that the validation was successful. false indicates that the validation was unsuccessful.",
+          "optional": false
+        },
+        {
+          "name": "errors",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Errors encountered during validation. Each document will contain the following information:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_schema_validate.html"
+    },
+    {
+      "name": "pub.schema:validatePipeline",
+      "folder": "SCHEMA",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "conformsTo",
+          "type": "String",
+          "description": "Fully qualified name of the document type that you want to validate the pipeline against.",
+          "optional": false
+        },
+        {
+          "name": "maxErrors",
+          "type": "String",
+          "description": "Optional. Number of errors to be collected. Default value is 1 . When the number of errors found is equal to maxErrors , the validation processor stops validation and returns the result. If maxErrors is set to -1 , the validation processor returns all errors.",
+          "optional": true
+        },
+        {
+          "name": "ignoreContent",
+          "type": "String",
+          "description": "Optional. Flag that specifies whether the validation processor will validate content keys of the type String, String List, or String Table. Set to: true to ignore content (that is, do not validate keys of these types). false to validate content. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "failIfInvalid",
+          "type": "String",
+          "description": "Optional. Flag that indicates whether the service should fail and throw an exception if the object is invalid. Set to: true to indicate that service should fail if object is invalid. false to indicate that service should simply signal success and return errors to the pipeline if object is invalid. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "isValid",
+          "type": "String",
+          "description": "Flag that indicates whether or not the validation was successful. A value of: true indicates that the validation was successful. false indicates that the validation was unsuccessful.",
+          "optional": false
+        },
+        {
+          "name": "errors",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Errors encountered during validation. Each document will contain the following information:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_schema_validatePipeline.html"
+    },
+    {
+      "name": "pub.schema.w3c:datatypes",
+      "folder": "SCHEMA",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_schema_w3c_datatypes.html"
+    },
+    {
+      "name": "pub.schema.w3c:structures",
+      "folder": "SCHEMA",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_schema_w3c_structures.html"
+    },
+    {
+      "name": "pub.schema.w3c:xml",
+      "folder": "SCHEMA",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_schema_w3c_xml.html"
+    },
+    {
+      "name": "pub.schema.w3c:xsi",
+      "folder": "SCHEMA",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A90476.html"
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "folder": "PACKAGES",
+  "total_services": 9,
+  "services": [
+    {
+      "name": "pub.packages:activatePackage",
+      "folder": "PACKAGES",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "package",
+          "type": "String",
+          "description": "Name of the package that you want to activate. Package names are case sensitive.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Message from server. (This is the same message that you receive when you activate a package with the Integration Server Administrator .)",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_packages_activatePackage.html"
+    },
+    {
+      "name": "pub.packages:backupPackage",
+      "folder": "PACKAGES",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "packageName",
+          "type": "String",
+          "description": "Name of the package to back up.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idefb64e94-4320-4b7f-a8b7-327b1084f167.html"
+    },
+    {
+      "name": "pub.packages:disablePackage",
+      "folder": "PACKAGES",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "package",
+          "type": "String",
+          "description": "Name of the package that you want to disable. Package names are case sensitive.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Message from server. (This is the same message that you receive when you disable a package with the Integration Server Administrator .)",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_packages_disablePackage.html"
+    },
+    {
+      "name": "pub.packages:enablePackage",
+      "folder": "PACKAGES",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "package",
+          "type": "String",
+          "description": "Name of the package that you want to enable. Package names are case sensitive.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Message from server. (This is the same message that you receive when you enable a package with the Integration Server Administrator .)",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_packages_enablePackage.html"
+    },
+    {
+      "name": "pub.packages.hotdeployment:cancel",
+      "folder": "PACKAGES",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "package",
+          "type": "String",
+          "description": "Name of the package that is being upgraded using hot deployment operation that you want to cancel. Package names are case sensitive.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Message from server indicating the status of the cancellation of the hot deployment operation.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/id2bd79764-1d5f-482f-8611-095ff5b9556d.html"
+    },
+    {
+      "name": "pub.packages:installPackage",
+      "folder": "PACKAGES",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "packageFile",
+          "type": "String",
+          "description": "Name of the distribution file that contains the package that you want to install. This file must reside in the server's inbound directory ( Integration Server_directory \\instances\\ instance_name \\replicate\\inbound). When specifying packageFile , Do include the .zip extension in the file name. Do not include the directory path. For example: myPackageFileAug2001.zip",
+          "optional": false
+        },
+        {
+          "name": "activateOnInstall",
+          "type": "String",
+          "description": "Flag that specifies whether you want Integration Server to automatically activate the package after it is installed. Set to: yes to activate the package after installation and make it immediately available to clients. This is the default. no to install the package without activating it afterwards. If you install a package in this mode, it will not be accessible until it is explicitly activated through the Integration Server Administrator or the pub.packages:activatePackage service.",
+          "optional": false
+        },
+        {
+          "name": "archiveOnInstall",
+          "type": "String",
+          "description": "Optional. Flag that specifies whether you want Integration Server to archive the package automatically after it is installed. Set to: yes to archive the package after installation. If you choose to archive the package automatically, Integration Server moves the package from the Integration Server_directory \\instances\\ instance_name \\replicate\\inbound directory to the Integration Server_directory \\instances\\ instance_name \\replicate\\archive directory. This is the default. no to install the package without archiving it.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Message from server. (This is the same message that is displayed when you install a package with the Integration Server Administrator .)",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_packages_installPackage.html"
+    },
+    {
+      "name": "pub.packages:recoverPackage",
+      "folder": "PACKAGES",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "package",
+          "type": "String",
+          "description": "Name of the package that you want to recover. Package names are case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "activateOnRecover",
+          "type": "String",
+          "description": "Flag that specifies whether you want the server to automatically activate the package after it is recovered. Set to: yes to activate the package after it is recovered and make it immediately available to clients. no to recover the package without activating it afterwards. If you recover a package in this mode, it will not be accessible until it is explicitly activated through the Integration Server Administrator or the pub.packages:activatePackage service.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Message from server. (This is the same message that is displayed when you recover a package with the Integration Server Administrator .)",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_packages_recoverPackage.html"
+    },
+    {
+      "name": "pub.packages:reloadPackage",
+      "folder": "PACKAGES",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "package",
+          "type": "String",
+          "description": "Name of the package that you want to reload. Package names are case sensitive.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Message from server. (This is the same message that is displayed when you reload a package with the Integration Server Administrator .)",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_packages_reloadPackage.html"
+    },
+    {
+      "name": "pub.packages:updateHomePage",
+      "folder": "PACKAGES",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "packageName",
+          "type": "String",
+          "description": "Name of the package for which you want to update the home page. Package names are case sensitive.",
+          "optional": false
+        },
+        {
+          "name": "replaceHTML",
+          "type": "Boolean",
+          "description": "Flag that specifies whether to overwrite the existing index.html file. Set to: true to replace index.html with a predefined home page template for custom package documentation and all the required resources. false to modify only the resources and not the index.html file.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "success",
+          "type": "Boolean",
+          "description": "Flag that specifies whether the home page is updated successfully.",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Conditional. Message from Integration Server that specifies whether the home page is updated successfully. The message changes based on the replaceHTML value.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_packages_updateHomePage.html"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "folder": "JWT",
+  "total_services": 1,
+  "services": [
+    {
+      "name": "pub.jwt:extractClaimsFromJWT",
+      "folder": "JWT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "jwt",
+          "type": null,
+          "description": "String . The token from which you want to extract claims.",
+          "optional": false
+        },
+        {
+          "name": "truststoreAlias",
+          "type": null,
+          "description": "String . Optional. Alias of the truststore that contains the list of certificates, which Integration Server uses to verify the JWT before extracting the claims.",
+          "optional": true
+        },
+        {
+          "name": "certAlias",
+          "type": null,
+          "description": "String . Optional. Alias that identifies a trusted certificate within a truststore.",
+          "optional": true
+        },
+        {
+          "name": "claims",
+          "type": null,
+          "description": "String[] . List of claims to be extracted.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "message",
+          "type": null,
+          "description": "String . Indicates whether the claims are successfully extracted or not. A success message or an error message followed by the details of claims extracted are displayed.",
+          "optional": false
+        },
+        {
+          "name": "claimsDetails",
+          "type": null,
+          "description": "Document . The service returns an array or a list of name and value pairs for each claim.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_491E8D0002D84E28BDDD0A7FA7298DE3.html"
+    }
+  ]
+}

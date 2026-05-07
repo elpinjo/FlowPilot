@@ -1,0 +1,33 @@
+{
+  "folder": "STREAMING",
+  "total_services": 1,
+  "services": [
+    {
+      "name": "pub.streaming:send",
+      "folder": "STREAMING",
+      "description": "Last Updated: 2026-02-17",
+      "inputs": [
+        {
+          "name": "connectionAliasName",
+          "type": "String",
+          "description": "Name of the streaming connection alias to use to send events. The streaming connection alias identifies the streaming provider to which the service sends events. The specified connectionAliasName must be used by the specified eventSpecificationName .",
+          "optional": false
+        },
+        {
+          "name": "eventSpecificationName",
+          "type": "String",
+          "description": "Name of the event specification that defines the structure of the event, identifies the topic to which events are published, and indicates how to encode and decode event data. Each event specification is associated with a streaming connection alias. For information about creating event specifications, see Event Specifications .",
+          "optional": false
+        },
+        {
+          "name": "events",
+          "type": "Document List",
+          "description": "Document (IData object) A document list of the events to send to the streaming provider.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Chunk1681155651.html"
+    }
+  ]
+}

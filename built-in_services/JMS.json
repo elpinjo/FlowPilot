@@ -1,0 +1,494 @@
+{
+  "folder": "JMS",
+  "total_services": 14,
+  "services": [
+    {
+      "name": "pub.jms:acknowledge",
+      "folder": "JMS",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "message",
+          "type": "Object",
+          "description": "A javax.jms.Message object that identifies the message for which you want Integration Server to send an acknowledgment to the JMS provider.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_jms_acknowledge.html"
+    },
+    {
+      "name": "pub.jms:batchTriggerSpec",
+      "folder": "JMS",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "JMSMessage",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "A document list where each document references the pub.jms:JMSMessage document type.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_jms_batchTriggerSpec.html"
+    },
+    {
+      "name": "pub.jms:createConsumer",
+      "folder": "JMS",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "connectionAliasName",
+          "type": "String",
+          "description": "Name of the JMS connection alias that you want the message consumer to receive messages. The JMS connection alias indicates how Integration Server connects to the JMS provider. A JMS connection alias can specify that Integration Server use a JNDI provider to look up administered objects (connection factories and destinations) and then use the connection factory to create a connection. Alternatively, a JMS connection alias can specify that Integration Server uses the native webMethods API to create the connection directly on the IBM webMethods Broker .",
+          "optional": false
+        },
+        {
+          "name": "destinationName",
+          "type": "String",
+          "description": "Name or lookup name of the Destination from which you want the message consumer to receive messages. Specify the lookup name of the Destination object when the JMS connection alias uses JNDI to retrieve administered objects. Specify the provider-specific name of the Destination when the JMS connection alias uses the native webMethods API to connect directly to the IBM webMethods Broker .",
+          "optional": false
+        },
+        {
+          "name": "destinationType",
+          "type": "String",
+          "description": "Optional. Type of destination from which the message consumer receives messages. Specify one of the following: QUEUE to receive messages sent to a particular queue. This is the default. TOPIC to receive messages sent to a particular topic. Note: You need to specify a destinationType only if you specified a connectionAliasName that uses the native webMethods API.",
+          "optional": true
+        },
+        {
+          "name": "acknowledgmentMode",
+          "type": "String",
+          "description": "Optional. Specifies the acknowledgment mode. Specify one of the following: AUTO_ACKNOWLEDGE to automatically acknowledge the message when it is received by the message consumer. The message consumer will acknowledge the message before the message processing completes. The JMS provider cannot redeliver the message if Integration Server becomes unavailable before message processing completes. This is the default. CLIENT_ACKNOWLEDGE to acknowledge the receipt of a message when the JMS client ( Integration Server ) invokes pub.jms:acknowledge service. DUPS_OK_ACKNOWLEDGE to automatically, lazily acknowledge the receipt of messages, which reduces system overhead but may result in duplicate messages being sent.",
+          "optional": true
+        },
+        {
+          "name": "messageSelector",
+          "type": "String",
+          "description": "Optional Specifies a filter used to receive a subset of messages from the specified destination. A message selector allows a client to filter the messages it wants to receive by use of a SQL92 string expression in the message header. That expression is applied to properties in the message header (not to the message body content) containing the value to be filtered. If the SQL expression evaluates to true, the JMS provider sends the message to the message consumer; if the SQL expression evaluates to false, the JMS provider does not send the message.",
+          "optional": true
+        },
+        {
+          "name": "durableSubscriberName",
+          "type": "String",
+          "description": "Optional. Name of the durable subscriber that you want this service to create on the JMS provider. A durable subscriber creates a durable subscription on the JMS provider. If a durable subscriber of this name already exists on the JMS provider, this service resumes the previously established subscription. Note: This parameter only applies when the destinationType is set to TOPIC . If you select TOPIC , but do not specify a durableSubscriberName , this service creates a nondurable subscriber. If destinationType is set to QUEUE , this parameter is ignored.",
+          "optional": true
+        },
+        {
+          "name": "noLocal",
+          "type": "java.lang.Boolean",
+          "description": "Optional. Flag indicating whether the message consumer can receive locally published messages. Integration Server considers a message to be local if the message was: Sent by the same Integration Server , and Sent using the same JMS connection alias. Specify one of the following values: True to indicate that the consumer will not receive locally published messages. False to indicate that the consumer can receive locally published messages. This is the default. Note: This parameter only applies when the destinationType is set to TOPIC .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "consumer",
+          "type": "Object",
+          "description": "An on demand message consumer object used to receive messages for the specified destination.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_jms_createConsumer.html"
+    },
+    {
+      "name": "pub.jms:documentResolverSpec",
+      "folder": "JMS",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "uuid",
+          "type": "String",
+          "description": "Universally unique identifier for the message. If the sending client assigned a value to the uuid field in the message, Integration Server uses the uuid value to identify the message. If the uuid field is empty, Integration Server uses the value of the JMSMessageID field in the message header as the UUID.",
+          "optional": false
+        },
+        {
+          "name": "triggerName",
+          "type": "String",
+          "description": "The name of the JMS trigger that received the message whose status needs to be resolved.",
+          "optional": false
+        },
+        {
+          "name": "JMSMessage",
+          "type": "Document",
+          "description": "The message whose status needs to be resolved. This is a document reference (IData) to the pub.jms:JMSMessage document type, which defines the structure of a JMS message.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "type": "String",
+          "description": "Indicates the status of the message. The value of this field determines whether the Integration Server processes or rejects the message. The status field will have one of the following values: NEW indicates that the message is new and has not been processed by the JMS trigger. Integration Server instructs the JMS trigger to process the message. DUPLICATE indicates that the message is a duplicate of one already processed by the JMS trigger. Integration Server acknowledges the message, but does not execute the trigger service. IN_DOUBT indicates that the status of the message is still in doubt. The document resolver service could not conclusively determine whether the JMS trigger already processed the message. Integration Server acknowledges the message, but does not execute the trigger service.",
+          "optional": false
+        },
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Conditional. A user-specified string that indicates why the message status is DUPLICATE or IN_DOUBT . Integration Server writes this message to the journal log when the message has a status of DUPLICATE or IN_DOUBT .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A96064.html"
+    },
+    {
+      "name": "pub.jms:JMSMessage",
+      "folder": "JMS",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_jms_JMSMessage.html"
+    },
+    {
+      "name": "pub.jms:receive",
+      "folder": "JMS",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "consumer",
+          "type": "Object",
+          "description": "A message consumer object that the session uses to receive messages sent to the specified destination.",
+          "optional": false
+        },
+        {
+          "name": "timeout",
+          "type": "java.lang.Long",
+          "description": "Specifies the time to wait, in milliseconds, for a message to be received from the JMS provider. If you specify 0 (zero), the service will not wait. The default is 0 (zero).",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "JMSMessage",
+          "type": "Document",
+          "description": "A document (IData) containing the JMS message received by the consumer.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_jms_receive.html"
+    },
+    {
+      "name": "pub.jms:reply",
+      "folder": "JMS",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "JMSReplyMessage",
+          "type": "Document",
+          "description": "A document representing the JMS message reply.",
+          "optional": false
+        },
+        {
+          "name": "consumer",
+          "type": "Object",
+          "description": "Optional. The message consumer object used to receive the request message from the JMS provider. Integration Server uses information from the consumer to create a message producer that will send the reply message. You only need to specify a consumer when replying to a message received using pub.jms:receive .",
+          "optional": true
+        },
+        {
+          "name": "message",
+          "type": "Object",
+          "description": "Optional. A javax.jms.Message object that contains the request message.You can map the JMSMessage/body/message field in the request message to the pub.jms:reply message input parameter. The pub.jms:reply service uses the request message to determine the replyTo destination. You only need to specify a message when replying to a message received using pub.jms:receive .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "JMSReplyMessage",
+          "type": "Document.",
+          "description": "A Document containing the reply message the JMS provider sent to the client. After it sends a message, the JMS provider populates some fields in the JMS reply message.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_jms_reply.html"
+    },
+    {
+      "name": "pub.jms:send",
+      "folder": "JMS",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "connectionAlias Name",
+          "type": "String",
+          "description": "Name of the JMS connection alias that you want to use to send the message. The JMS connection alias indicates how Integration Server connects to the JMS provider. A JMS connection alias can specify that Integration Server use a JNDI provider to look up administered objects (connection factories and destinations) and then use the connection factory to create a connection. Alternatively, a JMS connection alias can specify that Integration Server uses the native webMethods API to create the connection directly on the IBM webMethods Broker .",
+          "optional": false
+        },
+        {
+          "name": "destinationName",
+          "type": "String",
+          "description": "Name or lookup name of the Destination to which you want to send the message. Specify the lookup name of the Destination object when the JMS connection alias uses JNDI to retrieve administered objects. Specify the provider-specific name of the Destination when the JMS connection alias uses the native webMethods API to connect directly to the IBM webMethods Broker .",
+          "optional": false
+        },
+        {
+          "name": "destinationType",
+          "type": "String",
+          "description": "Optional. Type of destination to which you want to send the message. Specify one of the following: QUEUE to send the message to a particular queue. This is the default. TOPIC to send the message to a topic. Note: You need to specify destinationType only if you specified a connectionAliasName that uses the native webMethods API.",
+          "optional": true
+        },
+        {
+          "name": "JMSMessage",
+          "type": "Document",
+          "description": "A document representing the JMS message you want to send.",
+          "optional": false
+        },
+        {
+          "name": "useCSQ",
+          "type": "java.lang.Boolean",
+          "description": "Optional. Flag indicating whether Integration Server places sent messages in the client side queue if the JMS provider is not available at the time the messages are sent. Set to: True to write messages to the client side queue if the JMS provider is not available at the time this service executes. When the JMS provider becomes available, Integration Server sends messages from the client side queue to the JMS provider. Note: If you want to use the client side queue with the pub.jms:send service, the JMS connection alias specified for connectionAliasName must be configured to have a client side queue. A JMS connection alias has a client side queue if the Maximum CSQ Size property for the alias is set to a value other than 0 (zero). False to throw an ISRuntimeException if the JMS provider is not available at the time this service executes. This is the default. Note: If the specified connectionAliasName uses a cluster connection factory to which the multisend guaranteed policy is applied, set useCSQ to False .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "JMSMessage",
+          "type": "Document.",
+          "description": "A Document containing the message sent to the JMS provider.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_jms_send.html"
+    },
+    {
+      "name": "pub.jms:sendAndWait",
+      "folder": "JMS",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "connectionAliasName",
+          "type": "String",
+          "description": "Name of the JMS connection alias that you want to use to send the message. The JMS connection alias indicates how Integration Server connects to the JMS provider. A JMS connection alias can specify that Integration Server use a JNDI provider to look up administered objects (connection factories and destinations) and then use the connection factory to create a connection. Alternatively, a JMS connection alias can specify that Integration Server uses the native webMethods API to create the connection directly on the IBM webMethods Broker .",
+          "optional": false
+        },
+        {
+          "name": "destinationName",
+          "type": "String",
+          "description": "Name or lookup name of the Destination to which you want to send the message. Specify the lookup name of the Destination object when the JMS connection alias uses JNDI to retrieve administered objects. Specify the provider-specific name of the Destination when the JMS connection alias uses the native webMethods API to connect directly to the IBM webMethods Broker .",
+          "optional": false
+        },
+        {
+          "name": "destinationType",
+          "type": "String",
+          "description": "Optional. Type of destination to which you want to send the message. Specify one of the following: QUEUE to send the message to a particular queue. This is the default. TOPIC to send the message to a topic. Note: You need to specify a destinationType only if you specified a connectionAliasName that uses the native webMethods API.",
+          "optional": true
+        },
+        {
+          "name": "destinationName\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tReplyTo",
+          "type": "String",
+          "description": "Optional. Name or lookup name of the Destination to which you want the reply message sent. Specify the lookup name of the Destination object when the JMS connection alias uses JNDI to retrieve administered objects. Specify the provider-specific name of the Destination when the JMS connection alias uses the native webMethods API to connect directly to the IBM webMethods Broker . If you do not specify a destination for reply messages, Integration Server uses a temporaryQueue to receive the reply. A temporaryQueue is a queue object created for the duration of a particular connection. It can only be consumed by the connection from which it was created. If you want to use a dedicated listener (MessageConsumer) to retrieve replies to all requests sent using a particular JMS connection alias, do not specify a value for destinationNameReplyTo . A dedicated MessageConsumer can retrieve replies for a synchronous request/reply only. If you want to use the client side queue with an asynchronous request-reply, you must specify a queue that is not temporary as the destinationNameReplyTo value.",
+          "optional": true
+        },
+        {
+          "name": "destinationType\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tReplyTo",
+          "type": "String",
+          "description": "Optional. Type of destination to which you want the reply to be sent. Specify one of the following: QUEUE to send the reply message to a particular queue. This is the default. TOPIC to send the reply message to a specific topic.",
+          "optional": true
+        },
+        {
+          "name": "timeout",
+          "type": "java.lang.Long",
+          "description": "Optional. Time to wait (in milliseconds) for the response to arrive. If no value is specified, the service does not wait for a reply and returns a null document. You must specify a value greater than zero. The timeout value only applies for a synchronous request/reply. If async is set to true , Integration Server ignores the timeout value.",
+          "optional": true
+        },
+        {
+          "name": "JMSMessage",
+          "type": "Document",
+          "description": "A document representing the JMS message you want to send.",
+          "optional": false
+        },
+        {
+          "name": "async",
+          "type": "java.lang.Boolean",
+          "description": "Optional. Flag specifying whether this is an asynchronous or synchronous request/reply. Set to: True to indicate that this is an asynchronous request/reply. After sending the message, Integration Server executes the next step in the flow service immediately. The Integration Server does not wait for a reply before continuing service execution. Note: To retrieve the reply to an asynchronous send, invoke the pub.jms:waitForReply service. False to indicate that this is a synchronous request/reply. After sending the message, the Integration Server waits for a reply before executing the next step in the flow service. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "useCSQ",
+          "type": "java.lang.Boolean",
+          "description": "Optional. Flag indicating whether Integration Server places sent messages in the client side queue if the JMS provider is not available at the time the messages are sent. Set to: True to write messages to the client side queue if the JMS provider is not available at the time this service executes. When the JMS provider becomes available, Integration Server sends messages from the client side queue to the JMS provider. Note: If you want to use the client side queue, the JMS connection alias specified for connectionAliasName must be configured to have a client side queue. A JMS connection alias has a client side queue if the Maximum CSQ Size property for the alias is set to a value other than 0 (zero). False to throw an ISRuntimeException if the JMS provider is not available at the time this service executes. This is the default. Note: Integration Server can write messages to the client side queue only for messages sent as part of an asynchronous request/reply. That is, if async is set to true (the default) and the JMS provider is not available at the time this service executes, Integration Server places the message in the client side queue.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "JMSMessage",
+          "type": "Document.",
+          "description": "A Document containing the message sent to the JMS provider.",
+          "optional": false
+        },
+        {
+          "name": "JMSReplyMessage",
+          "type": "Document",
+          "description": "Conditional. Document containing the JMS message received as a reply. If this is a synchronous request/reply and Integration Server does not receive a a reply before the specified timeout value elapses or if timeout was not set, the JMSReplyMessage is null. If this is an asynchronous reply, the JMSReplyMessage is null.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_jms_sendAndWait.html"
+    },
+    {
+      "name": "pub.jms:sendBatch",
+      "folder": "JMS",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "connectionAliasName",
+          "type": "String",
+          "description": "Name of the JMS connection alias that you want to use to send the messages. The JMS connection alias indicates how Integration Server connects to the IBM webMethods Broker or Universal Messaging . A JMS connection alias can specify that Integration Server use a JNDI provider to look up administered objects (connection factories and destinations) and then use the connection factory to create a connection. Alternatively, a JMS connection alias can specify that Integration Server uses the native webMethods API to create the connection directly on the IBM webMethods Broker . Note: connectionAliasName must specify a JMS connection alias that uses the IBM webMethods Broker or Universal Messaging as the JMS provider.",
+          "optional": false
+        },
+        {
+          "name": "destinationName",
+          "type": "String",
+          "description": "Name or lookup name of the Destination to which you want to send the messages. Specify the lookup name of the Destination object when the JMS connection alias uses JNDI to retrieve administered objects. Specify the provider-specific name of the Destination when the JMS connection alias uses the native webMethods API to connect directly to the IBM webMethods Broker . Note: When using the pub.jms:batchSend service, Integration Server sends all messages to the same destination.",
+          "optional": false
+        },
+        {
+          "name": "destinationType",
+          "type": "String",
+          "description": "Optional. Type of destination to which you want to send the message. Specify one of the following: QUEUE to send the message to a particular queue. This is the default. TOPIC to send the message to a topic. Note: You need to specify destinationType only if you specified a connectionAliasName that uses the native webMethods API.",
+          "optional": true
+        },
+        {
+          "name": "deliveryMode",
+          "type": "String",
+          "description": "Optional. Specifies the message delivery mode for the messages. Specify one of the following: PERSISTENT Default. Provide once-and-only-once delivery for the messages. The messages will not be lost if a JMS provider failure occurs. NON_PERSISTENT Provide at-most-once delivery for the messages. The messages have no guarantee of being saved if a JMS provider failure occurs. Note: The specified delivery mode applies to all of the messages sent by the service.",
+          "optional": true
+        },
+        {
+          "name": "priority",
+          "type": "java.lang.Integer",
+          "description": "Optional. Specifies the message priority for all of the messages. The JMS standard defines priority levels from 0 to 9, with 0 as the lowest priority and 9 as the highest. The default is 4. Note: The specified priority applies to all of the messages sent by the service.",
+          "optional": true
+        },
+        {
+          "name": "timeToLive",
+          "type": "java.lang.Long",
+          "description": "Optional. Length of time, in milliseconds, that the JMS provider retains each message. The default is 0, meaning that the messages do not expire. Note: The specified time to live applies to all of the messages sent by the service.",
+          "optional": true
+        },
+        {
+          "name": "JMSMessages",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "A document list representing the JMS messages to send to the destination. Specify the following for each JMS message that you want to send:",
+          "optional": false
+        },
+        {
+          "name": "useCSQ",
+          "type": "java.lang.Boolean",
+          "description": "Optional. Flag indicating whether Integration Server places sent messages in the client side queue if the JMS provider is not available at the time the messages are sent. Set to: True to write messages to the client side queue if the JMS provider is not available at the time this service executes. When the JMS provider becomes available, Integration Server sends messages from the client side queue to the JMS provider. Note: If you want to use the client side queue, the JMS connection alias specified for connectionAliasName must be configured to have a client side queue. A JMS connection alias has a client side queue if the Maximum CSQ Size property for the alias is set to a value other than 0 (zero). False to throw an ISRuntimeException if the JMS provider is not available at the time this service executes. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "JMSMessages",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "A Document list containing the messages sent to the JMS provider. Each document contains the following information:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/idff622fdb-4b11-4e93-b5a7-142af276ab16.html"
+    },
+    {
+      "name": "pub.jms:triggerSpec",
+      "folder": "JMS",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "JMSMessage",
+          "type": "Document",
+          "description": "A document reference (IData) to the pub.jms:JMSMessage document type, which defines the structure of a JMS message.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_jms_triggerSpec.html"
+    },
+    {
+      "name": "pub.jms:waitForReply",
+      "folder": "JMS",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "correlationID",
+          "type": "String",
+          "description": "Unique identifier used to associate the reply message with the initial request.",
+          "optional": false
+        },
+        {
+          "name": "timeout",
+          "type": "java.lang.Long",
+          "description": "Optional. Time to wait (in milliseconds) for the reply to arrive. If timeout is greater than 0 (zero) and a reply is not available at the time the pub.jms:waitForReply service executes, the service continues to wait for the document until the time specified in the timeout parameter elapses. If the service does not receive a reply by the time the timeout interval elapses, the pub.jms:waitForReply service returns a null document. If timeout is set to 0 (zero), the pub.jms:waitForReply service waits indefinitely for a response. IBM does not recommend setting timeout to 0 (zero). If timeout is not set, the pub.jms:waitForReply service does not wait for a reply. The pub.jms:waitForReply service always returns a null document. The service returns a null document even if the reply queue contains a response for the request.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "JMSReplyMessage",
+          "type": "Document",
+          "description": "Conditional. Document containing the JMS message received as a reply. If the pub.jms:waitForReply service does not receive a a reply before the specified timeout value elapses of the timeout value was not specified, the JMSReplyMessage is null.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_jms_waitForReply.html"
+    },
+    {
+      "name": "pub.jms.wmjms:receiveStream",
+      "folder": "JMS",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "consumer",
+          "type": "Object",
+          "description": "A message consumer object that the service uses to receive the large message stream. Create the message consumer object using the pub.jms:createConsumer service.",
+          "optional": false
+        },
+        {
+          "name": "timeout",
+          "type": "java.lang.Long",
+          "description": "Optional. Time to wait (in milliseconds) for the first part of the message stream. If you do not specify a timeout value, the consumer does not wait.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "stream",
+          "type": "Object",
+          "description": "A com.webmethods.jms.impl.WmJMSInputStream received by the consumer. If the timeout value elapses before a message is received, stream will be null.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_jms_wmjms_receiveStream.html"
+    },
+    {
+      "name": "pub.jms.wmjms:sendStream",
+      "folder": "JMS",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "connectionAliasName",
+          "type": "String",
+          "description": "Name of the JMS connection alias that you want to use to send the message.",
+          "optional": false
+        },
+        {
+          "name": "destinationName",
+          "type": "String",
+          "description": "Name or lookup name of the Destination to which you want to send the message. Specify the lookup name of the Destination object when the JMS connection alias uses JNDI to retrieve administered objects. Specify the provider-specific name of the Destination when the JMS connection alias uses the native webMethods API to connect directly to the IBM webMethods Broker .",
+          "optional": false
+        },
+        {
+          "name": "destinationType",
+          "type": "String",
+          "description": "Optional. Type of destination to which you want to send the message. Specify one of the following: QUEUE to send the message to a particular receiver/queue. This is the default. TOPIC to send the message to a topic. Note: You need to specify a destinationType only if you specified a connectionAliasName that uses the native webMethods API.",
+          "optional": true
+        },
+        {
+          "name": "stream",
+          "type": "Object",
+          "description": "A stream for the message you want to send to the IBM webMethods Broker .",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_jms_wmjms_sendStream.html"
+    }
+  ]
+}

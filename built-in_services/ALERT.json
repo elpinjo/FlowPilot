@@ -1,0 +1,1012 @@
+{
+  "folder": "ALERT",
+  "total_services": 22,
+  "services": [
+    {
+      "name": "pub.alert.notifier:create",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "name",
+          "type": "String",
+          "description": "Name of the notifier.",
+          "optional": false
+        },
+        {
+          "name": "enabled",
+          "type": "Boolean",
+          "description": "Optional. Specifies whether the notifier is enabled or not. Set to: true to enable the notifier. false to disable the notifier. This is the default. If a notifier is disabled, alerts are not fetched for the notifier.",
+          "optional": true
+        },
+        {
+          "name": "consumptionMode",
+          "type": "String",
+          "description": "Optional. Specifies whether notifications are created for all alerts or only the latest alerts. Set to: earliest to get notifications for all alerts in the system. This is the default. latest to get notifications only for the alerts emitted after the notifier is created.",
+          "optional": true
+        },
+        {
+          "name": "autoMark",
+          "type": "Boolean",
+          "description": "Optional. Specifies whether notifications are automatically marked as read or a user must do it manually. Set to: true to automatically mark a notification as read after the service specified in the notifier settings is invoked. This is the default. false to manually dismiss a notification from Integration Server Administrator , which marks the notification as read.",
+          "optional": true
+        },
+        {
+          "name": "channelIds",
+          "type": "Object[]",
+          "description": "Identifies the channels for which you want to receive notifications. You can specify either an individual channel identifier or a list of identifiers. For example, channelIds[0] as 2 for \"Server Error\" or channelIds[1] as 10 for \"Threat Protection\" or channelIds[0] as 2 and channelIds[1] as 1 for both.",
+          "optional": false
+        },
+        {
+          "name": "intervalInSeconds",
+          "type": "Short",
+          "description": "Time in seconds after which the system task created for the notifier should check for unread alerts.",
+          "optional": false
+        },
+        {
+          "name": "severityCutoff",
+          "type": "String",
+          "description": "The severity to consider for fetching alerts. For example, if you set this value as Critical , you will receive notifications only for critical events. If you set this value as Error , you will receive notifications for critical and error events. Set the parameter to one of the following values: Critical . This is the default. Error Information Warning",
+          "optional": false
+        },
+        {
+          "name": "notifyInstantly",
+          "type": "Boolean",
+          "description": "Optional. Specifies whether or not notifications are generated as soon as an alert is raised. Set to: true to instantly generate a notification for an alert. false if an instant notification is not required for an alert. This is the default. Note: If intervalInSeconds is also specified, the notifyInstantly parameter takes precedence.",
+          "optional": true
+        },
+        {
+          "name": "webSocketEnabled",
+          "type": "Boolean",
+          "description": "Optional. Specifies whether or not Integration Server uses a WebSocket connection to send notifications. Set to: true to enable a WebSocket connection to send notifications. false to disable a WebSocket connection. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "webSocketSender",
+          "type": "Document",
+          "description": "Optional. Sends a message on a connected WebSocket session.",
+          "optional": true
+        },
+        {
+          "name": "serviceInvokeEnabled",
+          "type": "Boolean",
+          "description": "Optional. Specifies whether a service is invoked with the notifier parameters as pipeline variables or not. Set to: true to invoke a service using the notifier parameters. false to disable service invocation for the notifier. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "serviceInvokeSender",
+          "type": "Document",
+          "description": "Optional. Invokes a service for alerts fetched for this notifier.",
+          "optional": true
+        },
+        {
+          "name": "smtpEnabled",
+          "type": "Boolean",
+          "description": "Optional. Specifies whether Integration Server uses an SMTP server to send notifications or not. Set to: true to use an SMTP server to send notifications. false if you do not want to use an SMTP server to send notifications. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "smtpSender",
+          "type": "Document",
+          "description": "Optional. Details of the SMTP Server and client used to send the notifications.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Indicates whether the notifier is successfully created or not.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_68C44CCBA0974B9BB217270D3CE1F913.html"
+    },
+    {
+      "name": "pub.alert.notifier:delete",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "name",
+          "type": "String",
+          "description": "Name of the notifier that you want to delete.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Indicates whether the specified notifier is deleted or not.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/pub_alert_notifier_delete.html"
+    },
+    {
+      "name": "pub.alert.notifier:disable",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "name",
+          "type": "String",
+          "description": "Name of the notifier that you want to disable.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Indicates whether the specified notifier is disabled or not.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/pub_alert_notifier_disable.html"
+    },
+    {
+      "name": "pub.alert.notifier:enable",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "name",
+          "type": "String",
+          "description": "Name of the notifier that you want to enable.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Indicates whether the specified notifier is enabled or not.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/pub_alert_notifier_enable.html"
+    },
+    {
+      "name": "pub.alert.notifier:list",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "notifiers",
+          "type": "Document List",
+          "description": "The list of notifiers in the system. Each notifier has the following keys:",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "notifiers",
+          "type": "Document List",
+          "description": "The list of notifiers in the system. Each notifier has the following keys:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/pub_alert_notifier_list.html"
+    },
+    {
+      "name": "pub.alert.notifier:update",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "name",
+          "type": "String",
+          "description": "Name of the notifier.",
+          "optional": false
+        },
+        {
+          "name": "enabled",
+          "type": "Boolean",
+          "description": "Optional. Specifies whether the notifier is enabled or not. Set to: true to enable the notifier. false to disable the notifier. This is the default. If a notifier is disabled, alerts are not fetched for the notifier.",
+          "optional": true
+        },
+        {
+          "name": "consumptionMode",
+          "type": "String",
+          "description": "Optional. Specifies whether notifications are created for all alerts or only the latest alerts. Set to: earliest to get notifications for all alerts in the system. This is the default. latest to get notifications only for the alerts emitted after the notifier is created.",
+          "optional": true
+        },
+        {
+          "name": "autoMark",
+          "type": "Boolean",
+          "description": "Optional. Specifies whether notifications are automatically marked as read or a user must do it manually. Set to: true to automatically mark a notification as read after the service specified in the notifier settings is invoked. This is the default. false to manually dismiss a notification from Integration Server Administrator , which marks the notification as read.",
+          "optional": true
+        },
+        {
+          "name": "channelIds",
+          "type": "Object[]",
+          "description": "Identifies the channels for which you want to receive notifications. You can specify either an individual channel identifier or a list of identifiers. For example, channelIds[0] as 2 for \"Server Error\" or channelIds[1] as 10 for \"Threat Protection\" or channelIds[0] as 2 and channelIds[1] as 1 for both.",
+          "optional": false
+        },
+        {
+          "name": "intervalInSeconds",
+          "type": "Short",
+          "description": "Time in seconds after which the system task created for the notifier should check for unread alerts.",
+          "optional": false
+        },
+        {
+          "name": "severityCutoff",
+          "type": "String",
+          "description": "The severity to consider for fetching alerts. For example, if you set this value as Critical , you will receive notifications only for critical events. If you set this value as Error , you will receive notifications for critical and error events. Set the parameter to one of the following values: Critical . This is the default. Error Information Warning",
+          "optional": false
+        },
+        {
+          "name": "notifyInstantly",
+          "type": "Boolean",
+          "description": "Optional. Specifies whether or not notifications are generated as soon as an alert is raised. Set to: true to instantly generate a notification for an alert. false if an instant notification is not required for an alert. This is the default. Note: If intervalInSeconds is also specified, the notifyInstantly parameter takes precedence.",
+          "optional": true
+        },
+        {
+          "name": "webSocketEnabled",
+          "type": "Boolean",
+          "description": "Optional. Specifies whether or not Integration Server uses a WebSocket connection to send notifications. Set to: true to enable a WebSocket connection to send notifications. false to disable a WebSocket connection. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "webSocketSender",
+          "type": "Document",
+          "description": "Optional. Sends a message on a connected WebSocket session.",
+          "optional": true
+        },
+        {
+          "name": "serviceInvokeEnabled",
+          "type": "Boolean",
+          "description": "Optional. Specifies whether a service is invoked with the notifier parameters as pipeline variables or not. Set to: true to invoke a service using the notifier parameters. false to disable service invocation for the notifier. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "serviceInvokeSender",
+          "type": "Document",
+          "description": "Optional. Invokes a service for alerts fetched for this notifier.",
+          "optional": true
+        },
+        {
+          "name": "smtpEnabled",
+          "type": "Boolean",
+          "description": "Optional. Specifies whether Integration Server uses an SMTP server to send notifications or not. Set to: true to use an SMTP server to send notifications. false if you do not want to use an SMTP server to send notifications. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "smtpSender",
+          "type": "Document",
+          "description": "Optional. Details of the SMTP Server and client used to send the notifications.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Indicates whether a notifier is successfully updated or not.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/pub_alert_notifier_update.html"
+    },
+    {
+      "name": "pub.alert:channels",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-02-05",
+      "inputs": [
+        {
+          "name": "Channels",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "The list of alert channels in Integration Server . By default, there are 13 channels. All channels have the following keys:",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Channels",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "The list of alert channels in Integration Server . By default, there are 13 channels. All channels have the following keys:",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/pub_alert_channels.html"
+    },
+    {
+      "name": "pub.alert:countAll",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "filter",
+          "type": "Document",
+          "description": "Optional. To get the count of a subset of alerts, specify the criteria using the following keys:",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "count",
+          "type": "Long",
+          "description": "The count of all alerts in the system, read and unread, or a subset of alerts, if the filter criteria are passed as inputs.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/pub_alert_countAll.html"
+    },
+    {
+      "name": "pub.alert:countUnread",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "notifierName",
+          "type": "String",
+          "description": "Optional. Name of the notifier for which alerts are to be fetched. If you do not specify the notifier name, all unread alerts in the system or a subset of the unread alerts that meet the filter criteria are considered.",
+          "optional": true
+        },
+        {
+          "name": "filter",
+          "type": "Document",
+          "description": "Optional. To get the count of a subset of unread alerts, specify the criteria using the following keys:",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "count",
+          "type": "Long",
+          "description": "The count of all unread alerts in the system or a subset of unread alerts, if the notifier name and the filter criteria are specified.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/pub_alert_countUnread.html"
+    },
+    {
+      "name": "pub.alert:deregisterChannel",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "channelId",
+          "type": "Integer",
+          "description": "Identifier of the channel that you want to deregister.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "deregistered",
+          "type": "Boolean",
+          "description": "Indicates whether the channel is deregistered or not. A value of: true indicates that the channel is deregistered. false indicates that the channel is not deregistered.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_w1h_qf4_npb.html"
+    },
+    {
+      "name": "pub.alert:emit",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "channelID",
+          "type": "Integer",
+          "description": "Identifier of the channel associated with the alert.",
+          "optional": false
+        },
+        {
+          "name": "severity",
+          "type": "String",
+          "description": "Severity associated with the alert channel.",
+          "optional": false
+        },
+        {
+          "name": "subject",
+          "type": "String",
+          "description": "Subject of the alert message.",
+          "optional": false
+        },
+        {
+          "name": "contentType",
+          "type": "String",
+          "description": "Type of information in the alert. For example, text/plain .",
+          "optional": false
+        },
+        {
+          "name": "content",
+          "type": "String",
+          "description": "Content of an alert. For example, Alert {0} Message Size Limit filter failed.\\nClient IP Address: {1}\\n Request URL : {2}\\n Date & Time : {3}",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "alertId",
+          "type": "Long",
+          "description": "A unique identifier assigned to each alert emitted.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/pub_alert_emit.html"
+    },
+    {
+      "name": "pub.alert:fetchAll",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "filter",
+          "type": "Document",
+          "description": "Optional. To fetch a subset of alerts, specify the criteria using the following keys:",
+          "optional": true
+        },
+        {
+          "name": "sortOrder",
+          "type": "String",
+          "description": "Optional. The order in which the fetched alerts are sorted. Select ASC or DESC . The default is DESC .",
+          "optional": true
+        },
+        {
+          "name": "sortBy",
+          "type": "String",
+          "description": "Optional. The criteria to sort the fetched alerts. Select one of the following options: channel severity subject timestamp The default is timestamp .",
+          "optional": true
+        },
+        {
+          "name": "pageSize",
+          "type": "Integer",
+          "description": "The number of notifications on a page.",
+          "optional": false
+        },
+        {
+          "name": "pageNumber",
+          "type": "Integer",
+          "description": "In a paginated list of notifications, the page where Integration Server loads the notifications. Note: Page number starts with 0.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "alerts",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "A list of the alerts retrieved by the service. Each alert has the following details:",
+          "optional": false
+        },
+        {
+          "name": "id",
+          "type": "Long",
+          "description": "Alert identifier.",
+          "optional": false
+        },
+        {
+          "name": "ts",
+          "type": "Long",
+          "description": "Date and time when the alert is generated, in the UNIX epoch time format.",
+          "optional": false
+        },
+        {
+          "name": "serverId",
+          "type": "String",
+          "description": "IP address of the host where Integration Server is running.",
+          "optional": false
+        },
+        {
+          "name": "memberName",
+          "type": "String",
+          "description": "Member name of the machine that hosts Integration Server in a cluster.",
+          "optional": false
+        },
+        {
+          "name": "user",
+          "type": "String",
+          "description": "Integration Server user who triggered the alert.",
+          "optional": false
+        },
+        {
+          "name": "channelId",
+          "type": "Integer",
+          "description": "Channel identifier for the alert.",
+          "optional": false
+        },
+        {
+          "name": "channel",
+          "type": "String",
+          "description": "Channel for the alert.",
+          "optional": false
+        },
+        {
+          "name": "severityId",
+          "type": "Integer",
+          "description": "Severity identifier of the alert.",
+          "optional": false
+        },
+        {
+          "name": "severity",
+          "type": "String",
+          "description": "Severity of the alert.",
+          "optional": false
+        },
+        {
+          "name": "subject",
+          "type": "String",
+          "description": "Subject of the alert message.",
+          "optional": false
+        },
+        {
+          "name": "contentType",
+          "type": "String",
+          "description": "Text that identifies the type of content in the alert such as text/plain and text/html .",
+          "optional": false
+        },
+        {
+          "name": "content",
+          "type": "String",
+          "description": "Content of the alert.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/pub_alert_fetchAll.html"
+    },
+    {
+      "name": "pub.alert:fetchUnread",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "notifierName",
+          "type": "String",
+          "description": "Optional. If you do not specify the notifier name, all the unread alerts in the system or a subset of the unread alerts that meet the filter criteria are fetched.",
+          "optional": true
+        },
+        {
+          "name": "filter",
+          "type": "Document",
+          "description": "Optional. To fetch a subset of alerts, specify the criteria using the following keys:",
+          "optional": true
+        },
+        {
+          "name": "sortOrder",
+          "type": "String",
+          "description": "Optional. The order in which the fetched alerts are sorted. Select ASC or DESC . The default is DESC .",
+          "optional": true
+        },
+        {
+          "name": "sortBy",
+          "type": "String",
+          "description": "Optional. The criteria to sort the fetched alerts. Select one of the following options: channel severity subject timestamp The default is timestamp .",
+          "optional": true
+        },
+        {
+          "name": "pageSize",
+          "type": "Integer",
+          "description": "The number of notifications on a page, identified by pageNumber",
+          "optional": false
+        },
+        {
+          "name": "pageNumber",
+          "type": "Integer",
+          "description": "In a paginated list of notifications, the page where Integration Server loads the notifications. Note: Page number starts with 0.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "alerts",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "A list of the alerts fetched by the service. Each alert has the following details:",
+          "optional": false
+        },
+        {
+          "name": "id",
+          "type": "Long",
+          "description": "Alert identifier.",
+          "optional": false
+        },
+        {
+          "name": "ts",
+          "type": "Long",
+          "description": "Date and time when the alert is generated, in the UNIX epoch time format.",
+          "optional": false
+        },
+        {
+          "name": "serverId",
+          "type": "String",
+          "description": "IP address of the host where Integration Server is running.",
+          "optional": false
+        },
+        {
+          "name": "memberName",
+          "type": "String",
+          "description": "Member name of the machine that hosts Integration Server in a cluster.",
+          "optional": false
+        },
+        {
+          "name": "user",
+          "type": "String",
+          "description": "Integration Server user who triggered the alert.",
+          "optional": false
+        },
+        {
+          "name": "channelId",
+          "type": "Integer",
+          "description": "Channel identifier for the alert.",
+          "optional": false
+        },
+        {
+          "name": "channel",
+          "type": "String",
+          "description": "Channel for the alert.",
+          "optional": false
+        },
+        {
+          "name": "severityId",
+          "type": "Integer",
+          "description": "Severity identifier of the alert.",
+          "optional": false
+        },
+        {
+          "name": "severity",
+          "type": "String",
+          "description": "Severity of the alert.",
+          "optional": false
+        },
+        {
+          "name": "subject",
+          "type": "String",
+          "description": "Subject of the alert message.",
+          "optional": false
+        },
+        {
+          "name": "contentType",
+          "type": "String",
+          "description": "Text that identifies the type of content in the alert such as text/plain and text/html .",
+          "optional": false
+        },
+        {
+          "name": "content",
+          "type": "String",
+          "description": "Content of the alert.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/pub_alert_fetch.html"
+    },
+    {
+      "name": "pub.alert:getChannel",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "channelId",
+          "type": "Integer",
+          "description": "Identifier of the channel that you want to retrieve.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "displayName",
+          "type": "String",
+          "description": "Name of the channel.",
+          "optional": false
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "description": "Description for the channel.",
+          "optional": false
+        },
+        {
+          "name": "emissionEnabled",
+          "type": "Boolean",
+          "description": "Indicates whether an alert is generated for the channel and stored in the database or not. A value of: true indicates that alerts are emitted for the channel and stored in the database. false indicates that alerts are disabled for the channel.",
+          "optional": false
+        },
+        {
+          "name": "systemNotificationEnabled",
+          "type": "Boolean",
+          "description": "Indicates whether an alert generated for the channel is displayed as a notification or not. true indicates that notifications are generated for the channel. false indicates that notifications are disabled for the channel.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_B42A0CC270BF48159A9161D73CDBD9EF.html"
+    },
+    {
+      "name": "pub.alert:getSettings",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "enabled​Emission​Channels",
+          "type": "Object[]",
+          "description": "List of channels for which alerts can be generated and stored in the database.",
+          "optional": false
+        },
+        {
+          "name": "enabledSystem​NotifierChannels",
+          "type": "Object[]",
+          "description": "List of channels for which alerts are generated and displayed as notifications.",
+          "optional": false
+        },
+        {
+          "name": "system​Notifier​​Severity​Cutoff",
+          "type": "String",
+          "description": "Notifications are generated only for alerts with severity equal to, or more than this value.",
+          "optional": false
+        },
+        {
+          "name": "retentionPeriod​InDays",
+          "type": "Integer",
+          "description": "Determines how long the alerts are stored in the database.",
+          "optional": false
+        },
+        {
+          "name": "certificate​Expiry​​Warning​InDays",
+          "type": "Integer",
+          "description": "Number of days before the certificate expiry date, when the alert should be generated.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "enabled​Emission​Channels",
+          "type": "Object[]",
+          "description": "List of channels for which alerts can be generated and stored in the database.",
+          "optional": false
+        },
+        {
+          "name": "enabledSystem​NotifierChannels",
+          "type": "Object[]",
+          "description": "List of channels for which alerts are generated and displayed as notifications.",
+          "optional": false
+        },
+        {
+          "name": "system​Notifier​​Severity​Cutoff",
+          "type": "String",
+          "description": "Notifications are generated only for alerts with severity equal to, or more than this value.",
+          "optional": false
+        },
+        {
+          "name": "retentionPeriod​InDays",
+          "type": "Integer",
+          "description": "Determines how long the alerts are stored in the database.",
+          "optional": false
+        },
+        {
+          "name": "certificate​Expiry​​Warning​InDays",
+          "type": "Integer",
+          "description": "Number of days before the certificate expiry date, when the alert should be generated.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/pub_alert_getSettings.html"
+    },
+    {
+      "name": "pub.alert:markAllAsRead",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "notifierName",
+          "type": "String",
+          "description": "Optional. Name of the notifier for which all the alerts are to be marked as read. If you do not specify the notifier name, alerts of system channels are marked as read.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "updateCount",
+          "type": "Long",
+          "description": "Updated count of the unread alerts in the system.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/pub_alert_markAllAsRead.html"
+    },
+    {
+      "name": "pub.alert:markAsRead",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "alertId",
+          "type": "Long",
+          "description": "Specifies the alert that should be marked as read.",
+          "optional": false
+        },
+        {
+          "name": "notifierName",
+          "type": "String",
+          "description": "Optional. Name of the notifier for which for which the alert should be marked as read.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "updateCount",
+          "type": "Long",
+          "description": "Updated count of the unread alerts in the system.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/pub_alert_markAsRead.html"
+    },
+    {
+      "name": "pub.alert:markAsUnread",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "alertId",
+          "type": "Long",
+          "description": "The alert that you want to mark as unread.",
+          "optional": false
+        },
+        {
+          "name": "notifierName",
+          "type": "String",
+          "description": "Optional. The notifier for which the alert should be marked as unread.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "updateCount",
+          "type": "Long",
+          "description": "Updated count of the unread alerts in the system.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/pub_alert_markAsUnread.html"
+    },
+    {
+      "name": "pub.alert:registerChannel",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "displayName",
+          "type": "String",
+          "description": "Name of the channel that you want to register.",
+          "optional": false
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "description": "Optional. Description of the channel.",
+          "optional": true
+        },
+        {
+          "name": "emissionEnabled",
+          "type": "Boolean",
+          "description": "Optional. Indicates whether an alert is generated for the channel and stored in the database or not. Set to: true to emit alerts for the channel and store them in the database. false to disable alerts for the channel. The default value is true for custom channels as well as system channels other than Service Error and Server Error.",
+          "optional": true
+        },
+        {
+          "name": "systemNotificationEnabled",
+          "type": "Boolean",
+          "description": "Optional. Indicates whether the alert generated for the channel is displayed as a notification or not. Set to: true to generate notifications for the channel. false to disable notifications for the channel. The default value is true for custom channels as well as system channels other than Service Error and Server Error.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "channelId",
+          "type": "Integer",
+          "description": "Identifier of the registered channel. Note: Channel IDs for custom channels start with 1001.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_sdz_rr4_npb.html"
+    },
+    {
+      "name": "pub.alert:setSettings",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "enabled​Emission​Channels",
+          "type": "Object[]",
+          "description": "List of channels for which alerts can be generated and stored in the database.",
+          "optional": false
+        },
+        {
+          "name": "enabledSystem​NotifierChannels",
+          "type": "Object[]",
+          "description": "List of channels for which alerts are generated and displayed as notifications.",
+          "optional": false
+        },
+        {
+          "name": "systemNotifier​​SeverityCutoff",
+          "type": "String",
+          "description": "Notifications are generated only for alerts with severity equal to, or more than this value.",
+          "optional": false
+        },
+        {
+          "name": "retentionPeriod​​InDays",
+          "type": "Integer",
+          "description": "Determines how long the alerts are stored in the database.",
+          "optional": false
+        },
+        {
+          "name": "certificate​Expiry​​WarningInDays",
+          "type": "Integer",
+          "description": "Number of days before the certificate expiry date when the alert should be generated.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Indicates whether the system notifier settings are updated or not.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/pub_alert_setSettings.html"
+    },
+    {
+      "name": "pub.alert:severities",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "Severities",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "The list of default severities available in the system. By default, 4 severities are configured.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Severities",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "The list of default severities available in the system. By default, 4 severities are configured.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/pub_alert_severities.html"
+    },
+    {
+      "name": "pub.alert:updateChannel",
+      "folder": "ALERT",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "channelId",
+          "type": "Integer",
+          "description": "Identifier of the alert channel that you want to update. Note: Channel IDs for custom channels start with 1001.",
+          "optional": false
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "description": "Optional. Description of the channel.",
+          "optional": true
+        },
+        {
+          "name": "emissionEnabled",
+          "type": "Boolean",
+          "description": "Optional. Indicates whether an alert is generated for the channel and stored in the database or not. Set to: true to emit alerts for the channel and store them in the database. false to disable alerts for the channel. The default value is true for custom channels as well as system channels other than Service Error and Server Error.",
+          "optional": true
+        },
+        {
+          "name": "systemNotificationEnabled",
+          "type": "Boolean",
+          "description": "Optional. Indicates whether the alert generated for the channel is displayed as a notification or not. Set to: true to generate notifications for the channel. false to disable notifications for the channel. The default value is true for custom channels as well as system channels other than Service Error and Server Error.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "message",
+          "type": "String",
+          "description": "Indicates whether the channel is successfully updated or not.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/reference_tqs_lw4_npb.html"
+    }
+  ]
+}

@@ -1,0 +1,880 @@
+{
+  "folder": "SCHEDULER",
+  "total_services": 13,
+  "services": [
+    {
+      "name": "pub.scheduler:addComplexTask",
+      "folder": "SCHEDULER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "service",
+          "type": "String",
+          "description": "Name of the service you want to schedule for execution on the server.",
+          "optional": false
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "description": "Text string describing this task.",
+          "optional": false
+        },
+        {
+          "name": "target",
+          "type": "String",
+          "description": "Server or servers on which the task is to run. (Clustered environments only). Set to: any to run the task on any server in the cluster. The task will run on only one of the servers. For example, suppose that all the servers in your cluster share a single database for a parts inventory application, and that a particular function needs to run against that database once a day. Any of the servers can perform this task, therefore you can specify the all option to schedule a task to run on any of the servers. Note: There is no predetermined order in which servers in the cluster are selected to run tasks. Rather, the first server to detect that a task is ready to be executed runs it. For more information about how Integration Server handles the scheduling of tasks in a clustered environment, see the chapter about managing services IBM webMethods Integration Server Administrator’s Guide . all to run the task on all servers in the cluster. For example, suppose you run an application on each server in the cluster, and each server maintains its own database for that application. If you need to run a cleanup task against all the databases every day, you can schedule a task to run every day on all the servers in the cluster. For more information about how Integration Server handles the scheduling of tasks in a clustered environment, see the chapter about managing services IBM webMethods Integration Server Administrator’s Guide . hostname to run the task on a specific server in the cluster.",
+          "optional": false
+        },
+        {
+          "name": "lateness",
+          "type": "String",
+          "description": "The number of minutes (after the scheduled execution time) after which the server is to take a special action for a late task. You specify the action to be taken in the latenessAction parameter, described below. The server checks scheduled tasks at startup, and again periodically. If the server finds a task that is overdue and has exceeded the lateness period, the server performs the requested lateness action. If the server finds a task that is overdue but has not yet exceeded the lateness period, the server starts the task immediately.",
+          "optional": false
+        },
+        {
+          "name": "latenessAction",
+          "type": "String",
+          "description": "Action to take if a task has missed its scheduled start time by a number of minutes you specified with the lateness parameter. Possible actions are: run immediately or 0 - Runs the task immediately skip and run at next scheduled interval or 1 - Skips this execution of the task and runs it again at the next scheduled run time. suspend or 2 - Places the task in a suspended state until an administrator resumes or cancels the task.",
+          "optional": false
+        },
+        {
+          "name": "runAsUser",
+          "type": "String",
+          "description": "Optional. User ID under which the service is to be executed. If you do not specify a user name, the “Default” access rights are used.",
+          "optional": true
+        },
+        {
+          "name": "inputs",
+          "type": "Document",
+          "description": "Optional. Document (IData object) containing the input to the scheduled service. Note: You can also assign values to input parameters of services using the Assign Inputs option while scheduling a task in Integration Server Administrator .",
+          "optional": true
+        },
+        {
+          "name": "startTime",
+          "type": "String",
+          "description": "Optional. Time at which the task is scheduled to start, in the format HH:mm:ss . If you do not specify a startTime , the current time is used.",
+          "optional": true
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "description": "Optional. Date on which the task is scheduled to start, in the format yyyy/MM/dd . If you do not specify a startDate , the current date is used.",
+          "optional": true
+        },
+        {
+          "name": "endTime",
+          "type": "String",
+          "description": "Optional. Time at which the task expires, in the format HH:mm:ss . If you do not specify an endTime , the server uses the current time. If you do not specify endDate or endTime , the server executes this task for an indefinite period of time or until the task is canceled.",
+          "optional": true
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "description": "Optional. Date on which the task expires, in the format yyyy/MM/dd . If you do not specify an endDate , the server uses the current date. If you do not specify endDate or endTime , the server executes this task for an indefinite period of time or until the task is canceled.",
+          "optional": true
+        },
+        {
+          "name": "months",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. Months during which the task is scheduled to run. Months are represented by integers between 1 and 12, where “1” indicates January and “12” indicates December. If you do not specify months , the task will run every month.",
+          "optional": true
+        },
+        {
+          "name": "hours",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. Hours at which the task is scheduled to run. Hours are represented by integers between 0 and 23. If you do not specify hours , the task runs every hour.",
+          "optional": true
+        },
+        {
+          "name": "minutes",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. Minutes at which the task is scheduled to run. Minutes are represented by integers between 0 and 59. If you do not specify minutes , the task runs every minute.",
+          "optional": true
+        },
+        {
+          "name": "daysOfMonth",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. Days of the month on which the task is scheduled to run. Days are represented by integers between 1 and 31. If you do not specify daysOfMonth , the task runs every day of the month.",
+          "optional": true
+        },
+        {
+          "name": "daysOfWeek",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. Days of the week on which the task is scheduled to run. Days are represented by integers between 1 and 7, where “1” indicates Sunday and “7” indicates Saturday. If you do not specify daysOfWeek , the task runs every day of the week.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "taskID",
+          "type": "String",
+          "description": "Identification number of the task added to the scheduler.",
+          "optional": false
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "description": "Code indicating the type of task added. For this type of task, the value of type will be complex .",
+          "optional": false
+        },
+        {
+          "name": "taskAdded",
+          "type": "String",
+          "description": "Indicates whether the task was successfully added to the Scheduler. If the task was successfully added to the Scheduler, taskAdded contains true . If the task was not successfully added, the server throws an exception and terminates the service.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_scheduler_addComplexTask.html"
+    },
+    {
+      "name": "pub.scheduler:addOneTimeTask",
+      "folder": "SCHEDULER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "service",
+          "type": "String",
+          "description": "Name of the service you want to schedule for execution.",
+          "optional": false
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "description": "Text string describing this task.",
+          "optional": false
+        },
+        {
+          "name": "target",
+          "type": "String",
+          "description": "Server or servers on which the task is to run.(Clustered environments only). Set to: any to run the task on any server in the cluster. The task will run on only one of the servers. For example, suppose that all the servers in your cluster share a single database for a parts inventory application, and that a particular function needs to run against that database once a day. Any of the servers can perform this task, therefore you can specify the all option to schedule a task to run on any of the servers. Note: There is no predetermined order in which servers in the cluster are selected to run tasks. Rather, the first server to detect that a task is ready to be executed runs it. For more information about how Integration Server handles the scheduling of tasks in a clustered environment, see the chapter about managing services IBM webMethods Integration Server Administrator’s Guide . all to run the task on all servers in the cluster. For example, suppose you run an application on each server in the cluster, and each server maintains its own database for that application. If you need to run a cleanup task against all the databases every day, you can schedule a task to run every day on all the servers in the cluster. For more information about how Integration Server handles the scheduling of tasks in a clustered environment, see the chapter about managing services IBM webMethods Integration Server Administrator’s Guide . hostname to run the task on a specific server in the cluster.",
+          "optional": false
+        },
+        {
+          "name": "lateness",
+          "type": "String",
+          "description": "The number of minutes (after the scheduled execution time) after which the server is to take a special action for a late task. You specify the action to be taken in the latenessAction parameter, described below. The server checks scheduled tasks at startup, and again periodically. If the server finds a task that is overdue and has exceeded the lateness period, the server performs the requested lateness action. If the server finds a task that is overdue but has not yet exceeded the lateness period, the server starts the task immediately.",
+          "optional": false
+        },
+        {
+          "name": "latenessAction",
+          "type": "String",
+          "description": "Action to take if a task has missed its scheduled start time by a number of minutes you specified with the lateness parameter. Possible actions are: run immediately or 0 - Runs the task immediately skip and run at next scheduled interval or 1 - Skips this execution of the task and runs it again at the next scheduled run time. suspend or 2 - Places the task in a suspended state until an administrator resumes or cancels the task.",
+          "optional": false
+        },
+        {
+          "name": "runAsUser",
+          "type": "String",
+          "description": "Optional. User ID under which the service is to be executed. If you do not specify a user name, the “Default” access rights are used.",
+          "optional": true
+        },
+        {
+          "name": "inputs",
+          "type": "Document",
+          "description": "Optional. Document (IData object) containing input to the scheduled service. Note: You can also assign values to input parameters of services using the Assign Inputs option while scheduling a task in Integration Server Administrator",
+          "optional": true
+        },
+        {
+          "name": "date",
+          "type": "String",
+          "description": "Date on which to run the service, in the format yyyy/MM/dd .",
+          "optional": false
+        },
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Time at which to run the service, in the format HH:mm:ss .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "taskID",
+          "type": "String",
+          "description": "Identification number of the task added to the scheduler.",
+          "optional": false
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "description": "Code indicating the type of task added. For this type of task, the value of type will be once .",
+          "optional": false
+        },
+        {
+          "name": "taskAdded",
+          "type": "String",
+          "description": "Indicates whether the task was successfully added to the Scheduler. If the task was successfully added to the Scheduler, taskAdded contains true . If the task was not successfully added, the server throws an exception and terminates the service.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A53562.html"
+    },
+    {
+      "name": "pub.scheduler:addRepeatingTask",
+      "folder": "SCHEDULER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "service",
+          "type": "String",
+          "description": "Name of the service you want to schedule for execution on the server.",
+          "optional": false
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "description": "Text string describing this task.",
+          "optional": false
+        },
+        {
+          "name": "target",
+          "type": "String",
+          "description": "Server or servers on which the task is to run. (Clustered environments only). Set to: any to run the task on any server in the cluster. The task will run on only one of the servers. For example, suppose that all the servers in your cluster share a single database for a parts inventory application, and that a particular function needs to run against that database once a day. Any of the servers can perform this task, therefore you can specify the all option to schedule a task to run on any of the servers. Note: There is no predetermined order in which servers in the cluster are selected to run tasks. Rather, the first server to detect that a task is ready to be executed runs it. For more information about how Integration Server handles the scheduling of tasks in a clustered environment, see the chapter about managing services in IBM webMethods Integration Server Administrator’s Guide . all to run the task on all servers in the cluster. For example, suppose you run an application on each server in the cluster, and each server maintains its own database for that application. If you need to run a cleanup task against all the databases every day, you can schedule a task to run every day on all the servers in the cluster. For more information about how Integration Server handles the scheduling of tasks in a clustered environment, see the chapter about managing services in IBM webMethods Integration Server Administrator’s Guide . hostname to run the task on a specific server in the cluster.",
+          "optional": false
+        },
+        {
+          "name": "lateness",
+          "type": "String",
+          "description": "The number of minutes (after the scheduled execution time) after which the server is to take a special action for a late task. You specify the action to be taken in the latenessAction parameter, described below. The server checks scheduled tasks at startup, and again periodically. If the server finds a task that is overdue and has exceeded the lateness period, the server performs the requested lateness action. If the server finds a task that is overdue but has not yet exceeded the lateness period, the server starts the task immediately.",
+          "optional": false
+        },
+        {
+          "name": "latenessAction",
+          "type": "String",
+          "description": "Action to take if a task has missed its scheduled start time by a number of minutes you specified with the lateness parameter. Possible actions are: run immediately or 0 - Runs the task immediately skip and run at next scheduled interval or 1 - Skips this execution of the task and runs it again at the next scheduled run time. suspend or 2 - Places the task in a suspended state until an administrator resumes or cancels the task.",
+          "optional": false
+        },
+        {
+          "name": "runAsUser",
+          "type": "String",
+          "description": "Optional. User ID under which the service is to be executed. If you do not specify a user name, the “Default” access rights are used.",
+          "optional": true
+        },
+        {
+          "name": "inputs",
+          "type": "Document",
+          "description": "Optional. Document (IData object) containing input to the scheduled service. Note: You can also assign values to input parameters of services using the Assign Inputs option while scheduling a task in Integration Server Administrator .",
+          "optional": true
+        },
+        {
+          "name": "startTime",
+          "type": "String",
+          "description": "Optional. Time at which the task is scheduled to start, in HH:mm:ss format. If you do not specify a startTime , the current time is used.",
+          "optional": true
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "description": "Optional. Date on which the task is scheduled to start, in yyyy/MM/dd format. If you do not specify date , the current date is used.",
+          "optional": true
+        },
+        {
+          "name": "endTime",
+          "type": "String",
+          "description": "Optional. Time at which the task expires, in HH:mm:ss format. If you do not specify an endTime , the server uses the current time. If you do not specify endDate or endTime , the server executes this task for an indefinite period of time or until the task is canceled.",
+          "optional": true
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "description": "Optional. Date on which the task expires, in yyyy/MM/dd format. If you do not specify an endDate , the server uses the current date. If you do not specify endDate or endTime , the server executes this task for an indefinite period of time or until the task is canceled.",
+          "optional": true
+        },
+        {
+          "name": "interval",
+          "type": "String",
+          "description": "Time interval (measured in seconds) between executions of the task.",
+          "optional": false
+        },
+        {
+          "name": "doNotOverlap",
+          "type": "String",
+          "description": "Optional. Flag that indicates whether you want executions of this task to overlap. Set to: true to prevent executions of the scheduled task from overlapping. After a scheduled task finishes executing, the Scheduler waits the number of seconds specified in interval before running the task again. false to allow executions of the scheduled task to overlap. The Scheduler runs the task every time the value of interval elapses. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "taskID",
+          "type": "String",
+          "description": "Identification number of the task added to the Scheduler.",
+          "optional": false
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "description": "Code indicating the type of task added. For this type of task, the value of type will be repeat .",
+          "optional": false
+        },
+        {
+          "name": "taskAdded",
+          "type": "String",
+          "description": "Indicates whether the task was successfully added to the Scheduler. If the task was successfully added to the Scheduler, taskAdded contains true . If the task was not successfully added, the server throws an exception and terminates the service.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_scheduler_addRepeatingTask.html"
+    },
+    {
+      "name": "pub.scheduler:cancelTask",
+      "folder": "SCHEDULER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "taskID",
+          "type": "String",
+          "description": "Identification number of the task to remove from the Scheduler. If your server runs as part of a cluster of servers, and you have scheduled a task to run on all servers in the cluster, note the following before canceling a task: If you cancel a parent task, the task will be canceled on all servers in the cluster. If you cancel a child task, the task will be canceled only on the server on which the child task was scheduled to run. For more information about parent and child tasks, see pub.scheduler:getTaskInfo or the chapter about managing services in IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "taskCancelled",
+          "type": "String",
+          "description": "Indicates whether the task was successfully removed from the Scheduler. If the task was successfully removed from the Scheduler, taskCancelled contains true . If the task was not successfully removed, the server throws an exception and terminates the service.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_scheduler_cancelTask.html"
+    },
+    {
+      "name": "pub.scheduler:getTaskIDs",
+      "folder": "SCHEDULER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "running",
+          "type": "String",
+          "description": "Specifies whether the service returns task IDs for all tasks or just tasks that are running. If you specify “false” (the default), the service returns task IDs for all tasks. If you specify “true,” the service returns task IDs for just those tasks with the status “running.”",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "taskIDs",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Identification numbers for the tasks on the Scheduler.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_scheduler_getTaskIDs.html"
+    },
+    {
+      "name": "pub.scheduler:getTaskInfo",
+      "folder": "SCHEDULER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "taskID",
+          "type": "String",
+          "description": "Task identification number.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "type",
+          "type": "String",
+          "description": "Code indicating the task's type. Will be one of the following: complex once repeat",
+          "optional": false
+        },
+        {
+          "name": "runAsUser",
+          "type": "String",
+          "description": "The user ID whose access rights are used to execute the service.",
+          "optional": false
+        },
+        {
+          "name": "target",
+          "type": "String",
+          "description": "Server or servers on which the task is to run. (Clustered environments only). A value of: $any indicates that the task will run on any, but only one, server in the cluster. For more information about scheduled tasks in a clustered environment, see the chapter about managing services in IBM webMethods Integration Server Administrator’s Guide . $all indicates that the task will run on all servers in a cluster. When you schedule a task to run on all servers in the cluster, the server divides the task into a main or parent task, and a child task for each server in the cluster. You can perform some actions (activate, suspend, delete) individually on the child tasks, but if you want to change the characteristics of a task, you must do so through the parent task. For a parent task, this service returns $all in the Target parameter. For each child task, this service returns the hostname:port on which the task is to run. For more information about scheduled tasks in a clustered environment, see the chapter about managing services in IBM webMethods Integration Server Administrator’s Guide . hostname indicates that the task will run on this particular server. This service returns hostname:port if: Your server is running in a cluster, a task was scheduled to run on all servers in the cluster, and this is one of the child tasks. (See the description of $all above.) Your server is running in a cluster and you requested a specific server. Your server is not running in a cluster. For more information about scheduled tasks in a clustered environment, see the chapter about managing services in IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": false
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "description": "Text string describing this task.",
+          "optional": false
+        },
+        {
+          "name": "lateness",
+          "type": "String",
+          "description": "The number of minutes (after the scheduled execution time) after which the server is to take a special action for a late task. You specify the action to be taken in the latenessAction parameter, described below. The server checks scheduled tasks at startup, and again periodically. If the server finds a task that is overdue and has exceeded the lateness period, the server performs the requested lateness action. If the server finds a task that is overdue but has not yet exceeded the lateness period, the server starts the task immediately.",
+          "optional": false
+        },
+        {
+          "name": "latenessAction",
+          "type": "String",
+          "description": "Action to take if a task has missed its scheduled start time by a number of minutes you specify in the lateness parameter. Possible actions are: run immediately or 0 - Runs the task immediately skip and run at next scheduled interval or 1 - Skips this execution of the task and runs it again at the next scheduled run time. suspend or 2 - Places the task in a suspended state until an administrator resumes or cancels the task.",
+          "optional": false
+        },
+        {
+          "name": "service",
+          "type": "String",
+          "description": "Name of the service associated with the task.",
+          "optional": false
+        },
+        {
+          "name": "nextRun",
+          "type": "String",
+          "description": "Next date and time that the task is scheduled to run. The date and time is expressed as the number of milliseconds from January 1, 1970, 00:00:00 GMT.",
+          "optional": false
+        },
+        {
+          "name": "execState",
+          "type": "String",
+          "description": "Current state of the task. Tasks can be in one of the following states:",
+          "optional": false
+        },
+        {
+          "name": "inputs",
+          "type": "Document",
+          "description": "Conditional. Document (IData object) containing the inputs, if any, to the scheduled service.",
+          "optional": false
+        },
+        {
+          "name": "oneTimeTaskInfo",
+          "type": "Document",
+          "description": "Conditional. Information about the complex task represented by taskID . This parameter is present only if type is once .",
+          "optional": false
+        },
+        {
+          "name": "repeatingTaskInfo",
+          "type": "Document",
+          "description": "Conditional. Information about the task represented by taskID . This parameter is present only if type is repeat .",
+          "optional": false
+        },
+        {
+          "name": "complexTaskInfo",
+          "type": "Document",
+          "description": "Conditional. Information about the task. This parameter is present only if type is complex .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_scheduler_getTaskInfo.html"
+    },
+    {
+      "name": "pub.scheduler:getUserTaskList",
+      "folder": "SCHEDULER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "tasks",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "List of one-time and simple repeating tasks.",
+          "optional": false
+        },
+        {
+          "name": "extTasks",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "List of complex repeating tasks.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "tasks",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "List of one-time and simple repeating tasks.",
+          "optional": false
+        },
+        {
+          "name": "extTasks",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "List of complex repeating tasks.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A34465.html"
+    },
+    {
+      "name": "pub.scheduler:migrateTasksToJDBC",
+      "folder": "SCHEDULER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "move",
+          "type": "Boolean",
+          "description": "Specifies whether the tasks are to be deleted from the embedded database after the migration successfully completes. If set to false, the default, the tasks remain in the embedded database. If set to true, the tasks are removed from the embedded database.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "numberOfTaskMigrated",
+          "type": "String",
+          "description": "The number of user scheduled tasks that were migrated.",
+          "optional": false
+        },
+        {
+          "name": "successful",
+          "type": "String",
+          "description": "Indicates whether or not the migration was successful. The service returns “ true ” if all tasks were successfully migrated, otherwise “ false .”",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_scheduler_migrateTasksToJDBC.html"
+    },
+    {
+      "name": "pub.scheduler:resumeTask",
+      "folder": "SCHEDULER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "taskID",
+          "type": "String",
+          "description": "Identification number of the task to resume. If your server runs as part of a cluster of servers, and you have scheduled a task to run on all servers in the cluster, note the following before resuming a task: If you resume a parent task, the task will be resumed on all servers in the cluster. If you resume a child task, the task will be resumed only on the server on which the child task was scheduled to run. For more information about parent and child tasks, see pub.scheduler:getTaskInfo or the chapter about managing services in IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "taskResumed",
+          "type": "String",
+          "description": "Indicates whether the task was successfully resumed. If the task was successfully resumed, taskResumed contains true . If the task was not successfully resumed, the server throws an exception and terminates the service.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A22039.html"
+    },
+    {
+      "name": "pub.scheduler:suspendTask",
+      "folder": "SCHEDULER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "taskID",
+          "type": "String",
+          "description": "Identification number of the task to suspend. If your server runs as part of a cluster of servers, and you have scheduled a task to run on all servers in the cluster, note the following before canceling a task: If you suspend a parent task, the task will be suspended on all servers in the cluster. If you suspend a child task, the task will be suspended only on the server on which the child task was scheduled to run. For more information about parent and child tasks, see pub.scheduler:getTaskInfo or the chapter about managing services in IBM webMethods Integration Server Administrator’s Guide .",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "taskSuspended",
+          "type": "String",
+          "description": "Indicates whether the task was successfully suspended. If the task was successfully suspended, taskSuspended contains true . If the task was not successfully suspended, the server throws an exception and terminates the service.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_scheduler_suspendTask.html"
+    },
+    {
+      "name": "pub.scheduler:updateComplexTask",
+      "folder": "SCHEDULER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "taskID",
+          "type": "String",
+          "description": "Identification number of the task to be updated.",
+          "optional": false
+        },
+        {
+          "name": "service",
+          "type": "String",
+          "description": "Optional. Name of the service you want to schedule for execution on the server.",
+          "optional": true
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "description": "Optional. Text string describing this task.",
+          "optional": true
+        },
+        {
+          "name": "target",
+          "type": "String",
+          "description": "Optional. Server or servers on which the task is to run. (Clustered environments only). Set to: any to run the task on any server in the cluster. The task will run on only one of the servers. For example, suppose that all the servers in your cluster share a single database for a parts inventory application, and that a particular function needs to run against that database once a day. Any of the servers can perform this task, therefore you can specify the all option to schedule a task to run on any of the servers. Note: There is no predetermined order in which servers in the cluster are selected to run tasks. Rather, the first server to detect that a task is ready to be executed runs it. For more information about how Integration Server handles the scheduling of tasks in a clustered environment, see the chapter about managing services in IBM webMethods Integration Server Administrator’s Guide . all to run the task on all servers in the cluster. For clustered environments only. For example, suppose you run an application on each server in the cluster, and each server maintains its own database for that application. If you need to run a cleanup task against all the databases every day, you can schedule a task to run every day on all the servers in the cluster. For more information about how Integration Server handles the scheduling of tasks in a clustered environment, see the chapter about managing services in IBM webMethods Integration Server Administrator’s Guide . hostname to run the task on a specific server in the cluster.",
+          "optional": true
+        },
+        {
+          "name": "lateness",
+          "type": "String",
+          "description": "Optional. The number of minutes (after the scheduled execution time) after which the server is to take a special action for a late task. You specify the action to be taken in the latenessAction parameter, described below. The server checks scheduled tasks at startup, and again periodically. If the server finds a task that is overdue and has exceeded the lateness period, the server performs the requested lateness action. If the server finds a task that is overdue but has not yet exceeded the lateness period, the server starts the task immediately.",
+          "optional": true
+        },
+        {
+          "name": "latenessAction",
+          "type": "String",
+          "description": "Optional. Action to take if a task has missed its scheduled start time by a number of minutes you specified with the lateness parameter. Possible actions are: run immediately or 0 - Runs the task immediately skip and run at next scheduled interval or 1 - Skips this execution of the task and runs it again at the next scheduled run time. suspend or 2 - Places the task in a suspended state until an administrator resumes or cancels the task.",
+          "optional": true
+        },
+        {
+          "name": "doNotOverlap",
+          "type": "String",
+          "description": "Optional. Flag that indicates whether you want executions of this task to overlap. Set to: true to prevent executions of the scheduled task from overlapping. After a scheduled task finishes executing, the Scheduler waits the number of seconds specified in interval before running the task again. false to allow executions of the scheduled task to overlap. The Scheduler runs the task every time the value of interval elapses. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "runAsUser",
+          "type": "String",
+          "description": "Optional. User ID under which the service is to be executed. If you do not specify a user name, the “Default” access rights are used.",
+          "optional": true
+        },
+        {
+          "name": "inputs",
+          "type": "Document",
+          "description": "Optional. Document (IData object) containing input to the scheduled service.",
+          "optional": true
+        },
+        {
+          "name": "startTime",
+          "type": "String",
+          "description": "Optional. Time at which the task is scheduled to start, in HH:mm:ss format. If you do not specify a startTime , the current time is used.",
+          "optional": true
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "description": "Optional. Date on which the task is scheduled to start, in yyyy/MM/dd format. If you do not specify startDate , the current date is used.",
+          "optional": true
+        },
+        {
+          "name": "endTime",
+          "type": "String",
+          "description": "Optional. Time at which the task expires, in HH:mm:ss format. If you do not specify an endTime , the server uses the current time. If you do not specify endDate or endTime , the server executes this task for an indefinite period of time or until the task is canceled.",
+          "optional": true
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "description": "Optional. Date on which the task expires, in yyyy/MM/dd format. If you do not specify an endDate , the server uses the current date. If you do not specify endDate or endTime , the server executes this task for an indefinite period of time or until the task is canceled.",
+          "optional": true
+        },
+        {
+          "name": "months",
+          "type": "String List",
+          "description": "Optional. Months during which the task is scheduled to run. Months are represented by integers between 1 and 12, where “1” indicates January and “12” indicates December.",
+          "optional": true
+        },
+        {
+          "name": "hours",
+          "type": "String List",
+          "description": "Optional. Hours at which the task is scheduled to run. Hours are represented by integers between 0 and 23.",
+          "optional": true
+        },
+        {
+          "name": "minutes",
+          "type": "String List",
+          "description": "Optional. Minutes at which the task is scheduled to run. Minutes are represented by integers between 0 and 59.",
+          "optional": true
+        },
+        {
+          "name": "daysOfMonth",
+          "type": "String List",
+          "description": "Optional. Days of the month on which the task is scheduled to run. Days are represented by integers between 1 and 31.",
+          "optional": true
+        },
+        {
+          "name": "daysOfWeek",
+          "type": "String List",
+          "description": "Optional. Days of the week on which the task is scheduled to run. Days are represented by integers between 1 and 7, where “1” indicates Sunday and “7” indicates Saturday.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "type",
+          "type": "String",
+          "description": "Code indicating the type of task that was updated. For this type of task, the value of type will be complex .",
+          "optional": false
+        },
+        {
+          "name": "taskUpdated",
+          "type": "String",
+          "description": "Indicates whether the task was successfully updated. If the task was successfully updated, taskUpdated contains true . If the task was not successfully updated, the server throws an exception and terminates the service.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_scheduler_updateComplexTask.html"
+    },
+    {
+      "name": "pub.scheduler:updateOneTimeTask",
+      "folder": "SCHEDULER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "taskID",
+          "type": "String",
+          "description": "Identification number of the task to be updated.",
+          "optional": false
+        },
+        {
+          "name": "service",
+          "type": "String",
+          "description": "Optional. Name of the service to be scheduled.",
+          "optional": true
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "description": "Optional. Text string describing this task.",
+          "optional": true
+        },
+        {
+          "name": "target",
+          "type": "String",
+          "description": "Optional. Server or servers on which the task is to run. (Clustered environments only). Set to: any to run the task on any server in the cluster. The task will run on only one of the servers. For example, suppose that all the servers in your cluster share a single database for a parts inventory application, and that a particular function needs to run against that database once a day. Any of the servers can perform this task, therefore you can specify the all option to schedule a task to run on any of the servers. Note: There is no predetermined order in which servers in the cluster are selected to run tasks. Rather, the first server to detect that a task is ready to be executed runs it. For more information about how Integration Server handles the scheduling of tasks in a clustered environment, see the chapter about managing services in IBM webMethods Integration Server Administrator’s Guide . all to run the task on all servers in the cluster. For example, suppose you run an application on each server in the cluster, and each server maintains its own database for that application. If you need to run a cleanup task against all the databases every day, you can schedule a task to run every day on all the servers in the cluster. For more information about how Integration Server handles the scheduling of tasks in a clustered environment, see the chapter about managing services in IBM webMethods Integration Server Administrator’s Guide . hostname to run the task on a specific server in the cluster.",
+          "optional": true
+        },
+        {
+          "name": "lateness",
+          "type": "String",
+          "description": "Optional. The number of minutes (after the scheduled execution time) after which the server is to take a special action for a late task. You specify the action to be taken in the latenessAction parameter, described below. The server checks scheduled tasks at startup, and again periodically. If the server finds a task that is overdue and has exceeded the lateness period, the server performs the requested lateness action. If the server finds a task that is overdue but has not yet exceeded the lateness period, the server starts the task immediately.",
+          "optional": true
+        },
+        {
+          "name": "latenessAction",
+          "type": "String",
+          "description": "Optional. Action to take if a task has missed its scheduled start time by a number of minutes you specified with the lateness parameter. Possible actions are: run immediately or 0 - Runs the task immediately skip and run at next scheduled interval or 1 - Skips this execution of the task and runs it again at the next scheduled run time. suspend or 2 - Places the task in a suspended state until an administrator resumes or cancels the task.",
+          "optional": true
+        },
+        {
+          "name": "runAsUser",
+          "type": "String",
+          "description": "Optional. User ID under which the service is to be executed.",
+          "optional": true
+        },
+        {
+          "name": "inputs",
+          "type": "Document",
+          "description": "Optional. Document (IData object) containing inputs to the scheduled service.",
+          "optional": true
+        },
+        {
+          "name": "date",
+          "type": "String",
+          "description": "Optional. Date on which to run the task, in yyyy/MM/dd format.",
+          "optional": true
+        },
+        {
+          "name": "time",
+          "type": "String",
+          "description": "Optional. Time at which to run the service, in HH:mm:ss format.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "type",
+          "type": "String",
+          "description": "Code indicating the type of task that was updated. For this type of task, the value of type will be once .",
+          "optional": false
+        },
+        {
+          "name": "taskUpdated",
+          "type": "String",
+          "description": "Indicates whether the task was successfully updated. If the task was successfully updated, taskUpdated contains true . If the task was not successfully updated, the server throws an exception and terminates the service.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_scheduler_updateOneTimeTask.html"
+    },
+    {
+      "name": "pub.scheduler:updateRepeatingTask",
+      "folder": "SCHEDULER",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "taskID",
+          "type": "String",
+          "description": "Identification number of the task to be updated.",
+          "optional": false
+        },
+        {
+          "name": "service",
+          "type": "String",
+          "description": "Optional. Name of the service run by the task.",
+          "optional": true
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "description": "Optional. Text string describing this task.",
+          "optional": true
+        },
+        {
+          "name": "target",
+          "type": "String",
+          "description": "Optional. Server or servers in the cluster on which the task is to run. (Clustered environments only). Set to: any to run the task on any server in the cluster. The task will run on only one of the servers. For example, suppose that all the servers in your cluster share a single database for a parts inventory application, and that a particular function needs to run against that database once a day. Any of the servers can perform this task, therefore you can specify the all option to schedule a task to run on any of the servers. Note: There is no predetermined order in which servers in the cluster are selected to run tasks. Rather, the first server to detect that a task is ready to be executed runs it. For more information about how Integration Server handles the scheduling of tasks in a clustered environment, see the chapter about managing services in IBM webMethods Integration Server Administrator’s Guide . all to run the task on all servers in the cluster. For example, suppose you run an application on each server in the cluster, and each server maintains its own database for that application. If you need to run a cleanup task against all the databases every day, you can schedule a task to run every day on all the servers in the cluster. For more information about how Integration Server handles the scheduling of tasks in a clustered environment, see the chapter about managing services in IBM webMethods Integration Server Administrator’s Guide . hostname to run the task on a specific server in the cluster.",
+          "optional": true
+        },
+        {
+          "name": "lateness",
+          "type": "String",
+          "description": "Optional. The number of minutes (after the scheduled execution time) after which the server is to take a special action for a late task. You specify the action to be taken in the latenessAction parameter, described below. The server checks scheduled tasks at startup, and again periodically. If the server finds a task that is overdue and has exceeded the lateness period, the server performs the requested lateness action. If the server finds a task that is overdue but has not yet exceeded the lateness period, the server starts the task immediately.",
+          "optional": true
+        },
+        {
+          "name": "latenessAction",
+          "type": "String",
+          "description": "Optional. Action to take if a task has missed its scheduled start time by a number of minutes you specified with the lateness parameter. Possible actions are: run immediately or 0 - Runs the task immediately skip and run at next scheduled interval or 1 - Skips this execution of the task and runs it again at the next scheduled run time. suspend or 2 - Places the task in a suspended state until an administrator resumes or cancels the task.",
+          "optional": true
+        },
+        {
+          "name": "runAsUser",
+          "type": "String",
+          "description": "Optional. User ID under which the service is to be executed. If you do not specify a user name, the “Default” access rights are used.",
+          "optional": true
+        },
+        {
+          "name": "startTime",
+          "type": "String",
+          "description": "Optional. Time at which the task is scheduled to start, in HH:mm:ss format. If you do not specify a startTime , the current time is used.",
+          "optional": true
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "description": "Optional. Date on which the task is scheduled to start, in yyyy/MM/dd format. If you do not specify date , the current date is used.",
+          "optional": true
+        },
+        {
+          "name": "endTime",
+          "type": "String",
+          "description": "Optional. Time at which the task expires, in HH:mm:ss format. If you do not specify an endTime , the server uses the current time. If you do not specify endTime or endDate , the server executes the scheduled service for an indefinite period of time or until you cancel the scheduled user task.",
+          "optional": true
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "description": "Optional. Date on which the task expires, in yyyy/MM/dd format. If you do not specify an endDate , the server uses the current date. If you do not specify endDate or endTime , the server executes the scheduled service for an indefinite period of time or until you cancel the scheduled user task.",
+          "optional": true
+        },
+        {
+          "name": "inputs",
+          "type": "Document",
+          "description": "Optional. Document (IData object) containing inputs to the scheduled service.",
+          "optional": true
+        },
+        {
+          "name": "interval",
+          "type": "String",
+          "description": "Optional. Time interval (measured in seconds) between repetitions of the task.",
+          "optional": true
+        },
+        {
+          "name": "doNotOverlap",
+          "type": "String",
+          "description": "Optional. Flag indicating whether or not you want the executions of this task to overlap. Set to: true to prevent executions of the scheduled task from overlapping. After a scheduled task finishes executing, the Scheduler waits the number of seconds specified in interval before running the task again. false to allow executions of the scheduled task to overlap. The Scheduler runs the task every time the value of interval elapses. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "type",
+          "type": "String",
+          "description": "Code indicating the type of task updated. For this type of task, the value of type will be repeat .",
+          "optional": false
+        },
+        {
+          "name": "taskUpdated",
+          "type": "String",
+          "description": "Indicates whether the task was successfully updated. If the task was successfully updated, taskUpdated contains true . If the task was not successfully updated, the server throws an exception and terminates the service.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_scheduler_updateRepeatingTask.html"
+    }
+  ]
+}

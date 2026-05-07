@@ -1,0 +1,277 @@
+{
+  "folder": "SYNCHRONIZATION",
+  "total_services": 9,
+  "services": [
+    {
+      "name": "pub.synchronization.latch:closeLatch",
+      "folder": "SYNCHRONIZATION",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "appId",
+          "type": "String",
+          "description": "A unique identifier for the target resource for which you want to close a latch. Typically, the appId is the name of the adapter or the resource.",
+          "optional": false
+        },
+        {
+          "name": "canonicalKey",
+          "type": "String",
+          "description": "The canonical key. A unique identifier for the canonical document used in the synchronization.",
+          "optional": false
+        },
+        {
+          "name": "objectId",
+          "type": "String",
+          "description": "A unique identifier for the object or process being synchronized. Typically, the objectId field is set to the name of the business process for which you are performing synchronization, such as \"order\" or \"customer.\"",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_synchronization_latch_closeLatch.html"
+    },
+    {
+      "name": "pub.synchronization.latch:isLatchClosed",
+      "folder": "SYNCHRONIZATION",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "appId",
+          "type": "String",
+          "description": "A unique identifier for the resource for which you want to check the latch status. Typically, the appId is the name of the adapter or the resource.",
+          "optional": false
+        },
+        {
+          "name": "canonicalKey",
+          "type": "String",
+          "description": "The canonical key. A unique identifier for the canonical document used in the synchronization.",
+          "optional": false
+        },
+        {
+          "name": "objectId",
+          "type": "String",
+          "description": "A unique identifier for the object or process being synchronized. Typically, the objectId field is set to the name of the business process for which you are performing synchronization, such as \"order\" or \"customer.\"",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "isLatchClosed",
+          "type": "String",
+          "description": "The status of the latch. A value of: true indicates that the latch is closed. The resource has been updated. false indicates that the latch is open. The resource has not been updated.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_synchronization_latch_isLatchclosed.html"
+    },
+    {
+      "name": "pub.synchronization.latch:openLatch",
+      "folder": "SYNCHRONIZATION",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "appId",
+          "type": "String",
+          "description": "A unique identifier for the resources for which you want to open the latch. Typically, the appId is the name of the adapter or the resource.",
+          "optional": false
+        },
+        {
+          "name": "canonicalKey",
+          "type": "String",
+          "description": "The canonical key. A unique identifier for the canonical document used in the synchronization.",
+          "optional": false
+        },
+        {
+          "name": "objectId",
+          "type": "String",
+          "description": "A unique identifier for the object or process being synchronized. Typically, the objectId field is set to the name of the business process for which you are performing synchronization, such as \"order\" or \"customer.\"",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A10178.html"
+    },
+    {
+      "name": "pub.synchronization.xref:createXReference",
+      "folder": "SYNCHRONIZATION",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "appId",
+          "type": "String",
+          "description": "A unique identifier for the resource (application) for which you want to create a cross-reference to a canonical key.",
+          "optional": false
+        },
+        {
+          "name": "nativeId",
+          "type": "String",
+          "description": "A unique identifier for the resource record for which you want to create a cross-reference to a canonical key.",
+          "optional": false
+        },
+        {
+          "name": "canonicalKey",
+          "type": "String",
+          "description": "Optional. A canonical key. If a canonical key is not provided as input, createXReference creates the canonical key and the cross-reference.",
+          "optional": true
+        },
+        {
+          "name": "objectId",
+          "type": "String",
+          "description": "A unique identifier for the object or process being synchronized. Typically, the objectId field is set to the name of the business process for which you are performing synchronization, such as \"order\" or \"customer.\"",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "canonicalKey",
+          "type": "String",
+          "description": "The canonical key. This key correlates native IDs of records from different resources. This will be a new, unique key if canonicalKey was not provided as an input parameter. If canonicalKey was provided as input, this output parameter returns the same value.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_synchronization_xref_createXReferenc.html"
+    },
+    {
+      "name": "pub.synchronization.xref:deleteByObjectId",
+      "folder": "SYNCHRONIZATION",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "objectId",
+          "type": "String",
+          "description": "A unique identifier for the object or process for which you want to delete all cross-reference records. Typically, the objectId field is set to the name of the business process for which you are performing synchronization, such as \"order\" or \"customer.\"",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_synchronization_xref_deleteByObjectI.html"
+    },
+    {
+      "name": "pub.synchronization.xref:deleteXReference",
+      "folder": "SYNCHRONIZATION",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "appId",
+          "type": "String",
+          "description": "A unique identifier for the resource (application) for which you want to delete a cross-reference record.",
+          "optional": false
+        },
+        {
+          "name": "canonicalKey",
+          "type": "String",
+          "description": "The canonical key. A unique identifier for the canonical document for which you want to delete a cross-reference.",
+          "optional": false
+        },
+        {
+          "name": "objectId",
+          "type": "String",
+          "description": "A unique identifier for the object or process for which you want to delete a cross-reference. Typically, the objectId field is set to the name of the business process for which you are performing synchronization, such as \"order\" or \"customer.\"",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_synchronization_xref_deleteXReferenc.html"
+    },
+    {
+      "name": "pub.synchronization.xref:getCanonicalKey",
+      "folder": "SYNCHRONIZATION",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "appId",
+          "type": "String",
+          "description": "A unique identifier for the resource (application) that contains the native ID for which you want to retrieve a canonical key.",
+          "optional": false
+        },
+        {
+          "name": "nativeId",
+          "type": "String",
+          "description": "A unique identifier for the resource record for which you want to obtain the canonical key.",
+          "optional": false
+        },
+        {
+          "name": "objectId",
+          "type": "String",
+          "description": "A unique identifier for the object or process being synchronized. Typically, the objectId field is set to the name of the business process for which you are performing synchronization, such as \"order\" or \"customer.\"",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "canonicalKey",
+          "type": "String",
+          "description": "The canonical key for the provided native ID. If the requested key cannot be found or does not exist in the cross-reference table, an empty string is returned.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_synchronization_xref_getCanonicalKey.html"
+    },
+    {
+      "name": "pub.synchronization.xref:getNativeId",
+      "folder": "SYNCHRONIZATION",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "appId",
+          "type": "String",
+          "description": "A unique identifier for the resource from which you want to retrieve the native ID associated with the provided canonical key.",
+          "optional": false
+        },
+        {
+          "name": "canonicalKey",
+          "type": "String",
+          "description": "The canonical key for which you want to obtain the corresponding native ID.",
+          "optional": false
+        },
+        {
+          "name": "objectId",
+          "type": "String",
+          "description": "A unique identifier for the object or process being synchronized. Typically, the objectId field is set to the name of the business process for which you are performing synchronization, such as \"order\" or \"customer.\"",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "nativeId",
+          "type": "String",
+          "description": "A unique identifier for the resource record associated with the provided canonical key. If the requested nativeId cannot be found in the cross-reference table, an empty string is returned.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_synchronization_xref_getNativeId.html"
+    },
+    {
+      "name": "pub.synchronization.xref:insertXReference",
+      "folder": "SYNCHRONIZATION",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "appId",
+          "type": "String",
+          "description": "A unique identifier for the resource for which you want to establish a cross-reference between a native ID and a canonical key.",
+          "optional": false
+        },
+        {
+          "name": "nativeId",
+          "type": "String",
+          "description": "A unique identifier for the resource record with which you want to establish a cross-reference to canonicalKey .",
+          "optional": false
+        },
+        {
+          "name": "canonicalKey",
+          "type": "String",
+          "description": "The canonical key with which you want to establish a cross-reference to nativeId .",
+          "optional": false
+        },
+        {
+          "name": "objectId",
+          "type": "String",
+          "description": "A unique identifier for the object or process being synchronized. Typically, the objectId field is set to the name of the business process for which you are performing synchronization, such as \"order\" or \"customer.\"",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_synchronization_xref_insertXReferenc.html"
+    }
+  ]
+}

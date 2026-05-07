@@ -1,0 +1,1192 @@
+{
+  "folder": "DB",
+  "total_services": 17,
+  "services": [
+    {
+      "name": "pub.db:call",
+      "folder": "DB",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$dbAlias",
+          "type": "String",
+          "description": "Optional. Alias of the database on which you want to execute the stored procedure.",
+          "optional": true
+        },
+        {
+          "name": "$dbURL",
+          "type": "String",
+          "description": "Optional. JDBC URL that identifies the database resource.",
+          "optional": true
+        },
+        {
+          "name": "$dbUser",
+          "type": "String",
+          "description": "Optional. User name to use to log into the database.",
+          "optional": true
+        },
+        {
+          "name": "$dbPass",
+          "type": "String",
+          "description": "Optional. Password for the user specified in $dbUser .",
+          "optional": true
+        },
+        {
+          "name": "$dbDriver",
+          "type": "String",
+          "description": "Optional. Name of the JDBC driver to use.",
+          "optional": true
+        },
+        {
+          "name": "$dbConnection",
+          "type": "com.wm.app.b2b.server.DBConnection",
+          "description": "Optional. Connection object returned by pub.db:connect .",
+          "optional": true
+        },
+        {
+          "name": "$dbCatalog",
+          "type": "String",
+          "description": "Optional. Name of the database's system catalog. Include this parameter if your DBMS supports distributed databases and you want to invoke a stored procedure from a database other than the one to which you are connected. If you are not using a distributed database system, you do not need to specify this parameter. If you are running against DB2, use this parameter to specify the stored procedure's location.",
+          "optional": true
+        },
+        {
+          "name": "$dbSchemaPattern",
+          "type": "String",
+          "description": "Optional. Name of the schema to which the stored procedure belongs. If your database supports pattern-matching on schemas, you may specify the schema name with a pattern-matching string, where _ represents a single character and % represents any string of characters. For example, the value of HR% would represent any schema beginning with characters HR. If you are running against DB2, you use this parameter to specify the stored procedure's AuthID.",
+          "optional": true
+        },
+        {
+          "name": "$dbProc",
+          "type": "String",
+          "description": "The name of the stored procedure you want to invoke.",
+          "optional": false
+        },
+        {
+          "name": "$dbProcSig",
+          "type": "Document\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. Set of parameters containing information about the stored procedure you want to invoke.",
+          "optional": true
+        },
+        {
+          "name": "$dbParamsByOrder",
+          "type": "String",
+          "description": "Optional. Indicates whether the contents of $data should be sent to the database in order. Set to: true to send the contents of $data to the database in the order they are listed in $data . false to send the contents of $data to the database in no particular order. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "$data",
+          "type": "Document",
+          "description": "Parameter values for the stored procedure. Whether the $data parameter is mandatory or not depends on the watt.server.jdbc.sp.mandateParams property. If this property is set to false , the $data input parameter is optional. If this property is true , you must provide values for the $data parameter. The default value for the watt.server.jdbc.sp.mandateParams property is true .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$dbMessage",
+          "type": "String",
+          "description": "Conditional. Message indicating the success or failure of the operation.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_db_call.html"
+    },
+    {
+      "name": "pub.db:clearTransaction",
+      "folder": "DB",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$dbAlias",
+          "type": "String",
+          "description": "Optional. Alias of the database connection on which you want to clear the transactional state. The alias is passed automatically if the database is connected.",
+          "optional": true
+        },
+        {
+          "name": "$dbURL",
+          "type": "String",
+          "description": "Optional. JDBC URL that identifies the database resource.",
+          "optional": true
+        },
+        {
+          "name": "$dbUser",
+          "type": "String",
+          "description": "Optional. User name to use to log into the database.",
+          "optional": true
+        },
+        {
+          "name": "$dbPass",
+          "type": "String",
+          "description": "Optional. Password for the user.",
+          "optional": true
+        },
+        {
+          "name": "$dbDriver",
+          "type": "String",
+          "description": "Optional. Name of the JDBC driver to use.",
+          "optional": true
+        },
+        {
+          "name": "$dbConnection",
+          "type": "com.wm.app.b2b.server.DBConnection",
+          "description": "Optional. Connection object returned by pub.db:connect .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$dbMessage",
+          "type": "String",
+          "description": "A message indicating the success or failure of the operation.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_db_clearTransaction.html"
+    },
+    {
+      "name": "pub.db:close",
+      "folder": "DB",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$dbAlias",
+          "type": "String",
+          "description": "Optional. Database alias.",
+          "optional": true
+        },
+        {
+          "name": "$dbURL",
+          "type": "String",
+          "description": "Optional. JDBC URL that identifies the database resource.",
+          "optional": true
+        },
+        {
+          "name": "$dbUser",
+          "type": "String",
+          "description": "Optional. User name to use to log into the database.",
+          "optional": true
+        },
+        {
+          "name": "$dbPass",
+          "type": "String",
+          "description": "Optional. Password for the user.",
+          "optional": true
+        },
+        {
+          "name": "$dbDriver",
+          "type": "String",
+          "description": "Optional. Name of the JDBC driver to use.",
+          "optional": true
+        },
+        {
+          "name": "$dbConnection",
+          "type": "com.wm.app.b2b.server.DBConnection",
+          "description": "Optional. Connection object returned by pub.db:connect .",
+          "optional": true
+        },
+        {
+          "name": "$closeDbConnection",
+          "type": "String",
+          "description": "Optional. Indicates whether to remove the database connection from the pool or return it to the pool for future use. Set to: true to close the connection and remove it from the pool. false to close the connection and return it to the pool for future use. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$dbMessage",
+          "type": "String",
+          "description": "Message indicating the success or failure of the operation.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_db_close.html"
+    },
+    {
+      "name": "pub.db:closeAll",
+      "folder": "DB",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$dbMessage",
+          "type": "String",
+          "description": "Message indicating the success or failure of the operation.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$dbMessage",
+          "type": "String",
+          "description": "Message indicating the success or failure of the operation.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc460900934.html"
+    },
+    {
+      "name": "pub.db:commit",
+      "folder": "DB",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$dbAlias",
+          "type": "String",
+          "description": "Optional. Alias of the database on which you want to commit changes. The alias is passed automatically if the database is connected.",
+          "optional": true
+        },
+        {
+          "name": "$dbURL",
+          "type": "String",
+          "description": "Optional. JDBC URL that identifies the database resource.",
+          "optional": true
+        },
+        {
+          "name": "$dbUser",
+          "type": "String",
+          "description": "Optional. User name to use to log into the database.",
+          "optional": true
+        },
+        {
+          "name": "$dbPass",
+          "type": "String",
+          "description": "Optional. Password for the user.",
+          "optional": true
+        },
+        {
+          "name": "$dbDriver",
+          "type": "String",
+          "description": "Optional. Name of the JDBC driver to use.",
+          "optional": true
+        },
+        {
+          "name": "$dbConnection",
+          "type": "com.wm.app.b2b.server.DBConnection",
+          "description": "Optional. Connection object returned by pub.db:connect .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$dbMessage",
+          "type": "String",
+          "description": "Message indicating the success or failure of the operation.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_db_commit.html"
+    },
+    {
+      "name": "pub.db:connect",
+      "folder": "DB",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$dbAlias",
+          "type": "String",
+          "description": "Optional. Database alias.",
+          "optional": true
+        },
+        {
+          "name": "$dbURL",
+          "type": "String",
+          "description": "Optional. JDBC URL that identifies the database resource.",
+          "optional": true
+        },
+        {
+          "name": "$dbUser",
+          "type": "String",
+          "description": "Optional. User name to use to log into the database.",
+          "optional": true
+        },
+        {
+          "name": "$dbPass",
+          "type": "String",
+          "description": "Optional. Password for the user.",
+          "optional": true
+        },
+        {
+          "name": "$dbDriver",
+          "type": "String",
+          "description": "Optional. Name of the JDBC driver to use.",
+          "optional": true
+        },
+        {
+          "name": "$dbProperties",
+          "type": "Document",
+          "description": "Optional. Set of connection parameters that are to be used to make the database connection. Within $dbProperties , key names represent the names of the connection parameters that are to be used to establish the connection, and the value of a key specifies the value of that particular parameter. In most cases, you will include the keys user and password in $dbProperties to specify the user name and password parameters that are to be used to connect to the database. You may include additional parameters as needed. The following example shows how $dbProperties would look if you wanted to set the weblogic.codeset parameter to GBK in order to extract Unicode data out of the database:",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$dbConnection",
+          "type": "com.wm.app.b2b.server.DBConnection",
+          "description": "Connection object.",
+          "optional": false
+        },
+        {
+          "name": "$dbMessage",
+          "type": "String",
+          "description": "Message indicating the success or failure of the operation.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc460900933.html"
+    },
+    {
+      "name": "pub.db:delete",
+      "folder": "DB",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$dbAlias",
+          "type": "String",
+          "description": "Optional. Database alias.",
+          "optional": true
+        },
+        {
+          "name": "$dbURL",
+          "type": "String",
+          "description": "Optional. JDBC URL that identifies the database resource.",
+          "optional": true
+        },
+        {
+          "name": "$dbUser",
+          "type": "String",
+          "description": "Optional. User name to use to log into the database.",
+          "optional": true
+        },
+        {
+          "name": "$dbPass",
+          "type": "String",
+          "description": "Optional. Password for the user.",
+          "optional": true
+        },
+        {
+          "name": "$dbDriver",
+          "type": "String",
+          "description": "Optional. Name of the JDBC driver to use.",
+          "optional": true
+        },
+        {
+          "name": "$dbConnection",
+          "type": "com.wm.app.b2b.server.DBConnection",
+          "description": "Optional. Connection object returned by pub.db:connect .",
+          "optional": true
+        },
+        {
+          "name": "$dbCatalog",
+          "type": "String",
+          "description": "Optional. Name of the database's system catalog. Include this parameter if your DBMS supports distributed databases and you want to delete rows from a table that is not in the database to which you are connected. If you are not using a distributed database system or if you want to delete rows from the database to which you are connected, you do not need to specify this parameter. If you are running against DB2, use this parameter to specify the database location.",
+          "optional": true
+        },
+        {
+          "name": "$dbSchemaPattern",
+          "type": "String",
+          "description": "Optional. Name of the schema to which the table belongs. If your database supports pattern-matching on schemas, you may specify the schema name with a pattern-matching string, where _ represents a single character and % represents any string of characters. For example, the value HR% would represent any schema beginning with the characters HR. If you are running against DB2, you use this parameter to specify the table's AuthID.",
+          "optional": true
+        },
+        {
+          "name": "$dbTable",
+          "type": "String",
+          "description": "Name of the table to remove rows from.",
+          "optional": false
+        },
+        {
+          "name": "$data",
+          "type": "Document",
+          "description": "Optional. Criteria that the rows to delete must meet. Important: If no criteria are provided, all rows are deleted from the table.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$updateCount",
+          "type": "String",
+          "description": "Number of rows deleted.",
+          "optional": false
+        },
+        {
+          "name": "$dbMessage",
+          "type": "String",
+          "description": "Conditional. Message indicating the success or failure of the operation.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_db_delete.html"
+    },
+    {
+      "name": "pub.db:execSQL",
+      "folder": "DB",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$dbAlias",
+          "type": "String",
+          "description": "Optional. Database alias.",
+          "optional": true
+        },
+        {
+          "name": "$dbURL",
+          "type": "String",
+          "description": "Optional. JDBC URL that identifies the database resource.",
+          "optional": true
+        },
+        {
+          "name": "$dbUser",
+          "type": "String",
+          "description": "Optional. User name to use to log into the database.",
+          "optional": true
+        },
+        {
+          "name": "$dbPass",
+          "type": "String",
+          "description": "Optional. Password for the user.",
+          "optional": true
+        },
+        {
+          "name": "$dbDriver",
+          "type": "String",
+          "description": "Optional. Name of the JDBC driver to use.",
+          "optional": true
+        },
+        {
+          "name": "$dbConnection",
+          "type": "com.wm.app.b2b.server.DBConnection",
+          "description": "Optional. Connection object returned by pub.db:connect .",
+          "optional": true
+        },
+        {
+          "name": "$dbCatalog",
+          "type": "String",
+          "description": "Optional. Name of the database's system catalog. Include this parameter if your DBMS supports distributed databases and you want to retrieve information from a database to which you are not currently connected. If you are not using a distributed database system, you do not need to specify this parameter. If you are running against DB2, use this parameter to specify the database location.",
+          "optional": true
+        },
+        {
+          "name": "$dbSchemaPattern",
+          "type": "String",
+          "description": "Optional. Name of the schema to which the table belongs. If your database supports pattern-matching on schemas, you may specify the schema name with a pattern-matching string, where _ represents a single character and % represents any string of characters. For example, the value HR% would represent any schema beginning with the characters HR. If you are running against DB2, you use this parameter to specify the table's AuthID.",
+          "optional": true
+        },
+        {
+          "name": "$dbSQL",
+          "type": "String",
+          "description": "SQL statement to execute.",
+          "optional": false
+        },
+        {
+          "name": "$dbProcessEsc",
+          "type": "String",
+          "description": "Optional. Flag that indicates whether JDBC SQL escapes will be processed. These escapes allow database-independent access to database-dependent functionality. For example, different dialects of SQL have different syntax for date literals. Using a JDBC escape, you can encode a date literal in a SQL string that should work on any database. Documentation on JDBC SQL escapes is widely available. Set to: true to process JDBC SQL escapes. This is the default. false to skip processing JDBC SQL escapes.",
+          "optional": true
+        },
+        {
+          "name": "$dbProcessReporterTokens",
+          "type": "String",
+          "description": "Optional. Flag that indicates whether reporter tags (for example, %value xxx%) will be processed in the SQL. Including these tokens in your SQL allows dynamic construction of complex SQL statements, at the possible expense of some execution speed. Set to: true to process tags. false to ignore tags. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "$dbParamValues",
+          "type": "Object\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. If the \"?\" parameters in the SQL statement are not supplied indirectly (with the $dbParamNames parameter), they can be supplied directly via this parameter. See Usage Notes below. Objects in $dbParamValues can be of any type.",
+          "optional": true
+        },
+        {
+          "name": "$dbParamNames",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. Names of any \"?\" parameters in the SQL. See Usage Notes below.",
+          "optional": true
+        },
+        {
+          "name": "$dbParamTypes",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. SQL type names for each parameter. Use type names from the JDBC 1.2 specification (\" INTEGER \", \" VARCHAR \", etc.).",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "sql",
+          "type": "String",
+          "description": "Conditional. SQL as it was actually passed to the target database. This can be helpful in debugging calls to this service when dynamic SQL is used (that is, you are using either JDBC SQL escapes or webMethods Reporter tokens in your SQL).",
+          "optional": false
+        },
+        {
+          "name": "paramsAsStrings",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Conditional. Values used for each of the parameters in the SQL statement. This can be helpful in debugging calls to this service when \"?\" parameters are being used.",
+          "optional": false
+        },
+        {
+          "name": "$rowCount",
+          "type": "String",
+          "description": "Conditional. Number of rows in results.",
+          "optional": false
+        },
+        {
+          "name": "results",
+          "type": "com.wm.util.Table",
+          "description": "Conditional. Results from the SQL statement. The Integration Server recognizes and treats this parameter as a Document List at run time.",
+          "optional": false
+        },
+        {
+          "name": "$updateCount",
+          "type": "String",
+          "description": "Conditional. Number of rows updated.",
+          "optional": false
+        },
+        {
+          "name": "$dbMessage",
+          "type": "String",
+          "description": "Conditional. Message indicating the success or failure of the operation.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_db_execSQL.html"
+    },
+    {
+      "name": "pub.db:getProcInfo",
+      "folder": "DB",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$dbAlias",
+          "type": "String",
+          "description": "Optional. Database alias.",
+          "optional": true
+        },
+        {
+          "name": "$dbURL",
+          "type": "String",
+          "description": "Optional. JDBC URL that identifies the database resource.",
+          "optional": true
+        },
+        {
+          "name": "$dbUser",
+          "type": "String",
+          "description": "Optional. User name to use to log into the database.",
+          "optional": true
+        },
+        {
+          "name": "$dbPass",
+          "type": "String",
+          "description": "Optional. Password for the user.",
+          "optional": true
+        },
+        {
+          "name": "$dbDriver",
+          "type": "String",
+          "description": "Optional. Name of the JDBC driver to use.",
+          "optional": true
+        },
+        {
+          "name": "$dbConnection",
+          "type": "com.wm.app.b2b.server.DBConnection",
+          "description": "Optional. Connection object returned by pub.db:connect .",
+          "optional": true
+        },
+        {
+          "name": "$dbCatalog",
+          "type": "String",
+          "description": "Optional. Name of the database's system catalog. Include this parameter if your DBMS supports distributed databases and you want to retrieve information about a stored procedure that is not in the database to which you are currently connected. If you are not using a distributed database system, you do not need to specify this parameter. If you are running against DB2, use this parameter to specify the stored procedure's location.",
+          "optional": true
+        },
+        {
+          "name": "$dbSchemaPattern",
+          "type": "String",
+          "description": "Optional. Name of the schema to which the table belongs. If your database supports pattern-matching on schemas, you may specify the schema name with a pattern-matching string, where _ represents a single character and % represents any string of characters. For example, the value HR% would represent any schema beginning with the characters HR. If you are running against DB2, you use this parameter to specify the stored procedure's AuthID.",
+          "optional": true
+        },
+        {
+          "name": "$dbProc",
+          "type": "String",
+          "description": "Name of the procedure about which you want information.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_db_getProcInfo.html"
+    },
+    {
+      "name": "pub.db:getProcs",
+      "folder": "DB",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$dbAlias",
+          "type": "String",
+          "description": "Optional. Database alias.",
+          "optional": true
+        },
+        {
+          "name": "$dbURL",
+          "type": "String",
+          "description": "Optional. JDBC URL that identifies the database resource.",
+          "optional": true
+        },
+        {
+          "name": "$dbUser",
+          "type": "String",
+          "description": "Optional. User name to use to log into the database.",
+          "optional": true
+        },
+        {
+          "name": "$dbPass",
+          "type": "String",
+          "description": "Optional. Password for the user.",
+          "optional": true
+        },
+        {
+          "name": "$dbDriver",
+          "type": "String",
+          "description": "Optional. Name of the JDBC driver to use.",
+          "optional": true
+        },
+        {
+          "name": "$dbConnection",
+          "type": "com.wm.app.b2b.server.DBConnection",
+          "description": "Optional. Connection object returned by pub.db:connect .",
+          "optional": true
+        },
+        {
+          "name": "$dbCatalog",
+          "type": "String",
+          "description": "Optional. Name of the database's system catalog. Include this parameter if your DBMS supports distributed databases and you want to retrieve a list of stored procedures from a database other than the one to which you are connected. If you are not using a distributed database system, you do not need to specify this parameter. If you are running against DB2, use this parameter to specify the database location.",
+          "optional": true
+        },
+        {
+          "name": "$dbSchemaPattern",
+          "type": "String",
+          "description": "Optional. Name of the schema to which the stored procedures belong. If your database supports pattern-matching on schemas, you may specify the schema name with a pattern-matching string, where _ represents a single character and % represents any string of characters. For example, the value HR% would represent any schema beginning with the characters HR. If you are running against DB2, you use this parameter to specify the database's AuthID.",
+          "optional": true
+        },
+        {
+          "name": "$dbProcNamePattern",
+          "type": "String",
+          "description": "Optional. Pattern-matching string that specifies the procedures that you want included in the returned list, where _ represents a single character and % represents any string of characters. For example, the value DATE% would represent any procedure beginning with the characters DATE .",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_db_getProcs.html"
+    },
+    {
+      "name": "pub.db:getTableInfo",
+      "folder": "DB",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$dbAlias",
+          "type": "String",
+          "description": "Optional. Database alias.",
+          "optional": true
+        },
+        {
+          "name": "$dbURL",
+          "type": "String",
+          "description": "Optional. JDBC URL that identifies the database resource.",
+          "optional": true
+        },
+        {
+          "name": "$dbUser",
+          "type": "String",
+          "description": "Optional. User name to use to log into the database.",
+          "optional": true
+        },
+        {
+          "name": "$dbPass",
+          "type": "String",
+          "description": "Optional. Password for the user.",
+          "optional": true
+        },
+        {
+          "name": "$dbDriver",
+          "type": "String",
+          "description": "Optional. Name of the JDBC driver to use.",
+          "optional": true
+        },
+        {
+          "name": "$dbConnection",
+          "type": "com.wm.app.b2b.server.DBConnection",
+          "description": "Optional. Connection object returned by pub.db:connect .",
+          "optional": true
+        },
+        {
+          "name": "$dbCatalog",
+          "type": "String",
+          "description": "Optional. Name of the database's system catalog. Include this parameter if your DBMS supports distributed databases and you want information about a table that is not in the database to which you are connected. If you are not using a distributed database system or you want information about a table in the database to which you are connected, you do not need to specify this parameter. If you are running against DB2, use this parameter to specify the database location.",
+          "optional": true
+        },
+        {
+          "name": "$dbSchemaPattern",
+          "type": "String",
+          "description": "Optional. Name of the schema to which the table belongs. If your database supports pattern-matching on schemas, you may specify a pattern-matching string for the schema name, where _ represents a single character and % represents any string of characters. For example, the value HR% would represent any schema beginning with the characters HR. If you are running against DB2, you use this parameter to specify the table's AuthID.",
+          "optional": true
+        },
+        {
+          "name": "$dbTable",
+          "type": "String",
+          "description": "Name of table whose column names you want to retrieve.",
+          "optional": false
+        },
+        {
+          "name": "$dbColumnNamePattern",
+          "type": "String",
+          "description": "Optional. Pattern-matching string that specifies the column names that you want to retrieve, where _ represents a single character and % represents any string of characters. For example, the value ADDR% would represent any column name beginning with the characters ADDR.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc460900940.html"
+    },
+    {
+      "name": "pub.db:getTables",
+      "folder": "DB",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$dbAlias",
+          "type": "String",
+          "description": "Optional. Database alias.",
+          "optional": true
+        },
+        {
+          "name": "$dbURL",
+          "type": "String",
+          "description": "Optional. JDBC URL that identifies the database resource.",
+          "optional": true
+        },
+        {
+          "name": "$dbUser",
+          "type": "String",
+          "description": "Optional. User name to use to log into the database.",
+          "optional": true
+        },
+        {
+          "name": "$dbPass",
+          "type": "String",
+          "description": "Optional. Password for the user.",
+          "optional": true
+        },
+        {
+          "name": "$dbDriver",
+          "type": "String",
+          "description": "Optional. Name of the JDBC driver to use.",
+          "optional": true
+        },
+        {
+          "name": "$dbConnection",
+          "type": "com.wm.app.b2b.server.DBConnection",
+          "description": "Optional. Connection object returned by pub.db:connect .",
+          "optional": true
+        },
+        {
+          "name": "$dbCatalog",
+          "type": "String",
+          "description": "Optional. Name of the database's system catalog. Include this parameter if your DBMS supports distributed databases and you want information from a database that is not the one to which you are connected. If you are not using a distributed database system or you want information about the database to which you are connected, you do not need to specify this parameter. If you are running against DB2, use this parameter to specify the database location.",
+          "optional": true
+        },
+        {
+          "name": "$dbSchemaPattern",
+          "type": "String",
+          "description": "Optional. Name of the schema for which you want the names of tables. If your database supports pattern-matching on schemas, you may specify a pattern-matching string for the schema name, where _ represents a single character and % represents any string of characters. For example, the value HR% would represent any schema beginning with the characters HR. If you want the table names from all schemas, set $dbSchemaPattern to null. If you are running against DB2, you use this parameter to specify the table's AuthID.",
+          "optional": true
+        },
+        {
+          "name": "$dbTableNamePattern",
+          "type": "String",
+          "description": "Optional. Pattern string describing the tables whose names you want to retrieve. If your database supports pattern-matching on schemas, you may specify a pattern-matching string, where _ represents a single character and % represents any string of characters. For example, the value HR% would represent any table name beginning with the characters HR. If you want all table names, set $dbTableNamePattern to null.",
+          "optional": true
+        },
+        {
+          "name": "$dbTableTypeList",
+          "type": "String\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tList",
+          "description": "Optional. Set of parameters specifying the types of tables whose names you want to retrieve. Common JDBC table types include: TABLE , VIEW , SYSTEM TABLE , ALIAS , and SYNONYM . Check your driver documentation for others.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc462908017.html"
+    },
+    {
+      "name": "pub.db:insert",
+      "folder": "DB",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$dbAlias",
+          "type": "String",
+          "description": "Optional. Database alias.",
+          "optional": true
+        },
+        {
+          "name": "$dbURL",
+          "type": "String",
+          "description": "Optional. JDBC URL that identifies the database resource.",
+          "optional": true
+        },
+        {
+          "name": "$dbUser",
+          "type": "String",
+          "description": "Optional. User name to use to log into the database.",
+          "optional": true
+        },
+        {
+          "name": "$dbPass",
+          "type": "String",
+          "description": "Optional. Password for the user.",
+          "optional": true
+        },
+        {
+          "name": "$dbDriver",
+          "type": "String",
+          "description": "Optional. Name of the JDBC driver to use.",
+          "optional": true
+        },
+        {
+          "name": "$dbConnection",
+          "type": "com.wm.app.b2b.server.DBConnection",
+          "description": "Optional. Connection object returned by pub.db:connect .",
+          "optional": true
+        },
+        {
+          "name": "$dbCatalog",
+          "type": "String",
+          "description": "Optional. Name of the database's system catalog. Include this parameter if your DBMS supports distributed databases and you want to insert rows into a table that is not in the database to which you are connected. If you are not using a distributed database system or if you want to insert rows into the database to which you are connected, you do not need to specify this parameter. If you are running against DB2, use this parameter to specify the database location.",
+          "optional": true
+        },
+        {
+          "name": "$dbSchemaPattern",
+          "type": "String",
+          "description": "Optional. Name of the schema to which the table belongs. If your database supports pattern-matching on schemas, you may specify the schema name with a pattern-matching string, where _ represents a single character and % represents any string of characters. For example, the value HR% would represent any schema beginning with the characters HR. If you are running against DB2, you use this parameter to specify the table's AuthID.",
+          "optional": true
+        },
+        {
+          "name": "$dbTable",
+          "type": "String",
+          "description": "Name of table in which you want to insert rows.",
+          "optional": false
+        },
+        {
+          "name": "$dbRollbackOnFail",
+          "type": "String",
+          "description": "Optional. Flag that determine whether changes are committed if a failure occurs while processing multiple inserts. Set to: true to undo changes on failure. false to commit changes on failure. This is the default.",
+          "optional": true
+        },
+        {
+          "name": "$data",
+          "type": "Document",
+          "description": "or Document List Optional. Data to insert.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$updateCount",
+          "type": "String",
+          "description": "Number of rows the service inserted.",
+          "optional": false
+        },
+        {
+          "name": "$failCount",
+          "type": "String",
+          "description": "Number of rows the service failed to insert.",
+          "optional": false
+        },
+        {
+          "name": "$errors",
+          "type": "Document",
+          "description": "Conditional. Error messages generated during service execution.",
+          "optional": false
+        },
+        {
+          "name": "$dbMessage",
+          "type": "String",
+          "description": "Conditional. Message indicating the success or failure of the operation.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc460900935.html"
+    },
+    {
+      "name": "pub.db:query",
+      "folder": "DB",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$dbAlias",
+          "type": "String",
+          "description": "Optional. Database alias.",
+          "optional": true
+        },
+        {
+          "name": "$dbURL",
+          "type": "String",
+          "description": "Optional. JDBC URL that identifies the database resource.",
+          "optional": true
+        },
+        {
+          "name": "$dbUser",
+          "type": "String",
+          "description": "Optional. User name to use to log into the database.",
+          "optional": true
+        },
+        {
+          "name": "$dbPass",
+          "type": "String",
+          "description": "Optional. Password for the user.",
+          "optional": true
+        },
+        {
+          "name": "$dbDriver",
+          "type": "String",
+          "description": "Optional. Name of the JDBC driver to use.",
+          "optional": true
+        },
+        {
+          "name": "$dbConnection",
+          "type": "com.wm.app.b2b.server.DBConnection",
+          "description": "Optional. Connection object returned by pub.db:connect .",
+          "optional": true
+        },
+        {
+          "name": "$dbCatalog",
+          "type": "String",
+          "description": "Optional. Name of the database's system catalog. Include this parameter if your DBMS supports distributed databases and you want to query a table that is not in the database to which you are connected. If you are not using a distributed database system or if you want to query a table in the database to which you are connected, you do not need to specify this parameter. If you are running against DB2, use this parameter to specify the database location.",
+          "optional": true
+        },
+        {
+          "name": "$dbSchemaPattern",
+          "type": "String",
+          "description": "Optional. Name of the schema to which the table belongs. If your database supports pattern-matching on schemas, you may specify the schema name with a pattern-matching string, where _ represents a single character and % represents any string of characters. For example, the value HR% would represent any schema beginning with the characters HR. If you are running against DB2, you use this parameter to specify the table's AuthID.",
+          "optional": true
+        },
+        {
+          "name": "$dbTable",
+          "type": "String",
+          "description": "Name of table to query.",
+          "optional": false
+        },
+        {
+          "name": "$data",
+          "type": "Document",
+          "description": "Optional. Criteria that the rows to retrieve must meet.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "results",
+          "type": "com.wm.util.Table",
+          "description": "Conditional. Results of the query. The Integration Server recognizes and treats this parameter as a Document List at run time.",
+          "optional": false
+        },
+        {
+          "name": "$dbMessage",
+          "type": "String",
+          "description": "Conditional. Message indicating the success or failure of an operation.",
+          "optional": false
+        },
+        {
+          "name": "$rowCount",
+          "type": "String",
+          "description": "Conditional. Number of rows for the table that meet the criteria specified in $data .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/A_Toc460900939.html"
+    },
+    {
+      "name": "pub.db:rollback",
+      "folder": "DB",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$dbAlias",
+          "type": "String",
+          "description": "Optional. Alias of the database for which you want to discard changes. This information is passed automatically.",
+          "optional": true
+        },
+        {
+          "name": "$dbURL",
+          "type": "String",
+          "description": "Optional. JDBC URL that identifies the database resource.",
+          "optional": true
+        },
+        {
+          "name": "$dbUser",
+          "type": "String",
+          "description": "Optional. User name to use to log into the database.",
+          "optional": true
+        },
+        {
+          "name": "$dbPass",
+          "type": "String",
+          "description": "Optional. Password for the user.",
+          "optional": true
+        },
+        {
+          "name": "$dbDriver",
+          "type": "String",
+          "description": "Optional. Name of the JDBC driver to use.",
+          "optional": true
+        },
+        {
+          "name": "$dbConnection",
+          "type": "com.wm.app.b2b.server.DBConnection",
+          "description": "Optional. Connection object returned by pub.db:connect .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$dbMessage",
+          "type": "String",
+          "description": "Message indicating the success or failure of the operation.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_db_rollback.html"
+    },
+    {
+      "name": "pub.db:startTransaction",
+      "folder": "DB",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$dbAlias",
+          "type": "String",
+          "description": "Optional. Alias of the database for which you want to start the transaction. This information is passed automatically.",
+          "optional": true
+        },
+        {
+          "name": "$dbURL",
+          "type": "String",
+          "description": "Optional. JDBC URL that identifies the database resource.",
+          "optional": true
+        },
+        {
+          "name": "$dbUser",
+          "type": "String",
+          "description": "Optional. User name to use to log into the database.",
+          "optional": true
+        },
+        {
+          "name": "$dbPass",
+          "type": "String",
+          "description": "Optional. Password for the user.",
+          "optional": true
+        },
+        {
+          "name": "$dbDriver",
+          "type": "String",
+          "description": "Optional. Name of the JDBC driver to use.",
+          "optional": true
+        },
+        {
+          "name": "$dbConnection",
+          "type": "com.wm.app.b2b.server.DBConnection",
+          "description": "Optional. Connection object returned by pub.db:connect .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$dbMessage",
+          "type": "String",
+          "description": "Message indicating the success or failure of the operation.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_db_startTransaction.html"
+    },
+    {
+      "name": "pub.db:update",
+      "folder": "DB",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "$dbAlias",
+          "type": "String",
+          "description": "Optional. Database alias.",
+          "optional": true
+        },
+        {
+          "name": "$dbURL",
+          "type": "String",
+          "description": "Optional. JDBC URL that identifies the database resource.",
+          "optional": true
+        },
+        {
+          "name": "$dbUser",
+          "type": "String",
+          "description": "Optional. User name to use to log into the database.",
+          "optional": true
+        },
+        {
+          "name": "$dbPass",
+          "type": "String",
+          "description": "Optional. Password for the user.",
+          "optional": true
+        },
+        {
+          "name": "$dbDriver",
+          "type": "String",
+          "description": "Optional. Name of the JDBC driver to use.",
+          "optional": true
+        },
+        {
+          "name": "$dbConnection",
+          "type": "com.wm.app.b2b.server.DBConnection",
+          "description": "Optional. Connection object returned by pub.db:connect .",
+          "optional": true
+        },
+        {
+          "name": "$dbCatalog",
+          "type": "String",
+          "description": "Optional. Name of the database's system catalog. Include this parameter if your DBMS supports distributed databases and you want to update rows in a table that is not in the database to which you are connected. If you are not using a distributed database system or if you want to update rows in the database to which you are connected, you do not need to specify this parameter. If you are running against DB2, you use this parameter to specify the database location.",
+          "optional": true
+        },
+        {
+          "name": "$dbSchemaPattern",
+          "type": "String",
+          "description": "Optional. Name of the schema to which the table belongs. If your database supports pattern-matching on schemas, you may specify the schema name with a pattern-matching string, where _ represents a single character and % represents any string of characters. For example, the value HR% would represent any schema beginning with the characters HR. If you are running against DB2, you use this parameter to specify the table's AuthID.",
+          "optional": true
+        },
+        {
+          "name": "$dbTable",
+          "type": "String",
+          "description": "Name of table to update.",
+          "optional": false
+        },
+        {
+          "name": "$criteria",
+          "type": "Document",
+          "description": "Criteria that the rows to update must meet. Important: If no criteria are provided, all rows are updated.",
+          "optional": false
+        },
+        {
+          "name": "$set",
+          "type": "Document",
+          "description": "New data with which to update rows.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "$updateCount",
+          "type": "String",
+          "description": "Number of rows updated.",
+          "optional": false
+        },
+        {
+          "name": "$dbMessage",
+          "type": "String",
+          "description": "Conditional. Message indicating the operation failed.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_db_update.html"
+    }
+  ]
+}

@@ -1,0 +1,366 @@
+{
+  "folder": "STORAGE",
+  "total_services": 14,
+  "services": [
+    {
+      "name": "pub.storage:add",
+      "folder": "STORAGE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "storeName",
+          "type": "String",
+          "description": "Name of the data store in which to insert the entry.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Key under which the entry is to be inserted.",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "Document",
+          "description": "Value (IData object) to be inserted.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "String",
+          "description": "Flag indicating whether the entry was successfully added. A value of: true indicates that the new entry was inserted successfully. false indicates that the entry was not inserted (usually because an entry for key already exists).",
+          "optional": false
+        },
+        {
+          "name": "error",
+          "type": null,
+          "description": "String Error message generated while inserting the new entry into the data store.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_storage_add.html"
+    },
+    {
+      "name": "pub.storage:closeStore",
+      "folder": "STORAGE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "storeName",
+          "type": "String",
+          "description": "Name of the data store to close and unregister.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_storage_closeStore.html"
+    },
+    {
+      "name": "pub.storage:deleteStore",
+      "folder": "STORAGE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "storeName",
+          "type": "String",
+          "description": "Name of the data store to delete.",
+          "optional": false
+        },
+        {
+          "name": "waitLength",
+          "type": "String",
+          "description": "Optional. Length of time, in milliseconds, that you want to wait for this data store to become available for deletion if it is already locked by another thread. The default is the default Maximum Lock Wait value, which is specified on the watt.server.storage.lock.maxWait property. You can update this property by using the Settings > Extended page on the Integration Server Administrator .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "count",
+          "type": "String",
+          "description": "Number of data store entries that were deleted. If the store does not exist, this value is 0.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_storage_deleteStore.html"
+    },
+    {
+      "name": "pub.storage:get",
+      "folder": "STORAGE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "storeName",
+          "type": "String",
+          "description": "Name of the data store from which you want to retrieve the entry.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Key of the entry whose value you want to retrieve.",
+          "optional": false
+        },
+        {
+          "name": "waitLength",
+          "type": "String",
+          "description": "Optional. Length of time, in milliseconds, that you want to wait for this entry to become available if it is already locked by another thread. The default is the default Maximum Lock Wait value, which is specified on the watt.server.storage.lock.maxWait property. You can update this property by using the Settings > Extended page on the Integration Server Administrator .",
+          "optional": true
+        },
+        {
+          "name": "lockMode",
+          "type": "String",
+          "description": "Optional. Type of lock you want to place on the entry. Set to: Exclusive to prevent other threads from reading or updating the entry while you are using it. The service also obtains a shared lock on the data store. An exclusive lock on an entry allows you to modify the entry. Read is obsolete. If this value is specified, the service obtains a shared lock. Share to prevent other threads from obtaining an exclusive lock on the entry. The service also obtains a shared lock on the data store. A shared lock on an entry allows you to read, but not modify, the entry. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "value",
+          "type": "Document",
+          "description": "Retrieved entry (IData object). If the requested entry does not exist, the value of this parameter is null.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_storage_get.html"
+    },
+    {
+      "name": "pub.storage:keys",
+      "folder": "STORAGE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "storeName",
+          "type": "String",
+          "description": "Name of the data store from which you want to obtain a list of keys.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "keys",
+          "type": "String List",
+          "description": "Keys for the data store specified in storeName .",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_storage_keys.html"
+    },
+    {
+      "name": "pub.storage:listLocks",
+      "folder": "STORAGE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "holder",
+          "type": "String",
+          "description": "Optional. Identifies the holder whose pub.storage locks are to be listed. The format is \"_DataStore_< sessionId : threadId >\", where: sessionId is a unique, internally generated identifier for the client's session in Integration Server . threadId is a unique, internally generated identifier for the client’s thread in Integration Server .",
+          "optional": true
+        },
+        {
+          "name": "target",
+          "type": "String",
+          "description": "Optional. Identifies the target whose pub.storage locks are to be listed.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "locks",
+          "type": "Document List",
+          "description": "The list of pub.storage locks. This output variable can be null.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_storage_listLocks.html"
+    },
+    {
+      "name": "pub.storage:lock",
+      "folder": "STORAGE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "storeName",
+          "type": "String",
+          "description": "Name of the data store containing the entry.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Optional. Key of the entry that you want to lock. If key is not supplied and you request: A shared lock, the service obtains a shared lock on the data store, allowing other threads to read and modify entries, but not to delete them. An exclusive lock, the service obtains an exclusive lock on the data store, preventing other threads from locking the data store and the entries, thereby preventing those threads from reading, modifying, or deleting the entries or the data store. If both storeName and key are specified and you request: A shared lock, the service obtains a shared lock on the data store and the entry. An exclusive lock, the service obtains a shared lock on the data store and an exclusive lock on the entry.",
+          "optional": true
+        },
+        {
+          "name": "waitLength",
+          "type": "String",
+          "description": "Optional. Length of time, in milliseconds, that you want to wait for this entry to become available if it is already locked by another thread. The default is the default Maximum Lock Wait value, which is specified on the watt.server.storage.lock.maxWait property. You can update this property by using the Settings > Extended page on the Integration Server Administrator .",
+          "optional": true
+        },
+        {
+          "name": "lockMode",
+          "type": "String",
+          "description": "Optional. Type of lock you want to place on the entry or data store. Set to: Exclusive to prevent other threads from obtaining a lock on the data store or entry. An exclusive lock on an entry allows you to modify the entry, and prevents other threads from reading or modifying the entry. An exclusive lock on a data store also locks the entries in the data store. In addition, an exclusive lock on a data store allows you to delete the data store. Read is obsolete. If this value is specified, the service obtains a shared lock. Share to prevent other threads from obtaining an exclusive lock on an entry or a data store. A shared lock on an entry allows you to read, but not modify, the entry. A shared lock on a data store prevents another thread from deleting the data store. This is the default.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_storage_lock.html"
+    },
+    {
+      "name": "pub.storage:put",
+      "folder": "STORAGE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "storeName",
+          "type": "String",
+          "description": "Name of the data store into which you want to insert or update the entry.",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "type": "Document",
+          "description": "Value (IData object) to be inserted or updated.",
+          "optional": false
+        },
+        {
+          "name": "waitLength",
+          "type": "String",
+          "description": "Optional. Length of time, in milliseconds, that you want to wait for this entry to become available if it is already locked by another thread. If the wait length expires before a lock is obtained, the service fails and throws an exception. The default is the default Maximum Lock Wait value, which is specified on the watt.server.storage.lock.maxWait property. You can update this property by using the Settings > Extended page on the Integration Server Administrator . This parameter is used only when your service did not explicitly lock the entry beforehand.",
+          "optional": true
+        },
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Key where you want to insert or update the entry.",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "error",
+          "type": null,
+          "description": "String Error message generated while inserting the new entry into the data store.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_storage_put.html"
+    },
+    {
+      "name": "pub.storage:registerStore",
+      "folder": "STORAGE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "storeName",
+          "type": "String",
+          "description": "Name of the data store to register.",
+          "optional": false
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_storage_registerStore.html"
+    },
+    {
+      "name": "pub.storage:releaseLocks",
+      "folder": "STORAGE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "holders",
+          "type": "String List",
+          "description": "Optional. Holders whose pub.storage locks are to be released.",
+          "optional": true
+        },
+        {
+          "name": "ids",
+          "type": "String",
+          "description": "Optional. Ids whose pub.storage locks are to be released.",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "count",
+          "type": "String List",
+          "description": "Number of locks that were released.",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_storage_releaseLocks.html"
+    },
+    {
+      "name": "pub.storage:remove",
+      "folder": "STORAGE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "storeName",
+          "type": "String",
+          "description": "Name of the data store from which to remove an entry.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Key of the entry that you want to remove.",
+          "optional": false
+        },
+        {
+          "name": "waitLength",
+          "type": "String",
+          "description": "Optional. Length of time, in milliseconds, that you want to wait for this entry to become available for deletion if it is already locked by another thread. The default is the default Maximum Lock Wait value, which is specified on the watt.server.storage.lock.maxWait property. You can update this property by using the Settings > Extended page on the Integration Server Administrator .",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "String",
+          "description": "Flag indicating whether the entry was successfully removed. A value of: true indicates that the entry was removed successfully. false indicates that the entry was not removed (usually because an entry for key does not exist).",
+          "optional": false
+        }
+      ],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_storage_remove.html"
+    },
+    {
+      "name": "pub.storage:shutdown",
+      "folder": "STORAGE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_storage_shutdown.html"
+    },
+    {
+      "name": "pub.storage:startup",
+      "folder": "STORAGE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_storage_startup.html"
+    },
+    {
+      "name": "pub.storage:unlock",
+      "folder": "STORAGE",
+      "description": "Last Updated: 2026-01-05",
+      "inputs": [
+        {
+          "name": "storeName",
+          "type": "String",
+          "description": "Name of the data store in which to unlock an entry.",
+          "optional": false
+        },
+        {
+          "name": "key",
+          "type": "String",
+          "description": "Optional. Key of the entry that you want to unlock. If key is not supplied, the lock will be removed from the data store specified in storeName , but any locks on entries in the data store will remain.",
+          "optional": true
+        }
+      ],
+      "outputs": [],
+      "source_url": "SSL8N8_11.1/is_bis_reference/Apub_storage_unlock.html"
+    }
+  ]
+}
