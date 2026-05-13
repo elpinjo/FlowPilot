@@ -20,6 +20,12 @@ To build flow based integration projects make use of the following resources:
 **Project Namespace and Service Invocation:**
 - Before you start ask what namespace (project_namespace) needs to be used for the project
 - When invoking custom flow services created in this project, use the full namespace path
+- Flow services will be in the flows namespace of the project. For example the addCustomer flowservice will have the namespace `{project_namespace}.flows:addCustomer`
+- JDBC Adapter service will be in the database namespace of the project. For example the getOffer adapter service will have the namespace `{project_namespace}.database:getOffer`
+- SAP Adapter service will be in the sap namespace of the project. For example the createQuote adapter service will have the namespace `{project_namespace}.sap:createQuote`
+- Document Types will have the namespace `{project_namespace}.docs`
+- Flatfile Schemas will have the namespace `{project_namespace}.ff`
+- API specifications will have the namespace `{project_namespace}.api`
 - **Example**: To invoke the Modulus service: `{project_namespace}.services:Modulus`
 - **Example**: To invoke the DecimalToBinary service: `{project_namespace}.services:DecimalToBinary`
 - Any `.flow` files in the `pub/` directory can be invoked using this namespace pattern
